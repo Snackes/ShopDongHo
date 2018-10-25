@@ -11,6 +11,13 @@
 	text-align:left;
 	
 }
+#MyForm{
+	font-size: 14px;
+}
+.error{
+	font-size: 12px;
+	color: red;
+}
 /*Css cho nút cập nhập*/
 #divThayDoi{
 	text-align:center;
