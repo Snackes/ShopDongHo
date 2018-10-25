@@ -1,0 +1,119 @@
+.breadcrumb{
+	text-align:left;
+}
+/*Css cho cả form*/
+#frmProfiles_edit{
+	font-weight:100;
+	font-size:14px;
+	font-weight: normal;
+}
+.col-sm-9{
+	text-align:left;
+	
+}
+/*Css cho nút cập nhập*/
+#divThayDoi{
+	text-align:center;
+	margin-bottom:25px;
+	font-size:20px;
+}
+.nav_account{
+	text-align:left;
+}
+
+.breadcrumb-item{
+	font-size: 14px;
+}
+/*Css cho chữ trang chủ chuyển trang*/
+.container ol li a{
+	text-decoration: none;
+}
+.container ol li a:hover{
+	font-weight: bold;
+}
+
+
+/*Css cho div thay đổi mật khẩu cũ*/
+#DivTongDoiMatKhau{
+	font-size: 14px;
+}
+.ThongTinDoiMatKhau{
+	text-align:left;
+	display:none ;
+	margin-bottom: 20px;
+
+}
+.ThongTinDoiMatKhau div div{
+	margin-bottom: 4px;
+}
+
+.ThongTinDoiMatKhau div div .col-sm-9{
+	text-align: left;
+}
+/*Css cho danh mục quản lí thông tin tài khoản khách hàng*/
+#DivTong_DM_QLThongTin {
+	font-size: 14px;
+	margin-top: 25px;
+	background:orange;
+	opacity: 0.8;
+	width: 250px;
+	padding: 0;
+	list-style-type: none;
+	text-align: left;
+  }
+  #DivTong_DM_QLThongTin li {
+	width: auto;
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid #e8e8e8;
+	padding: 0 1em;
+  }
+  #DivTong_DM_QLThongTin li a {
+	text-decoration: none;
+	color: #333;
+	font-weight: bold;
+	display: block;
+  }
+  #DivTong_DM_QLThongTin li:hover {
+	background:gold;
+  }
+
+  #iconDX{
+	margin-right: 5px;
+  }
+  #iconQLDH{
+	margin-right: 5px;
+  }
+  #iconTTTK{
+	margin-right: 5px;
+  }
+
+
+  .btn-3 {
+	font-family:'Times New Roman', Times, serif;
+	box-shadow: inset 0 0 20px rgba(48, 45, 45, 0);
+	outline-offset: 0px;
+	text-shadow: 1px 1px 2px #d2ddcc; 
+	text-shadow: none;
+	transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+	background-color: rgb(233, 162, 10);
+	font-size: 15px;
+	font-weight: bold;
+	opacity: 0.9;
+	margin-bottom: 20px;
+  } 
+  
+  .btn-3:hover {
+	border: 1px solid;
+	outline-color: rgba(92, 71, 71, 0);
+	outline-offset: 15px;
+	text-shadow:  #473f53; 
+	}
+	.btn-3 a{
+		color: blanchedalmond;
+	}
+	
+
+	a{
+		color: black;
+	}
