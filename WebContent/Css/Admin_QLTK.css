@@ -152,5 +152,15 @@ body {
   .navbar-top-links .dropdown-tasks,
   .navbar-top-links .dropdown-alerts {
     margin-left: auto; } }
+.form-tt-chitiet {
+  margin-top: 20px; }
+  .form-tt-chitiet .form-group {
+    float: left;
+    clear: both;
+    margin-left: 10px; }
+  .form-tt-chitiet .avatarKH {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto; }
 
 /*# sourceMappingURL=Admin_QLTK.css.map */
