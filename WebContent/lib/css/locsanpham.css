@@ -1,0 +1,194 @@
+* {
+  padding: 0;
+  margin: 0; }
+
+body {
+  padding-top: 53px;
+  height: 100%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  text-align: center;
+  background-color: #fff; }
+
+.navbar-fixed-top {
+  background-color: #282629 !important;
+  opacity: 1;
+  border: 1px #282629 solid; }
+
+.search-bar {
+  margin-top: 7px; }
+
+#shopping-cart {
+  font-size: 33px;
+  color: #f69400; }
+  #shopping-cart:hover i {
+    opacity: 0.9; }
+
+.btnDangNhap:hover {
+  color: #c20d2e !important; }
+
+.modal-backdrop {
+  z-index: 1; }
+
+#mainnavigation {
+  padding-left: 100px; }
+  #mainnavigation li a {
+    color: #fff; }
+    #mainnavigation li a:hover {
+      color: #c20d2e; }
+
+.tieuDe {
+  font-size: 20px; }
+
+#nav-notfixed {
+  margin-bottom: 0;
+  background-color: #282629;
+  border: 1px #282629 solid;
+  border-top: 1px #f69400 solid; }
+
+.dropdown-large {
+  position: static !important; }
+
+.dropdown-hover:hover .dropdown-menu-large {
+  display: block;
+  background-color: #282629;
+  opacity: 0.9; }
+
+.dropdown-menu-large {
+  display: none;
+  margin-left: 16px;
+  margin-right: 16px;
+  padding: 20px 0px;
+  width: 100%; }
+  .dropdown-menu-large li ul {
+    padding: 0;
+    margin: 0; }
+    .dropdown-menu-large li ul li {
+      list-style-type: none; }
+      .dropdown-menu-large li ul li a {
+        display: block;
+        padding: 3px 20px;
+        clear: both;
+        font-weght: 300;
+        line-height: 1.428571429;
+        color: #fff;
+        white-space: nomal; }
+        .dropdown-menu-large li ul li a:hover {
+          text-decoration: none;
+          color: #c20d2e !important; }
+        .dropdown-menu-large li ul li a:focus {
+          text-decoration: none;
+          color: #c20d2e; }
+  .dropdown-menu-large .dropdown-header {
+    color: #428bca;
+    font-size: 18px; }
+
+@media (max-width: 100%) {
+  .dropdown-menu-large {
+    margin-left: 0;
+    margin-right: 0; }
+    .dropdown-menu-large li {
+      margin-bottom: 30px; }
+      .dropdown-menu-large li:last-child {
+        margin-bottom: 0; }
+    .dropdown-menu-large .dropdown-header {
+      padding: 3px 15px !important; } }
+.profilebox {
+  width: 160px;
+  height: 200px;
+  background: #eee;
+  cursor: pointer;
+  float: left; }
+
+.profilebox1 {
+  background-image: url("../img/product.jpg");
+  background-position: center center;
+  background-size: 100% 120%;
+  perspective: 400px;
+  position: relative;
+  transition: background-size .2s ease-in;
+  -webkit-transition: background-size .2s ease-in;
+  -moz-transition: background-size .2s ease-in;
+  -o-transition: background-size .2s ease-in; }
+  .profilebox1:hover {
+    background-size: 105% 130%; }
+
+.profilebox .SocialIcons {
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 15px;
+  transform: rotateY(90deg);
+  transform-origin: left center 0;
+  transition: all 350ms ease; }
+  .profilebox .SocialIcons a {
+    background: #ffffff none repeat scroll 0 0;
+    font-size: 20px;
+    height: 30px;
+    margin-bottom: 1px;
+    position: relative;
+    text-align: center;
+    width: 30px;
+    color: black;
+    border: 1px #dddddd solid; }
+    .profilebox .SocialIcons a i {
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translateX(-50%) translateY(-50%); }
+
+.profilebox:hover .SocialIcons {
+  opacity: 1;
+  left: 15px;
+  transform: rotateY(0deg); }
+
+.thumbnail-product:hover {
+  /*box-shadow: 0px 0px 3px 1px #dddddddd;
+  -moz-box-shadow: 0px 0px 3px 1px #dddddddd;
+  -webkit-box-shadow: 0px 0px 3px 1px #dddddddd;
+  -o-box-shadow: 0px 0px 3px 1px #dddddddd;
+  -ms-box-shadow: 0px 0px 3px 1px #dddddddd;*/ }
+
+.product-title a {
+  font-size: 18px;
+  color: black;
+  text-decoration: none; }
+
+.thumbnail-product {
+  width: 160px;
+  height: 230px;
+  background: #fff;
+  cursor: pointer;
+  float: left;
+  margin: 30px; }
+  .thumbnail-product:hover .product-title a {
+    color: #c20d2e; }
+
+.page-footer {
+  background-color: #282629; }
+  .page-footer a {
+    font-size: 18px; }
+  .page-footer .so-icon a {
+    margin-right: 0;
+    font-size: 28px;
+    color: black;
+    text-decoration: none; }
+
+.listCheckBox {
+  margin-top: 150px; }
+  .listCheckBox .list-group .list-group-item {
+    text-align: left;
+    font-size: 16px; }
+    .listCheckBox .list-group .list-group-item label input {
+      margin-right: 3px; }
+
+.pagination {
+  margin-top: 70px;
+  font-size: 13px;
+  float: right; }
+  .pagination li a {
+    color: #282629 !important; }
+
+/*# sourceMappingURL=locsanpham.css.map */
