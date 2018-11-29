@@ -1,6 +1,0 @@
-Kích thu?c font ch?
-N?i dung: 16px
-N?i dung ph?: 13px
-Tiêu d?: 26px
-Tiêu d? ph?: 20px
-Tiêu d? l?n: 42px
