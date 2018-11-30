@@ -1,3 +1,5 @@
 /Model/
+/ModelBean/
+/ModelService/
 /Controller/
-/ControllerBean/
+/ModelDao/
