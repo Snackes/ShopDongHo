@@ -1,3 +1,5 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="Model.SanPham"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -52,71 +54,62 @@
         <!--Sản Phẩm nổi bật--->
         <p class="deMuc"> <span style="border-bottom: 2px #f69400 solid; ">Sản Phẩm Nổi Bật</span></p>
         <div class="row">
+			<%	
+				Object result = request.getAttribute("layTT");
+					if (result != null && result instanceof SanPham[]){
+						SanPham[] sp = (SanPham[])result;
+						for (int i = 0; i<sp.length; i++){
+							int maSP = sp[i].getMaSP();
+							String ten = sp[i].getTenSp();
+							double giaBan =sp[i].getGiaBan();	
+							out.println("<div class=\"col-lg-3\">");
+								out.println("<div class=\"thumbnail-list-product\">");
+									out.println("<div class=\"thumbnail-product\">");
+									
+									
+										out.println("<div class=\"profilebox profilebox1\">");
+										
+					        				out.println("<div class=\"SocialIcons\">");
+					                      		out.println("<a href=\"#\">");
+					                                out.println("<i class=\"fas fa-cart-plus\">");
+					                                out.println("</i>");
+					                            out.println("</a>");
+					                        	out.println("<a href=\"#\">");
+					                                out.println("<i class=\"far fa-heart\">");
+					                                out.println("</i>");
+					                            out.println("</a>");
+					                  		out.println("</div>");
+					                  		
+					                   	out.println("</div>");	
+					                   						                   	
+					                   	
+					            		out.println("<div class=\"product-title\">");                 
+					            			out.println("<a href=\"#\">"+ten+"<br />"+ giaBan+"VNĐ"+"</a>");
+					                	out.println("</div>");	
+					                	
+					                	
+					          		out.println("</div>");
+					     		out.println("</div>");
+							out.println("</div>");
+						}
+					}
+			%>
             <div class="col-lg-3">
                 <div class="thumbnail-list-product">
                     <div class="thumbnail-product">
-                        <div class="profilebox profilebox1">
+                        <div class="profilebox profilebox1" style="background-image: url(\"lib/images/photo1.jpeg\")" >
                             <div class="SocialIcons">
                                 <a href="#"><i class="fas fa-cart-plus"></i></a>
                                 <a href="#"><i class="far fa-heart"></i></a>
                             </div>
                         </div>
-                        <div class="product-title">
-                            <a href="#">Đồng Hồ Omega JSHD0S <br>
-             	Giá: 20.000.000đ
-             </a>
+                        
+                        <div class="product-title">     
+                            <a href="#"> Đồng Hồ Omega JSHD0S <br>
+             					Giá: 20.000.000đ
+             				</a>           				
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="thumbnail-list-product">
-                    <div class="thumbnail-product">
-                        <div class="profilebox profilebox1">
-                            <div class="SocialIcons">
-                                <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                <a href="#"><i class="far fa-heart"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-title">
-                            <a href="#">Đồng Hồ Omega JSHD0S <br>
-             	Giá: 20.000.000đ
-             </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="thumbnail-list-product">
-                    <div class="thumbnail-product">
-                        <div class="profilebox profilebox1">
-                            <div class="SocialIcons">
-                                <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                <a href="#"><i class="far fa-heart"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-title">
-                            <a href="#">Đồng Hồ Omega JSHD0S <br>
-             	Giá: 20.000.000đ
-             </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="thumbnail-list-product">
-                    <div class="thumbnail-product">
-                        <div class="profilebox profilebox1">
-                            <div class="SocialIcons">
-                                <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                <a href="#"><i class="far fa-heart"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-title">
-                            <a href="#">Đồng Hồ Omega JSHD0S <br>
-             	Giá: 20.000.000đ
-             </a>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
