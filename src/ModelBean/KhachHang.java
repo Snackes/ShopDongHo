@@ -8,6 +8,7 @@ public class KhachHang {
 	private String Email;
 	private String TaiKhoan;
 	private String MatKhau;
+	private String PhanQuyen;
 	public int getMaKH() {
 		return MaKH;
 	}
@@ -50,7 +51,14 @@ public class KhachHang {
 	public void setMatKhau(String matKhau) {
 		MatKhau = matKhau;
 	}
-	public KhachHang(int maKH, String hoTen, String diaChi, int sDT, String email, String taiKhoan, String matKhau) {
+	public String getPhanQuyen() {
+		return PhanQuyen;
+	}
+	public void setPhanQuyen(String phanQuyen) {
+		PhanQuyen = phanQuyen;
+	}
+	public KhachHang(int maKH, String hoTen, String diaChi, int sDT, String email, String taiKhoan, String matKhau,
+			String phanQuyen) {
 		super();
 		MaKH = maKH;
 		HoTen = hoTen;
@@ -59,11 +67,13 @@ public class KhachHang {
 		Email = email;
 		TaiKhoan = taiKhoan;
 		MatKhau = matKhau;
+		PhanQuyen = phanQuyen;
 	}
 	public KhachHang() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	
 	
 
