@@ -7,7 +7,7 @@ import java.util.Vector;
 
 import ModelBean.SanPham;
 import ModelDao.DBConnection;
-public class XuLiSanPham {
+public class XuLiSanPham {	
 
 	DBConnection connection=new DBConnection();
 	public XuLiSanPham() {

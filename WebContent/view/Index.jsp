@@ -1,9 +1,30 @@
 <%@page import="ModelBean.SanPham"%>
-<%@page import="java.sql.ResultSet"%>
+
+<%@ page import="java.sql.ResultSet" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Shop online</title>
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="../lib/vendor/bootstrap/css/bootstrap.min.css">
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+    <script src="../lib/vendor/jquery/jquery.min.js"></script>
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+    <script src="../lib/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../lib/css/index.css">
+    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="../lib/vendor/fontawesome/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    
+    <script src="../lib/js/index.js"></script>
+    
+</head>
 <body>
 	<%@ include file="/Layout/Header.jsp"%>   
     <header>
@@ -15,7 +36,7 @@
             </ol>
             <div class="carousel-inner">
     			<div class=" item ">
-    				<img src=" lib/images/photo1.jpeg ">
+    				<img src="../lib/images/photo1.jpeg ">
     				<div class=" container ">
     					<div class=" carousel-caption d-none d-md-block ">
     						<h1>Example headline.</h1>
@@ -25,7 +46,7 @@
     				</div>
     			</div>
     			<div class=" item ">
-    				<img src=" lib/images/photo2.jpeg ">
+    				<img src="../lib/images/photo2.jpeg ">
     				<div class=" container ">
     					<div class=" carousel-caption d-none d-md-block ">
     						<h1>Another example headline.</h1>
@@ -35,7 +56,7 @@
     				</div>
     			</div>
     			<div class=" item active ">
-    				<img src="lib/images/photo3.jpeg " ">
+    				<img src="../lib/images/photo3.jpeg " ">
                 <div class="container">
                     <div class="carousel-caption d-none d-md-block">
                         <h1>One more for good measure.</h1>
@@ -204,63 +225,63 @@
         <p class="deMuc"><span style="border-bottom: 2px #f69400 solid">Thương Hiệu Nổi Bật</span></p>
         <div id="trademark-carousel">
             <div class="hideLeft">
-                <img src="lib/logo/seiko.png" >
+                <img src="../lib/logo/seiko.png" >
                 <a href="#"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="hideLeft">
-                <img src="lib/logo/tissot.png" >
+                <img src="../lib/logo/tissot.png" >
                 <a href="#"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="hideLeft">
-                <img src="lib/logo/bovet.jpg" >
+                <img src="../lib/logo/bovet.jpg" >
                 <a href="#"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="hideLeft">
-                <img src="lib/logo/dg.jpg" >
+                <img src="../lib/logo/dg.jpg" >
                 <a href="#"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="hideLeft">
-                <img src="lib/logo/longines.jpg" >
+                <img src="../lib/logo/longines.jpg" >
                 <a href="#"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="prevLeftSecond">
-                <img src="lib/logo/breitling.jpg">
+                <img src="../lib/logo/breitling.jpg">
                 <a href="#"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="prev">
-                <img src="lib/logo/charriol.jpg" >
+                <img src="../lib/logo/charriol.jpg" >
                 <a href="#"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="selected">
-                <img src="lib/logo/omega.jpg">
+                <img src="../lib/logo/omega.jpg">
                 <a href="#"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="next">
-                <img src="logo/victorinox.jpg" >
+                <img src="../lib/logo/victorinox.jpg" >
                 <a href="#"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="nextRightSecond">
-                <img src="logo/gucci.jpg">
+                <img src="../lib/logo/gucci.jpg">
                 <a href="#"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="hideRight">
-                <img src="logo/zenith2.jpg" >
+                <img src="../lib/logo/zenith2.jpg" >
                 <a href="#"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="hideRight">
-                <img src="logo/hermes.png" >
+                <img src="../lib/logo/hermes.png" >
                 <a href="#"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="hideRight">
-                <img src="logo/hublot.jpg" >
+                <img src="../lib/logo/hublot.jpg" >
                 <a href="#"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="hideRight">
-                <img src="logo/puma.jpg" >
+                <img src="../lib/logo/puma.jpg" >
                 <a href="#"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="hideRight">
-                <img src="logo/rolex.jpg" >
+                <img src="../lib/logo/rolex.jpg" >
                 <a href="#"><i class="fas fa-angle-double-down"></i></a>
             </div>
         </div>

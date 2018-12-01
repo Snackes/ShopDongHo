@@ -4,7 +4,7 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="lib/css/DatHang.css">
+    <link rel="stylesheet" href="../lib/css/DatHang.css">
 <body>
   	<%@ include file="/Layout/Header.jsp"%>
     <!---CONTENT HERE-->

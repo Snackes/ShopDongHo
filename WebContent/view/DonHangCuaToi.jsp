@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="lib/css/DonHangCuaToi.css">
+    <link rel="stylesheet" href="../lib/css/DonHangCuaToi.css">
 </head>
 <body>
   	<%@ include file="/Layout/Header.jsp"%>

@@ -10,33 +10,12 @@ public class SanPham {
 	private String GioiTinhSuDung;
 	private String KichCo;
 	private String ChatLieuVo;
+	private String ChatLieuKinh;	
 	private String DoChiuNuoc;
 	private String BaoHanh;
 	private int SoLuongHienTai;
-	public SanPham() {
-		super();
-	}
-	
-	
-	public SanPham(int maSP, String tenSp, double giaVon, double giaBan, int maTH, String kieuMay,
-			String gioiTinhSuDung, String kichCo, String chatLieuVo, String doChiuNuoc, String baoHanh,
-			int soLuongHienTai) {
-		super();
-		MaSP = maSP;
-		TenSp = tenSp;
-		GiaVon = giaVon;
-		GiaBan = giaBan;
-		MaTH = maTH;
-		KieuMay = kieuMay;
-		GioiTinhSuDung = gioiTinhSuDung;
-		KichCo = kichCo;
-		ChatLieuVo = chatLieuVo;
-		DoChiuNuoc = doChiuNuoc;
-		BaoHanh = baoHanh;
-		SoLuongHienTai = soLuongHienTai;
-	}
-
-
+	private int Sale;
+	private String GhiChu;
 	public int getMaSP() {
 		return MaSP;
 	}
@@ -91,6 +70,12 @@ public class SanPham {
 	public void setChatLieuVo(String chatLieuVo) {
 		ChatLieuVo = chatLieuVo;
 	}
+	public String getChatLieuKinh() {
+		return ChatLieuKinh;
+	}
+	public void setChatLieuKinh(String chatLieuKinh) {
+		ChatLieuKinh = chatLieuKinh;
+	}
 	public String getDoChiuNuoc() {
 		return DoChiuNuoc;
 	}
@@ -109,5 +94,41 @@ public class SanPham {
 	public void setSoLuongHienTai(int soLuongHienTai) {
 		SoLuongHienTai = soLuongHienTai;
 	}
-
+	public int getSale() {
+		return Sale;
+	}
+	public void setSale(int sale) {
+		Sale = sale;
+	}
+	public String getGhiChu() {
+		return GhiChu;
+	}
+	public void setGhiChu(String ghiChu) {
+		GhiChu = ghiChu;
+	}
+	public SanPham(int maSP, String tenSp, double giaVon, double giaBan, int maTH, String kieuMay,
+			String gioiTinhSuDung, String kichCo, String chatLieuVo, String chatLieuKinh, String doChiuNuoc,
+			String baoHanh, int soLuongHienTai, int sale, String ghiChu) {
+		super();
+		MaSP = maSP;
+		TenSp = tenSp;
+		GiaVon = giaVon;
+		GiaBan = giaBan;
+		MaTH = maTH;
+		KieuMay = kieuMay;
+		GioiTinhSuDung = gioiTinhSuDung;
+		KichCo = kichCo;
+		ChatLieuVo = chatLieuVo;
+		ChatLieuKinh = chatLieuKinh;
+		DoChiuNuoc = doChiuNuoc;
+		BaoHanh = baoHanh;
+		SoLuongHienTai = soLuongHienTai;
+		Sale = sale;
+		GhiChu = ghiChu;
+	}
+	public SanPham() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
 }

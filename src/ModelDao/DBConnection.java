@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.Vector;
 
 public class DBConnection {
-	public static String strConn = "jdbc:sqlserver://localhost:1433;databaseName=webBanDongHo;user=nas;password=anhsang321";
+	public static String strConn = "jdbc:sqlserver://localhost:1433;databaseName=webBanDongHo;user=hiep123;password=121212";
 	private Connection connection;
 
 	public DBConnection() {

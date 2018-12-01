@@ -4,8 +4,8 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="lib/css/ThongTinCaNhan.css">	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="../lib/css/ThongTinCaNhan.css">	
+	<script src="../lib/vendor/jquery/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
             $(".checkboxHienAn").click(function () {
