@@ -47,85 +47,13 @@
                 </div>
                 <div class="list-group">
                     <p style="font-size: 26px;">Thương Hiệu</p>
-                    <div style=" height: 220px; overflow-y: auto;overflow-x: hidden;">
+                    <div style=" height: 220px; overflow-y: auto; overflow-x: hidden;">
+                    <% 
+                    	
+                    %>
                         <div class="list-group-item">
                             <label>
                                 <input class="common-selector" type="checkbox" value="Omega">Omega
-                            </label>
-                        </div>
-                        <div class="list-group-item">
-                            <label>
-                                <input class="common-selector" type="checkbox" value="Seiko">Seiko
-                            </label>
-                        </div>
-                        <div class="list-group-item">
-                            <label>
-                                <input class="common-selector" type="checkbox" value="Rolex">Rolex
-                            </label>
-                        </div>
-                        <div class="list-group-item">
-                            <label>
-                                <input class="common-selector" type="checkbox" value="Charriol">Charriol
-                            </label>
-                        </div>
-                        <div class="list-group-item">
-                            <label>
-                                <input class="common-selector" type="checkbox" value="Victorinox">Victorinox
-                            </label>
-                        </div>
-                        <div class="list-group-item">
-                            <label>
-                                <input class="common-selector" type="checkbox" value="Breitling">Breitling
-                            </label>
-                        </div>
-                        <div class="list-group-item">
-                            <label>
-                                <input class="common-selector" type="checkbox" value="Gucci">Gucci
-                            </label>
-                        </div>
-                        <div class="list-group-item">
-                            <label>
-                                <input class="common-selector" type="checkbox" value="Longiness">Longiness
-                            </label>
-                        </div>
-                        <div class="list-group-item">
-                            <label>
-                                <input class="common-selector" type="checkbox" value="Omega">Omega
-                            </label>
-                        </div>
-                        <div class="list-group-item">
-                            <label>
-                                <input class="common-selector" type="checkbox" value="D&G">D&G
-                            </label>
-                        </div>
-                        <div class="list-group-item">
-                            <label>
-                                <input class="common-selector" type="checkbox" value="Bovet">Bovet
-                            </label>
-                        </div>
-                        <div class="list-group-item">
-                            <label>
-                                <input class="common-selector" type="checkbox" value="Tissot">Tissot
-                            </label>
-                        </div>
-                        <div class="list-group-item">
-                            <label>
-                                <input class="common-selector" type="checkbox" value="Zenith">Zenith
-                            </label>
-                        </div>
-                        <div class="list-group-item">
-                            <label>
-                                <input class="common-selector" type="checkbox" value="Hermes">Hermes
-                            </label>
-                        </div>
-                        <div class="list-group-item">
-                            <label>
-                                <input class="common-selector" type="checkbox" value="Hublot">Hublot
-                            </label>
-                        </div>
-                        <div class="list-group-item">
-                            <label>
-                                <input class="common-selector" type="checkbox" value="Puma">Puma
                             </label>
                         </div>
                     </div>

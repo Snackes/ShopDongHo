@@ -32,7 +32,7 @@ public class XuLiSanPham {
 		connection.connect();
 		
 		try {
-			ResultSet resultSet = connection.executeTableFunction("LayThongTinSanPham1", null);
+			ResultSet resultSet = connection.executeTableProc("LayThongTinSanPham2", null);
 			while (resultSet.next()) {
 				SanPham sp = new SanPham();				
 				//Add value to Book

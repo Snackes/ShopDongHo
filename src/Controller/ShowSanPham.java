@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ModelBean.SanPham;
 import ModelService.XuLiSanPham;
 
 
@@ -34,7 +35,7 @@ public class ShowSanPham extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {				
 		RequestDispatcher dispatcher = request.getRequestDispatcher("view/Index.jsp");	
 		XuLiSanPham control_SP = new XuLiSanPham();
-		ModelBean.SanPham[] danhSach = control_SP.listSP1();
+		SanPham[] danhSach=control_SP.listSP1();
 		request.setAttribute("layTT", danhSach);
 		dispatcher.forward(request, response);
 	}

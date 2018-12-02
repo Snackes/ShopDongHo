@@ -1,4 +1,5 @@
 package ModelDao;
+
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,7 +9,7 @@ import java.util.Arrays;
 import java.util.Vector;
 
 public class DBConnection {
-	public static String strConn = "jdbc:sqlserver://localhost:1433;databaseName=webBanDongHo;user=hiep123;password=121212";
+	public static String strConn = "jdbc:sqlserver://localhost:1433;databaseName=webBanDongHo;user=admin;password=12345";
 	private Connection connection;
 
 	public DBConnection() {
@@ -33,32 +34,36 @@ public class DBConnection {
 			e.printStackTrace();
 		}
 	}
-	
-	// Thực thi hàm trả về khác bảng
-	public Object executeScalarFunction(String name, Vector<Object[]> paramsIn, Vector<Object[]> paramsOut) throws SQLException {
+
+										// THỰC THI CÁC QUERRY(PROC, FUNCTION)
+
+	// Thực thi scalar function trả về khác bảng paramsIn(có cả vị trí và giá trị của 1 đối số)
+	public Object executeScalarFunction(String name, Vector<Object[]> paramsIn, Vector<Object[]> paramsOut)
+			throws SQLException {
 		// Count number parameter
 		int count = 0;
 		if (paramsIn != null)
 			count += paramsIn.size();
 
-		String query = createQueryScalarFunction(name, count);
+		String query = createQueryScalarFunction(name, count);// định hình khung cho câu truy vấn
 		CallableStatement statement = connection.prepareCall(query);
 
 		// Set up ParamsIn
 		if (paramsIn != null && paramsIn.size() > 0)
-			setUpParameterIn(statement, paramsIn);
+			setUpParameterIn(statement, paramsIn);// nạp dữ liệu cho câu truy vấn(tức là thằng paramsIn nó bao gồm cả vị
+													// trị và giá trị của từng đối số)
 
 		// Set up ParamOut
 		if (paramsOut != null && paramsOut.size() > 0)
-			setUpParameterOut(statement, paramsOut);
+			setUpParameterOut(statement, paramsOut);// nạp dữ liệu cho paramOut sẽ trả về
 
 		// Set up Execute query
-		statement.executeUpdate();
+		statement.executeUpdate();// thực hiện
 
 		return getResultOfScalarFunction(statement);
 	}
 
-	// Thực thi hàm trả về một bảng
+	// Thực thi function trả về một bảng
 	public ResultSet executeTableFunction(String name, Vector<Object[]> paramsIn) throws SQLException {
 		String query = null;
 		if (paramsIn == null)
@@ -72,11 +77,11 @@ public class DBConnection {
 		}
 
 		ResultSet result = statement.executeQuery();
-		
+
 		return result;
 	}
 
-	// Thực thi có thể trả về hay không giá trị khác bảng
+	// Thực thi proc trả về giá trị
 	public Object[] executeProcedure(String name, Vector<Object[]> paramsIn, Vector<Object[]> paramsOut,
 			Vector<Object[]> paramsInOut) throws SQLException {
 		// Count number parameter
@@ -102,7 +107,7 @@ public class DBConnection {
 		// Set up ParamOut
 		if (paramsOut != null && paramsOut.size() > 0)
 			setUpParameterOut(statement, paramsOut);
-		
+
 		// Set up Execute query
 		statement.executeUpdate();
 
@@ -112,7 +117,29 @@ public class DBConnection {
 		return result.toArray();
 	}
 
-	// Khởi tạo bảng giá trị cho ParamsIn, ParamOut
+	// Thực thi Proc trả về một bảng
+	
+	public ResultSet executeTableProc(String name, Vector<Object[]> paramsIn) throws SQLException {
+		String query = null;
+		if (paramsIn == null)
+			query = createQueryTableProcedure(name, 0);// =0 nếu không có đối số truyền vào
+		else
+			query = createQueryTableProcedure(name, paramsIn.size());
+		CallableStatement statement = connection.prepareCall(query);
+
+		if (paramsIn != null && paramsIn.size() > 0) {
+			setUpParameterIn(statement, paramsIn);
+		}
+
+		ResultSet result = statement.executeQuery();
+
+		return result;
+	}
+
+				//ĐỊNH DẠNG VỀ VỊ TRÍ VÀ KIỂU DỮ LIỆU CHO TỪNG ĐỐI SỐ(CẢ TRUYỀN VÀO VÀ XUẤT RA)
+	
+	
+	// Khởi tạo bảng giá trị cho ParamsIn(có cả vị trí và giá trị), ParamOut(có cả vị trí và giá trị)
 	public Vector<Object[]> createParams(int[] index, Object[] value) {
 		Vector<Object[]> result = new Vector<>();
 
@@ -142,8 +169,10 @@ public class DBConnection {
 
 		return result;
 	}
-	
-	// Khởi tạo câu truy vấn tới trả về một table
+
+								//ĐỊNH HÌNH KHUNG CHO CÂU TRUY VẤN
+
+	// Khởi tạo câu truy vấn tới scalar function
 	private String createQueryScalarFunction(String name, int countParamsIn) {
 		StringBuffer sBuffer = new StringBuffer("{? = Call " + name + " (");
 		for (int i = 0; i < countParamsIn; i++) {
@@ -153,7 +182,7 @@ public class DBConnection {
 		return sBuffer.toString();
 	}
 
-	// Khởi tạo câu truy vấn tới trả về một table
+	// Khởi tạo câu truy vấn tới table function
 	private String createQueryTableFunction(String name, int count) {
 		StringBuffer sBuffer = new StringBuffer("Select * From " + name + "(");
 		for (int i = 0; i < count; i++) {
@@ -175,8 +204,20 @@ public class DBConnection {
 		sBuffer.replace(sBuffer.length() - 1, sBuffer.length(), ")}");
 		return sBuffer.toString();
 	}
-	
-	// Lấy kết quả trả về sau khi truy vấn tới procedure
+
+	// Khởi tạo câu truy vấn tới proc trả về một table
+
+	private String createQueryTableProcedure(String name, int count) {
+		StringBuffer sBuffer = new StringBuffer("execute " + name);
+		for (int i = 0; i < count; i++) {
+			sBuffer.append("?,");
+		}
+		return sBuffer.toString();
+	}
+
+						//LẤY KẾT QUẢ TRẢ VỀ (RESULT) KHI THỰC THI SCALAR FUN VÀ PROC
+
+	// Lấy kết quả trả về sau khi truy vấn tới scalar function
 	private Object getResultOfScalarFunction(CallableStatement statement) throws SQLException {
 		return statement.getObject(1);
 	}
@@ -244,10 +285,9 @@ public class DBConnection {
 	}
 
 	// Gán giá trị đối số cho câu truy vấn
-	private void setUpParameterInOut(CallableStatement statement, Vector<Object[]> value)
-			throws SQLException {
+	private void setUpParameterInOut(CallableStatement statement, Vector<Object[]> value) throws SQLException {
 		//Value là một mảng có cấu trúc, [1]: vị trí trong câu truy vấn, [2]: kiểu dữ liệu trả về (Types), [3]: giá trị truyền vào
-		
+
 		if (value == null)
 			return;
 		for (int i = 0; i < value.size(); i++) {
@@ -257,10 +297,11 @@ public class DBConnection {
 		}
 	}
 
+						//NẠP DỮ LIỆU CHO CÂU TRUY VẤN (NẠP VỊ TRÍ VÀ KIỂU DỮ LIỆU CHO TỪNG ĐỐI SỐ)
 	// Gán giá trị đối số cho câu truy vấn
 	private void setUpParameterOut(CallableStatement statement, Vector<Object[]> value) throws SQLException {
-		//Value là một mảng có cấu trúc, [1]: vị trí trong câu truy vấn, [2]: kiểu dữ liệu trả về (Types)
-		
+			//Value là một mảng có cấu trúc, [1]: vị trí trong câu truy vấn, [2]: kiểu dữ liệu trả về (Types)
+
 		if (value == null)
 			return;
 		for (int i = 0; i < value.size(); i++) {
@@ -272,7 +313,7 @@ public class DBConnection {
 	// Gán giá trị đối số cho câu truy vấn
 	private void setUpParameterIn(CallableStatement statement, Vector<Object[]> value) throws SQLException {
 		//Value là một mảng có cấu trúc, [1]: vị trí trong câu truy vấn, [2]: giá trị truyền vào
-		
+
 		if (value == null)
 			return;
 		for (int i = 0; i < value.size(); i++) {
