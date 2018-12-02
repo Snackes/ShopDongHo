@@ -18,12 +18,11 @@ public class XuLiSanPham {
 		connection.connect();
 		ResultSet test=null;
 		try {
-			test= connection.executeTableFunction("LayThongTinSanPham1", null);
+			test= connection.executeTableProc("LayThongTinSanPham2", null);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		connection.close();
 		return test;
 	}
 	
@@ -38,17 +37,7 @@ public class XuLiSanPham {
 				//Add value to Book
 				sp.setMaSP(resultSet.getInt(1));
 				sp.setTenSp(resultSet.getString(2));
-				sp.setGiaVon(0);
 				sp.setGiaBan(resultSet.getDouble(3));
-				sp.setMaTH(0);
-				sp.setKieuMay(null);
-				sp.setGioiTinhSuDung(null);
-				sp.setKichCo(null);
-				sp.setChatLieuVo(null);
-				sp.setDoChiuNuoc(null);
-				sp.setBaoHanh(null);
-				sp.setSoLuongHienTai(0);	
-				
 				result.addElement(sp);
 				
 			}

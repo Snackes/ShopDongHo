@@ -1,4 +1,4 @@
-package Controller;
+package ControllerIndex;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -35,7 +35,7 @@ public class ShowSanPham extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {				
 		RequestDispatcher dispatcher = request.getRequestDispatcher("view/Index.jsp");	
 		XuLiSanPham control_SP = new XuLiSanPham();
-		SanPham[] danhSach=control_SP.listSP1();
+		ResultSet danhSach=control_SP.listSP();
 		request.setAttribute("layTT", danhSach);
 		dispatcher.forward(request, response);
 	}

@@ -5,6 +5,7 @@
 
 <head>
     <link rel="stylesheet" href="../lib/css/DatHang.css">
+</head>
 <body>
   	<%@ include file="/Layout/Header.jsp"%>
     <!---CONTENT HERE-->

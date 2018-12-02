@@ -12,17 +12,17 @@
     <meta name="author" content="">
     <title>Shop online</title>
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-    <link rel="stylesheet" href="../lib/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/vendor/bootstrap/css/bootstrap.min.css">
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
-    <script src="../lib/vendor/jquery/jquery.min.js"></script>
+    <script src="lib/vendor/jquery/jquery.min.js"></script>
     <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
-    <script src="../lib/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../lib/css/index.css">
+    <script src="lib/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="lib/css/index.css">
     <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">-->
-    <link rel="stylesheet" href="../lib/vendor/fontawesome/css/all.css">
+    <link rel="stylesheet" href="lib/vendor/fontawesome/css/all.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     
-    <script src="../lib/js/index.js"></script>
+    <script src="lib/js/index.js"></script>
     
 </head>
 <body>
@@ -77,42 +77,45 @@
         <div class="row">
 			<%
 				Object result = request.getAttribute("layTT");
-							if (result != null && result instanceof SanPham[]){
-								SanPham[] sp = (SanPham[])result;
-								for (int i = 0; i<sp.length; i++){
-									int maSP = sp[i].getMaSP();
-									String ten = sp[i].getTenSp();
-									double giaBan =sp[i].getGiaBan();	
-									out.println("<div class=\"col-lg-3\">");
-										out.println("<div class=\"thumbnail-list-product\">");
-											out.println("<div class=\"thumbnail-product\">");
-											
-											
-												out.println("<div class=\"profilebox profilebox1\">");
+							if (result != null){
+								ResultSet sp = (ResultSet)result;
+								//for (int i = 0; i<sp.length; i++){
+									try{while(sp.next()){
+										int maSP = sp.getInt("MaSP") ;
+										String ten = sp.getString("TenSP");
+										double giaBan =sp.getDouble("GiaBan");	
+										out.println("<div class=\"col-lg-3\">");
+											out.println("<div class=\"thumbnail-list-product\">");
+												out.println("<div class=\"thumbnail-product\">");
 												
-							        				out.println("<div class=\"SocialIcons\">");
-							                      		out.println("<a href=\"#\">");
-							                                out.println("<i class=\"fas fa-cart-plus\">");
-							                                out.println("</i>");
-							                            out.println("</a>");
-							                        	out.println("<a href=\"#\">");
-							                                out.println("<i class=\"far fa-heart\">");
-							                                out.println("</i>");
-							                            out.println("</a>");
-							                  		out.println("</div>");
-							                  		
-							                   	out.println("</div>");	
-							                   						                   	
-							                   	
-							            		out.println("<div class=\"product-title\">");                 
-							            			out.println("<a href=\"#\">"+ten+"<br />"+ giaBan+"VNĐ"+"</a>");
-							                	out.println("</div>");	
-							                	
-							                	
-							          		out.println("</div>");
-							     		out.println("</div>");
-									out.println("</div>");
-								}
+												
+													out.println("<div class=\"profilebox profilebox1\">");
+													
+								        				out.println("<div class=\"SocialIcons\">");
+								                      		out.println("<a href=\"#\">");
+								                                out.println("<i class=\"fas fa-cart-plus\">");
+								                                out.println("</i>");
+								                            out.println("</a>");
+								                        	out.println("<a href=\"#\">");
+								                                out.println("<i class=\"far fa-heart\">");
+								                                out.println("</i>");
+								                            out.println("</a>");
+								                  		out.println("</div>");
+								                  		
+								                   	out.println("</div>");	
+								                   						                   	
+								                   	
+								            		out.println("<div class=\"product-title\">");                 
+								            			out.println("<a href=\"#\">"+ten+"<br />"+ giaBan+"VNĐ"+"</a>");
+								                	out.println("</div>");	
+								                	
+								                	
+								          		out.println("</div>");
+								     		out.println("</div>");
+										out.println("</div>");
+									}}
+									finally{sp.close();}
+								
 							}
 			%>
             <div class="col-lg-3">

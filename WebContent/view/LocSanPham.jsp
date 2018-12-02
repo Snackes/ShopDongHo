@@ -122,8 +122,7 @@
                         <li><a href="#">3</a></li>
                         <li><a href="#">4</a></li>
                         <li><a href="#">5</a></li>
-                    </ul>
-                
+                    </ul>                
                 <!--list san pham-->
                 <div class="row" style="clear: right;">
                     <div class="col-lg-3">
@@ -137,8 +136,8 @@
                                 </div>
                                 <div class="product-title">
                                     <a href="#">Đồng Hồ Omega JSHD0S <br>
-                Giá: 20.000.000đ
-             </a>
+                						Giá: 20.000.000đ
+             						</a>
                                 </div>
                             </div>
                         </div>
@@ -154,8 +153,8 @@
                                 </div>
                                 <div class="product-title">
                                     <a href="#">Đồng Hồ Omega JSHD0S <br>
-                Giá: 20.000.000đ
-             </a>
+						                Giá: 20.000.000đ
+						            </a>
                                 </div>
                             </div>
                         </div>
@@ -171,78 +170,8 @@
                                 </div>
                                 <div class="product-title">
                                     <a href="#">Đồng Hồ Omega JSHD0S <br>
-                Giá: 20.000.000đ
-             </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="thumbnail-list-product">
-                            <div class="thumbnail-product">
-                                <div class="profilebox profilebox1">
-                                    <div class="SocialIcons">
-                                        <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                        <a href="#"><i class="far fa-heart"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-title">
-                                    <a href="#">Đồng Hồ Omega JSHD0S <br>
-                Giá: 20.000.000đ
-             </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-3">
-                        <div class="thumbnail-list-product">
-                            <div class="thumbnail-product">
-                                <div class="profilebox profilebox1">
-                                    <div class="SocialIcons">
-                                        <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                        <a href="#"><i class="far fa-heart"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-title">
-                                    <a href="#">Đồng Hồ Omega JSHD0S <br>
-                Giá: 20.000.000đ
-             </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="thumbnail-list-product">
-                            <div class="thumbnail-product">
-                                <div class="profilebox profilebox1">
-                                    <div class="SocialIcons">
-                                        <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                        <a href="#"><i class="far fa-heart"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-title">
-                                    <a href="#">Đồng Hồ Omega JSHD0S <br>
-                Giá: 20.000.000đ
-             </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="thumbnail-list-product">
-                            <div class="thumbnail-product">
-                                <div class="profilebox profilebox1">
-                                    <div class="SocialIcons">
-                                        <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                        <a href="#"><i class="far fa-heart"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-title">
-                                    <a href="#">Đồng Hồ Omega JSHD0S <br>
-                Giá: 20.000.000đ
-             </a>
+						                		Giá: 20.000.000đ
+						             </a>
                                 </div>
                             </div>
                         </div>
@@ -265,146 +194,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-3">
-                        <div class="thumbnail-list-product">
-                            <div class="thumbnail-product">
-                                <div class="profilebox profilebox1">
-                                    <div class="SocialIcons">
-                                        <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                        <a href="#"><i class="far fa-heart"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-title">
-                                    <a href="#">Đồng Hồ Omega JSHD0S <br>
-                Giá: 20.000.000đ
-             </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="thumbnail-list-product">
-                            <div class="thumbnail-product">
-                                <div class="profilebox profilebox1">
-                                    <div class="SocialIcons">
-                                        <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                        <a href="#"><i class="far fa-heart"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-title">
-                                    <a href="#">Đồng Hồ Omega JSHD0S <br>
-                Giá: 20.000.000đ
-             </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="thumbnail-list-product">
-                            <div class="thumbnail-product">
-                                <div class="profilebox profilebox1">
-                                    <div class="SocialIcons">
-                                        <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                        <a href="#"><i class="far fa-heart"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-title">
-                                    <a href="#">Đồng Hồ Omega JSHD0S <br>
-                Giá: 20.000.000đ
-             </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="thumbnail-list-product">
-                            <div class="thumbnail-product">
-                                <div class="profilebox profilebox1">
-                                    <div class="SocialIcons">
-                                        <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                        <a href="#"><i class="far fa-heart"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-title">
-                                    <a href="#">Đồng Hồ Omega JSHD0S <br>
-                Giá: 20.000.000đ
-             </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-3">
-                        <div class="thumbnail-list-product">
-                            <div class="thumbnail-product">
-                                <div class="profilebox profilebox1">
-                                    <div class="SocialIcons">
-                                        <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                        <a href="#"><i class="far fa-heart"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-title">
-                                    <a href="#">Đồng Hồ Omega JSHD0S <br>
-                Giá: 20.000.000đ
-             </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="thumbnail-list-product">
-                            <div class="thumbnail-product">
-                                <div class="profilebox profilebox1">
-                                    <div class="SocialIcons">
-                                        <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                        <a href="#"><i class="far fa-heart"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-title">
-                                    <a href="#">Đồng Hồ Omega JSHD0S <br>
-                Giá: 20.000.000đ
-             </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="thumbnail-list-product">
-                            <div class="thumbnail-product">
-                                <div class="profilebox profilebox1">
-                                    <div class="SocialIcons">
-                                        <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                        <a href="#"><i class="far fa-heart"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-title">
-                                    <a href="#">Đồng Hồ Omega JSHD0S <br>
-                Giá: 20.000.000đ
-             </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="thumbnail-list-product">
-                            <div class="thumbnail-product">
-                                <div class="profilebox profilebox1">
-                                    <div class="SocialIcons">
-                                        <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                        <a href="#"><i class="far fa-heart"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-title">
-                                    <a href="#">Đồng Hồ Omega JSHD0S <br>
-                Giá: 20.000.000đ
-             </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 <!---end list san pham-->
                  <ul class="pagination">
                         <li><a href="#">1</a></li>
