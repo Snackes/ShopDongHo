@@ -1,10 +1,12 @@
 package ModelService;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
+import ModelBean.Cart;
 import ModelBean.SanPham;
 import ModelDao.DBConnection;
 public class XuLiSanPham {	
@@ -29,8 +31,8 @@ public class XuLiSanPham {
 	public SanPham[] listSP1() {
 		Vector<SanPham> result = new Vector<>();
 		connection.connect();
-		
 		try {
+			
 			ResultSet resultSet = connection.executeTableProc("LayThongTinSanPham2", null);
 			while (resultSet.next()) {
 				SanPham sp = new SanPham();				
@@ -47,6 +49,25 @@ public class XuLiSanPham {
 			connection.close();
 		}
 		return result.toArray(new SanPham[0]);
+	}
+	
+	//Lấy sản phẩm để thêm vào giỏ hàng khi click vào button thêm vào giỏ hàng trên từng sản phẩm
+	public SanPham LayThongTinSanPhamChoCart(int MaSP) {
+		connection.connect();
+		SanPham sp=new SanPham();
+		try {
+			Vector<Object[]> paramsIn = connection.createParams(new int[] {1},
+					new Object[] {MaSP});
+			ResultSet rs=connection.executeTableProc("Proc_LaySanPhamChoCart", paramsIn);
+			sp.setMaSP(rs.getInt(1));
+			sp.setTenSp(rs.getString(2));
+			sp.setGiaBan(rs.getDouble(3));
+		}
+		catch(SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		connection.close();	
+		return sp;
 	}
 
 }
