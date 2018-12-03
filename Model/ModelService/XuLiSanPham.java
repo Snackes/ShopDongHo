@@ -41,7 +41,7 @@ public class XuLiSanPham {
 				result.addElement(sp);
 				
 			}
-		} catch (SQLException e) {
+		} catch (SQLException e) { 
 			System.out.println(e.getMessage());
 		} finally {
 			connection.close();

@@ -77,7 +77,7 @@
         <div class="row">
          
 			<%
-				Object result = request.getAttribute("layTT");
+				Object result = request.getAttribute("LayThongTinSanPhamNoiBat");
 							if (result != null){
 								//ResultSet sp = (ResultSet)result;
 								//for (int i = 0; i<sp.length; i++){
@@ -115,7 +115,7 @@
 								                   						                   	
 								                   	
 								            		out.println("<div class=\"product-title\">");                 
-								            			out.println("<a href=\"#\">"+ten+"<br />"+ giaBan+"VNĐ"+"</a>");
+								            			out.println("<a href=\"#\">"+ten+"<br />"+ String.format("%,.0f", giaBan)+" VNĐ"+"</a>");
 								                	out.println("</div>");	
 								                	
 								                	
@@ -128,25 +128,7 @@
 									}
 							
 					%>
-            <div class="col-lg-3">
-                <div class="thumbnail-list-product">
-                    <div class="thumbnail-product">
-                        <div class="profilebox profilebox1" style="background: url(lib/images/SEIKO-SRPB41J1-1-399x399.jpg)">
-                            <div class="SocialIcons">
-                                <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                <a href="#"><i class="far fa-heart"></i></a>
-                            </div>
-                        </div>
-                        
-                        <div class="product-title">     
-                            <a href="#"> Đồng Hồ Omega JSHD0S <br>
-             					Giá: 20.000.000đ
-             				</a>           				
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
+            
         </div>
         <div class="btn-more">
             <ul class="pager">
@@ -157,74 +139,60 @@
         <!--Sản Phẩm mới--->
         <p class="deMuc"><span style="border-bottom: 2px #f69400 solid">Sản Phẩm Mới</span></p>
         <div class="row">
-            <div class="col-lg-3">
-                <div class="thumbnail-list-product">
-                    <div class="thumbnail-product">
-                        <div class="profilebox profilebox1">
-                            <div class="SocialIcons">
-                                <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                <a href="#"><i class="far fa-heart"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-title">
-                            <a href="#">Đồng Hồ Omega JSHD0S <br>
-             	Giá: 20.000.000đ
-             </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="thumbnail-list-product">
-                    <div class="thumbnail-product">
-                        <div class="profilebox profilebox1">
-                            <div class="SocialIcons">
-                                <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                <a href="#"><i class="far fa-heart"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-title">
-                            <a href="#">Đồng Hồ Omega JSHD0S <br>
-             	Giá: 20.000.000đ
-             </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="thumbnail-list-product">
-                    <div class="thumbnail-product">
-                        <div class="profilebox profilebox1">
-                            <div class="SocialIcons">
-                                <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                <a href="#"><i class="far fa-heart"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-title">
-                            <a href="#">Đồng Hồ Omega JSHD0S <br>
-             	Giá: 20.000.000đ
-             </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="thumbnail-list-product">
-                    <div class="thumbnail-product">
-                        <div class="profilebox profilebox1">
-                            <div class="SocialIcons">
-                                <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                <a href="#"><i class="far fa-heart"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-title">
-                            <a href="#">Đồng Hồ Omega JSHD0S <br>
-             	Giá: 20.000.000đ
-             </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
+            <%
+				Object result2 = request.getAttribute("LayThongTinSanPhamMoi");
+							if (result2 != null){
+								//ResultSet sp = (ResultSet)result;
+								//for (int i = 0; i<sp.length; i++){
+									//try{while(sp.next()){
+										//int maSP = sp.getInt("MaSP") ;
+										//String ten = sp.getString("TenSP");
+										//double giaBan =sp.getDouble("GiaBan");
+										
+										SanPham[] sp = (SanPham[])result2;
+										for(int i=0;i<sp.length;i++)
+										{
+											int maSP= sp[i].getMaSP();
+											String ten=sp[i].getTenSp();
+											double giaBan = sp[i].getGiaBan();
+											String HinhAnh1= sp[i].getHinhAnh1();
+											out.println("<div class=\"col-lg-3\">");
+											out.println("<div class=\"thumbnail-list-product\">");
+												out.println("<div class=\"thumbnail-product\">");
+												
+												
+													out.println("<div class=\"profilebox profilebox1\" style=\"background: url(lib/images/"+HinhAnh1+")\" >");
+													
+								        				out.println("<div class=\"SocialIcons\">");
+								                      		out.println("<a href=\"#\">");
+								                                out.println("<i class=\"fas fa-cart-plus\">");
+								                                out.println("</i>");
+								                            out.println("</a>");
+								                        	out.println("<a href=\"#\">");
+								                                out.println("<i class=\"far fa-heart\">");
+								                                out.println("</i>");
+								                            out.println("</a>");
+								                  		out.println("</div>");
+								                  		
+								                   	out.println("</div>");	
+								                   						                   	
+								                   	
+								            		out.println("<div class=\"product-title\">");                 
+								            			out.println("<a href=\"#\">"+ten+"<br />"+ String.format("%,.0f", giaBan)+" VNĐ"+"</a>");
+								                	out.println("</div>");	
+								                	
+								                	
+								          		out.println("</div>");
+								     		out.println("</div>");
+										out.println("</div>");
+										}
+										
+								
+									}
+							
+					%>
+            
         </div>
         <div class="btn-more">
             <ul class="pager">
@@ -238,63 +206,63 @@
         <p class="deMuc"><span style="border-bottom: 2px #f69400 solid">Thương Hiệu Nổi Bật</span></p>
         <div id="trademark-carousel">
             <div class="hideLeft">
-                <img src="../lib/logo/seiko.png" >
+                <img src="lib/logo/seiko.png" >
                 <a href="#"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="hideLeft">
-                <img src="../lib/logo/tissot.png" >
+                <img src="lib/logo/tissot.png" >
                 <a href="#"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="hideLeft">
-                <img src="../lib/logo/bovet.jpg" >
+                <img src="lib/logo/bovet.jpg" >
                 <a href="#"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="hideLeft">
-                <img src="../lib/logo/dg.jpg" >
+                <img src="lib/logo/dg.jpg" >
                 <a href="#"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="hideLeft">
-                <img src="../lib/logo/longines.jpg" >
+                <img src="lib/logo/longines.jpg" >
                 <a href="#"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="prevLeftSecond">
-                <img src="../lib/logo/breitling.jpg">
+                <img src="lib/logo/breitling.jpg">
                 <a href="#"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="prev">
-                <img src="../lib/logo/charriol.jpg" >
+                <img src="lib/logo/charriol.jpg" >
                 <a href="#"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="selected">
-                <img src="../lib/logo/omega.jpg">
+                <img src="lib/logo/omega.jpg">
                 <a href="#"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="next">
-                <img src="../lib/logo/victorinox.jpg" >
+                <img src="lib/logo/victorinox.jpg" >
                 <a href="#"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="nextRightSecond">
-                <img src="../lib/logo/gucci.jpg">
+                <img src="lib/logo/gucci.jpg">
                 <a href="#"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="hideRight">
-                <img src="../lib/logo/zenith2.jpg" >
+                <img src="lib/logo/zenith2.jpg" >
                 <a href="#"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="hideRight">
-                <img src="../lib/logo/hermes.png" >
+                <img src="lib/logo/hermes.png" >
                 <a href="#"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="hideRight">
-                <img src="../lib/logo/hublot.jpg" >
+                <img src="lib/logo/hublot.jpg" >
                 <a href="#"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="hideRight">
-                <img src="../lib/logo/puma.jpg" >
+                <img src="lib/logo/puma.jpg" >
                 <a href="#"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="hideRight">
-                <img src="../lib/logo/rolex.jpg" >
+                <img src="lib/logo/rolex.jpg" >
                 <a href="#"><i class="fas fa-angle-double-down"></i></a>
             </div>
         </div>
