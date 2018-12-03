@@ -35,7 +35,7 @@ public class ShowSanPham extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {				
 		RequestDispatcher dispatcher = request.getRequestDispatcher("view/Index.jsp");	
 		XuLiSanPham control_SP = new XuLiSanPham();
-		ResultSet danhSach=control_SP.listSP();
+		SanPham[] danhSach=control_SP.Func_Lay_BonSanPhamNgauNhien();
 		request.setAttribute("layTT", danhSach);
 		dispatcher.forward(request, response);
 	}

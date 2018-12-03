@@ -48,5 +48,30 @@ public class XuLiSanPham {
 		}
 		return result.toArray(new SanPham[0]);
 	}
+	
+	//tạo hàm lấy ngẫu nhiên 4 sản phẩm 
+	public SanPham[] Func_Lay_BonSanPhamNgauNhien() {
+		Vector<SanPham> lstSanPham = new Vector<>();
+		connection.connect();
+		
+		try {
+			ResultSet resultSet = connection.executeTableFunction("Func_Lay_BonSanPhamNgauNhien", null);
+			while(resultSet.next()) {
+				SanPham sp = new SanPham();
+				sp.setMaSP(resultSet.getInt("MaSP"));
+				sp.setTenSp(resultSet.getString("TenSP"));
+				sp.setGiaBan(resultSet.getDouble("GiaBan"));
+				sp.setHinhAnh1(resultSet.getString("HinhAnh1"));
+				lstSanPham.addElement(sp);
+				
+			}
+			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			connection.close();
+		}
+		return lstSanPham.toArray(new SanPham[0]);
+	}
 
 }

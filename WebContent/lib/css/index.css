@@ -265,9 +265,9 @@ body {
   float: left; }
 
 .profilebox1 {
-  background-image: url("../img/product.jpg");
+  
   background-position: center center;
-  background-size: 100% 120%;
+  background-size: 100% 100% !important;
   perspective: 400px;
   position: relative;
   transition: background-size .2s ease-in;
@@ -275,7 +275,7 @@ body {
   -moz-transition: background-size .2s ease-in;
   -o-transition: background-size .2s ease-in; }
   .profilebox1:hover {
-    background-size: 105% 130%; }
+    background-size: 105% 105% !important; }
 
 .profilebox .SocialIcons {
   display: flex;

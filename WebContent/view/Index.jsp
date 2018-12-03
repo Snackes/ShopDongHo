@@ -14,14 +14,14 @@
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="lib/vendor/bootstrap/css/bootstrap.min.css">
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
-    <script src="lib/vendor/jquery/jquery.min.js"></script>
+    
     <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
     <script src="lib/vendor/bootstrap/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="lib/css/index.css">
     <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">-->
     <link rel="stylesheet" href="lib/vendor/fontawesome/css/all.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    
+    <script src="lib/vendor/jquery/jquery.min.js"></script>
     <script src="lib/js/index.js"></script>
     
 </head>
@@ -36,7 +36,7 @@
             </ol>
             <div class="carousel-inner">
     			<div class=" item ">
-    				<img src="../lib/images/photo1.jpeg ">
+    				<img src="lib/images/photo1.jpeg ">
     				<div class=" container ">
     					<div class=" carousel-caption d-none d-md-block ">
     						<h1>Example headline.</h1>
@@ -46,7 +46,7 @@
     				</div>
     			</div>
     			<div class=" item ">
-    				<img src="../lib/images/photo2.jpeg ">
+    				<img src="lib/images/photo2.jpeg ">
     				<div class=" container ">
     					<div class=" carousel-caption d-none d-md-block ">
     						<h1>Another example headline.</h1>
@@ -56,7 +56,7 @@
     				</div>
     			</div>
     			<div class=" item active ">
-    				<img src="../lib/images/photo3.jpeg " ">
+    				<img src="lib/images/photo3.jpeg " ">
                 <div class="container">
                     <div class="carousel-caption d-none d-md-block">
                         <h1>One more for good measure.</h1>
@@ -75,21 +75,30 @@
         <!--Sản Phẩm nổi bật--->
         <p class="deMuc"> <span style="border-bottom: 2px #f69400 solid; ">Sản Phẩm Nổi Bật</span></p>
         <div class="row">
+         
 			<%
 				Object result = request.getAttribute("layTT");
 							if (result != null){
-								ResultSet sp = (ResultSet)result;
+								//ResultSet sp = (ResultSet)result;
 								//for (int i = 0; i<sp.length; i++){
-									try{while(sp.next()){
-										int maSP = sp.getInt("MaSP") ;
-										String ten = sp.getString("TenSP");
-										double giaBan =sp.getDouble("GiaBan");	
-										out.println("<div class=\"col-lg-3\">");
+									//try{while(sp.next()){
+										//int maSP = sp.getInt("MaSP") ;
+										//String ten = sp.getString("TenSP");
+										//double giaBan =sp.getDouble("GiaBan");
+										
+										SanPham[] sp = (SanPham[])result;
+										for(int i=0;i<sp.length;i++)
+										{
+											int maSP= sp[i].getMaSP();
+											String ten=sp[i].getTenSp();
+											double giaBan = sp[i].getGiaBan();
+											String HinhAnh1= sp[i].getHinhAnh1();
+											out.println("<div class=\"col-lg-3\">");
 											out.println("<div class=\"thumbnail-list-product\">");
 												out.println("<div class=\"thumbnail-product\">");
 												
 												
-													out.println("<div class=\"profilebox profilebox1\">");
+													out.println("<div class=\"profilebox profilebox1\" style=\"background: url(lib/images/"+HinhAnh1+")\" >");
 													
 								        				out.println("<div class=\"SocialIcons\">");
 								                      		out.println("<a href=\"#\">");
@@ -113,15 +122,16 @@
 								          		out.println("</div>");
 								     		out.println("</div>");
 										out.println("</div>");
-									}}
-									finally{sp.close();}
+										}
+										
 								
-							}
-			%>
+									}
+							
+					%>
             <div class="col-lg-3">
                 <div class="thumbnail-list-product">
                     <div class="thumbnail-product">
-                        <div class="profilebox profilebox1" style="background-image: url(\"lib/images/photo1.jpeg\")" >
+                        <div class="profilebox profilebox1" style="background: url(lib/images/SEIKO-SRPB41J1-1-399x399.jpg)">
                             <div class="SocialIcons">
                                 <a href="#"><i class="fas fa-cart-plus"></i></a>
                                 <a href="#"><i class="far fa-heart"></i></a>
