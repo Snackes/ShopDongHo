@@ -72,7 +72,6 @@
             <!--DESIGN HERE-->
             <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#ChiTietSP">Chi tiết sản phẩm</a></li>
-                <li><a data-toggle="tab" href="#ThemSP">Thêm sản phẩm mới</a></li>
                 <li><a data-toggle="tab" href="#NhapHang">Nhập hàng</a></li>
             </ul>
             <div class="tab-content tab-nghiepvu">
@@ -156,6 +155,10 @@
                                         <label for="KichCo">Kích cỡ:</label>
                                         <input type="text" class="form-control" id="KichCo" placeholder="Kích cỡ" name="KichCo">
                                     </div>
+                                    <div class="form-group">
+                                        <label for="ChatLieuVo">Chất liệu vỏ:</label>
+                                        <input type="text" class="form-control" id="ChatLieuVo" placeholder="Chất liệu vỏ" name="ChatLieuVo">
+                                    </div>
                                     </div>
                                     <!--div class="col-lg-1 col-md-1 col-sm-1"></div-->
                                     <div class="colum-2-tt col-lg-6 col-md-6 col-sm-6">
@@ -182,6 +185,10 @@
                                     <div class="form-group">
                                         <label for="GiaBan">Giá bán:</label>
                                         <input type="text" class="form-control" id="GiaBan" placeholder="Số lượng" name="GiaBan">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="SaleOff">Sale off:</label>
+                                        <input type="text" class="form-control" id="SaleOff" placeholder="Sale off" name="SaleOff">
                                     </div>
                                     </div>
                                 </form>
@@ -240,108 +247,7 @@
                     </div>
                 </div>
                 <!--tab thêm sản phẩm mới-->
-                <div class="tab-pane" id="ThemSP">
-                    <!--thêm sản phẩm-->
-                    <div class="sua-chi-tiet">
-                        <div class="row-1-editTT">
-                        <!--text thông tin-->
-                            <div class="text-tt col-lg-8 col-md-8 col-sm-8"  style="margin-top:50px;">
-                                <form class="form-inline form-tt">
-                                    <div class="colum-1-tt col-lg-6 col-md-6 col-sm-6">
-                                    <div class="form-group">
-                                        <label for="maSP_them">Mã sản phẩm:</label>
-                                        <input type="text" class="form-control" id="maSP_them" placeholder="Mã sản phẩm" name="maSP">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="tenSP_them">Tên sản phẩm:</label>
-                                        <input type="text" class="form-control" id="tenSP_them" placeholder="Tên sản phẩm" name="tenSP">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="ThuongHieu_them">Thương hiệu:</label>
-                                        <input type="text" class="form-control" id="ThuongHieu_them" placeholder="Thương hiệu" name="ThuongHieu">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="KieuMay_them">Kiểu máy:</label>
-                                        <input type="text" class="form-control" id="KieuMay_them" placeholder="Kiểu máy" name="KieuMay">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="GioiTinh_them">Giới tính:</label>
-                                        <input type="text" class="form-control" id="GioiTinh_them" placeholder="Số lượng" name="GioiTinh">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="KichCo_them">Kích cỡ:</label>
-                                        <input type="text" class="form-control" id="KichCo_them" placeholder="Kích cỡ" name="KichCo_them">
-                                    </div>
-                                    </div>
-                                    <!--div class="col-lg-1 col-md-1 col-sm-1"></div-->
-                                    <div class="colum-2-tt col-lg-6 col-md-6 col-sm-6">
-                                    <div class="form-group">
-                                        <label for="ChatLieuKinh_them">Chất liệu kính:</label>
-                                        <input type="text" class="form-control" id="ChatLieuKinh_them" placeholder="Chất liệu kính" name="ChatLieuKinh">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="ChatLieuDay_them">Chất liệu dây:</label>
-                                        <input type="text" class="form-control" id="ChatLieuDay_them" placeholder="Chất liệu dây" name="ChatLieuDay">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="DoChiuNuoc_them">Độ chịu nước:</label>
-                                        <input type="text" class="form-control" id="DoChiuNuoc_them" placeholder="Độ chịu nước" name="DoChiuNuoc">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="BaoHanh_them">Bảo hành:</label>
-                                        <input type="text" class="form-control" id="BaoHanh_them" placeholder="Bảo hành" name="BaoHanh_them">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="SoLuong_them">Số Lượng:</label>
-                                        <input type="text" class="form-control" id="SoLuong_them" placeholder="Số lượng" name="SoLuong">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="GiaBan_them">Giá bán:</label>
-                                        <input type="text" class="form-control" id="GiaBan_them" placeholder="Số lượng" name="GiaBan">
-                                    </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="col-lg-1 col-md-1 col-sm-1"></div>
-                        <!--hình ảnh-->
-                            <div class="col-lg-3 col-md-3 col-sm-3" style="margin-top:50px;">
-                                <h4>Hình ảnh:</h4>
-                                <div class="carousel slide" data-ride="carousel">
-                                    <ol class="carousel-indicators">
-                                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                                        <li data-target="#myCarousel" data-slide-to="1"></li>
-                                        <li data-target="#myCarousel" data-slide-to="2"></li>
-                                        <li data-target="#myCarousel" data-slide-to="3"></li>
-                                    </ol>
-                                <!--pic insert here-->
-                                    <div class="carousel-inner">
-                                        <div class="item active">
-                                          <img src="#" alt="Name Pic" style="width:100%;">
-                                        </div>
-                                    </div>
-                                <!--left, right control-->
-                                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                                        <span class="glyphicon glyphicon-chevron-left"></span>
-                                        <span class="sr-only">Previous</span>
-                                      </a>
-                                      <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                                        <span class="glyphicon glyphicon-chevron-right"></span>
-                                        <span class="sr-only">Next</span>
-                                      </a>
-                                </div>
-                                <!--chức năng upload-->
-                                <div class="row-chucnang">
-                                    <button type="button" class="btn btn-default btn-md">Upload ảnh</button>
-                                    <!--code jquery-->
-                                </div>
-                            </div>
-                        </div>
-                        <!--nút chức năng-->
-                        <div class="row-2-BT" style="clear:both">
-                            <button type="button" class="btn btn-info btn-md">Thêm</button>
-                        </div>
-                    </div>
-                </div>
+
                 <!--tab nhập thêm sản phẩm-->
                 <div class="tab-pane" id="NhapHang">
                     <!--des here-->
@@ -366,29 +272,25 @@
                     </div>
                     <!--nhập thông tin-->
                     <div class="sua-chi-tiet">
+                    	<div class="row-2-BT" style="margin-bottom:20px; margin-left:50px ;clear:both; float:left">
+                            <button type="button" class="btn btn-info btn-md">Nhập hàng</button>
+                        </div>
+                        <!--Thông tin nhập-->
                         <div class="row-1-editTT">
                         <!--text thông tin-->
                             <div class="text-tt col-lg-8 col-md-8 col-sm-8"  style="margin-top:20px;clear: both;">
                                 <form class="form-inline form-tt">
                                     <div class="colum-1-tt col-lg-6 col-md-6 col-sm-6">
                                     <div class="form-group">
-                                        <label for="maDH">Mã đơn hàng:</label>
-                                        <input type="text" class="form-control" id="maDH" placeholder="Mã đơn hàng" name="maDH_nhap">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="maSP_nhap">Mã sản phẩm:</label>
-                                        <input type="text" class="form-control" id="maSP_nhap" placeholder="Mã sản phẩm" name="maSP_nhap">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="TenSP_nhap">Tên sản phẩm:</label>
-                                        <input type="text" class="form-control" id="TenSP_nhap" placeholder="Tên sản phẩm" name="TenSP_nhap">
+                                        <label for="NgayNhap">Ngày nhập:</label>
+                                        <input type="date" class="form-control" id="NgayNhap" name="NgayNhap">
                                     </div>
                                     </div>
                                     <!--div class="col-lg-1 col-md-1 col-sm-1"></div-->
                                     <div class="colum-2-tt col-lg-6 col-md-6 col-sm-6">
                                     <div class="form-group">
-                                        <label for="NgayNhap">Ngày nhập:</label>
-                                        <input type="date" class="form-control" id="NgayNhap" name="NgayNhap">
+                                        <label for="TenSP_nhap">Tên sản phẩm:</label>
+                                        <input type="text" class="form-control" id="TenSP_nhap" placeholder="Tên sản phẩm" name="TenSP_nhap">
                                     </div>
                                     <div class="form-group">
                                         <label for="SoLuong_nhap">Số lượng:</label>
@@ -407,6 +309,10 @@
                         <div class="row-2-BT" style="clear:both">
                             <button type="button" class="btn btn-info btn-md">Thêm</button>
                         </div>
+                    </div>
+                    <!--  -->
+                    <div class="row-2-BT" style="margin-top:20px; margin-left:50px ;clear:both; float:left">
+                        <button type="button" class="btn btn-info btn-md">Hoàn thành đơn hàng nhập</button>
                     </div>
                     <!---->
                     <!--danh sách đơn hàng nhập-->

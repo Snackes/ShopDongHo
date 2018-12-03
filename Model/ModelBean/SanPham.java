@@ -16,6 +16,39 @@ public class SanPham {
 	private int SoLuongHienTai;
 	private int Sale;
 	private String GhiChu;
+	private String HinhAnh1;
+	private String HinhAnh2;
+	private String HinhAnh3;
+	private String HinhAnh4;
+	public SanPham() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public SanPham(int maSP, String tenSp, double giaVon, double giaBan, int maTH, String kieuMay,
+			String gioiTinhSuDung, String kichCo, String chatLieuVo, String chatLieuKinh, String doChiuNuoc,
+			String baoHanh, int soLuongHienTai, int sale, String ghiChu, String hinhAnh1, String hinhAnh2,
+			String hinhAnh3, String hinhAnh4) {
+		super();
+		MaSP = maSP;
+		TenSp = tenSp;
+		GiaVon = giaVon;
+		GiaBan = giaBan;
+		MaTH = maTH;
+		KieuMay = kieuMay;
+		GioiTinhSuDung = gioiTinhSuDung;
+		KichCo = kichCo;
+		ChatLieuVo = chatLieuVo;
+		ChatLieuKinh = chatLieuKinh;
+		DoChiuNuoc = doChiuNuoc;
+		BaoHanh = baoHanh;
+		SoLuongHienTai = soLuongHienTai;
+		Sale = sale;
+		GhiChu = ghiChu;
+		HinhAnh1 = hinhAnh1;
+		HinhAnh2 = hinhAnh2;
+		HinhAnh3 = hinhAnh3;
+		HinhAnh4 = hinhAnh4;
+	}
 	public int getMaSP() {
 		return MaSP;
 	}
@@ -106,29 +139,28 @@ public class SanPham {
 	public void setGhiChu(String ghiChu) {
 		GhiChu = ghiChu;
 	}
-	public SanPham(int maSP, String tenSp, double giaVon, double giaBan, int maTH, String kieuMay,
-			String gioiTinhSuDung, String kichCo, String chatLieuVo, String chatLieuKinh, String doChiuNuoc,
-			String baoHanh, int soLuongHienTai, int sale, String ghiChu) {
-		super();
-		MaSP = maSP;
-		TenSp = tenSp;
-		GiaVon = giaVon;
-		GiaBan = giaBan;
-		MaTH = maTH;
-		KieuMay = kieuMay;
-		GioiTinhSuDung = gioiTinhSuDung;
-		KichCo = kichCo;
-		ChatLieuVo = chatLieuVo;
-		ChatLieuKinh = chatLieuKinh;
-		DoChiuNuoc = doChiuNuoc;
-		BaoHanh = baoHanh;
-		SoLuongHienTai = soLuongHienTai;
-		Sale = sale;
-		GhiChu = ghiChu;
+	public String getHinhAnh1() {
+		return HinhAnh1;
 	}
-	public SanPham() {
-		super();
-		// TODO Auto-generated constructor stub
+	public void setHinhAnh1(String hinhAnh1) {
+		HinhAnh1 = hinhAnh1;
 	}
-	
+	public String getHinhAnh2() {
+		return HinhAnh2;
+	}
+	public void setHinhAnh2(String hinhAnh2) {
+		HinhAnh2 = hinhAnh2;
+	}
+	public String getHinhAnh3() {
+		return HinhAnh3;
+	}
+	public void setHinhAnh3(String hinhAnh3) {
+		HinhAnh3 = hinhAnh3;
+	}
+	public String getHinhAnh4() {
+		return HinhAnh4;
+	}
+	public void setHinhAnh4(String hinhAnh4) {
+		HinhAnh4 = hinhAnh4;
+	}
 }
