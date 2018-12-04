@@ -14,7 +14,6 @@
     <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
     <script src="../lib/vendor/bootstrap/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../lib/css/index.css">
-    <link rel="stylesheet" href="../lib/css/DatHang.css">
     <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">-->
     <link rel="stylesheet" href="../lib/vendor/fontawesome/css/all.css">
     <script src="../lib/js/index.js"></script>
@@ -25,13 +24,6 @@
     <link href="https://fonts.googleapis.com/css?family=Archivo" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
-    <!--font-family: 'Noto Serif', serif;
-	font-family: 'Open Sans', sans-serif;
-	font-family: 'Krub', sans-serif;
-	font-family: 'Philosopher', sans-serif;
-	font-family: 'Archivo', sans-serif;
-	font-family: 'Fira Sans', sans-serif;
-	font-family: 'Noto Sans', sans-serif;--->
 </head>
 <body>
     <!--taọ nav fixedtop-->

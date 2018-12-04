@@ -272,6 +272,10 @@
                     </div>
                     <!--nhập thông tin-->
                     <div class="sua-chi-tiet">
+                    	<div class="row-2-BT" style="margin-bottom:20px; margin-left:50px ;clear:both; float:left">
+                            <button type="button" class="btn btn-info btn-md">Nhập hàng</button>
+                        </div>
+                        <!--Thông tin nhập-->
                         <div class="row-1-editTT">
                         <!--text thông tin-->
                             <div class="text-tt col-lg-8 col-md-8 col-sm-8"  style="margin-top:20px;clear: both;">
@@ -284,10 +288,6 @@
                                     </div>
                                     <!--div class="col-lg-1 col-md-1 col-sm-1"></div-->
                                     <div class="colum-2-tt col-lg-6 col-md-6 col-sm-6">
-                                    <div class="form-group">
-                                        <label for="maSP_nhap">Mã sản phẩm:</label>
-                                        <input type="text" class="form-control" id="maSP_nhap" placeholder="Mã sản phẩm" name="maSP_nhap">
-                                    </div>
                                     <div class="form-group">
                                         <label for="TenSP_nhap">Tên sản phẩm:</label>
                                         <input type="text" class="form-control" id="TenSP_nhap" placeholder="Tên sản phẩm" name="TenSP_nhap">
@@ -309,6 +309,10 @@
                         <div class="row-2-BT" style="clear:both">
                             <button type="button" class="btn btn-info btn-md">Thêm</button>
                         </div>
+                    </div>
+                    <!--  -->
+                    <div class="row-2-BT" style="margin-top:20px; margin-left:50px ;clear:both; float:left">
+                        <button type="button" class="btn btn-info btn-md">Hoàn thành đơn hàng nhập</button>
                     </div>
                     <!---->
                     <!--danh sách đơn hàng nhập-->

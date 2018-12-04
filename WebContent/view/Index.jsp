@@ -101,10 +101,15 @@
 													out.println("<div class=\"profilebox profilebox1\" style=\"background: url(lib/images/"+HinhAnh1+")\" >");
 													
 								        				out.println("<div class=\"SocialIcons\">");
-								                      		out.println("<a href=\"#\">");
+								        				
+								        				
+								                      		out.println("<a href=\"AddCart?MaSP="+maSP+"\">");
 								                                out.println("<i class=\"fas fa-cart-plus\">");
 								                                out.println("</i>");
 								                            out.println("</a>");
+								                            
+								                            
+								                            
 								                        	out.println("<a href=\"#\">");
 								                                out.println("<i class=\"far fa-heart\">");
 								                                out.println("</i>");
@@ -125,10 +130,60 @@
 										}
 										
 								
+							}
+			%>
+			
+				<script>
+				$( ".formsp" ).on( "submit",function(e) {
+					e.preventDefault();//ngan chan lai chua cho gui du lieu
+					  let _ = $(this);
+					  $.ajax({
+						 url: 'Cart',
+						 type: 'POST',
+						 method: 'POST',
+						 data: {
+							 'fun': 'themsp',
+							 //'MaSanPham': _.find('[name="MaSanPham"]').val(),
+							 //'TenSanPham': _.find('[name="TenSanPham"]').val(),
+							// 'DonGia': _.find('[name="DonGia"]').val(),
+							// 'Hinh': _.find('[name="Hinh"]').val(),
+							// 'Sale': _.find('[name="Sale"]').val(),
+							// 'MoTaSanPham': _.find('[name="MoTaSanPham"]').val(),
+							// 'SoLuong': _.find('[name="SoLuong"]').val()
+						 },
+						 success: function(result){
+							 if(result == 'true'){
+								 location.href = 'cart.jsp';
+							 }
+						 }
+					  });
+					});
+				</script>
+            <div class="col-lg-3">
+                <div class="thumbnail-list-product">
+                    <div class="thumbnail-product">
+                        <div class="profilebox profilebox1" style="background-image: url(\"lib/images/photo1.jpeg\")" >
+                            <div class="SocialIcons">
+                                <a href="#"><i class="fas fa-cart-plus"></i></a>
+                                <a href="#"><i class="far fa-heart"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="product-title">     
+                            <a href="#"> Đồng Hồ Omega JSHD0S <br>
+             					Giá: 20.000.000đ
+             				</a>           				
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+=======
 									}
 							
 					%>
             
+>>>>>>> branch 'master' of https://github.com/Snackes/ShopDongHo.git
         </div>
         <div class="btn-more">
             <ul class="pager">

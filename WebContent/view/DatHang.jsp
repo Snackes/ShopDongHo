@@ -40,9 +40,6 @@
                                     <label for="address"><b>Địa chỉ</b></label>
                                     <input type="text" name="address" placeholder="Địa chỉ" class="form-control" maxlength="256" required>
                 
-                                    <label for="Address_city"><b>Tỉnh / Thành phố </b></label>
-                                    <input type="text" name="Address_city" placeholder="Tỉnh / Thành phố" class="form-control" maxlength="256" required>
-                
                                     <label for="mobile"><b>Số điện thoại</b></label>
                                     <input type="number" name="mobile" placeholder="Số điện thoại" class="form-control" maxlength="256" required>
                 
@@ -63,51 +60,26 @@
                                 <div id="divChinhKhung">
                                     <strong style="font-weight:bold">ĐƠN HÀNG CỦA BẠN</strong>
                                     <table class="table_SanPham_SeThanhToan" cellpadding="30px" cellspacing="20px">
-                                        <thead class="table_head" cellpadding="30px" cellspacing="20px">
-                                            <tr>
-                                                <th class="TenSanPham">Sản phẩm</th>
-                                                <th class="TongCong">Thành tiền</th>
-                                            </tr>
-                
-                                        </thead>
-                
-                                        <tbody>
-                                            <tr class="cart_item">
-                                                <td class="TenSanPham p-r-10">
-                                                    <span class="TenVaSoLuong"> Đồng hồ casio <b>x1</b>
-                                                    </span>
-                
-                                                </td>
-                                                <td class="TongCong">
-                                                    <span class="tongTien"> 10
-                                                        <span class="DonVi"> đ </span>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                
-                
                                         <tfoot>
                                             <tr class="cart_subtotal">
-                                                <th> Tổng cộng </th>
+                                                <th class="THTongTien"> Tổng cộng:</th>
                                                 <td>
                                                     <span class="tongTien"> 10</span>
                                                     <span class="DonVi"> đ </span>
                                                 </td>
                                             </tr>
                                         </tfoot>
-                
-                
                                     </table>
                                     <div class="divChinhSach">
                                         <p style="font-style:oblique">Hình thức thanh toán: Thanh toán khi nhận hàng</p>
                                         <button href="#" class="btn btn-3">
-                                            Đặt hàng </button>
-                                        <p>Dữ liệu cá nhân của bạn sẽ được sử dụng để xử lý đơn đặt hàng của bạn,
+                                            Xác nhận 
+                                        </button>
+                                        <p>
+                                        	Dữ liệu cá nhân của bạn sẽ được sử dụng để xử lý đơn đặt hàng của bạn,
                                             hỗ trợ trải nghiệm của bạn trên trang web này và cho các mục đích khác được mô tả trong
                                             privacy policy của chúng tôi.
                                         </p>
-                                        <a href="#">chính sách riêng tư.</a>
                                     </div>
                                 </div>
                             </div>

@@ -220,6 +220,10 @@ body {
   text-align: left;
   clear: both; }
 
+.tdSPGioHang{
+	text-align: left;
+}
+
 .page-footer {
   background-color: #282629;
   clear: both; }
