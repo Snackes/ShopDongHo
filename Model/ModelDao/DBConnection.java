@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Vector;
 
 public class DBConnection {
-	public static String strConn = "jdbc:sqlserver://localhost:1433;databaseName=webBanDongHo;user=hiep;password=123";
+	public static String strConn = "jdbc:sqlserver://localhost:1433;databaseName=webBanDongHo;user=admin;password=12345";
 	private Connection connection;
 
 	public DBConnection() {
@@ -130,9 +130,7 @@ public class DBConnection {
 		if (paramsIn != null && paramsIn.size() > 0) {
 			setUpParameterIn(statement, paramsIn);
 		}
-
 		ResultSet result = statement.executeQuery();
-
 		return result;
 	}
 
@@ -208,10 +206,12 @@ public class DBConnection {
 	// Khởi tạo câu truy vấn tới proc trả về một table
 
 	private String createQueryTableProcedure(String name, int count) {
-		StringBuffer sBuffer = new StringBuffer("execute " + name);
+		
+		StringBuffer sBuffer = new StringBuffer("execute " + name +" ");
 		for (int i = 0; i < count; i++) {
 			sBuffer.append("?,");
 		}
+		sBuffer.delete(sBuffer.length() - 1, sBuffer.length());
 		return sBuffer.toString();
 	}
 
