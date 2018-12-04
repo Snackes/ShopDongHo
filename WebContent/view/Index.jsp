@@ -179,10 +179,10 @@
 								                   						                   	
 								                   	
 								            		out.println("<div class=\"product-title\">");                 
-								            			out.println("<a href=\"#\">"+ten+"<br />"+ String.format("%,.0f", giaBan)+" VNĐ"+"</a>");
+								            			out.println("<a href=\"ChiTietSanPham?MaSP="+maSP+"\">"+ten+"<br />"+ String.format("%,.0f", giaBan)+" VNĐ"+"</a>");
 								                	out.println("</div>");	
-								                	
-								                	
+							
+								        	                	
 								          		out.println("</div>");
 								     		out.println("</div>");
 										out.println("</div>");

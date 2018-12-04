@@ -107,7 +107,7 @@ body {
   margin-top: 80px; }
   .product-info .image-product img {
     width: 340px;
-    height: 500px;
+    height: 405px;
     border: 1px #dddddd solid;
     border-radius: 2px;
     cursor: zoom-in; }
@@ -203,7 +203,7 @@ body {
   float: left; }
 
 .profilebox1 {
-  background-image: url("../img/product.jpg");
+  
   background-position: center center;
   background-size: 100% 120%;
   perspective: 400px;

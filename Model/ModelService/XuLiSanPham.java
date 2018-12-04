@@ -73,5 +73,73 @@ public class XuLiSanPham {
 		}
 		return lstSanPham.toArray(new SanPham[0]);
 	}
+	//tạo hàm lấy thông tin sản phẩm(cho ChiTietSanPham)
+	public SanPham Fun_LayThongTinSanPham(int MaSp) {
+		
+		
+		
+		//SanPham sp = new SanPham();
+		SanPham sanpham = new SanPham();
+		connection.connect();
+		
+		
+		Vector<Object[]> paramsIn = connection.createParams(new int[] {1}, new Object[] {MaSp});
+		
+		try {
+			ResultSet resultset = connection.executeTableFunction("Func_Lay_ThongTinSanPham", paramsIn);
+			while(resultset.next())
+			{
+				
+				sanpham.setMaSP(resultset.getInt("MaSP"));
+				sanpham.setTenSp(resultset.getString("TenSP"));
+				sanpham.setGiaBan(resultset.getDouble("GiaBan"));
+				sanpham.setMaTH(resultset.getInt("MaTH"));
+				sanpham.setKieuMay(resultset.getString("KieuMay"));
+				sanpham.setGioiTinhSuDung(resultset.getString("GioiTinhSuDung"));
+				sanpham.setKichCo(resultset.getString("KichCo"));
+				sanpham.setChatLieuVo(resultset.getString("ChatLieuVo"));
+				sanpham.setChatLieuKinh(resultset.getString("ChatLieuKinh"));
+				sanpham.setDoChiuNuoc(resultset.getString("DoChiuNuoc"));
+				sanpham.setBaoHanh(resultset.getString("BaoHanh"));
+				sanpham.setSoLuongHienTai(resultset.getInt("SoLuongHienTai"));
+				sanpham.setSale(resultset.getInt("Sale"));
+				sanpham.setGhiChu(resultset.getString("GhiChu"));
+				sanpham.setHinhAnh1(resultset.getString("HinhAnh1"));
+				sanpham.setHinhAnh2(resultset.getString("HinhAnh2"));
+				sanpham.setHinhAnh3(resultset.getString("HinhAnh3"));
+				sanpham.setHinhAnh4(resultset.getString("HinhAnh4"));
+				
+			}
+			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}finally {
+			connection.close();
+		}
+		
+		return sanpham;
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
