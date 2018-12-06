@@ -58,7 +58,7 @@
                             </div>
                             <div class="col-sm-1 col-md-1 col-lg-1">
                                 <ul class=" nav navbar-nav ">
-                                    <a  id="shopping-cart" href="#"><i  class="fas fa-shopping-cart" ></i></a>
+                                    <a  id="shopping-cart" href="ShowCart"><i  class="fas fa-shopping-cart" ></i></a>
                                 </ul>
                             </div>
                             <div class="col-sm-5 col-md-5 col-lg-5">

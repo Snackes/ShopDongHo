@@ -200,7 +200,8 @@ body {
   margin-top: 70px;
   margin-left: 50px;
   float: left;
-  width: 900px; }
+  width: 900px;
+      margin-bottom: 100px; }
   .dsgiohang h2 {
     text-align: left; }
   .dsgiohang table thead {

@@ -2,6 +2,7 @@ package ModelService;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -51,25 +52,7 @@ public class XuLiSanPham {
 		return result.toArray(new SanPham[0]);
 	}
 	
-	//Lấy sản phẩm để thêm vào giỏ hàng khi click vào button thêm vào giỏ hàng trên từng sản phẩm
-	public SanPham LayThongTinSanPhamChoCart(int MaSP) {
-		connection.connect();
-		SanPham sp=new SanPham();
-		try {
-			Vector<Object[]> paramsIn = connection.createParams(new int[] {1},
-					new Object[] {MaSP});
-			ResultSet rs=connection.executeTableProc("Proc_LaySanPhamChoCart", paramsIn);
-			sp.setMaSP(rs.getInt(1));
-			sp.setTenSp(rs.getString(2));
-			sp.setGiaBan(rs.getDouble(3));
-		}
-		catch(SQLException e) {
-			System.out.println(e.getMessage());
-		}
-		connection.close();	
-		return sp;
-	}
-	//tạo hàm lấy ngẫu nhiên 4 sản phẩm 
+
 	public SanPham[] Func_Lay_BonSanPhamNgauNhien() {
 		Vector<SanPham> lstSanPham = new Vector<>();
 		connection.connect();
@@ -94,23 +77,16 @@ public class XuLiSanPham {
 		return lstSanPham.toArray(new SanPham[0]);
 
 	}
-	//tạo hàm lấy thông tin sản phẩm(cho ChiTietSanPham)
+	
+
 	public SanPham Fun_LayThongTinSanPham(int MaSp) {
-		
-		
-		
-		//SanPham sp = new SanPham();
 		SanPham sanpham = new SanPham();
 		connection.connect();
-		
-		
 		Vector<Object[]> paramsIn = connection.createParams(new int[] {1}, new Object[] {MaSp});
-		
 		try {
 			ResultSet resultset = connection.executeTableFunction("Func_Lay_ThongTinSanPham", paramsIn);
 			while(resultset.next())
 			{
-				
 				sanpham.setMaSP(resultset.getInt("MaSP"));
 				sanpham.setTenSp(resultset.getString("TenSP"));
 				sanpham.setGiaBan(resultset.getDouble("GiaBan"));
@@ -128,19 +104,13 @@ public class XuLiSanPham {
 				sanpham.setHinhAnh1(resultset.getString("HinhAnh1"));
 				sanpham.setHinhAnh2(resultset.getString("HinhAnh2"));
 				sanpham.setHinhAnh3(resultset.getString("HinhAnh3"));
-				sanpham.setHinhAnh4(resultset.getString("HinhAnh4"));
-				
-			}
-			
+				sanpham.setHinhAnh4(resultset.getString("HinhAnh4"));	
+			}	
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-		}finally {
-			connection.close();
 		}
-		
-		return sanpham;
-		
-		
+		connection.close();
+		return sanpham;	
 	}
 	
 	

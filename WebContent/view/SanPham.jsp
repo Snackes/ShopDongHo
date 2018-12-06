@@ -46,9 +46,6 @@
             	}
             
             
-            
-            
-            
      %>
     
     
@@ -88,7 +85,7 @@
                             <div class="product-count">
                                 <span style="font-size: 20px;">Số Lượng: </span>
                                 <div class="input-group numeric-updown">
-                                    <input type="text" class="form-control" value="1">
+                                    <input type="text" class="form-control" value="1" name="SoLuongSP">
                                     <div class="input-group-btn-vertical">
                                         <button class="btn btn-default btn-up" type="button">
                                             <i class=" fa fa-caret-up"></i>
@@ -104,7 +101,7 @@
                                 <span class="product-like-count" style="font-size: 20px;">200</span>
                             </div>
                             <div class="product-btn" style="font-size: 20px;">
-                                <a class="btn-themGioHang" href="">Thêm Vào Giỏ Hàng</a>
+                                <a class="btn-themGioHang" href="AddCart">Thêm Vào Giỏ Hàng</a>
                                 <a class="btn-muaNgay" href="">Mua Ngay</a>
                                 
                             </div>

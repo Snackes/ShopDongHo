@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
+import ModelService.XuLiGioHang;
+
 /**
  * Servlet implementation class ShowCart
  */
@@ -32,13 +34,17 @@ public class ShowCart extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
  
 		HttpSession session = request.getSession();
-		if (session.getAttribute("Cart") == null)
+		if (session.getAttribute("GioHang") == null)
         {
 			RequestDispatcher dispatcher=request.getRequestDispatcher("view/GioHang_empty.jsp");
 			dispatcher.forward(request, response);//Nếu không có gì trong giỏ thì cho nó về trang giỏ hàng trống
 			return;
         }		
-		RequestDispatcher dispatcher=request.getRequestDispatcher("Contronller/ContronllerCart/AddCart.java");
+		//RequestDispatcher dispatcher=request.getRequestDispatcher("Contronller/ContronllerCart/AddCart.java");
+		XuLiGioHang xlgh=new XuLiGioHang();
+		double tongtienDH= xlgh.TongTienDonHang(request);
+		request.getSession().setAttribute("TongTienDH", tongtienDH);
+		RequestDispatcher dispatcher=request.getRequestDispatcher("view/GioHang.jsp");
 		dispatcher.forward(request, response);
 	}
 

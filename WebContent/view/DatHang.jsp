@@ -28,7 +28,7 @@
                 <div class="col-lg-5 col-md-5 col-sm-5">
                 </div>
             </div>
-            <form class="form_ThongTinThanhToan">
+            <form class="form_ThongTinThanhToan" action="../ThanhToan" method="post">
                     <div class="row">
                         <div class="col-lg-7 col-md-7 col-sm-7">
                             <div class="div_ThongTinThanhToan">
@@ -64,16 +64,22 @@
                                             <tr class="cart_subtotal">
                                                 <th class="THTongTien"> Tổng cộng:</th>
                                                 <td>
-                                                    <span class="tongTien"> 10</span>
-                                                    <span class="DonVi"> đ </span>
+                                                    <span class="tongTien"> 								
+                                                    <%
+                        								double ok;
+                										ok= (double)request.getSession().getAttribute("TongTienDH");
+                										out.println(""+String.format("%,.0f", ok)+"");
+													%>
+													</span>
+                                                    <span class="DonVi"> VNĐ </span>
                                                 </td>
                                             </tr>
                                         </tfoot>
                                     </table>
                                     <div class="divChinhSach">
                                         <p style="font-style:oblique">Hình thức thanh toán: Thanh toán khi nhận hàng</p>
-                                        <button href="#" class="btn btn-3">
-                                            Xác nhận 
+                                        <button id="aaa" type="submit" class="btn btn-3 m-b-20">
+                                        	Xác nhận      
                                         </button>
                                         <p>
                                         	Dữ liệu cá nhân của bạn sẽ được sử dụng để xử lý đơn đặt hàng của bạn,
@@ -87,7 +93,37 @@
                     </div>
             </form>
         </div>
+        
 
+	<!-- 
+	   	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#aaa' ).click(function(e) {
+				alert("Hướng dẫn học lập trình web từ cơ bản đến nâng cao");
+				e.preventDefault();//ngan chan lai chua cho gui du lieu
+				$.ajax({
+					 url: 'ThanhToan',
+					 type: 'POST',
+					 method: 'POST',
+					 data: {
+						 'fun': 'themsp',
+						 'MaLoai': _.find('[name="MaLoai"]').val(),
+						 'MaSanPham': _.find('[name="MaSanPham"]').val(),
+						 'TenSanPham': _.find('[name="TenSanPham"]').val(),
+					 },
+					 success: function(result){
+						 if(result == 'true'){
+							 location.href = 'cart.jsp';
+						 }
+					 }
+					 
+				});
+				
+			});
+			
+	    });
+	</script>
+	-->
     <!---END CONTENT--->
 	<%@ include file="/Layout/Footer.jsp"%>
 

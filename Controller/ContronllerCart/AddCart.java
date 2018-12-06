@@ -11,12 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.ant.SessionsTask;
-
 import ModelBean.Cart;
-import ModelBean.Item;
 import ModelBean.SanPham;
-import ModelService.XuLiSanPham;
+import ModelService.XuLiGioHang;
 
 /**
  * Servlet implementation class AddCart
@@ -39,59 +36,44 @@ public class AddCart extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		XuLiSanPham xl = new XuLiSanPham();
-		int SoLuong = 1;
+		//lấy ra số lượng trong trang chi tiết sản phẩm
+		//int sl =Integer.parseInt(request.getParameter("SoLuong"));
+		int sl=0;
+		HttpSession session = request.getSession();
+        if(sl==0)
+        {
+            sl = 1;
+        }
 		int MaSP=Integer.parseInt(request.getParameter("MaSP"));
-		if (request.getParameter("MaSP") != null) 
-		{
-			MaSP = Integer.parseInt(request.getParameter("MaSP"));
-			SanPham sp = xl.LayThongTinSanPhamChoCart(MaSP);
-			if (sp != null) 
-			{
-				if (request.getParameter("SoLuong") != null) 
-				{
-					SoLuong = Integer.parseInt(request.getParameter("SoLuong"));
-				}
-				HttpSession session = request.getSession();
-				//nếu giỏ hàng trống thì tạo giỏ hàng và thêm mới sản phẩm
-				if (session.getAttribute("Cart") != null) 
-				{
-					Cart GH = new Cart();
-					List<Item> ListSP = new ArrayList<Item>();
-					Item item = new Item();
-					item.setSoLuong(SoLuong);
-					item.setSp(sp);
-					item.setGiaBan(sp.getGiaBan());
-					ListSP.add(item);
-					GH.setItem(ListSP);//thêm sản phẩm vào giỏ
-					session.setAttribute("Cart", GH);
-				}
-				else //trường hợp giỏ hàng đã có sản phẩm
-				{
-					Cart GH = (Cart) session.getAttribute("Cart");
-					List<Item> listitem = GH.getItem();
-					boolean check = false;
-					for (Item item : listitem)
-					{
-						if (item.getSp().getMaSP() == sp.getMaSP())//nếu sản phẩm thêm vào đã có trong giỏ thì ta chỉ cập nhật số lượng
-						{
-							item.setSoLuong(item.getSoLuong() + SoLuong);
-							check = true;
-						}
-					}
-					if (check == false) //sản phẩm chưa có trong giỏ
-					{
-						Item item = new Item();
-						item.setSoLuong(SoLuong);
-						item.setSp(sp);
-						item.setGiaBan(sp.getGiaBan());
-						listitem.add(item);
-					}
-					session.setAttribute("Cart", GH);
-				}
-			}
-		}
-		response.sendRedirect(request.getContextPath()+"/view/GioHang.jsp");
+
+        XuLiGioHang xl=new XuLiGioHang();
+        //lấy ra  giỏ hàng
+        List<Cart> listGH = xl.LayGioHang(request);
+        //kiểm tra sản phẩm này tồn tại trong giỏ hàng hay chưa
+        Cart Sp=new Cart();
+        Sp=null;
+        for(int i=0;i<listGH.size();i++) {
+        	if(listGH.get(i).getMaSP()==MaSP)
+        	{
+        		Sp=listGH.get(i);
+        		break;
+        	}
+        }
+        if(Sp == null)//nếu sản phẩm chưa tồn tại trong giỏ hàng thì tạo mới giỏ hàng và thêm sản phẩm vào
+        {
+        	Sp = new Cart(MaSP);
+        	Sp.setSoLuong(sl);
+            listGH.add(Sp);//thêm sản phẩm đó vào giỏ
+            request.getSession().setAttribute("GioHang", listGH);
+			session.setAttribute("SLIConGH", xl.TongSoLuong(request));
+            //return Redirect(strURL);  load lại trang
+        }
+        else//nếu có rồi thì cập nhật số lượng
+        {
+        	Sp.setSoLuong(Sp.getSoLuong()+sl);//SoLuong sẽ bằng 1 khi nó ở trang sản phẩm.
+            request.getSession().setAttribute("GioHang", listGH);			
+            //return Redirect(strURL); 
+        }		
 	}
 
 	/**

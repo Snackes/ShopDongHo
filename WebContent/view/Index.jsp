@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Shop online</title>
+    <title>Trang chủ</title>
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="lib/vendor/bootstrap/css/bootstrap.min.css">
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
@@ -79,13 +79,6 @@
 			<%
 				Object result = request.getAttribute("LayThongTinSanPhamNoiBat");
 							if (result != null){
-								//ResultSet sp = (ResultSet)result;
-								//for (int i = 0; i<sp.length; i++){
-									//try{while(sp.next()){
-										//int maSP = sp.getInt("MaSP") ;
-										//String ten = sp.getString("TenSP");
-										//double giaBan =sp.getDouble("GiaBan");
-										
 										SanPham[] sp = (SanPham[])result;
 										for(int i=0;i<sp.length;i++)
 										{
@@ -197,10 +190,12 @@
 													out.println("<div class=\"profilebox profilebox1\" style=\"background: url(lib/images/"+HinhAnh1+")\" >");
 													
 								        				out.println("<div class=\"SocialIcons\">");
-								                      		out.println("<a href=\"#\">");
+								        					out.println("<a href=\"AddCart?MaSP="+maSP+"\">");
 								                                out.println("<i class=\"fas fa-cart-plus\">");
 								                                out.println("</i>");
 								                            out.println("</a>");
+								                            
+								                            
 								                        	out.println("<a href=\"#\">");
 								                                out.println("<i class=\"far fa-heart\">");
 								                                out.println("</i>");

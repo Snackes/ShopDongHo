@@ -32,41 +32,22 @@ public class Header extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher dispatcher= request.getRequestDispatcher("Layout/Header.jsp");
-		//tạo sesssion lưu lại các giá trị +MaKH sau khi đăng nhập
+		//táº¡o sesssion lÆ°u láº¡i cÃ¡c giÃ¡ trá»‹ +MaKH sau khi Ä‘Äƒng nháº­p
 		HttpSession session = request.getSession();
 		//
 		response.setContentType("text/html");
 		String TenTaikhoan= request.getParameter("TenTaiKhoan").trim();
 		
 		String MatKhau= request.getParameter("MatKhau").trim();
-		//
-		
-		
-		
-		
-		//
-	
+
 		TuongTacUser control_User= new TuongTacUser();
-		//Đăng nhập
-		
-		//
-		
-		//
-		
 		int FlagKiemTraDangNhap= control_User.KiemTraDangNhap(TenTaikhoan, MatKhau);
 		request.setAttribute("FlagKiemTraDangNhap", FlagKiemTraDangNhap);
-		//tạo session MaKH lưu lại
+		//táº¡o session MaKH lÆ°u láº¡i
 		session.removeAttribute("MaKH");
 		session.setAttribute("MaKH", FlagKiemTraDangNhap);
 		session.removeAttribute("TenTK");
-		session.setAttribute("TenTK", TenTaikhoan);//nhớ điền tên tk vào
-		
-		
-	
-		//Đăng Kí
-		//
-		
-		//
+		session.setAttribute("TenTK", TenTaikhoan);//nhá»› Ä‘iá»�n tÃªn tk vÃ o
 		int FlagKiemTraDangKi = control_User.DangKiTaiKhoan("hiep10", "123456");
 		request.setAttribute("FlagKiemTraDangKi", FlagKiemTraDangKi);
 		
