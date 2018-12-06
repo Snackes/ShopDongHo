@@ -1,3 +1,9 @@
+<%@page import="java.sql.SQLException"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="ModelBean.SanPham"%>
+<%@page import="java.util.List"%>
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -9,14 +15,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Quản lí Shop</title>
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-    <link rel="stylesheet" href="../lib/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/vendor/bootstrap/css/bootstrap.min.css">
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
-    <script src="../lib/vendor/jquery/jquery.min.js"></script>
+    <script src="lib/vendor/jquery/jquery.min.js"></script>
     <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
-    <script src="../lib/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../lib/Css_admin/Admin_QLSP.css">
+    <script src="lib/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="lib/Css_admin/Admin_QLSP.css">
     <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">-->
-    <link rel="stylesheet" href="../lib/vendor/fontawesome/css/all.css">
+    <link rel="stylesheet" href="lib/vendor/fontawesome/css/all.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </head>
 <body>
@@ -36,7 +42,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <img src="../lib/images/pic1.png" class="img-circle" alt="Cinque Terre" width="35" height="35">
+                <img src="lib/images/pic1.png" class="img-circle" alt="Cinque Terre" width="35" height="35">
                 <li class="dropdown">
                     <a id="admin_name" href="#" class="dropdown-toggle" data-toggle="dropdown"><span style="font-size: 15px; color:#fff;">Admin_Name</span><b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -98,31 +104,52 @@
                                     <th>Độ chịu nước</th>
                                 </tr>
                             </thead>
+                <% 
+                	Object res = request.getAttribute("Funct_Admin_BangTTSanPham");
+               	 	ResultSet sp = null;
+                	if(res != null)
+                	{
+                		sp = (ResultSet)res;
+                	}
+                %>
+                <%
+                   	while(sp.next())
+                 	  {
+                 		int MaSP = sp.getInt("masp");
+                 		String TenSP = sp.getString("tensp");
+                 		String ThuongHieu = sp.getString("thuonghieu");
+                 		String KieuMay = sp.getString("kieumay");
+                 		String GioiTinh = sp.getString("Gioitinh");
+                 		String DoChiuNuoc = sp.getString("Dochiunuoc");
+                 %>
                             <tbody>
                                 <tr>
                                     <td>
-                                        <div class="row nut-chuc-nang">
+                                        <div class="row nut-chuc-nang sua-bt">
                                             <button type="button" class="btn btn-default btn-sm" id="sua-bt">Sửa</button>
                                             <button type="button" class="btn btn-default btn-sm">Xoá</button>
                                         </div>
                                     </td>
-                                    <td>MaSP</td>
-                                    <td>TenSP</td>
-                                    <td>ThuongHieu</td>
-                                    <td>KieuMay</td>
-                                    <td>GioiTinh</td>
-                                    <td>DoChiuNuoc</td>
+                                    <td><%=MaSP%></td>
+                                    <td><%=TenSP%></td>
+                                    <td><%=ThuongHieu%></td>
+                                    <td><%=KieuMay%></td>
+                                    <td><%=GioiTinh%></td>
+                                    <td><%=DoChiuNuoc%></td>
                                 </tr>
                             </tbody>
+                  <%   }
+                    //} catch()	
+                  %>
                         </table>
-                    </div>
                     <script>
                         $(document).ready(function(){
-                            $("#sua-bt").click(function(){
+                            $(".sua-bt").click(function(){
                                 $("#tab-sua-chitiet").toggle();
                             })
                         })
                     </script>
+                    </div>
                     <!--nút chức năng-->
                     <!--Sửa chi tiết-->
                     <div class="sua-chi-tiet" id="tab-sua-chitiet" style="display:none">

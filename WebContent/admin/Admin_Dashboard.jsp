@@ -1,3 +1,8 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="ModelBean.SanPham"%>
+<%@page import="java.util.List"%>
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
+<%@ page import="java.sql.ResultSet" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -9,14 +14,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Quản lí Shop</title>
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-    <link rel="stylesheet" href="../lib/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/vendor/bootstrap/css/bootstrap.min.css">
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
-    <script src="../lib/vendor/jquery/jquery.min.js"></script>
+    <script src="lib/vendor/jquery/jquery.min.js"></script>
     <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
-    <script src="../lib/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../lib/Css_admin/Admin_Dashboard.css">
+    <script src="lib/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="lib/Css_admin/Admin_Dashboard.css">
     <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">-->
-    <link rel="stylesheet" href="../lib/vendor/fontawesome/css/all.css">
+    <link rel="stylesheet" href="lib/vendor/fontawesome/css/all.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
     <!--Google Chart-->
@@ -40,7 +45,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <img src="../lib/images/pic1.png" class="img-circle" alt="Cinque Terre" width="35" height="35">
+                <img src="lib/images/pic1.png" class="img-circle" alt="Cinque Terre" width="35" height="35">
                 <li class="dropdown">
                     <a id="admin_name" href="#" class="dropdown-toggle" data-toggle="dropdown"><span style="font-size: 15px; color:#fff;">Admin_Name</span><b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -78,9 +83,12 @@
                         <h4><strong>10000</strong></h4>
                         <h6><span>Lượt truy cập</span></h6>
                     </div>
+                <%
+                	Object giaodichthanhcong = request.getAttribute("Proc_Admin_Tong_Giaodich");
+				%>
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 buyed">
                         <span class="glyphicon glyphicon-shopping-cart fa-2x"></span>
-                        <h4><strong>1000</strong></h4>
+                        <h4><strong><%=giaodichthanhcong%></strong></h4>
                         <h6><span>Giao dịch thành công</span></h6>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 rate">
@@ -88,9 +96,12 @@
                         <h4><strong>2000</strong></h4>
                         <h6><span>Đánh giá, bình chọn</span></h6>
                     </div>
+                <%
+                	Object sokh = request.getAttribute("Proc_Admin_Tinhtong_KH");
+				%>
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 user">
                         <span class="glyphicon glyphicon-user fa-2x"></span>
-                        <h4><strong>100</strong></h4>
+                        <h4><strong><%=sokh%></strong></h4>
                         <h6><span>Khách hàng đăng ký tài khoản</span></h6>
                     </div>
                 </div>
@@ -200,11 +211,20 @@
                     <!--end biểu đồ-->
                 </div>
                 <!--Hàng 3, danh sách về sản phẩm-->
+            <% 
+            	Object outofstock = request.getAttribute("Funct_Admin_DSSP_OutofStock");
+            	SanPham[] sp_outstock = null;
+            	if(outofstock != null)
+            	{
+            		sp_outstock = (SanPham[])outofstock;
+            	}
+            %>
                 <div class="row row-3-table">
                     <div class="col-lg-1 col-md-1 col-sm-1"></div>
                     <!--Sản phẩm sắp hết hàng-->
                     <div class="col-lg-5 col-md-5 col-sm-11 col-xs-12 outstock-table">
-                        <a href="Admin_QLSP.html"><span style="font-size: 20px; color: black;">Sản phẩm cần nhập thêm số lượng</span></a>
+                        <a href="Admin_QLSP_Controll"><span style="font-size: 20px; color: black;">Sản phẩm cần nhập thêm số lượng</span></a>
+                        
                         <table class="table table-striped" id="san-pham-het-hang">
                             <thead>
                                 <tr>
@@ -213,17 +233,37 @@
                                     <th>Số lượng còn lại</th>
                                 </tr>
                             </thead>
+                            
+            <% 
+            	for(int i=0;i<sp_outstock.length;i++)
+            	{
+            		int MaSP = sp_outstock[i].getMaSP();
+            		String TenSP = sp_outstock[i].getTenSp();
+            		int Soluongconlai = sp_outstock[i].getSoLuongHienTai();
+            
+            %>
                             <tbody>
                                 <tr>
-                                    <td><!--MaSP--></td>
-                                    <td><!--TenSP--></td>
-                                    <td><!--SoLuong--></td>
+                                    <td><%=MaSP%></td>
+                                    <td><%=TenSP%></td>
+                                    <td><%=Soluongconlai%></td>
                                 </tr>
                             </tbody>
+             <% } %>
                         </table>
                     </div>
+                    
                     <div class="col-lg-1 col-md-1"></div>
                     <!--Sản phẩm bán chạy-->
+                    
+             <%
+             	Object res = request.getAttribute("Funct_Admin_DSSP_Hotsale");
+             	ResultSet ds_hotsale = null;
+             	if(res != null)
+             	{
+             		ds_hotsale = (ResultSet)res;
+             	}
+             %>
                     <div class="col-lg-4 col-md-4 col-sm-11 col-xs-12 best-seller">
                         <span style="color:black; font-size:20px;">Sản phẩm bán chạy</span>
                         <table class="table table-striped" id="san-pham-banchay">
@@ -233,12 +273,19 @@
                                     <th>Lượt mua</th>
                                 </tr>
                             </thead>
+             <%
+             	while(ds_hotsale.next())
+             	{
+             		String tensp = ds_hotsale.getString("tensp");
+             		int luotmua = ds_hotsale.getInt("luotmua");
+             %>
                             <tbody>
                                 <tr>
-                                    <td><!--TenSP--></td>
-                                    <td><!--LuotMua--></td>
+                                    <td><%=tensp%></td>
+                                    <td><%=luotmua%></td>
                                 </tr>
                             </tbody>
+             <% } %>
                         </table>
                     </div>
                     <div class="col-lg-1 col-md-1"></div>
