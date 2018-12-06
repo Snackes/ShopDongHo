@@ -32,27 +32,95 @@ public class Header extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher dispatcher= request.getRequestDispatcher("Layout/Header.jsp");
-		//táº¡o sesssion lÆ°u láº¡i cÃ¡c giÃ¡ trá»‹ +MaKH sau khi Ä‘Äƒng nháº­p
+		//tạo sesssion lưu lại các giá trị +MaKH sau khi đăng nhập
 		HttpSession session = request.getSession();
 		//
 		response.setContentType("text/html");
-		String TenTaikhoan= request.getParameter("TenTaiKhoan").trim();
 		
-		String MatKhau= request.getParameter("MatKhau").trim();
-
 		TuongTacUser control_User= new TuongTacUser();
-		int FlagKiemTraDangNhap= control_User.KiemTraDangNhap(TenTaikhoan, MatKhau);
-		request.setAttribute("FlagKiemTraDangNhap", FlagKiemTraDangNhap);
-		//táº¡o session MaKH lÆ°u láº¡i
-		session.removeAttribute("MaKH");
-		session.setAttribute("MaKH", FlagKiemTraDangNhap);
-		session.removeAttribute("TenTK");
-		session.setAttribute("TenTK", TenTaikhoan);//nhá»› Ä‘iá»�n tÃªn tk vÃ o
-		int FlagKiemTraDangKi = control_User.DangKiTaiKhoan("hiep10", "123456");
-		request.setAttribute("FlagKiemTraDangKi", FlagKiemTraDangKi);
+		
+		
+		
+		int flagAction =  Integer.parseInt(request.getParameter("flagAction"));
+		//tạo cờ flagAction nhận diện hành động
+		// =1 Đăng Nhập
+		// =2 Đăng Kí
+		// =3 Thông Tin Tài Khoản
+		// =4 Quên Mật Khẩu
+		// =5 Đăng xuất
+		//
+		switch(flagAction)
+		{
+		case 1:{
+			//Đăng nhập
+			
+			//
+			String TenTaikhoan= request.getParameter("TenTaiKhoan").trim();
+			
+			String MatKhau= request.getParameter("MatKhau").trim();
+			//
+			
+			int FlagKiemTraDangNhap= control_User.KiemTraDangNhap(TenTaikhoan, MatKhau);
+			
+			if(FlagKiemTraDangNhap!=-1)
+			{
+				request.setAttribute("FlagKiemTraDangNhap", FlagKiemTraDangNhap);
+				//tạo session MaKH lưu lại
+				session.removeAttribute("MaKH");
+				session.setAttribute("MaKH", FlagKiemTraDangNhap);
+				session.removeAttribute("TenTK");
+				session.setAttribute("TenTK", TenTaikhoan);//nhớ điền tên tk vào
+			}
+			else
+			{
+				//đưa lên thông báo đăng nhập ko thành côgn
+			}
+			
+				} break;
+		case 2:{
+			//Đăng Kí
+			//
+			
+			//
+			int FlagKiemTraDangKi = control_User.DangKiTaiKhoan("hiep10", "123456");
+			request.setAttribute("FlagKiemTraDangKi", FlagKiemTraDangKi);
+			
+			
+			
+			
+		}break;
+		case 3:{
+			
+		}break;
+		case 4:{
+			
+		}break;
+		case 5:{
+			//Đăng Xuất
+			session.removeAttribute("TenTK");
+			session.setAttribute("MaKH", null);
+			session.removeAttribute("MaKH");
+			session.setAttribute("TenTK", null);
+			
+		}break;
+		
+		default: break;
+		
+		}
+		
+		
 		
 		
 		dispatcher.forward(request, response);
+		
+		//
+	
+		
+		
+		
+		
+	
+		
 	
 	
 	}

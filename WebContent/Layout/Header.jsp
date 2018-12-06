@@ -8,15 +8,16 @@
     <meta name="author" content="">
     <title>Shop online</title>
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-    <link rel="stylesheet" href="../lib/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/vendor/bootstrap/css/bootstrap.min.css">
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
-    <script src="../lib/vendor/jquery/jquery.min.js"></script>
+    <script src="lib/vendor/jquery/jquery.min.js"></script>
     <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
-    <script src="../lib/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../lib/css/index.css">
+    <script src="lib/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="lib/css/index.css">
     <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">-->
-    <link rel="stylesheet" href="../lib/vendor/fontawesome/css/all.css">
-    <script src="../lib/js/index.js"></script>
+    <link rel="stylesheet" href="/lib/vendor/fontawesome/css/all.css">
+    <script src="lib/js/index.js"></script>
+    <link rel="stylesheet" href="lib/css/modal.css">
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Krub" rel="stylesheet">
@@ -63,31 +64,138 @@
                             </div>
                             <div class="col-sm-5 col-md-5 col-lg-5">
                                 <ul class="nav navbar-nav navbar-right">
-                                    <li><a class="btnDangNhap" href="#" data-toggle="modal" data-target="#myModal1"style="width: auto; color: #fff;" ><span class="glyphicon glyphicon-log-in"></span> Đăng Nhập</a></li>
+                                    <!--<li><a class="btnDangNhap" href="#" data-toggle="modal" data-target="#myModal1"style="width: auto; color: #fff;" ><span class="glyphicon glyphicon-log-in"></span> Đăng Nhập</a></li>-->
+                                    <div class="dropdown">
+                                    <button style="margin-top:5px;margin-right:5px;background-color:#282629;border:1px solid #ffffff;color:#fff" class="btn  dropdown-toggle" type="button" data-toggle="dropdown">
+                                    
+                                    <%
+                                    if(session.getAttribute("MaKH")!=null)
+                                    {
+                                    	out.println(session.getAttribute("TenTK"));
+                                    }
+                                    %>
+                                    
+                                    <i class="fas fa-user"></i>
+                                    <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                    <%
+                                    if(session.getAttribute("MaKH")==null)
+                                    {%>
+                                    	<li><a class="btnDangNhap" href="#" data-toggle="modal" data-target="#myModal1"style="width: auto; color: #000;" ><span class="glyphicon glyphicon-log-in"></span> Đăng Nhập</a></li>
+                                    <%}
+                                    else
+                                    {
+                                    	if(session.getAttribute("Admin")!=null)
+                                    	{%>
+                                    		<li><a>Quản lí Website</a></li>
+                                    		<li><a class="btnDangXuat">Đăng Xuất</a></li>
+                                    	<% }
+                                    	else
+                                    	{%>
+                                    		<li><a>Thông Tin Tài Khoản</a></li>
+                                    		<li><a class="btnDangXuat">Đăng Xuất</a></li>
+                                    		
+                                    	<% }
+                                    }
+                                    %>
+                                    
+                                    </ul>
+                                    
+                                    
+                                    
+                                    </div>
                                 </ul>
+                           </div>
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
                                 <!---Form Đăng Nhập-->
                                 <div class="modal" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                            
                                             <div class="modal-body">
-                                            	<a style="float: right;" href="" data-dismiss="modal">X</a>
-                                                <p style="font-size: 20px; text-align: left; clear: right;">Tên Tài Khoản</p>
-                                                <form role="form" action='#' method="post">
-                                                    <input type="text" class="form-control" placeholder="Username">
-                                                    <p style="font-size: 20px; text-align: left;">Mật Khẩu</p>
-                                                    <form role="form" action='#' method="post">
-                                                        <input type="password" class="form-control" placeholder="Username">
+                                            	<form role="form" action='Header' method="post">
+                                            	<a style="float: right;margin-bottom:20px;" href="" data-dismiss="modal">X</a>
+                                            	<br>
+                                                
+                                                
+                                                    <input type="text" class="form-control" placeholder="Tên Tài Khoản" id="TenTaiKhoan">
+                                                    <br>
+                                                        <input type="password" class="form-control" placeholder="Mật Khẩu" id="MatKhau">
+                                                        <br>
                                                         <label style="color:#000;">
                                                             <input type="checkbox" checked="checked" name="remember"> Nhớ Mật Khẩu
                                                         </label>
+                                                   </form>
                                             </div>
-                                            <div class="modal-footer">
+                                            <div class="modal-footer footermodal">
                                                 <a href="" style="float: left;"> Quên mật khẩu</a>
-                                                <button type="submit" class="btn btn-default" data-dismiss="modal">Đăng Nhập</button>
-                                                <button type="button" class="btn btn-default" id="signin">Đăng Kí</button>
+                                                <button id="btnDNhap" type="submit" class="btn btn-default" data-dismiss="modal">Đăng Nhập</button>
+                                                <!-- Gửi flagAction về -->
+                                                <script>
+                                                $('#btnDNhap').click(function(e) {
+			                                    	alert("sâsasas");
+			                                    	
+			                                        e.preventDefault();
+			                                        $.ajax( {
+			                                            url: 'Header',
+			                                            type: 'GET',
+			                                            data:{
+			                                            	flagAction: 1,
+			                                            	TenTaiKhoan : $('#TenTaiKhoan').val(),
+			                                            	MatKhau : $('#MatKhau').val()
+			                                            },
+			                                           // 'TenTaiKhoan': _.find('[name="TenTaiKhoan"]').val(),
+			                           				 	//'MatKhau': _.find('[name="MatKhau"]').val(),
+			                                           
+			                                        }).done(function() {
+			                                        	
+			                                        	location.reload();
+			                                        });
+			                                        
+			                                    });
+                                                
+                                                
+                                                $('.btnDangXuat').click(function(e) {
+			                                    	alert("sâsasas");
+			                                    	
+			                                        e.preventDefault();
+			                                        $.ajax( {
+			                                            url: 'Header',
+			                                            type: 'GET',
+			                                            data:{
+			                                            	flagAction: 5
+			                                            	
+			                                            },
+			                                          
+			                                           
+			                                        }).done(function() {
+			                                        	
+			                                        	location.reload();
+			                                        });
+			                                        
+			                                        
+			                                        
+			                                        
+			                                        
+			                                    });
+                                                </script>
+                                                <button type="button" class="btn btn-default" id="signin" >Đăng Kí</button>
                                             </div>
-                                            </form>
+                                           
                                         </div>
                                     </div>
                                 </div>
@@ -97,11 +205,13 @@
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
+                                            <a class="close" style="float: right;" href="" data-dismiss="modal">X</a>
+                                            	<br>
                                                 <p style="font-size: 20px; ">Đăng Kí</p>
                                             </div>
                                             <div class="modal-body">
                                             	
-                                                
+                                                <form>
                                                     <input type="email" class="form-control" placeholder="Nhập Email">
                                                     <br>
                                                 
@@ -113,14 +223,12 @@
                                                 	<br>
                                                 	<input type="password" class="form-control" id="pwd" placeholder="Xác Nhận Mật Khẩu" name="pwd">
                                                 	<br>
-                                                	<button type="button" class="btn btn-default">Đăng Kí</button>
-                                                    
+                                                	<button type="button" class="btn btn-default btn-dk">Đăng Kí</button>
+                                                </form>
 
                                             </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                            </div>
-                                            </form>
+                                            
+                                            
                                         </div>
                                     </div>
                                 </div>
