@@ -16,7 +16,7 @@ public class TuongTacUser {
 	public int KiemTraDangNhap(String UserName, String PassWord)
 	{
 		
-		//biến cờ (=1 đăng nhập thành công -1 đăng nhập ko thành công) 
+		//biáº¿n cá»� (=1 Ä‘Äƒng nháº­p thÃ nh cÃ´ng -1 Ä‘Äƒng nháº­p ko thÃ nh cÃ´ng) 
 		int flag=-1;
 		connection.connect();
 		
@@ -40,13 +40,13 @@ public class TuongTacUser {
 		return flag;
 	}
 	
-	public int DangKiTaiKhoan(String Username, String PassWord)
+	public int DangKiTaiKhoan(String Email, String Username, String PassWord)
 	{
-		//biến cờ(-1 nếu tk đã tồn tại -  nếu đăng kí thành công trả về mã kh vừa mới tạo) 
+		
 		int flag =1;
 		connection.connect();
 		
-		Vector<Object[]> paramsIn = connection.createParams(new int[] {1,2}, new Object[] {Username,PassWord});
+		Vector<Object[]> paramsIn = connection.createParams(new int[] {1,2,3}, new Object[] {Email,Username,PassWord});
 		try {
 			//ResultSet resultset = connection.executeTableProc("Proc_DangNhap", paramsIn);
 			//ResultSet resultset = connection.executeTableProc("Proc_Test", paramsIn);

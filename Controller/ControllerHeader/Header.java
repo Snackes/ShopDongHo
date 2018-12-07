@@ -35,9 +35,10 @@ public class Header extends HttpServlet {
 		//tạo sesssion lưu lại các giá trị +MaKH sau khi đăng nhập
 		HttpSession session = request.getSession();
 		//
-		response.setContentType("text/html");
+		
 		
 		TuongTacUser control_User= new TuongTacUser();
+		String ThongBao=null;//biến này để phản hồi lại cho ajax
 		
 		
 		
@@ -70,19 +71,56 @@ public class Header extends HttpServlet {
 				session.setAttribute("MaKH", FlagKiemTraDangNhap);
 				session.removeAttribute("TenTK");
 				session.setAttribute("TenTK", TenTaikhoan);//nhớ điền tên tk vào
+				//thông báo thành công
+				ThongBao="ThanhCong";
+				
 			}
 			else
 			{
 				//đưa lên thông báo đăng nhập ko thành côgn
+				ThongBao="ThatBai";
 			}
 			
 				} break;
 		case 2:{
 			//Đăng Kí
+			//kiểm tra Tk tồn tại hay chưa trước 
+			//nếu chưa mới insert
 			//
+			//--lấy thông tin từ form về
+			//String Email = request.getParameter("Email").trim();
+			String Email = request.getParameter("Email");
+			String TenTaiKhoan = request.getParameter("TenTaiKhoanDK").trim();
+			String MatKhau = request.getParameter("MatKhauDK").trim();
+			String MatKhauXacNhan = request.getParameter("MatKhauXacNhan").trim();
+			int FlagKiemTraDangKi=-1;
+			
+			if(MatKhau.equalsIgnoreCase(MatKhauXacNhan)) 
+			{
+				// 
+				FlagKiemTraDangKi = control_User.DangKiTaiKhoan(Email,TenTaiKhoan,MatKhau);
+				//if flagKiemTraDangKi = -1 :Username already exist else return MaKH
+				if(FlagKiemTraDangKi==-1)
+				{
+					//tryền lên thông báo tk đã tồn tại
+					ThongBao="TaiKhoanTonTai";
+				}
+				else
+				{
+					//truyền lên thông báo đk thành công
+					ThongBao="ThanhCong";
+				}
+				
+				
+			}
+			else
+			{
+				//truyền lên thông báo mật khẩu trùng
+				ThongBao="MatKhauTrung";
+			}
 			
 			//
-			int FlagKiemTraDangKi = control_User.DangKiTaiKhoan("hiep10", "123456");
+			
 			request.setAttribute("FlagKiemTraDangKi", FlagKiemTraDangKi);
 			
 			
@@ -101,6 +139,7 @@ public class Header extends HttpServlet {
 			session.setAttribute("MaKH", null);
 			session.removeAttribute("MaKH");
 			session.setAttribute("TenTK", null);
+			ThongBao="";
 			
 		}break;
 		
@@ -109,9 +148,13 @@ public class Header extends HttpServlet {
 		}
 		
 		
+		response.setContentType("text/plain");
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().write(ThongBao);
+		//dispatcher.forward(request, response);
 		
 		
-		dispatcher.forward(request, response);
+		
 		
 		//
 	

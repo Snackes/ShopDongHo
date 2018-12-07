@@ -18,6 +18,9 @@
     <link rel="stylesheet" href="/lib/vendor/fontawesome/css/all.css">
     <script src="lib/js/index.js"></script>
     <link rel="stylesheet" href="lib/css/modal.css">
+    <script src="lib/vendor/sweet/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="lib/vendor/sweet/sweetalert.css">
+    
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Krub" rel="stylesheet">
@@ -125,9 +128,9 @@
                                 <div class="modal" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
-                                           
+                                           <form role="form" action='Header' method="post">
                                             <div class="modal-body">
-                                            	<form role="form" action='Header' method="post">
+                                            	
                                             	<a style="float: right;margin-bottom:20px;" href="" data-dismiss="modal">X</a>
                                             	<br>
                                                 
@@ -136,65 +139,21 @@
                                                     <br>
                                                         <input type="password" class="form-control" placeholder="Mật Khẩu" id="MatKhau">
                                                         <br>
+                                                        <label id="ThongBaoDangNhap"></label>
+                                                        <br>
                                                         <label style="color:#000;">
                                                             <input type="checkbox" checked="checked" name="remember"> Nhớ Mật Khẩu
                                                         </label>
-                                                   </form>
+                                                  
                                             </div>
                                             <div class="modal-footer footermodal">
                                                 <a href="" style="float: left;"> Quên mật khẩu</a>
                                                 <button id="btnDNhap" type="submit" class="btn btn-default" data-dismiss="modal">Đăng Nhập</button>
                                                 <!-- Gửi flagAction về -->
-                                                <script>
-                                                $('#btnDNhap').click(function(e) {
-			                                    	alert("sâsasas");
-			                                    	
-			                                        e.preventDefault();
-			                                        $.ajax( {
-			                                            url: 'Header',
-			                                            type: 'GET',
-			                                            data:{
-			                                            	flagAction: 1,
-			                                            	TenTaiKhoan : $('#TenTaiKhoan').val(),
-			                                            	MatKhau : $('#MatKhau').val()
-			                                            },
-			                                           // 'TenTaiKhoan': _.find('[name="TenTaiKhoan"]').val(),
-			                           				 	//'MatKhau': _.find('[name="MatKhau"]').val(),
-			                                           
-			                                        }).done(function() {
-			                                        	
-			                                        	location.reload();
-			                                        });
-			                                        
-			                                    });
-                                                
-                                                
-                                                $('.btnDangXuat').click(function(e) {
-			                                    	alert("sâsasas");
-			                                    	
-			                                        e.preventDefault();
-			                                        $.ajax( {
-			                                            url: 'Header',
-			                                            type: 'GET',
-			                                            data:{
-			                                            	flagAction: 5
-			                                            	
-			                                            },
-			                                          
-			                                           
-			                                        }).done(function() {
-			                                        	
-			                                        	location.reload();
-			                                        });
-			                                        
-			                                        
-			                                        
-			                                        
-			                                        
-			                                    });
-                                                </script>
+                                            
                                                 <button type="button" class="btn btn-default" id="signin" >Đăng Kí</button>
                                             </div>
+                                             </form>
                                            
                                         </div>
                                     </div>
@@ -211,19 +170,21 @@
                                             </div>
                                             <div class="modal-body">
                                             	
-                                                <form>
-                                                    <input type="email" class="form-control" placeholder="Nhập Email">
+                                                <form role="form" action='Header' method="post">
+                                                    <input type="email" class="form-control" placeholder="Nhập Email" id="Email">
                                                     <br>
                                                 
                                                 
-                                                    <input type="text" class="form-control" placeholder="Tên Tài Khoản">
+                                                    <input type="text" class="form-control" placeholder="Tên Tài Khoản" id="TenTaiKhoanDK">
                                                     <br>
                                                 
-                                                	<input type="password" class="form-control" id="pwd" placeholder="Mật Khẩu" name="pwd">
+                                                	<input type="password" class="form-control"  placeholder="Mật Khẩu" name="pwd" id="MatKhauDK">
                                                 	<br>
-                                                	<input type="password" class="form-control" id="pwd" placeholder="Xác Nhận Mật Khẩu" name="pwd">
+                                                	<input type="password" class="form-control"  placeholder="Xác Nhận Mật Khẩu" name="pwd" id="MatKhauXacNhan">
                                                 	<br>
-                                                	<button type="button" class="btn btn-default btn-dk">Đăng Kí</button>
+                                                	<label id="ThongBaoDangKi"></label>
+                                                	<br>
+                                                	<button id="btnDangKi"  type="button" class="btn btn-default btn-dk"  >Đăng Kí</button>
                                                 </form>
 
                                             </div>
@@ -337,5 +298,146 @@
             </div>
         </nav>
     </div>
+    <script>
+    
+    $('#btnDNhap').click(function(e) {
+    	alert("sâsasas");
+    	
+        e.preventDefault();
+        e.stopPropagation();
+        $.ajax( {
+            url: 'Header',
+            type: 'GET',
+            dataType: 'text',
+            data:{
+            	flagAction: 1,
+            	TenTaiKhoan : $('#TenTaiKhoan').val(),
+            	MatKhau : $('#MatKhau').val()
+            },
+           // 'TenTaiKhoan': _.find('[name="TenTaiKhoan"]').val(),
+			 	//'MatKhau': _.find('[name="MatKhau"]').val(),
+           
+        }).done(function(data) {
+        	//swal("Good job!", "You clicked the button!", "success");
+        	// 	alert(data);
+        	
+        		CallBoxDangNhap(data);
+        		
+        	
+        });
+        
+    });
+    //
+    function CallBoxDangNhap(data) {
+    	
+    	if(data == "ThanhCong")
+    		
+    		{
+    		 swal({
+    		      title: "", 
+    		      text: "Đăng Nhập Thành Công", 
+    		      type: "success",
+    		      showCancelButton: false
+    		    }, function() {
+    		    	location.reload();
+    		    });
+    		
+    		}
+    	else
+    		{
+    		$('#ThongBaoDangNhap').text("Tài khoản Hoặc Mật Khẩu Không Đúng");
+    		
+    		
+    		// swal({
+    		      //title: "", 
+    		     // text: "Tài khoản Hoặc Mật Khẩu Không Đúng", 
+    		      //text: "If you click 'OK', you will be redirected to " , 
+    		     // type: "warning",
+    		     // showCancelButton: false
+    		  //  }, function() {
+    		      // Redirect the user
+    		    	//location.reload();
+    		  //  });
+    		}
+    	
+   
+  }
+    
+    
+    
+    
+    ///
+    
+    $('.btnDangXuat').click(function(e) {
+    	alert("sâsasas");
+    	
+        e.preventDefault();
+        $.ajax( {
+            url: 'Header',
+            type: 'GET',
+            data:{
+            	flagAction: 5
+            	
+            },
+          
+           
+        }).done(function(data) {
+        	
+        	location.reload();
+        });
+       
+    });
+    $('#btnDangKi').click(function(e) {
+    	alert("sâsasas");
+    	
+        e.preventDefault();
+        $.ajax( {
+            url: 'Header',
+            type: 'GET',
+            data:{
+            	flagAction: 2,
+            	Email : $('#Email').val(),
+            	TenTaiKhoanDK : $('#TenTaiKhoanDK').val(),
+            	MatKhauDK : $('#MatKhauDK').val(),
+            	MatKhauXacNhan : $('#MatKhauXacNhan').val()
+            	
+            },
+          
+           
+        }).done(function(data) {
+        	
+        	CallBoxDangKi(data);
+        });
+       
+    });
+    function CallBoxDangKi(data) {
+    	if(data == "ThanhCong")
+    		{
+    		$('#ThongBaoDangKi').text("Đăng Kí Thành Công");
+    		setTimeout(function () {
+    			$('#myModal2').modal('hide');
+    			$('#myModal1').modal('show');
+    			
+    		    
+    		  }, 1000);
+    		}
+    	else
+    		{
+    		if(data == "TaiKhoanTonTai")
+				{
+    			$('#ThongBaoDangKi').text("Tài Khoản Này Đã Tồn Tại");
+				}
+			else
+				{
+				//mmk trung
+				$('#ThongBaoDangKi').text("MK TRUNG");
+				}
+    		
+    		}
+    		
+    	
+    }
+    
+    </script>
 </body>
 </html>
