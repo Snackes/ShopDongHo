@@ -1,7 +1,6 @@
 package ContronllerCart;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import ModelBean.Cart;
-import ModelBean.SanPham;
 import ModelService.XuLiGioHang;
 
 /**
@@ -61,14 +59,17 @@ public class DeleteSPCart extends HttpServlet {
     		RequestDispatcher dispatcher= request.getRequestDispatcher("view/GioHang_empty.jsp");//Nếu xóa hết thì cho về trang giỏ hàng trống
     		dispatcher.forward(request, response);
     		return;
-        }
+        }	
+        request.getSession().setAttribute("SLIConGH", xl.TongSoLuong(request));
         RequestDispatcher dispatcher= request.getRequestDispatcher("view/GioHang.jsp");
 		dispatcher.forward(request, response);
 		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getSession().setAttribute("GioHang", null);
+        XuLiGioHang xl=new XuLiGioHang();
+		request.getSession().setAttribute("GioHang", null);		
+        request.getSession().setAttribute("SLIConGH", xl.TongSoLuong(request));
 		RequestDispatcher dispatcher= request.getRequestDispatcher("view/GioHang_empty.jsp");//Nếu xóa hết thì cho về trang giỏ hàng trống
 		dispatcher.forward(request, response);
 	}

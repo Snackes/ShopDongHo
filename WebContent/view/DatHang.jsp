@@ -4,6 +4,16 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Shop online</title>
+    <link rel="stylesheet" href="../lib/vendor/bootstrap/css/bootstrap.min.css">
+    <script src="../lib/vendor/jquery/jquery.min.js"></script>
+    <script src="../lib/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../lib/css/index.css">
+    <link rel="stylesheet" href="../lib/vendor/fontawesome/css/all.css">
     <link rel="stylesheet" href="../lib/css/DatHang.css">
 </head>
 <body>
@@ -93,37 +103,7 @@
                     </div>
             </form>
         </div>
-        
 
-	<!-- 
-	   	<script type="text/javascript">
-		$(document).ready(function() {
-			$('#aaa' ).click(function(e) {
-				alert("Hướng dẫn học lập trình web từ cơ bản đến nâng cao");
-				e.preventDefault();//ngan chan lai chua cho gui du lieu
-				$.ajax({
-					 url: 'ThanhToan',
-					 type: 'POST',
-					 method: 'POST',
-					 data: {
-						 'fun': 'themsp',
-						 'MaLoai': _.find('[name="MaLoai"]').val(),
-						 'MaSanPham': _.find('[name="MaSanPham"]').val(),
-						 'TenSanPham': _.find('[name="TenSanPham"]').val(),
-					 },
-					 success: function(result){
-						 if(result == 'true'){
-							 location.href = 'cart.jsp';
-						 }
-					 }
-					 
-				});
-				
-			});
-			
-	    });
-	</script>
-	-->
     <!---END CONTENT--->
 	<%@ include file="/Layout/Footer.jsp"%>
 

@@ -6,6 +6,7 @@ encoding//Controller/ContronllerCart/ShowCart.java=UTF-8
 encoding//Controller/ContronllerCart/ThanhToan.java=UTF-8
 encoding//Controller/ContronllerCart/UpdateCart.java=UTF-8
 encoding//Model/ModelDao/DBConnection.java=UTF-8
+encoding//Model/ModelService/XuLiDonHangBanCuaKH.java=UTF-8
 encoding//Model/ModelService/XuLiGioHang.java=UTF-8
 encoding//Model/ModelService/XuLiSanPham.java=UTF-8
 encoding//WebContent/lib/css/DatHang.css=UTF-8

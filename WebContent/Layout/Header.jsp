@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="lib/css/modal.css">
     <script src="lib/vendor/sweet/sweetalert.min.js"></script>
     <link rel="stylesheet" href="lib/vendor/sweet/sweetalert.css">
-    
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Krub" rel="stylesheet">
@@ -60,69 +59,78 @@
                                     </div>
                                 </div>
                             </div>
+                            
                             <div class="col-sm-1 col-md-1 col-lg-1">
                                 <ul class=" nav navbar-nav ">
-                                    <a  id="shopping-cart" href="ShowCart"><i  class="fas fa-shopping-cart" ></i></a>
+                                    <a style="text-decoration:none;" id="shopping-cart" href="ShowCart">
+                                    <%
+	                                   String SoLuong="";
+	                                   if(request.getSession().getAttribute("SLIConGH")!=null)
+	                                   		SoLuong=(request.getSession().getAttribute("SLIConGH")).toString();
+	                                %>
+                                    <i style=" display: inline;" class="fas fa-shopping-cart"><span class="newbadge" style="z-index: 100;"><%=SoLuong %></span></i>
+
+	                                    
+                                    </a>
                                 </ul>
                             </div>
+                            <style>
+                            .newbadge {
+                            		
+								    background-color: rgb(236, 173, 37);
+								    border-radius: 10px;
+								    color: white;
+								    display: inline-block;
+								    font-size: 12px;
+								    line-height: 1;
+								    padding: 3px 7px;
+								    text-align: center;
+								    vertical-align:  text-top;
+								    white-space: nowrap;
+								  }
+                            </style>
                             <div class="col-sm-5 col-md-5 col-lg-5">
                                 <ul class="nav navbar-nav navbar-right">
                                     <!--<li><a class="btnDangNhap" href="#" data-toggle="modal" data-target="#myModal1"style="width: auto; color: #fff;" ><span class="glyphicon glyphicon-log-in"></span> Đăng Nhập</a></li>-->
                                     <div class="dropdown">
-                                    <button style="margin-top:5px;margin-right:5px;background-color:#282629;border:1px solid #ffffff;color:#fff" class="btn  dropdown-toggle" type="button" data-toggle="dropdown">
-                                    
-                                    <%
-                                    if(session.getAttribute("MaKH")!=null)
-                                    {
-                                    	out.println(session.getAttribute("TenTK"));
-                                    }
-                                    %>
-                                    
-                                    <i class="fas fa-user"></i>
-                                    <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                    <%
-                                    if(session.getAttribute("MaKH")==null)
-                                    {%>
-                                    	<li><a class="btnDangNhap" href="#" data-toggle="modal" data-target="#myModal1"style="width: auto; color: #000;" ><span class="glyphicon glyphicon-log-in"></span> Đăng Nhập</a></li>
-                                    <%}
-                                    else
-                                    {
-                                    	if(session.getAttribute("Admin")!=null)
-                                    	{%>
-                                    		<li><a>Quản lí Website</a></li>
-                                    		<li><a class="btnDangXuat">Đăng Xuất</a></li>
-                                    	<% }
-                                    	else
-                                    	{%>
-                                    		<li><a>Thông Tin Tài Khoản</a></li>
-                                    		<li><a class="btnDangXuat">Đăng Xuất</a></li>
-                                    		
-                                    	<% }
-                                    }
-                                    %>
-                                    
-                                    </ul>
-                                    
-                                    
-                                    
+	                                    <button style="margin-top:5px;margin-right:5px;background-color:#282629;border:1px solid #ffffff;color:#fff" class="btn  dropdown-toggle" type="button" data-toggle="dropdown">
+	                                    
+	                                    <%
+	                                    if(session.getAttribute("MaKH")!=null)
+	                                    {
+	                                    	out.println(session.getAttribute("TenTK"));
+	                                    }
+	                                    %>
+	                                    
+	                                    <i class="fas fa-user"></i>
+	                                    <span class="caret"></span>
+	                                    </button>
+	                                    <ul class="dropdown-menu">
+	                                    <%
+	                                    if(session.getAttribute("MaKH")==null)
+	                                    {%>
+	                                    	<li><a class="btnDangNhap" href="#" data-toggle="modal" data-target="#myModal1"style="width: auto; color: #000;" ><span class="glyphicon glyphicon-log-in"></span> Đăng Nhập</a></li>
+	                                    <%}
+	                                    else
+	                                    {
+	                                    	if(session.getAttribute("Admin")!=null)
+	                                    	{%>
+	                                    		<li><a>Quản lí Website</a></li>
+	                                    		<li><a class="btnDangXuat">Đăng Xuất</a></li>
+	                                    	<% }
+	                                    	else
+	                                    	{%>
+	                                    		<li><a>Thông Tin Tài Khoản</a></li>
+	                                    		<li><a class="btnDangXuat">Đăng Xuất</a></li>
+	                                    		
+	                                    	<% }
+	                                    }
+	                                    %>
+	                                    
+	                                    </ul>
                                     </div>
                                 </ul>
                            </div>
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
                                 
                                 <!---Form Đăng Nhập-->
                                 <div class="modal" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

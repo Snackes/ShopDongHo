@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,15 +38,13 @@ public class AddCart extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		//lấy ra số lượng trong trang chi tiết sản phẩm
-		//int sl =Integer.parseInt(request.getParameter("SoLuong"));
-		int sl=0;
-		HttpSession session = request.getSession();
-        if(sl==0)
-        {
-            sl = 1;
-        }
 		int MaSP=Integer.parseInt(request.getParameter("MaSP"));
-
+		int sl =0;
+		if(request.getParameter("SoLuong")==null)
+			 sl = 1;
+		else
+			sl =Integer.parseInt(request.getParameter("SoLuong"));
+		HttpSession session = request.getSession();
         XuLiGioHang xl=new XuLiGioHang();
         //lấy ra  giỏ hàng
         List<Cart> listGH = xl.LayGioHang(request);
@@ -64,14 +63,16 @@ public class AddCart extends HttpServlet {
         	Sp = new Cart(MaSP);
         	Sp.setSoLuong(sl);
             listGH.add(Sp);//thêm sản phẩm đó vào giỏ
-            request.getSession().setAttribute("GioHang", listGH);
+            session.setAttribute("GioHang", listGH);
 			session.setAttribute("SLIConGH", xl.TongSoLuong(request));
             //return Redirect(strURL);  load lại trang
         }
         else//nếu có rồi thì cập nhật số lượng
         {
         	Sp.setSoLuong(Sp.getSoLuong()+sl);//SoLuong sẽ bằng 1 khi nó ở trang sản phẩm.
-            request.getSession().setAttribute("GioHang", listGH);			
+        	
+            request.getSession().setAttribute("GioHang", listGH);		
+            session.setAttribute("SLIConGH", xl.TongSoLuong(request));
             //return Redirect(strURL); 
         }		
 	}

@@ -17,7 +17,7 @@
 
     <div class="container dsgiohang">
             <div class="row">
-            	<div class="col-md-5"></div>
+            	<div class="col-md-4"></div>
             	
             	<div class="col-md-7">
                     <p>Giỏ hàng của bạn trống...!</p>

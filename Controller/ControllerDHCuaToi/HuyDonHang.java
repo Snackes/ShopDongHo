@@ -1,6 +1,7 @@
-package ControllerIndex;
+package ControllerDHCuaToi;
 
 import java.io.IOException;
+import java.sql.ResultSet;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,21 +10,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ModelBean.SanPham;
-import ModelService.XuLiGioHang;
-import ModelService.XuLiSanPham;
+import ModelService.XuLiDonHangBanCuaKH;
 
 /**
- * Servlet implementation class ShowSanPhamMoi
+ * Servlet implementation class HuyDonHang
  */
-@WebServlet("/ShowSanPhamMoi")
-public class TrangChu extends HttpServlet {
+@WebServlet("/HuyDonHang")
+public class HuyDonHang extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public TrangChu() {
+    public HuyDonHang() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,28 +31,19 @@ public class TrangChu extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		XuLiSanPham control_SP=new XuLiSanPham();
-		
-		SanPham[] danhsachmoi= control_SP.Func_Lay_BonSanPhamNgauNhien();
-		SanPham[] danhsachnoibat= control_SP.Func_Lay_BonSanPhamNgauNhien();
-		
-		XuLiGioHang xl=new XuLiGioHang();
-		int dm=xl.TongSoLuong(request);
-		request.getSession().setAttribute("SLIConGH", dm);
-		request.setAttribute("LayThongTinSanPhamMoi", danhsachmoi);
-		request.setAttribute("LayThongTinSanPhamNoiBat", danhsachnoibat);
-		RequestDispatcher dispatcher= request.getRequestDispatcher("view/Index.jsp");
-		dispatcher.forward(request, response);
-		
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		int MaHD=Integer.parseInt(request.getParameter("MaHDBan"));
+		XuLiDonHangBanCuaKH xldh=new XuLiDonHangBanCuaKH();
+		xldh.LayThongTinChiTietHDBan(MaHD);
+		RequestDispatcher dispatcher= request.getRequestDispatcher("view/ChiTietDonHang.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }

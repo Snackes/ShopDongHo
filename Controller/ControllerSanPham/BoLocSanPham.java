@@ -1,8 +1,9 @@
-package ControllerIndex;
+package ControllerSanPham;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,20 +11,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ModelBean.SanPham;
-import ModelService.XuLiGioHang;
 import ModelService.XuLiSanPham;
 
 /**
- * Servlet implementation class ShowSanPhamMoi
+ * Servlet implementation class BoLocSanPham
  */
-@WebServlet("/ShowSanPhamMoi")
-public class TrangChu extends HttpServlet {
+@WebServlet("/BoLocSanPham")
+public class BoLocSanPham extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public TrangChu() {
+    public BoLocSanPham() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,20 +32,16 @@ public class TrangChu extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		XuLiSanPham control_SP=new XuLiSanPham();
-		
-		SanPham[] danhsachmoi= control_SP.Func_Lay_BonSanPhamNgauNhien();
-		SanPham[] danhsachnoibat= control_SP.Func_Lay_BonSanPhamNgauNhien();
-		
-		XuLiGioHang xl=new XuLiGioHang();
-		int dm=xl.TongSoLuong(request);
-		request.getSession().setAttribute("SLIConGH", dm);
-		request.setAttribute("LayThongTinSanPhamMoi", danhsachmoi);
-		request.setAttribute("LayThongTinSanPhamNoiBat", danhsachnoibat);
-		RequestDispatcher dispatcher= request.getRequestDispatcher("view/Index.jsp");
-		dispatcher.forward(request, response);
-		
+
+		String KieuMay=request.getParameter("KieuMay").toString();
+		String LoaiDay;
+		if((request.getParameter("LoaiDay"))==null) {
+			LoaiDay=null;
+		}
+		else
+			LoaiDay =(String) request.getParameter("LoaiDay").toString();
+		XuLiSanPham xl= new XuLiSanPham();
+		SanPham[] listsp= xl.BoLocSanPham(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, KieuMay, null);
 	}
 
 	/**

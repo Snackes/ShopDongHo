@@ -84,7 +84,7 @@
                             <div class="product-count">
                                 <span style="font-size: 20px;">Số Lượng: </span>
                                 <div class="input-group numeric-updown">
-                                    <input type="text" class="form-control" value="1" name="SoLuongSP">
+                                    <input id="SoluongThem" type="text" class="form-control" value="1" name="SoLuongSP">
                                     <div class="input-group-btn-vertical">
                                         <button class="btn btn-default btn-up" type="button">
                                             <i class=" fa fa-caret-up"></i>
@@ -113,6 +113,24 @@
                         </div>
             </div>
         </div>
+        <script>
+		$('.btn-themGioHang').click(function(e) {
+			alert("Thay đổi số lượng nè");	
+		    e.preventDefault();
+		    $.ajax({
+		        url: 'AddCart',
+		        type: 'Get',
+		        data:{
+	            	MaSP :<%=sp.getMaSP()%>,
+	            	SoLuong : $('#SoluongThem').val()
+		        },
+		       
+		    })
+		    .done(function() {		    	
+		    	 location.reload();
+		    });
+		});    
+	</script>
                 <!---Thông số kĩ thuật-->
                 <div class="row" >
                     <div class="thongSoKiThuat">

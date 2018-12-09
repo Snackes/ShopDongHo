@@ -57,6 +57,8 @@ public class UpdateCart extends HttpServlet {
         	}
         }
         Sp.setSoLuong(SoLuong);//SoLuong sẽ bằng 1 khi nó ở trang sản phẩm
+        request.getSession().setAttribute("GioHang", listGH);		
+        request.getSession().setAttribute("SLIConGH", xl.TongSoLuong(request));
 		
 	}
 

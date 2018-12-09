@@ -1,6 +1,8 @@
-package ControllerIndex;
+package ControllerDHCuaToi;
 
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,21 +11,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ModelBean.SanPham;
-import ModelService.XuLiGioHang;
-import ModelService.XuLiSanPham;
+import ModelBean.ChiTietHDBan;
+import ModelService.XuLiDonHangBanCuaKH;
 
 /**
- * Servlet implementation class ShowSanPhamMoi
+ * Servlet implementation class ChiTietDonHang
  */
-@WebServlet("/ShowSanPhamMoi")
-public class TrangChu extends HttpServlet {
+@WebServlet("/ChiTietDonHang")
+public class ChiTietDonHang extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public TrangChu() {
+    public ChiTietDonHang() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,20 +33,17 @@ public class TrangChu extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int MaHD=Integer.parseInt(request.getParameter("MaHDBan"));
+		XuLiDonHangBanCuaKH xldh=new XuLiDonHangBanCuaKH();
 		
-		XuLiSanPham control_SP=new XuLiSanPham();
+		ResultSet cthdBan=xldh.LayThongTinChiTietHDBan(MaHD);
+		ResultSet DSSPDonHangBan=xldh.LayThongTinSanPham(MaHD);
+		request.setAttribute("ChiTietHoaDonBan", cthdBan);
 		
-		SanPham[] danhsachmoi= control_SP.Func_Lay_BonSanPhamNgauNhien();
-		SanPham[] danhsachnoibat= control_SP.Func_Lay_BonSanPhamNgauNhien();
-		
-		XuLiGioHang xl=new XuLiGioHang();
-		int dm=xl.TongSoLuong(request);
-		request.getSession().setAttribute("SLIConGH", dm);
-		request.setAttribute("LayThongTinSanPhamMoi", danhsachmoi);
-		request.setAttribute("LayThongTinSanPhamNoiBat", danhsachnoibat);
-		RequestDispatcher dispatcher= request.getRequestDispatcher("view/Index.jsp");
+		request.setAttribute("DanhSachSanPham", DSSPDonHangBan);
+		RequestDispatcher dispatcher= request.getRequestDispatcher("view/ChiTietDonHang.jsp");
 		dispatcher.forward(request, response);
-		
+				
 	}
 
 	/**

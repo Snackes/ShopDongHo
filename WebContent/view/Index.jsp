@@ -10,11 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Trang chủ</title>
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-    
+    <title>Trang chủ</title>    
     <link rel="stylesheet" href="lib/css/index.css">
-    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">-->
     <link rel="stylesheet" href="lib/vendor/fontawesome/css/all.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     
@@ -90,9 +87,9 @@
 													out.println("<div class=\"profilebox profilebox1\" style=\"background: url(lib/images/"+HinhAnh1+")\" >");
 													
 								        				out.println("<div class=\"SocialIcons\">");
-								        				
-								        				
-								                      		out.println("<a href=\"AddCart?MaSP="+maSP+"\">");
+								        				//href=\"AddCart?MaSP="+maSP+"\"
+								        			
+								                      		out.println("<a data-MaSP="+maSP+" class=\"btnAddCart\">");
 								                                out.println("<i class=\"fas fa-cart-plus\">");
 								                                out.println("</i>");
 								                            out.println("</a>");
@@ -122,33 +119,8 @@
 							}
 			%>
 			
-				<script>
-				$( ".formsp" ).on( "submit",function(e) {
-					e.preventDefault();//ngan chan lai chua cho gui du lieu
-					  let _ = $(this);
-					  $.ajax({
-						 url: 'Cart',
-						 type: 'POST',
-						 method: 'POST',
-						 data: {
-							 'fun': 'themsp',
-							 //'MaSanPham': _.find('[name="MaSanPham"]').val(),
-							 //'TenSanPham': _.find('[name="TenSanPham"]').val(),
-							// 'DonGia': _.find('[name="DonGia"]').val(),
-							// 'Hinh': _.find('[name="Hinh"]').val(),
-							// 'Sale': _.find('[name="Sale"]').val(),
-							// 'MoTaSanPham': _.find('[name="MoTaSanPham"]').val(),
-							// 'SoLuong': _.find('[name="SoLuong"]').val()
-						 },
-						 success: function(result){
-							 if(result == 'true'){
-								 location.href = 'cart.jsp';
-							 }
-						 }
-					  });
-					});
-				</script>
-            
+
+
 
         </div>
         <div class="btn-more">
@@ -163,14 +135,7 @@
             
             <%
 				Object result2 = request.getAttribute("LayThongTinSanPhamMoi");
-							if (result2 != null){
-								//ResultSet sp = (ResultSet)result;
-								//for (int i = 0; i<sp.length; i++){
-									//try{while(sp.next()){
-										//int maSP = sp.getInt("MaSP") ;
-										//String ten = sp.getString("TenSP");
-										//double giaBan =sp.getDouble("GiaBan");
-										
+							if (result2 != null){										
 										SanPham[] sp = (SanPham[])result2;
 										for(int i=0;i<sp.length;i++)
 										{
@@ -186,7 +151,7 @@
 													out.println("<div class=\"profilebox profilebox1\" style=\"background: url(lib/images/"+HinhAnh1+")\" >");
 													
 								        				out.println("<div class=\"SocialIcons\">");
-								        					out.println("<a href=\"AddCart?MaSP="+maSP+"\">");
+								        					out.println("<a data-MaSP="+maSP+" class=\"btnAddCart\">");
 								                                out.println("<i class=\"fas fa-cart-plus\">");
 								                                out.println("</i>");
 								                            out.println("</a>");
@@ -293,6 +258,23 @@
     </div>
     <!--lisst-slider cho thang hoang-->
 	<%@ include file="/Layout/Footer.jsp"%>  
+	      <script>
+		$('.btnAddCart').click(function(e) {
+		    e.preventDefault();
+		    $.ajax({
+		        url: 'AddCart',
+		        type: 'get',
+		        data:{
+		        	MaSP : $(this).attr("data-MaSP")
+		        },
+		        
+		       
+		    })
+		    .done(function() {		    	
+		    	location.reload();
+		    });
+		});    
+	</script>
 </body>
 
 </html>
