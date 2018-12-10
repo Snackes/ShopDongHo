@@ -16,7 +16,7 @@ import ModelService.XuLiSanPham;
 /**
  * Servlet implementation class ShowSanPhamMoi
  */
-@WebServlet("/ShowSanPhamMoi")
+@WebServlet("/TrangChu")
 public class TrangChu extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

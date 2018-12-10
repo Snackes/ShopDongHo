@@ -120,7 +120,7 @@
 	                                    	<% }
 	                                    	else
 	                                    	{%>
-	                                    		<li><a>Thông Tin Tài Khoản</a></li>
+	                                    		<li><a href="ThongTinNguoiDung">Thông Tin Tài Khoản</a></li>
 	                                    		<li><a class="btnDangXuat">Đăng Xuất</a></li>
 	                                    		
 	                                    	<% }

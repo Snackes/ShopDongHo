@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import ModelBean.MD5Library;
 import ModelService.TuongTacUser;
+
 
 /**
  * Servlet implementation class Header
@@ -60,8 +62,9 @@ public class Header extends HttpServlet {
 			
 			String MatKhau= request.getParameter("MatKhau").trim();
 			//
+			String MatKhauMaHoa = MD5Library.md5(MatKhau);
 			
-			int FlagKiemTraDangNhap= control_User.KiemTraDangNhap(TenTaikhoan, MatKhau);
+			int FlagKiemTraDangNhap= control_User.KiemTraDangNhap(TenTaikhoan, MatKhauMaHoa);
 			
 			if(FlagKiemTraDangNhap!=-1)
 			{
@@ -92,13 +95,14 @@ public class Header extends HttpServlet {
 			String Email = request.getParameter("Email");
 			String TenTaiKhoan = request.getParameter("TenTaiKhoanDK").trim();
 			String MatKhau = request.getParameter("MatKhauDK").trim();
+			String MatKhauMaHoa= MD5Library.md5(MatKhau);
 			String MatKhauXacNhan = request.getParameter("MatKhauXacNhan").trim();
 			int FlagKiemTraDangKi=-1;
 			
 			if(MatKhau.equalsIgnoreCase(MatKhauXacNhan)) 
 			{
 				// 
-				FlagKiemTraDangKi = control_User.DangKiTaiKhoan(Email,TenTaiKhoan,MatKhau);
+				FlagKiemTraDangKi = control_User.DangKiTaiKhoan(Email,TenTaiKhoan,MatKhauMaHoa);
 				//if flagKiemTraDangKi = -1 :Username already exist else return MaKH
 				if(FlagKiemTraDangKi==-1)
 				{
