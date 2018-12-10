@@ -12,6 +12,8 @@
 
 <body>
  <%@ include file="/Layout/Header.jsp"%>
+ 
+  
  <!---CONTENT HERE-->
  <%
  	Object result = request.getAttribute("ThongTinKhachHang");
@@ -43,7 +45,7 @@
                                     <div class="row form-group required has-feedback">
                                         <label class="control-label col-sm-3" for="fullname">Họ tên</label>
                                         <div class="col-sm-9">
-                                            <input id="HoTen-TT" type="text" name="fullname" placeholder="Họ tên của bạn" class="form-control" required 
+                                            <input id="HoTen-TT" type="text" name="fullname" placeholder="Họ tên của bạn" class="form-control" 
                                            <%
                                            if(kh.getHoTen()!=null)
                                            {%>
@@ -59,7 +61,7 @@
                                     <div class="row form-group required has-feedback">
                                         <label class="control-label col-sm-3" for="email">Email</label>
                                         <div class="col-sm-9">
-                                            <input id="Email-TT" type="email" name="email" placeholder="Email" class="form-control" maxlength="256" required
+                                            <input id="Email-TT" type="email" name="email" placeholder="Email" class="form-control" 
                                            <%
                                            if(kh.getEmail()!=null)
                                            {%>
@@ -76,7 +78,7 @@
                                     <div class="row form-group required has-feedback">
                                         <label class="control-label col-sm-3" for="mobile">Điện thoại</label>
                                         <div class="col-sm-9">
-                                            <input id="SDT-TT" name="mobile" placeholder="Điện thoại" class="form-control" maxlength="256"  required
+                                            <input id="SDT-TT" name="mobile" placeholder="Điện thoại" class="form-control" 
                                              <%
                                            if(kh.getSDT()!=0)
                                            {%>
@@ -91,7 +93,7 @@
                                     <div class="row form-group has-feedback">
                                         <label class="control-label col-sm-3" for="address">Địa chỉ</label>
                                         <div class="col-sm-9">
-                                            <input id="DiaChi-TT" type="text" name="address" placeholder="Địa chỉ" class="form-control" maxlength="256" required
+                                            <input id="DiaChi-TT" type="text" name="address" placeholder="Địa chỉ" class="form-control"
                                              <%
                                            if(kh.getDiaChi()!=null)
                                            {%>
@@ -138,7 +140,7 @@
                                         <label class="control-label col-sm-3" for="passCu">Mật khẩu cũ</label>
                                         <div class="col-sm-9">
                                             <input id="MatKhauCu" type="password" name="MatKhauCu" placeholder="Mật khẩu cũ" class="form-control"
-                                                maxlength="256" data-bv-field="passCu" >
+                                                 >
                                             
                                         </div>
                                     </div>
@@ -150,7 +152,7 @@
                                     <div class="row form-group has-feedback">
                                         <label class="control-label col-sm-3" for="NewPass">Mật khẩu mới</label>
                                         <div class="col-sm-9">
-                                            <input id="MatKhauMoi" type="password" name="MatKhauMoi" placeholder="Mật khẩu mới" class="form-control" maxlength="256">
+                                            <input id="MatKhauMoi" type="password" name="MatKhauMoi" placeholder="Mật khẩu mới" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -162,7 +164,7 @@
                                     <div class="row form-group has-feedback">
                                         <label class="control-label col-sm-3" for="Pass_Again">Nhập lại</label>
                                         <div class="col-sm-9">
-                                            <input id="password_again" type="password" name="password_again" placeholder="Nhập lại mật khẩu mới" class="form-control" maxlength="256">
+                                            <input id="password_again" type="password" name="password_again" placeholder="Nhập lại mật khẩu mới" class="form-control" >
                                         </div>
                                     </div>
                                 </div>
@@ -181,18 +183,11 @@
                     </div>
                 </div>
             </form>
-            <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
-            
+           
             
             
             <script>
-                // just for the demos, avoids form submit
-                jQuery.validator.setDefaults({
-                    debug: true,
-                    success: "valid"
-                });
+                
                 
                
                     $(".checkboxHienAn").click(function () {
@@ -202,77 +197,111 @@
            
                 $("#MyForm").validate({
                     rules: {
-                    	MatKhauCu:"required",
-                        MatKhauMoi: "required",
+                    	MatKhauCu:{
+                    		required: true,
+                    		maxlength: 16
+                    	},
+                        MatKhauMoi: {
+                        	required: true,
+                    		maxlength: 16
+                        },
                         password_again: {
-                            equalTo: "#MatKhauMoi"
+                            equalTo: "#MatKhauMoi",
+                            maxlength: 16
                         }
                     },
                     messages:{
-                    	MatKhauCu: "Không được bỏ trống",
-                    	MatKhauMoi:"Không được bỏ trống",
+                    	MatKhauCu: {
+                    		required: "Không được bỏ trống",
+                    		maxlength: "Mật khẩu có độ dài tối đa 16 kí tự"
+                    	},
+                    	MatKhauMoi: {
+                    		required: "Không được bỏ trống",
+                    		maxlength: "Mật khẩu có độ dài tối đa 16 kí tự"
+                    	},
                     	password_again:{
-                    		equalTo:"Mật khẩu không trùng nhau"
+                    		equalTo:"Mật khẩu không trùng nhau",
+                    		maxlength: "Mật khẩu có độ dài tối đa 16 kí tự"
                     	}
                     }
                 });
                     
                     
                     //ajaxx
-                     $('#btnCapNhat').click(function(e) {
-					    	alert("sâsasas");
-					    	
-					    	e.preventDefault();
-					    	e.stopPropagation();
-					    	if($('#squaredcheck2').prop('checked')==false)
-					    		{
-					    		 $.ajax( {
-							            url: 'ThongTinNguoiDung',
-							            type: 'POST',
-							            data:{
-							            	flagActionThongTinNguoiDung: 1,
-							            	HoTen: $('#HoTen-TT').val(),
-							            	DiaChi:$('#DiaChi-TT').val(),
-							            	SDT:$('#SDT-TT').val(),
-							            	EmailThongTin:$('#Email-TT').val()
-							            	
-							            },
-							          
-							           
-							        }).done(function(data) {
-							        	
-							        	CallBoxThongBao(data);
-							        });
-					    		}
-					    	else
-					    		{
-					    		 $.ajax( {
-							            url: 'ThongTinNguoiDung',
-							            type: 'POST',
-							            data:{
-							            	flagActionThongTinNguoiDung: 2,
-							            	HoTen: $('#HoTen-TT').val(),
-							            	DiaChi:$('#DiaChi-TT').val(),
-							            	SDT:$('#SDT-TT').val(),
-							            	EmailThongTin:$('#Email-TT').val(),
-							            	MatKhauCu:$('#MatKhauCu').val(),
-							            	MatKhauMoi:$('#MatKhauMoi').val()
-							            	
-							            },
-							          
-							           
-							        }).done(function(data) {
-							        	
-							        	CallBoxThongBao(data);
-							        });
-					    		}
-					    	
-					    	
-					    	
-					        
-					       
-					       
-					    });
+                    
+                    	 $('#btnCapNhat').click(function(e) {
+                    		 e.preventDefault();
+                        	 
+ 					    	
+                    		 
+                    			 if($('#squaredcheck2').prop('checked')==false)
+						    		{
+						    		 $.ajax( {
+								            url: 'ThongTinNguoiDung',
+								            type: 'POST',
+								            data:{
+								            	flagActionThongTinNguoiDung: 1,
+								            	HoTen: $('#HoTen-TT').val(),
+								            	DiaChi:$('#DiaChi-TT').val(),
+								            	SDT:$('#SDT-TT').val(),
+								            	EmailThongTin:$('#Email-TT').val()
+								            	
+								            },
+								          
+								           
+								        }).done(function(data) {
+								        	
+								        	CallBoxThongBao(data);
+								        });
+						    		}
+						    	else
+						    		{
+						    		if($("#MyForm").valid())
+	                    			 {
+						    			 $.ajax( {
+									            url: 'ThongTinNguoiDung',
+									            type: 'POST',
+									            data:{
+									            	flagActionThongTinNguoiDung: 2,
+									            	HoTen: $('#HoTen-TT').val(),
+									            	DiaChi:$('#DiaChi-TT').val(),
+									            	SDT:$('#SDT-TT').val(),
+									            	EmailThongTin:$('#Email-TT').val(),
+									            	MatKhauCu:$('#MatKhauCu').val(),
+									            	MatKhauMoi:$('#MatKhauMoi').val()
+									            	
+									            },
+									          
+									           
+									        }).done(function(data) {
+									        	
+									        	CallBoxThongBao(data);
+									        });
+	                    			 }
+						    		
+						    		}
+				    		
+                    			 
+                    		 
+                        	 
+                        	
+    					    	
+    					    	
+    					    	
+    					    	
+    					    	 
+    					    	
+    							    		
+    					    	
+    					    	
+    					    	
+    					    	
+    					        
+    					       
+    					       
+    					    });
+                    	 
+                     
                     function CallBoxThongBao(data)
                     {
                     	if(data == "ThanhCong")

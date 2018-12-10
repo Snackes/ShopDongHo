@@ -79,7 +79,16 @@ public class ThongTinNguoiDung extends HttpServlet {
 			//nếu ko có cập nhật mk
 			String HoTen = request.getParameter("HoTen");
 			String DiaChi =request.getParameter("DiaChi");
-			int SDT =Integer.parseInt(request.getParameter("SDT"));
+			Integer SDT;
+			if(request.getParameter("SDT")=="")
+			{
+				SDT=null;
+			}
+			else
+			{
+				SDT =Integer.parseInt(request.getParameter("SDT").toString());
+			}
+			 
 			String Email = request.getParameter("EmailThongTin");
 			int flagupdatethongtin =-1;
 			flagupdatethongtin = control_User.UpdateThongTinTaiKhoan(MaKH, HoTen, SDT, Email, DiaChi);
@@ -98,7 +107,16 @@ public class ThongTinNguoiDung extends HttpServlet {
 		{
 			String HoTen = request.getParameter("HoTen");
 			String DiaChi =request.getParameter("DiaChi");
-			int SDT =Integer.parseInt(request.getParameter("SDT"));
+			Integer SDT;
+			if(request.getParameter("SDT")=="")
+			{
+				SDT=null;
+			}
+			else
+			{
+				SDT =Integer.parseInt(request.getParameter("SDT").toString());
+			}
+			 
 			String Email = request.getParameter("EmailThongTin");
 			
 			String MatKhauCu = request.getParameter("MatKhauCu");

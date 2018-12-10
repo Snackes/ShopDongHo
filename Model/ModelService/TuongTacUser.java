@@ -94,7 +94,7 @@ public class TuongTacUser {
 		return khachang;
 		
 	}
-	public int UpdateThongTinTaiKhoan(int MaKH, String HoTen, int SDT,String Email,String DiaChi)
+	public int UpdateThongTinTaiKhoan(int MaKH, String HoTen, Integer SDT,String Email,String DiaChi)
 	{
 		int flag=-1;
 		connection.connect();
