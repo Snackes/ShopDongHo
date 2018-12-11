@@ -1,8 +1,7 @@
-package ControllerAdmin_QLSP;
+package ControllerAdmin_Report;
 
 import java.io.IOException;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,21 +10,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ModelBean.SanPham;
-import ModelBean.ThuongHieu;
-import ModelService.Admin_QLSP_XulyTT;
+import ModelService.Admin_Report_XulyTT;
+
+
 
 /**
- * Servlet implementation class Admin_QLSP_Controll
+ * Servlet implementation class Admin_Report_Controll
  */
-@WebServlet("/Admin_QLSP_Controll")
-public class Admin_QLSP_Controll extends HttpServlet {
+@WebServlet("/Admin_Report_Controll")
+public class Admin_Report_Controll extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Admin_QLSP_Controll() {
+    public Admin_Report_Controll() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,17 +34,8 @@ public class Admin_QLSP_Controll extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		RequestDispatcher dispatcher= request.getRequestDispatcher("admin/Admin_QLSP.jsp");
-		Admin_QLSP_XulyTT control_SP = new Admin_QLSP_XulyTT();
-		
-		ResultSet DSSP = control_SP.Funct_Admin_BangTTSanPham();		
-		request.setAttribute("Funct_Admin_BangTTSanPham", DSSP);
-		
-		SanPham[] outstock= control_SP.Funct_Admin_DSSP_OutofStock();
-		request.setAttribute("Funct_Admin_DSSP_OutofStock", outstock);
-		
-		ThuongHieu[] dsth = control_SP.Funct_Admin_DSThHieu();
-		request.setAttribute("Funct_Admin_DSThHieu", dsth);
+		RequestDispatcher dispatcher= request.getRequestDispatcher("admin/Admin_Report.jsp");
+		Admin_Report_XulyTT control_SP = new Admin_Report_XulyTT();
 		
 		dispatcher.forward(request, response);
 	}

@@ -1,8 +1,7 @@
-package ControllerAdmin_QLSP;
+package ControllerAdmin_QLDH;
 
 import java.io.IOException;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,21 +10,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ModelBean.SanPham;
-import ModelBean.ThuongHieu;
-import ModelService.Admin_QLSP_XulyTT;
+import ModelService.Admin_QLDH_XulyTT;
 
 /**
- * Servlet implementation class Admin_QLSP_Controll
+ * Servlet implementation class Admin_QLDH_Control
  */
-@WebServlet("/Admin_QLSP_Controll")
-public class Admin_QLSP_Controll extends HttpServlet {
+@WebServlet("/Admin_QLDH_Control")
+public class Admin_QLDH_Control extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Admin_QLSP_Controll() {
+    public Admin_QLDH_Control() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,17 +32,17 @@ public class Admin_QLSP_Controll extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		RequestDispatcher dispatcher= request.getRequestDispatcher("admin/Admin_QLSP.jsp");
-		Admin_QLSP_XulyTT control_SP = new Admin_QLSP_XulyTT();
+		RequestDispatcher dispatcher= request.getRequestDispatcher("admin/Admin_QLDH.jsp");
+		Admin_QLDH_XulyTT control_SP = new Admin_QLDH_XulyTT();
 		
-		ResultSet DSSP = control_SP.Funct_Admin_BangTTSanPham();		
-		request.setAttribute("Funct_Admin_BangTTSanPham", DSSP);
+		ResultSet order_wait = control_SP.Funct_Admin_DSHDB_Wait();
+		request.setAttribute("Funct_Admin_DSHDB_Wait", order_wait);
 		
-		SanPham[] outstock= control_SP.Funct_Admin_DSSP_OutofStock();
-		request.setAttribute("Funct_Admin_DSSP_OutofStock", outstock);
+		ResultSet order_move = control_SP.Funct_Admin_DSHDB_Move();
+		request.setAttribute("Funct_Admin_DSHDB_Move", order_move);
 		
-		ThuongHieu[] dsth = control_SP.Funct_Admin_DSThHieu();
-		request.setAttribute("Funct_Admin_DSThHieu", dsth);
+		ResultSet order_succ = control_SP.Funct_Admin_DSHDB_Success();
+		request.setAttribute("Funct_Admin_DSHDB_Success", order_succ);
 		
 		dispatcher.forward(request, response);
 	}

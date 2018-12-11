@@ -57,12 +57,12 @@
                 <ul class="nav" id="side-menu">
                     <li>
                         <p style="margin-top: 20px"></p>
-                        <a id="dash" href="Admin_Dashboard.html"><span class="glyphicon glyphicon-home" style="margin-right: 5px;"></span>Trang chính</a>
-                        <a id="qlsp" href="Admin_QLSP.html"><span class="glyphicon glyphicon-gift" style="margin-right: 5px;"></span>Quản lí sản phẩm</a>
-                        <a id="qldh" href="Admin_QLDH.html"><span class="glyphicon glyphicon-list-alt" style="margin-right: 5px;"></span>Quản lí đơn hàng</a>
-                        <a id="qltk" href="Admin_QLTK.html"><span class="glyphicon glyphicon-user" style="margin-right: 5px;"></span>Quản lí tài khoản người dùng</a>
+                        <a id="dash" href="Admin_Dash_Controll"><span class="glyphicon glyphicon-home" style="margin-right: 5px;"></span>Trang chính</a>
+                        <a id="qlsp" href="Admin_QLSP_Controll"><span class="glyphicon glyphicon-gift" style="margin-right: 5px;"></span>Quản lí sản phẩm</a>
+                        <a id="qldh" href="Admin_QLDH_Controll"><span class="glyphicon glyphicon-list-alt" style="margin-right: 5px;"></span>Quản lí đơn hàng</a>
+                        <a id="qltk" href="Admin_QLKH_Controll"><span class="glyphicon glyphicon-user" style="margin-right: 5px;"></span>Quản lí tài khoản người dùng</a>
                         <a id="qlbl" href="Admin_QLBL.html"><span class="glyphicon glyphicon-comment" style="margin-right: 5px;"></span>Quản lí bình luận</a>
-                        <a id="report" href="Admin_Report.html"><span class="glyphicon glyphicon-stats" style="margin-right: 5px;"></span>Thống kê</a>
+                        <a id="report" href="Admin_Report_Controll"><span class="glyphicon glyphicon-stats" style="margin-right: 5px;"></span>Thống kê</a>
                     </li>
                 </ul>
             </div>
@@ -80,7 +80,7 @@
             <div class="row-1-dskh">
                 <!--danh sách khách hàng-->
             <%
-            	Object res = request.getAttribute("Funct_Admin_DSKH");
+            	Object res = request.getSession().getAttribute("Funct_Admin_DSKH");
             	KhachHang[] dskh = null;
             	if(res != null)
             	{
@@ -99,9 +99,7 @@
                             <tr>
                                 <th>Mã KH</th>
                                 <th>Tên KH</th>
-                                <th>Email</th>
                                 <th>Số điện thoại</th>
-                                <th>Địa chỉ</th>
                             </tr>
                         </thead>
              <%
@@ -117,9 +115,7 @@
                             <tr>
                                 <td><%=makh%></td>
                                 <td><%=tenkh%></td>
-                                <td><%=email%></td>
                                 <td><%=sdt%></td>
-                                <td><%=diachi%></td>
                             </tr>
                         </tbody>
               <% } %>
@@ -129,24 +125,58 @@
                 <!--thông tin chi tiết-->
                 
                 <div class="col-lg-6 col-md-6 col-sm-11 col-xs-12 tt-chitiet">
-                    <form class="form-horizontal form-tt-chitiet">
-                        <div class="form-group">
-                          <label for="TenKH">Tên khách hàng:</label>
-                          <span id="TenKH"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="mail">Email:</label>
-                            <span id="mail"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="sdt">Số điện thoại:</label>
-                            <span id="sdt"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="diachi">Địa chỉ:</label>
-                            <span id="diachi"></span>
-                        </div>
-                    </form>
+                    <!--form class="form-horizontal form-tt-chitiet"-->
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                    <table class="table">
+                    	<tbody>
+                    		<tr>
+                    			<th>Tên khách hàng:</th>
+                    		</tr>
+                    		<tr>
+                    			<th>Email:</th>
+                    		</tr>
+                    		<tr>
+                    			<th>Số điện thoại</th>
+                    		</tr>
+                    		<tr>
+                    			<th>Địa chỉ:</th>
+                    		</tr>
+                    	</tbody>
+                    </table>
+                    </div>
+                    <div class="col-lg- col-md-7 col-sm-7 col-xs-7">
+                    <table class="table">
+                <%
+            		Object ttkh = request.getSession().getAttribute("Funct_Admin_CTKH");
+            		ResultSet ttct_kh = null;
+            		if(ttkh != null)
+            		{
+            			ttct_kh = (ResultSet)ttkh;
+                		while(ttct_kh.next())
+                		{
+                			String name = ttct_kh.getString("tenkh");
+                			String mail = ttct_kh.getString("email");
+                			int sdt = ttct_kh.getInt("sdt");
+                			String diachi = ttct_kh.getString("diachi");
+                %>
+                	<tbody>
+                        <tr>
+                        	<td style="float:left"><%=name%></td>
+                        </tr>
+                        <tr>
+                        	<td style="float:left"><%=mail%></td>
+                        </tr>
+                        <tr>
+                        	<td style="float:left"><%=sdt%></td>
+                        </tr>
+                        <tr>
+                        	<td style="float:left"><%=diachi%></td>
+                        </tr> 
+                 	</tbody>
+                 <%	} } %>
+                 	</table>
+                    </div>
+                    
                     <!-- đơn hàng của khách -->
                     <table class="table table-bordered dsDH-kh">
                         <thead>
@@ -157,19 +187,30 @@
                             <th>Tổng tiền</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr>
-                            <td>
-                                <div class="row nut-chuc-nang">
-                                    <button type="button" class="btn btn-default btn-sm">Chi tiết</button>
-                                </div>
-                            </td>
-                            <td>ma</td>
-                            <td>ngaymua</td>
-                            <td>TongTien</td>
-                        </tr>
-                        </tbody>
-                     </table>
+               <%
+               		Object dshdb = request.getSession().getAttribute("Funct_Admin_DSHDB");
+               		ResultSet ds_hdb = null;
+               		if(dshdb != null)
+               		{
+               			ds_hdb = (ResultSet)dshdb;
+                		while(ds_hdb.next())
+                		{
+                			int mahdb = ds_hdb.getInt("mahdb");
+                			Date ngayban = ds_hdb.getDate("ngayban");
+                			float tongtien = ds_hdb.getFloat("tongtien");
+                %>
+                		<tbody>
+                        	<tr>
+                           		<td>
+                                    <button type="submit" class="btn btn-default btn-sm chitiet-btn"><a class="submit" href="Order_allStatus">Chi tiết</a></button>
+                            	</td>
+                            	<td><%=mahdb%></td>
+                            	<td><%=ngayban%></td>
+                            	<td><%=tongtien%></td>
+                        	</tr>
+                    	</tbody>
+                 <% }	} %>
+                    </table>
                 </div>
             </div>
             <!--End des-->
@@ -177,51 +218,40 @@
         
             <!-- script lấy giá trị mã khách hàng trong bảng -->  
             <script type="text/javascript">
-            	$(function () {
-                	$('.danhsach-kh tr').click(function (e) {
-                    	var ma_kh = 0;
-                    	ma_kh = $(this).closest('tr').find('td:nth-child(1)').text();
-                    	alert(ma_kh);
-                    	
-                        /*$.ajax({
-                            type: 'POST',
-                            url: 'Admin_QLKH_Controll',
-                            //dataType: 'xml',
-                            data: {
-                             MaKH : ma_kh
-                            },
-                            success: function (response) {
-                            	loaddata(response);
-                            }
-                        });*/
-                    	var xhr = new XMLHttpRequest();
-                    	xhr.onreadystatechange = function() {
-                    		if (xhr.readyState == 4 && xhr.status == 200) {
-                    			document.getElementsByTagName("TenKH").innerHTML = (xhr[i].getElementsByTagName("Hoten")[0]).childNodes[0].nodeValue;
-                    			document.getElementsByTagName("mail").innerHTML =xhr[i].getElementsByTagName("Email")[0].childNodes[0].nodeValue;
-                    			document.getElementsByTagName("sdt").innerHTML = xhr[i].getElementsByTagName("Sdt")[0].childNodes[0].nodeValue;
-                    			document.getElementsByTagName("diachi").innerHTML = xhr[i].getElementsByTagName("Diachi")[0].childNodes[0].nodeValue;
-                    		}
-                    	};	
-                    	
-                    	xhr.open("POST", "Admin_QLKH_Controll?MaKH=" + ma_kh,true);
-                    	xhr.send(null);
-                	});
+        	$(function () {
+            	$('.danhsach-kh tr').click(function (e) {
+                	var ma_kh = 0;
+                	ma_kh = $(this).closest('tr').find('td:nth-child(1)').text();
+                   	$.ajax({
+                        type: 'POST',
+                        url: 'Admin_QLKH_Controll',
+                        data: {
+                         MaKH : ma_kh
+                        },
+                        success : function(){
+                        	location.reload();
+                        }
+                    })
             	});
-            	
-            	$(function loaddata(xml)
-            	{
-            		var i;
-            		var xmlTable = xml.response;
-            		var x = xmlTable.getElementsByTagName("ctkh");
-            		for(i =0; i< x.length; i++)
-            		{
-            			document.getElementsByTagName("TenKH").innerHTML = x[i].getElementsByTagName("Hoten")[0].childNodes[0].nodeValue;
-            			document.getElementsByTagName("mail").innerHTML = x[i].getElementsByTagName("Email")[0].childNodes[0].nodeValue;
-            			document.getElementsByTagName("sdt").innerHTML = x[i].getElementsByTagName("Sdt")[0].childNodes[0].nodeValue;
-            			document.getElementsByTagName("diachi").innerHTML = x[i].getElementsByTagName("Diachi")[0].childNodes[0].nodeValue;
-            		}
+        	});
+			
+        	$(function () {
+            	$('.chitiet-btn').click(function (e) {
+                	var ma_hdb = 0;
+                	ma_hdb = $(this).closest('tr').find('td:nth-child(2)').text();
+                	$.ajax({
+                        type: 'POST',
+                        url: 'Order_allStatus',
+                        data: {
+                        	MaHDB : ma_hdb
+                        },
+                        success : function(data){
+                        	
+                        }
+                    })
             	});
+        	});
+        	
         	</script>
         
     </div>

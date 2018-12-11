@@ -1,3 +1,7 @@
+<%@page import="java.sql.Date"%>
+<%@page import="javax.servlet.jsp.jstl.sql.Result"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="ModelBean.HoaDonBan"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -9,14 +13,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Quản lí Shop</title>
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-    <link rel="stylesheet" href="../lib/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/vendor/bootstrap/css/bootstrap.min.css">
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
-    <script src="../lib/vendor/jquery/jquery.min.js"></script>
+    <script src="lib/vendor/jquery/jquery.min.js"></script>
     <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
-    <script src="../lib/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../lib/Css_admin/Admin_QLDH.css">
+    <script src="lib/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="lib/Css_admin/Admin_QLDH.css">
     <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">-->
-    <link rel="stylesheet" href="../lib/vendor/fontawesome/css/all.css">
+    <link rel="stylesheet" href="lib/vendor/fontawesome/css/all.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </head>
 <body>
@@ -36,7 +40,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <img src="../lib/images/pic1.png" class="img-circle" alt="Cinque Terre" width="35" height="35">
+                <img src="lib/images/pic1.png" class="img-circle" alt="Cinque Terre" width="35" height="35">
                 <li class="dropdown">
                     <a id="admin_name" href="#" class="dropdown-toggle" data-toggle="dropdown"><span style="font-size: 15px; color:#fff;">Admin_Name</span><b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -50,12 +54,12 @@
                 <ul class="nav" id="side-menu">
                     <li>
                         <p style="margin-top: 20px"></p>
-                        <a id="dash" href="Admin_Dashboard.html"><span class="glyphicon glyphicon-home" style="margin-right: 5px;"></span>Trang chính</a>
-                        <a id="qlsp" href="Admin_QLSP.html"><span class="glyphicon glyphicon-gift" style="margin-right: 5px;"></span>Quản lí sản phẩm</a>
-                        <a id="qldh" href="Admin_QLDH.html"><span class="glyphicon glyphicon-list-alt" style="margin-right: 5px;"></span>Quản lí đơn hàng</a>
-                        <a id="qltk" href="Admin_QLTK.html"><span class="glyphicon glyphicon-user" style="margin-right: 5px;"></span>Quản lí tài khoản người dùng</a>
+                        <a id="dash" href="Admin_Dash_Controll"><span class="glyphicon glyphicon-home" style="margin-right: 5px;"></span>Trang chính</a>
+                        <a id="qlsp" href="Admin_QLSP_Controll"><span class="glyphicon glyphicon-gift" style="margin-right: 5px;"></span>Quản lí sản phẩm</a>
+                        <a id="qldh" href="Admin_QLDH_Controll"><span class="glyphicon glyphicon-list-alt" style="margin-right: 5px;"></span>Quản lí đơn hàng</a>
+                        <a id="qltk" href="Admin_QLKH_Controll"><span class="glyphicon glyphicon-user" style="margin-right: 5px;"></span>Quản lí tài khoản người dùng</a>
                         <a id="qlbl" href="Admin_QLBL.html"><span class="glyphicon glyphicon-comment" style="margin-right: 5px;"></span>Quản lí bình luận</a>
-                        <a id="report" href="Admin_Report.html"><span class="glyphicon glyphicon-stats" style="margin-right: 5px;"></span>Thống kê</a>
+                        <a id="report" href="Admin_Report_Controll"><span class="glyphicon glyphicon-stats" style="margin-right: 5px;"></span>Thống kê</a>
                     </li>
                 </ul>
             </div>
@@ -71,125 +75,225 @@
             <div class="graphs panel-body">
                 <!--DESIGN HERE-->
                 <!--table - Đơn hàng chưa xác nhận-->
-                <div class="col-lg-10 col-md-10 col-sm-11 col-xs-11 don-hang-chua-xacnhan">
+                <div class="col-lg-11 col-md-11 col-sm-12 col-xs-12 don-hang-chua-xacnhan">
+                    <div class="table-responsive">
                     <strong><span style="float:left">Đơn hàng đợi xác nhận</span></strong>
-                    <table class="table table-bordered">
+                    <table class="table table-bordered order-wait">
                         <thead>
                             <tr>
                                 <th>Mã đơn hàng</th>
-                                <th>Sản phẩm</th>
-                                <th>Số lượng</th>
+                                <th>Ngày bán</th>
                                 <th>Tổng tiền</th>
                                 <th>Khách hàng</th>
                                 <th>Số điện thoại</th>
                                 <th>Địa chỉ</th>
+                                <th></th>
                             </tr>
                         </thead>
+                 
+                 <%
+                 	Object wait = request.getAttribute("Funct_Admin_DSHDB_Wait");
+                 	ResultSet wait_confim = null;
+                 	if(wait != null)
+                 	{
+                 		wait_confim = (ResultSet)wait;
+                 	}
+                 %>
                         <tbody>
+                 <%
+              		while(wait_confim.next())
+              		{
+              			int madhb_wait = wait_confim.getInt("mahdb");
+              			Date ngayban_wait = wait_confim.getDate("ngayban");
+              			float tongtien_wait = wait_confim.getFloat("tongtien");
+              			String kh_wait = wait_confim.getString("tenkh");
+              			int sdt_wait = wait_confim.getInt("sdt");
+              			String diachi_wait = wait_confim.getString("diachi");
+                 %>
                             <tr>
-                                <td>maDH</td>
-                                <td>SP</td>
-                                <td>SL</td>
-                                <td>TT</td>
-                                <td>KH</td>
-                                <td>SDT</td>
-                                <td>DC</td>
+                                <td><%=madhb_wait%></td>
+                                <td><%=ngayban_wait%></td>
+                                <td><%=tongtien_wait%></td>
+                                <td><%=kh_wait%></td>
+                                <td><%=sdt_wait%></td>
+                                <td><%=diachi_wait%></td>
+                                <td>
+                                	<button type="submit" class="btn btn-default btn-md chitiet-wait-btn"><a href="Order_Wait">Chi tiết</a></button>
+                                </td>
                             </tr>
+                 <% } %>
                         </tbody>
                     </table>
+                    </div>
                     <div class="row-2-BT" style="clear:both; float: right;">
                         <button type="button" class="btn btn-info btn-md">Xác nhận đơn hàng</button>
                         <button type="button" class="btn btn-default btn-md">Huỷ đơn hàng</button>
                     </div>
                 </div>
                 <!--table - đơn hàng đã xác nhận/đang giao-->
-                <div class="col-lg-10 col-md-10 col-sm-11 col-xs-11 don-hang-da-xacnhan">
+                <div class="col-lg-11 col-md-11 col-sm-12 col-xs-12 don-hang-da-xacnhan">
+                    <div class="table-responsive">
                     <strong><span style="float:left">Đơn hàng đã xác nhận/Đang giao</span></strong>
-                    <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Mã đơn hàng</th>
-                                    <th>Sản phẩm</th>
-                                    <th>Số lượng</th>
-                                    <th>Tổng tiền</th>
-                                    <th>Khách hàng</th>
-                                    <th>Số điện thoại</th>
-                                    <th>Địa chỉ</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>maDH</td>
-                                    <td>SP</td>
-                                    <td>SL</td>
-                                    <td>TT</td>
-                                    <td>KH</td>
-                                    <td>SDT</td>
-                                    <td>DC</td>
-                                </tr>
-                            </tbody>
+                    <table class="table table-bordered order-delivering">
+                        <thead>
+                            <tr>
+                                <th>Mã đơn hàng</th>
+                                <th>Ngày bán</th>
+                                <th>Tổng tiền</th>
+                                <th>Khách hàng</th>
+                                <th>Số điện thoại</th>
+                                <th>Địa chỉ</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        
+                 <%
+                 	Object move = request.getAttribute("Funct_Admin_DSHDB_Move");
+                 	ResultSet moving = null;
+                 	if(move != null)
+                 	{
+                 		moving = (ResultSet)move;
+                 	}
+                 %>
+                        <tbody>
+                        
+                 <%
+              		while(moving.next())
+              		{
+              			int madhb_move = moving.getInt("mahdb");
+              			Date ngayban_move = moving.getDate("ngayban");
+              			float tongtien_move = moving.getFloat("tongtien");
+              			String kh_move = moving.getString("tenkh");
+              			int sdt_move = moving.getInt("sdt");
+              			String diachi_move = moving.getString("diachi");
+                 %>
+                            <tr>
+                                <td><%=madhb_move%></td>
+                                <td><%=ngayban_move%></td>
+                                <td><%=tongtien_move%></td>
+                                <td><%=kh_move%></td>
+                                <td><%=sdt_move%></td>
+                                <td><%=diachi_move%></td>
+                                <td>
+                                	<button type="submit" class="btn btn-default btn-md chitiet-delivering-btn"><a href="Order_Delivering">Chi tiết</a></button>
+                                </td>
+                            </tr>
+                <%	} %>
+                        </tbody>
                     </table>
+                    </div>
                     <div class="row-2-BT" style="clear:both; float: right;">
                         <button type="button" class="btn btn-info btn-md">Giao hàng thành công</button>
                         <button type="button" class="btn btn-default btn-md">Huỷ đơn hàng</button>
                     </div>
                 </div>
                 <!--Đơn hàng giao thành công-->
-                <div class="col-lg-10 col-md-10 col-sm-11 col-xs-11 don-hang-giao-thanhcong">
+                <div class="col-lg-11 col-md-11 col-sm-12 col-xs-12 don-hang-giao-thanhcong">
+                    <div class="table-responsive">
                     <strong><span style="float:left">Đơn hàng giao dịch thành công</span></strong>
-                    <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Mã đơn hàng</th>
-                                    <th>Sản phẩm</th>
-                                    <th>Số lượng</th>
-                                    <th>Tổng tiền</th>
-                                    <th>Khách hàng</th>
-                                    <th>Số điện thoại</th>
-                                    <th>Địa chỉ</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>maDH</td>
-                                    <td>SP</td>
-                                    <td>SL</td>
-                                    <td>TT</td>
-                                    <td>KH</td>
-                                    <td>SDT</td>
-                                    <td>DC</td>
-                                </tr>
-                            </tbody>
+                    <table class="table table-bordered order-succ">
+                        <thead>
+                            <tr>
+                                <th>Mã đơn hàng</th>
+                                <th>Ngày bán</th>
+                                <th>Tổng tiền</th>
+                                <th>Khách hàng</th>
+                                <th>Số điện thoại</th>
+                                <th>Địa chỉ</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        
+                 <%
+                 	Object succ = request.getAttribute("Funct_Admin_DSHDB_Success");
+                 	ResultSet delivery_succ = null;
+                 	if(succ != null)
+                 	{
+                 		delivery_succ = (ResultSet)succ;
+                 	}
+                 %>
+                        <tbody>
+                        
+                 <%
+              		while(delivery_succ.next())
+              		{
+              			int madhb_suc = delivery_succ.getInt("mahdb");
+              			Date ngayban_succ = delivery_succ.getDate("ngayban");
+              			float tongtien_succ = delivery_succ.getFloat("tongtien");
+              			String kh_succ = delivery_succ.getString("tenkh");
+              			int sdt_succ = delivery_succ.getInt("sdt");
+              			String diachi_succ = delivery_succ.getString("diachi");
+                 %>
+                            <tr>
+                                <td><%=madhb_suc%></td>
+                                <td><%=ngayban_succ%></td>
+                                <td><%=tongtien_succ%></td>
+                                <td><%=kh_succ%></td>
+                                <td><%=sdt_succ%></td>
+                                <td><%=diachi_succ%></td>
+                                <td>
+                                	<button type="submit" class="btn btn-default btn-md chitiet-succ-btn"><a href="Order_Success">Chi tiết</a></button>
+                                </td>
+                            </tr>
+                 <%	} %>
+                        </tbody>
                     </table>
+                    </div>
                 </div>
-                <!--table - đơn hàng bị huỷ-->
-                <div class="col-lg-10 col-md-10 col-sm-11 col-xs-11 don-hang-huy">
-                        <strong><span style="float:left">Đơn hàng bị huỷ</span></strong>
-                        <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>Mã đơn hàng</th>
-                                        <th>Sản phẩm</th>
-                                        <th>Số lượng</th>
-                                        <th>Tổng tiền</th>
-                                        <th>Khách hàng</th>
-                                        <th>Số điện thoại</th>
-                                        <th>Địa chỉ</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>maDH</td>
-                                        <td>SP</td>
-                                        <td>SL</td>
-                                        <td>TT</td>
-                                        <td>KH</td>
-                                        <td>SDT</td>
-                                        <td>DC</td>
-                                    </tr>
-                                </tbody>
-                        </table>
-                </div>
+                
+            <script type="text/javascript">
+        	$(function () {
+            	$('.chitiet-wait-btn').click(function (e) {
+                	var ma_hdb = 0;
+                	ma_hdb = $('.order-wait tr').closest('tr').find('td:nth-child(1)').text();
+                	$.ajax({
+                        type: 'POST',
+                        url: 'Order_Wait',
+                        data: {
+                        	MaHDB : ma_hdb
+                        },
+                        success : function(data){
+                        	
+                        }
+                    })
+            	});
+        	});
+        	
+        	$(function () {
+            	$('.chitiet-delivering-btn').click(function (e) {
+                	var ma_hdb = 0;
+                	ma_hdb = $(this).closest('tr').find('td:nth-child(1)').text();
+                	$.ajax({
+                        type: 'POST',
+                        url: 'Order_Delivering',
+                        data: {
+                        	MaHDB : ma_hdb
+                        },
+                        success : function(data){
+                        	
+                        }
+                    })
+            	});
+        	});
+        	
+        	$(function () {
+            	$('.chitiet-succ-btn').click(function (e) {
+                	var ma_hdb = 0;
+                	ma_hdb = $(this).closest('tr').find('td:nth-child(1)').text();
+                	$.ajax({
+                        type: 'POST',
+                        url: 'Order_Success',
+                        data: {
+                        	MaHDB : ma_hdb
+                        },
+                        success : function(data){
+                        	
+                        }
+                    })
+            	});
+        	});
+        	</script>
+        	
                 <!--End des-->
             </div>
     </div>
