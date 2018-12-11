@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
+import javax.servlet.http.HttpServletRequest;
+
 import ModelBean.Cart;
 import ModelBean.SanPham;
 import ModelDao.DBConnection;
@@ -16,47 +18,10 @@ public class XuLiSanPham {
 	public XuLiSanPham() {
 		connection = new DBConnection();
 	}
-	public ResultSet listSP()
-	{
-		connection.connect();
-		ResultSet test=null;
-		try {
-			test= connection.executeTableProc("LayThongTinSanPham2", null);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return test;
-	}
-	
-	public SanPham[] listSP1() {
-		Vector<SanPham> result = new Vector<>();
-		connection.connect();
-		try {
-			
-			ResultSet resultSet = connection.executeTableProc("LayThongTinSanPham2", null);
-			while (resultSet.next()) {
-				SanPham sp = new SanPham();				
-				//Add value to Book
-				sp.setMaSP(resultSet.getInt(1));
-				sp.setTenSp(resultSet.getString(2));
-				sp.setGiaBan(resultSet.getDouble(3));
-				result.addElement(sp);
-				
-			}
-		} catch (SQLException e) { 
-			System.out.println(e.getMessage());
-		} finally {
-			connection.close();
-		}
-		return result.toArray(new SanPham[0]);
-	}
-	
 
 	public SanPham[] Func_Lay_BonSanPhamNgauNhien() {
 		Vector<SanPham> lstSanPham = new Vector<>();
 		connection.connect();
-		
 		try {
 			ResultSet resultSet = connection.executeTableFunction("Func_Lay_BonSanPhamNgauNhien", null);
 			while(resultSet.next()) {
@@ -113,24 +78,56 @@ public class XuLiSanPham {
 		return sanpham;	
 	}
 	
+	//chức năng lọc 
+	public SanPham[] BoLocSanPham(Integer MaTH1, Integer MaTH2, Integer MaTH3, Integer MaTH4, Integer MaTH5, Integer MaTH6, Integer MaTH7, Integer MaTH8,
+			Integer MaTH9,Integer MaTH10,Integer MaTH11,Integer MaTH12, String TenLoaiDay1, String TenLoaiDay2, String GioiTinh, Double GiaBanMin, Double GiaBanMax,
+			String KieuMay1, String KieuMay2)
+	{		
+		Vector<SanPham> lstSanPham = new Vector<>();
+		connection.connect();
+		Vector<Object[]> paramsIn = connection.createParams(new int[] {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19},
+				new Object[] {MaTH1,MaTH2,MaTH3,MaTH4,MaTH5,MaTH6,MaTH7,MaTH8,MaTH9,MaTH10,MaTH11,MaTH12,
+						TenLoaiDay1,TenLoaiDay2,GioiTinh,GiaBanMin,GiaBanMax,KieuMay1,KieuMay2});
+		try {
+			ResultSet resultset = connection.executeTableFunction("Func_LocSanPham", paramsIn);
+			while(resultset.next())
+			{
+				SanPham sp=new SanPham();
+				sp.setMaSP(resultset.getInt("MaSP"));
+				sp.setTenSp(resultset.getString("TenSP"));
+				sp.setGiaBan(resultset.getDouble("GiaBan"));
+				sp.setHinhAnh1(resultset.getString("HinhAnh1"));
+				lstSanPham.addElement(sp);
+			}	
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		connection.close();
+		return lstSanPham.toArray(new SanPham[0]);
+	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public SanPham[] TimKiemTheoTenSanPham(String ChuoiTK)
+	{		
+		Vector<SanPham> lstSanPham = new Vector<>();
+		connection.connect();
+		Vector<Object[]> paramsIn = connection.createParams(new int[] {1},
+				new Object[] {ChuoiTK});
+		try {
+			ResultSet resultset = connection.executeTableProc("Proc_TimKiem", paramsIn);
+			while(resultset.next())
+			{
+				SanPham sp=new SanPham();
+				sp.setMaSP(resultset.getInt("MaSP"));
+				sp.setTenSp(resultset.getString("TenSP"));
+				sp.setGiaBan(resultset.getDouble("GiaBan"));
+				sp.setHinhAnh1(resultset.getString("HinhAnh1"));
+				lstSanPham.addElement(sp);
+			}	
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		connection.close();
+		return lstSanPham.toArray(new SanPham[0]);
+	}
 
 }

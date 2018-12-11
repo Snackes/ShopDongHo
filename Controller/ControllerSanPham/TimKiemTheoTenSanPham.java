@@ -1,4 +1,4 @@
-package ControllerDHCuaToi;
+package ControllerSanPham;
 
 import java.io.IOException;
 
@@ -9,22 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ModelBean.HoaDonBan;
-import ModelService.XuLiDonHangBanCuaKH;
-import ModelService.XuLiGioHang;
+import ModelBean.SanPham;
 import ModelService.XuLiSanPham;
 
 /**
- * Servlet implementation class ShowDSDH
+ * Servlet implementation class TimKiemTheoTenSanPham
  */
-@WebServlet("/ShowDSDHNE")
-public class ShowDSHD extends HttpServlet {
+@WebServlet("/TimKiemTheoTenSanPham")
+public class TimKiemTheoTenSanPham extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShowDSHD() {
+    public TimKiemTheoTenSanPham() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,15 +31,11 @@ public class ShowDSHD extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//int MaKH=Integer.parseInt((String) request.getSession().getAttribute("MaKH"));
-		XuLiGioHang xlsp=new XuLiGioHang();
-		request.getSession().setAttribute("SLIConGH", xlsp.TongSoLuong(request));
-		int MaKH=3;
-		XuLiDonHangBanCuaKH xldh=new XuLiDonHangBanCuaKH();
-		HoaDonBan[] hdb=xldh.LayDanhSachHDBan(MaKH);
-		request.setAttribute("DSHDBan", hdb);
-		RequestDispatcher dispatcher=request.getRequestDispatcher("view/DonHangCuaToi.jsp");
+		XuLiSanPham xlsp=new XuLiSanPham();
+		String ChuoiTK=request.getParameter("ChuoiTK");
+		SanPham[]listsp=xlsp.TimKiemTheoTenSanPham(ChuoiTK);
+		request.setAttribute("KetQuaTK", listsp);
+		RequestDispatcher dispatcher=request.getRequestDispatcher("view/LocSanPham.jsp");
 		dispatcher.forward(request, response);
 	}
 

@@ -15,7 +15,7 @@
     <script src="lib/vendor/bootstrap/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="lib/css/index.css">
     <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">-->
-    <link rel="stylesheet" href="/lib/vendor/fontawesome/css/all.css">
+    <link rel="stylesheet" href="lib/vendor/fontawesome/css/all.css">
     <script src="lib/js/index.js"></script>
     <link rel="stylesheet" href="lib/css/modal.css">
     <script src="lib/vendor/sweet/sweetalert.min.js"></script>
@@ -50,14 +50,16 @@
                     <div class="collapse navbar-collapse " id="mynavbar">
                         <div class="row">
                             <div class="col-sm-6 col-md-6 col-lg-6">
-                                <div class="input-group col-lg-12 search-bar">
-                                    <input type="text" class="form-control" placeholder="Tìm Kiếm">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-default" type="submit">
-                                            <i class="glyphicon glyphicon-search"></i>
-                                        </button>
-                                    </div>
-                                </div>
+	                            <form action="TimKiemTheoTenSanPham" method="get">
+	                                <div class="input-group col-lg-12 search-bar">
+	                                    <input name="ChuoiTK" type="text" class="form-control" placeholder="Tìm Kiếm">
+	                                    <div class="input-group-btn">
+	                                        <button class="btn btn-default" type="submit">
+	                                            <i class="glyphicon glyphicon-search"></i>
+	                                        </button>
+	                                    </div>
+	                                </div>
+	                            </form>
                             </div>
                             
                             <div class="col-sm-1 col-md-1 col-lg-1">
@@ -226,34 +228,34 @@
                                 <ul class="dropdown-menu dropdown-menu-large row">
                                     <li class=" col-lg-3">
                                         <ul>
-                                            <li><a href="#">Nam</a></li>
-                                            <li><a href="#">Nữ</a></li>
-                                            <li><a href="#">Cặp Đôi</a></li>
+                                        	<li class="dropdown-header">Giới tính</li>
+                                            <li><a href="BoLocSanPham?GioiTinhSuDung=Nam">Nam</a></li>
+                                            <li><a href="BoLocSanPham?GioiTinhSuDung=Nữ">Nữ</a></li>
+                                            <li><a href="BoLocSanPham?GioiTinhSuDung=Unisex">Cặp Đôi</a></li>
                                         </ul>
                                     </li>
                                     <li class="col-lg-3">
                                         <ul>
-                                            <li class="dropdown-header">Loại Máy</li>
-                                            <li><a href="#">Pin</a></li>
-                                            <li><a href="#">Tự Động</a></li>
-                                            <li><a href="#">Năng Lượng</a></li>
+                                            <li class="dropdown-header">Kiểu máy</li>
+                                            <li><a href="BoLocSanPham?KieuMay1=Pin">Pin</a></li>
+                                            <li><a href="BoLocSanPham?KieuMay2=automatic">Tự Động</a></li>
                                         </ul>
                                     </li>
                                     <li class="col-lg-3">
                                         <ul>
                                             <li class="dropdown-header">Chất Liệu</li>
-                                            <li><a href="#">Dây Da</a></li>
-                                            <li><a href="#">Dây Inox</a></li>
+                                            <li><a href="BoLocSanPham?LoaiDay1=Da">Dây Da</a></li>
+                                            <li><a href="BoLocSanPham?LoaiDay2=Kim Loại">Dây Kim loại</a></li>
                                         </ul>
                                     </li>
                                     <li class="col-lg-3">
                                         <ul>
-                                            <li class="dropdown-header">Khoảng Gía</li>
-                                            <li><a href="#">Dưới 1 triệu</a></li>
-                                            <li><a href="#">Từ 1-2 triệu</a></li>
-                                            <li><a href="#">Từ 2-7 triệu</a></li>
-                                            <li><a href="#">Từ 7-15 triệu</a></li>
-                                            <li><a href="#">Từ 15-30 triệu</a></li>
+                                            <li class="dropdown-header">Khoảng giá</li>
+                                            <li><a href="BoLocSanPham?KhoangGia=1">Dưới 1 triệu</a></li>
+                                            <li><a href="BoLocSanPham?KhoangGia=2">Từ 1-2 triệu</a></li>
+                                            <li><a href="BoLocSanPham?KhoangGia=3">Từ 2-7 triệu</a></li>
+                                            <li><a href="BoLocSanPham?KhoangGia=4">Từ 7-15 triệu</a></li>
+                                            <li><a href="BoLocSanPham?KhoangGia=5">Trên 15 triệu</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -263,34 +265,30 @@
                                 <ul class="dropdown-menu dropdown-menu-large row">
                                     <li class=" col-lg-3">
                                         <ul>
-                                            <li><a href="#">SEIKO</a></li>
-                                            <li><a href="#">ROLEX</a></li>
-                                            <li><a href="#">OMEGA</a></li>
-                                            <li><a href="#">CHARRIOL</a></li>
+                                            <li><a href="BoLocSanPham?ThuongHieu1=1">SEIKO</a></li>
+                                            <li><a href="BoLocSanPham?ThuongHieu2=2">ROLEX</a></li>
+                                            <li><a href="BoLocSanPham?ThuongHieu3=3">OMEGA</a></li>                                            
                                         </ul>
                                     </li>
                                     <li class="col-lg-3">
                                         <ul>
-                                            <li><a href="#">VICTORINOX</a></li>
-                                            <li><a href="#">BREITLING</a></li>
-                                            <li><a href="#">GUCCI</a></li>
-                                            <li><a href="#">LONGINESS</a></li>
+                                            <li><a href="BoLocSanPham?ThuongHieu4=4">VICTORINOX</a></li>
+                                            <li><a href="BoLocSanPham?ThuongHieu5=5">BREITLING</a></li>
+                                            <li><a href="BoLocSanPham?ThuongHieu6=6">GUCCI</a></li>                                            
                                         </ul>
                                     </li>
                                     <li class="col-lg-3">
                                         <ul>
-                                            <li><a href="#">D&G</a></li>
-                                            <li><a href="#">BOVET</a></li>
-                                            <li><a href="#">TISSOT</a></li>
-                                            <li><a href="#">ZENITH</a></li>
+                                            <li><a href="BoLocSanPham?ThuongHieu7=7">D&G</a></li>
+                                            <li><a href="BoLocSanPham?ThuongHieu8=8">BOVET</a></li>
+                                            <li><a href="BoLocSanPham?ThuongHieu9=9">TISSOT</a></li>
                                         </ul>
                                     </li>
                                     <li class="col-lg-3">
                                         <ul>
-                                            <li><a href="#">HERMES</a></li>
-                                            <li><a href="#">HUBLOT</a></li>
-                                            <li><a href="#">PUMA</a></li>
-                                            <li><a href="#">ROLEX</a></li>
+                                            <li><a href="BoLocSanPham?ThuongHieu10=10">HERMES</a></li>
+                                            <li><a href="BoLocSanPham?ThuongHieu11=11">HUBLOT</a></li>
+                                            <li><a href="BoLocSanPham?ThuongHieu12=12">PUMA</a></li>
                                         </ul>
                                     </li>
                                 </ul>

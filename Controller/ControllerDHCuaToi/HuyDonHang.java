@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ModelService.XuLiDonHangBanCuaKH;
+import ModelService.XuLiSanPham;
 
 /**
  * Servlet implementation class HuyDonHang
@@ -31,19 +32,18 @@ public class HuyDonHang extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		int MaHD=Integer.parseInt(request.getParameter("MaHD"));
+		XuLiDonHangBanCuaKH xldh=new XuLiDonHangBanCuaKH();
+		xldh.HuyHoaDongBan(MaHD);
+		RequestDispatcher dispatcher= request.getRequestDispatcher("view/ChiTietDonHang.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int MaHD=Integer.parseInt(request.getParameter("MaHDBan"));
-		XuLiDonHangBanCuaKH xldh=new XuLiDonHangBanCuaKH();
-		xldh.LayThongTinChiTietHDBan(MaHD);
-		RequestDispatcher dispatcher= request.getRequestDispatcher("view/ChiTietDonHang.jsp");
-		dispatcher.forward(request, response);
+
 	}
 
 }

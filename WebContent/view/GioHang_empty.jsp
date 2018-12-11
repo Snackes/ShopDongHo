@@ -7,6 +7,7 @@
 <head>
     <title>Giỏ hàng trống</title>
     <link rel="stylesheet" href="lib/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/css/index.css">
     <link rel="stylesheet" href="lib/css/GioHang_empty.css">
 
 </head>

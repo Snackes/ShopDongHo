@@ -51,12 +51,17 @@ public class ThanhToan extends HttpServlet {
         String DiaChi=request.getParameter("address").trim();
         int SDT=Integer.parseInt(request.getParameter("mobile"));
         Integer MaKH=null;
+        String thu="";
 		if(request.getSession().getAttribute("MaKH")==null)
 		{
 			MaKH=null;
 		}
 		else
-			MaKH=Integer.parseInt((String) request.getSession().getAttribute("MaKH"));
+		{
+			thu=(request.getSession().getAttribute("MaKH")).toString();
+			MaKH=Integer.parseInt(thu);
+		}
+		
         LocalDate NgayBan=java.time.LocalDate.now();
         double TongTien=xl.TongTienDonHang(request);
         int TrangThai=0;

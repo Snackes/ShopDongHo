@@ -11,7 +11,8 @@
 
 <head>
 	<title>Giỏ hàng</title>
-	<link rel="stylesheet" href="/lib/vendor/fontawesome/css/all.css">
+	    <link rel="stylesheet" href="lib/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/css/index.css">
 	<link rel="stylesheet" href="lib/css/GioHang.css">
 </head>
 

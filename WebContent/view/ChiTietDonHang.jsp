@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
  	<meta charset="UTF-8">
-    <title>Shop online</title>
+    <title>Chi tiết hóa đơn</title>
     <link rel="stylesheet" href="lib/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="lib/css/index.css">
     <link rel="stylesheet" href="lib/css/theme_1.css">
@@ -25,19 +25,21 @@
                         </ol>
                         <div class="card">
                         <%
+                        	int TrangThai=-1;
+                        	int MaHD=-1;
         					Object result = request.getAttribute("ChiTietHoaDonBan");
 								if (result != null){
 									ResultSet rs= (ResultSet)result;
 									while(rs.next())
 									{
-										int MaHD=rs.getInt("MaDH");
+										MaHD=rs.getInt("MaDH");
 										int MaKH=rs.getInt("MaKH");
 										String HoTen=rs.getString("HoTen");
 										String DiaChi=rs.getString("DiaChi");
 										Date NgayBan=rs.getDate("NgayBan");
 										int SDT=rs.getInt("SDT");
 										float TongTien=rs.getFloat("TongTien");
-										int TrangThai=rs.getInt("TrangThai");
+										TrangThai=rs.getInt("TrangThai");
 										
 										
 						%>
@@ -134,13 +136,13 @@
 	                        										int MaSP=rs.getInt("MaSP");
 	                        										String TenSP=rs.getString("TenSP");
 	                        										float DonGia=rs.getFloat("GiaBan");
-	                        										int SoLuong=rs.getInt("SoLuongBan");
+	                        										int SoLuong1=rs.getInt("SoLuongBan");
                                                         %>
                                                             <tr>
                                                                 <td><%=MaSP %></td>
                                                                 <td><%=TenSP %></td>
                                                                 <td><%=String.format("%,.0f", DonGia) +" VNĐ" %></td>
-                                                                <td><%=SoLuong %></td>
+                                                                <td><%=SoLuong1 %></td>
                                                             </tr>
                                                         <%
 	                        									}
@@ -161,11 +163,11 @@
                                         </a>
                                         
                                   
-										<form action="HuyDonHang" method="post" >
-	                                        <a href="" class="btn btn-primary" style="background-color: #d09d46!important;    border-color: #d09d46!important;">
-	                                           Hủy đơn hàng
-	                                        </a>
-										</form>
+                                  <%
+                                  	if(TrangThai==0)
+                                  	{	
+	                                    out.println("<a href=\"HuyDonHang?MaHD="+MaHD+"\" class=\"btn btn-primary\" style=\"background-color: #d09d46!important;    border-color: #d09d46!important;\">Hủy đơn hàng</a>");
+									}%>
 
                                     </div>
                                 </form>

@@ -74,10 +74,11 @@ public class XuLiDonHangBanCuaKH {
 		connection.connect();
 		try {
 			Vector<Object[]> params_In=connection.createParams(new int[] {1}, new Object[] {MaHD});
-			connection.executeTableProc("Proc_LayThongTinChiTietHDBan", params_In);
+			connection.executeTableProc("Proc_XoaHoaDonBan", params_In);
 			
 		}catch (Exception e) {
 			// TODO: handle exception
 		}
+		connection.close();
 	}
 }
