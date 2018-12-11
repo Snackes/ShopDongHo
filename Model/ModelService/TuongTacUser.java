@@ -141,6 +141,30 @@ public class TuongTacUser {
 		}
 		return flag;
 	}
+	public int KiemTraPhanQuyen(int MaKH)
+	{
+		
+		int flag=-1;
+		connection.connect();
+		Vector<Object[]> paramsIn = connection.createParams(new int[] {1}, new Object[] {MaKH});
+		try {
+			
+			ResultSet resultset = connection.executeTableProc("Proc_KiemTraAdmin", paramsIn);
+			
+			while(resultset.next())
+			{
+				flag=resultset.getInt("flag");
+			}
+		} catch (SQLException e) {
+		
+			System.out.println(e.getMessage());
+		}
+		finally {
+			connection.close();
+		}
+		return flag;
+		
+	}
 	
 	
 

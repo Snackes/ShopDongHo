@@ -46,7 +46,7 @@
                             <span class="icon-bar"></span>
                         </button>
                         <!---nhãn-->
-                        <a class="navbar-brand" href="#"><span style="font-size: 42px; color:#fff; margin-left: 
+                        <a class="navbar-brand" href="TrangChu"><span style="font-size: 42px; color:#fff; margin-left: 
                         20px;">TUMBỜ</span></a>
                     </div>
                 </div>
@@ -119,13 +119,13 @@
 	                                    {
 	                                    	if(session.getAttribute("Admin")!=null)
 	                                    	{%>
-	                                    		<li><a>Quản lí Website</a></li>
+	                                    		<li><a href="Admin_Dash_Controll">Quản lí Website</a></li>
 	                                    		<li><a class="btnDangXuat">Đăng Xuất</a></li>
 	                                    	<% }
 	                                    	else
 	                                    	{%>
 	                                    		<li><a href="ThongTinNguoiDung">Thông Tin Tài Khoản</a></li>
-	                                    		<li><a class="btnDangXuat">Đăng Xuất</a></li>
+	                                    		<li><a style="cursor: pointer;" class="btnDangXuat">Đăng Xuất</a></li>
 	                                    		
 	                                    	<% }
 	                                    }
@@ -223,7 +223,7 @@
                     <div class="col-sm-8 col-md-7 col-lg-6">
                         <ul class="nav navbar-nav " id="mainnavigation">
                             <li class="dropdown dropdown-large">
-                                <a href="#" class="tieuDe">Trang Chủ</a>
+                                <a href="TrangChu" class="tieuDe">Trang Chủ</a>
                             </li>
                             <li class="dropdown dropdown-large dropdown-hover">
                                 <a href="#" class="tieuDe" >Sản Phẩm</a>
@@ -321,6 +321,7 @@
         	EmailDK: "required",
         	TenTaiKhoanDK:{
         		required: true,
+        		minlength:8,
         		alphanumeric: true
     	
         	},
@@ -340,6 +341,7 @@
         	EmailDK: "Vui lòng nhập đúng Email",
         	TenTaiKhoanDK:{
         		required:"Không được bỏ trống",
+        		minlength:"Tên tài khoản phải có trên 8 kí tự",
         		alphanumeric:"Không được có các kí tự đặc biệt"
         	},
         	MatKhauDK: {
@@ -388,6 +390,7 @@
         rules: {
         	TenTaiKhoan:{
         		required:true,
+        		minlength:8,
         		alphanumeric: true
     
         	},
@@ -400,6 +403,7 @@
         messages:{
         	TenTaiKhoan: {
         		required: "Không được bỏ trống",
+        		minlength:"Tên tài khoản phải có trên 8 kí tự",
         		alphanumeric:"Không được có kí tự đặc biệt"
         	},
         	MatKhau:{

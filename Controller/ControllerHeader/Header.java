@@ -74,6 +74,12 @@ public class Header extends HttpServlet {
 				session.setAttribute("MaKH", FlagKiemTraDangNhap);
 				session.removeAttribute("TenTK");
 				session.setAttribute("TenTK", TenTaikhoan);//nhớ điền tên tk vào
+				int flagPhanQuyen= control_User.KiemTraPhanQuyen(FlagKiemTraDangNhap);
+				if(flagPhanQuyen==1)
+				{
+					session.removeAttribute("Admin");
+					session.setAttribute("Admin", flagPhanQuyen);
+				}
 				//thông báo thành công
 				ThongBao="ThanhCong";
 				
