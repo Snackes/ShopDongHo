@@ -24,5 +24,10 @@
     border: 2px solid #f69400;
     color: #f69400;
     background-color: #fff; }
+   .modal label {
+   color:red;
+   font-size:15px;
+   
+   }
 
 /*# sourceMappingURL=modal.css.map */

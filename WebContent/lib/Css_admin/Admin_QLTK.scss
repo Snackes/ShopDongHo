@@ -219,3 +219,13 @@ body {
         margin-right: auto;
     }
 }
+
+.danhsach-kh{
+    tbody{
+        tr{
+            td{
+                cursor: pointer;
+            }
+        }
+    }
+}

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ModelBean.SanPham;
+import ModelBean.ThuongHieu;
 import ModelService.Admin_QLSP_XulyTT;
 
 /**
@@ -36,8 +37,16 @@ public class Admin_QLSP_Controll extends HttpServlet {
 		// TODO Auto-generated method stub
 		RequestDispatcher dispatcher= request.getRequestDispatcher("admin/Admin_QLSP.jsp");
 		Admin_QLSP_XulyTT control_SP = new Admin_QLSP_XulyTT();
-		ResultSet DSSP = control_SP.Funct_Admin_BangTTSanPham();
+		
+		ResultSet DSSP = control_SP.Funct_Admin_BangTTSanPham();		
 		request.setAttribute("Funct_Admin_BangTTSanPham", DSSP);
+		
+		SanPham[] outstock= control_SP.Funct_Admin_DSSP_OutofStock();
+		request.setAttribute("Funct_Admin_DSSP_OutofStock", outstock);
+		
+		ThuongHieu[] dsth = control_SP.Funct_Admin_DSThHieu();
+		request.setAttribute("Funct_Admin_DSThHieu", dsth);
+		
 		dispatcher.forward(request, response);
 	}
 

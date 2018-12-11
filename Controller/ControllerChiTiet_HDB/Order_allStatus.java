@@ -1,4 +1,4 @@
-package ControllerIndex;
+package ControllerChiTiet_HDB;
 
 import java.io.IOException;
 
@@ -9,21 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ModelBean.SanPham;
-import ModelService.XuLiGioHang;
-import ModelService.XuLiSanPham;
+import java.sql.ResultSet;
+import ModelService.ChiTiet_HDB_Xuly;
 
 /**
- * Servlet implementation class ShowSanPhamMoi
+ * Servlet implementation class Order_allStatus
  */
-@WebServlet("/TrangChu")
-public class TrangChu extends HttpServlet {
+@WebServlet("/Order_allStatus")
+public class Order_allStatus extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public TrangChu() {
+    public Order_allStatus() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,18 +31,9 @@ public class TrangChu extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		RequestDispatcher dispatcher= request.getRequestDispatcher("admin/chiTiet_HDBan-ofCus.jsp");
 		
-		XuLiSanPham control_SP=new XuLiSanPham();
-		
-		SanPham[] danhsachmoi= control_SP.Func_Lay_BonSanPhamNgauNhien();
-		SanPham[] danhsachnoibat= control_SP.Func_Lay_BonSanPhamNgauNhien();
-		
-		XuLiGioHang xl=new XuLiGioHang();
-		int dm=xl.TongSoLuong(request);
-		request.getSession().setAttribute("SLIConGH", dm);
-		request.setAttribute("LayThongTinSanPhamMoi", danhsachmoi);
-		request.setAttribute("LayThongTinSanPhamNoiBat", danhsachnoibat);
-		RequestDispatcher dispatcher= request.getRequestDispatcher("view/Index.jsp");
 		dispatcher.forward(request, response);
 		
 	}
@@ -53,7 +43,17 @@ public class TrangChu extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		ChiTiet_HDB_Xuly control = new ChiTiet_HDB_Xuly();
+		int mahdb = Integer.parseInt(request.getParameter("MaHDB"));
+		//int mahdb = 9;
+		if(mahdb != 0)
+		{
+		ResultSet cthdb = control.Funct_Admin_CT_HDB(mahdb);
+		request.getSession().setAttribute("Funct_Admin_CT_HDB", cthdb);
+		
+		ResultSet ttcthdb = control.Funct_Admin_TTCTofHDB(mahdb);
+		request.getSession().setAttribute("Funct_Admin_TTCTofHDB", ttcthdb);
+		}
 	}
 
 }

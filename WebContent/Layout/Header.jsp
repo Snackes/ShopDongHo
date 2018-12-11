@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="lib/css/modal.css">
     <script src="lib/vendor/sweet/sweetalert.min.js"></script>
     <link rel="stylesheet" href="lib/vendor/sweet/sweetalert.css">
+     <script src="lib/vendor/jquery-validate/jquery.validate.min.js"></script>
+  <script src="lib/vendor/jquery-validate/additional-methods.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Krub" rel="stylesheet">
@@ -30,6 +32,8 @@
 </head>
 <body>
     <!--taọ nav fixedtop-->
+    
+   
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="row">
@@ -42,7 +46,7 @@
                             <span class="icon-bar"></span>
                         </button>
                         <!---nhãn-->
-                        <a class="navbar-brand" href="#"><span style="font-size: 42px; color:#fff; margin-left: 
+                        <a class="navbar-brand" href="TrangChu"><span style="font-size: 42px; color:#fff; margin-left: 
                         20px;">TUMBỜ</span></a>
                     </div>
                 </div>
@@ -82,7 +86,7 @@
 								    background-color: rgb(236, 173, 37);
 								    border-radius: 10px;
 								    color: white;
-								    display: inline-block;
+								    
 								    font-size: 12px;
 								    line-height: 1;
 								    padding: 3px 7px;
@@ -117,13 +121,13 @@
 	                                    {
 	                                    	if(session.getAttribute("Admin")!=null)
 	                                    	{%>
-	                                    		<li><a>Quản lí Website</a></li>
+	                                    		<li><a href="Admin_Dash_Controll">Quản lí Website</a></li>
 	                                    		<li><a class="btnDangXuat">Đăng Xuất</a></li>
 	                                    	<% }
 	                                    	else
 	                                    	{%>
-	                                    		<li><a>Thông Tin Tài Khoản</a></li>
-	                                    		<li><a class="btnDangXuat">Đăng Xuất</a></li>
+	                                    		<li><a href="ThongTinNguoiDung">Thông Tin Tài Khoản</a></li>
+	                                    		<li><a style="cursor: pointer;" class="btnDangXuat">Đăng Xuất</a></li>
 	                                    		
 	                                    	<% }
 	                                    }
@@ -138,16 +142,16 @@
                                 <div class="modal" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
-                                           <form role="form" action='Header' method="post">
+                                           <form id="form-DN" role="form" action='Header' method="post">
                                             <div class="modal-body">
                                             	
                                             	<a style="float: right;margin-bottom:20px;" href="" data-dismiss="modal">X</a>
                                             	<br>
                                                 
                                                 
-                                                    <input type="text" class="form-control" placeholder="Tên Tài Khoản" id="TenTaiKhoan">
+                                                    <input type="text" class="form-control" placeholder="Tên Tài Khoản" id="TenTaiKhoan" name="TenTaiKhoan">
                                                     <br>
-                                                        <input type="password" class="form-control" placeholder="Mật Khẩu" id="MatKhau">
+                                                        <input type="password" class="form-control" placeholder="Mật Khẩu" id="MatKhau" name="MatKhau">
                                                         <br>
                                                         <label id="ThongBaoDangNhap"></label>
                                                         <br>
@@ -180,21 +184,21 @@
                                             </div>
                                             <div class="modal-body">
                                             	
-                                                <form role="form" action='Header' method="post">
-                                                    <input type="email" class="form-control" placeholder="Nhập Email" id="Email">
+                                                <form id="form-DK" role="form" action='Header' method="post">
+                                                    <input type="email" class="form-control" placeholder="Nhập Email" id="EmailDK" name="EmailDK">
                                                     <br>
                                                 
                                                 
-                                                    <input type="text" class="form-control" placeholder="Tên Tài Khoản" id="TenTaiKhoanDK">
+                                                    <input type="text" class="form-control" placeholder="Tên Tài Khoản" id="TenTaiKhoanDK" name="TenTaiKhoanDK">
                                                     <br>
                                                 
-                                                	<input type="password" class="form-control"  placeholder="Mật Khẩu" name="pwd" id="MatKhauDK">
+                                                	<input type="password" class="form-control"  placeholder="Mật Khẩu"  id="MatKhauDK" name="MatKhauDK">
                                                 	<br>
-                                                	<input type="password" class="form-control"  placeholder="Xác Nhận Mật Khẩu" name="pwd" id="MatKhauXacNhan">
+                                                	<input type="password" class="form-control"  placeholder="Xác Nhận Mật Khẩu"  id="MatKhauXacNhan" name="MatKhauXacNhan">
                                                 	<br>
                                                 	<label id="ThongBaoDangKi"></label>
                                                 	<br>
-                                                	<button id="btnDangKi"  type="button" class="btn btn-default btn-dk"  >Đăng Kí</button>
+                                                	<button id="btnDangKi"  type="submit" class="btn btn-default btn-dk"  >Đăng Kí</button>
                                                 </form>
 
                                             </div>
@@ -221,7 +225,7 @@
                     <div class="col-sm-8 col-md-7 col-lg-6">
                         <ul class="nav navbar-nav " id="mainnavigation">
                             <li class="dropdown dropdown-large">
-                                <a href="#" class="tieuDe">Trang Chủ</a>
+                                <a href="TrangChu" class="tieuDe">Trang Chủ</a>
                             </li>
                             <li class="dropdown dropdown-large dropdown-hover">
                                 <a href="#" class="tieuDe" >Sản Phẩm</a>
@@ -306,31 +310,137 @@
     </div>
     <script>
     
+    jQuery.validator.addMethod("alphanumeric", function(value, element) {
+        return this.optional(element) || /^\w+$/i.test(value);
+    }, "Letters, numbers, and underscores only please");
+    
+    $("#form-DK").validate({
+        rules: {
+        	EmailDK: "required",
+        	TenTaiKhoanDK:{
+        		required: true,
+        		minlength:8,
+        		alphanumeric: true
+    	
+        	},
+        	MatKhauDK:{
+        		required: true,
+        		maxlength: 16
+        	},
+            
+            MatKhauXacNhan:{
+            	required: true,
+        		maxlength: 16,
+            	equalTo: "#MatKhauDK"
+            }
+            
+        },
+        messages:{
+        	EmailDK: "Vui lòng nhập đúng Email",
+        	TenTaiKhoanDK:{
+        		required:"Không được bỏ trống",
+        		minlength:"Tên tài khoản phải có trên 8 kí tự",
+        		alphanumeric:"Không được có các kí tự đặc biệt"
+        	},
+        	MatKhauDK: {
+        		required: "Không được bỏ trống",
+        		maxlength: "Mật khẩu có độ dài tối đa 16 kí tự"
+        	},
+        	MatKhauXacNhan:{
+        		required: "Không được bỏ trống",
+        		maxlength: "Mật khẩu có độ dài tối đa 16 kí tự",
+        		equalTo:"Xác nhận lại mật khẩu"
+        	}
+        	
+        }
+    });
+    
+    $('#btnDangKi').click(function(e) {
+    	
+    	
+        e.preventDefault();
+        if($("#form-DK").valid())
+        	{
+            $.ajax( {
+                url: 'Header',
+                type: 'GET',
+                data:{
+                	flagAction: 2,
+                	Email : $('#EmailDK').val(),
+                	TenTaiKhoanDK : $('#TenTaiKhoanDK').val(),
+                	MatKhauDK : $('#MatKhauDK').val(),
+                	MatKhauXacNhan : $('#MatKhauXacNhan').val()
+                	
+                },
+              
+               
+            }).done(function(data) {
+            	
+            	CallBoxDangKi(data);
+            });
+
+        	}
+       
+    });
+    
+    
+    $("#form-DN").validate({
+        rules: {
+        	TenTaiKhoan:{
+        		required:true,
+        		minlength:8,
+        		alphanumeric: true
+    
+        	},
+            MatKhau:{
+            	required: true,
+        		maxlength: 16
+            }
+            
+        },
+        messages:{
+        	TenTaiKhoan: {
+        		required: "Không được bỏ trống",
+        		minlength:"Tên tài khoản phải có trên 8 kí tự",
+        		alphanumeric:"Không được có kí tự đặc biệt"
+        	},
+        	MatKhau:{
+        		required: "Không được bỏ trống",
+        		maxlength: "Mật khẩu có độ dài tối đa 16 kí tự"
+        	}
+        	
+        }
+    });
+    
+    
+    
     $('#btnDNhap').click(function(e) {
-    	alert("sâsasas");
+    	
     	
         e.preventDefault();
         e.stopPropagation();
-        $.ajax( {
-            url: 'Header',
-            type: 'GET',
-            dataType: 'text',
-            data:{
-            	flagAction: 1,
-            	TenTaiKhoan : $('#TenTaiKhoan').val(),
-            	MatKhau : $('#MatKhau').val()
-            },
-           // 'TenTaiKhoan': _.find('[name="TenTaiKhoan"]').val(),
-			 	//'MatKhau': _.find('[name="MatKhau"]').val(),
-           
-        }).done(function(data) {
-        	//swal("Good job!", "You clicked the button!", "success");
-        	// 	alert(data);
-        	
-        		CallBoxDangNhap(data);
-        		
-        	
-        });
+        if($("#form-DN").valid())
+        	{
+        	  $.ajax( {
+                  url: 'Header',
+                  type: 'GET',
+                  dataType: 'text',
+                  data:{
+                  	flagAction: 1,
+                  	TenTaiKhoan : $('#TenTaiKhoan').val(),
+                  	MatKhau : $('#MatKhau').val()
+                  },
+                 
+                 
+              }).done(function(data) {
+              	
+              	
+              		CallBoxDangNhap(data);
+              		
+              	
+              });
+        	}
+      
         
     });
     //
@@ -375,7 +485,7 @@
     ///
     
     $('.btnDangXuat').click(function(e) {
-    	alert("sâsasas");
+    	
     	
         e.preventDefault();
         $.ajax( {
@@ -393,29 +503,7 @@
         });
        
     });
-    $('#btnDangKi').click(function(e) {
-    	alert("sâsasas");
-    	
-        e.preventDefault();
-        $.ajax( {
-            url: 'Header',
-            type: 'GET',
-            data:{
-            	flagAction: 2,
-            	Email : $('#Email').val(),
-            	TenTaiKhoanDK : $('#TenTaiKhoanDK').val(),
-            	MatKhauDK : $('#MatKhauDK').val(),
-            	MatKhauXacNhan : $('#MatKhauXacNhan').val()
-            	
-            },
-          
-           
-        }).done(function(data) {
-        	
-        	CallBoxDangKi(data);
-        });
-       
-    });
+   
     function CallBoxDangKi(data) {
     	if(data == "ThanhCong")
     		{

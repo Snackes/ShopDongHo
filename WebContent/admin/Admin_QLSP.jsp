@@ -2,6 +2,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="ModelBean.SanPham"%>
+<%@page import="ModelBean.ThuongHieu"%>
 <%@page import="java.util.List"%>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -56,12 +57,12 @@
                 <ul class="nav" id="side-menu">
                     <li>
                         <p style="margin-top: 20px"></p>
-                        <a id="dash" href="Admin_Dashboard.html"><span class="glyphicon glyphicon-home" style="margin-right: 5px;"></span>Trang chính</a>
-                        <a id="qlsp" href="Admin_QLSP.html"><span class="glyphicon glyphicon-gift" style="margin-right: 5px;"></span>Quản lí sản phẩm</a>
-                        <a id="qldh" href="Admin_QLDH.html"><span class="glyphicon glyphicon-list-alt" style="margin-right: 5px;"></span>Quản lí đơn hàng</a>
-                        <a id="qltk" href="Admin_QLTK.html"><span class="glyphicon glyphicon-user" style="margin-right: 5px;"></span>Quản lí tài khoản người dùng</a>
+                        <a id="dash" href="Admin_Dash_Controll"><span class="glyphicon glyphicon-home" style="margin-right: 5px;"></span>Trang chính</a>
+                        <a id="qlsp" href="Admin_QLSP_Controll"><span class="glyphicon glyphicon-gift" style="margin-right: 5px;"></span>Quản lí sản phẩm</a>
+                        <a id="qldh" href="Admin_QLDH_Controll"><span class="glyphicon glyphicon-list-alt" style="margin-right: 5px;"></span>Quản lí đơn hàng</a>
+                        <a id="qltk" href="Admin_QLKH_Controll"><span class="glyphicon glyphicon-user" style="margin-right: 5px;"></span>Quản lí tài khoản người dùng</a>
                         <a id="qlbl" href="Admin_QLBL.html"><span class="glyphicon glyphicon-comment" style="margin-right: 5px;"></span>Quản lí bình luận</a>
-                        <a id="report" href="Admin_Report.html"><span class="glyphicon glyphicon-stats" style="margin-right: 5px;"></span>Thống kê</a>
+                        <a id="report" href="Admin_Report_Controll"><span class="glyphicon glyphicon-stats" style="margin-right: 5px;"></span>Thống kê</a>
                     </li>
                 </ul>
             </div>
@@ -166,10 +167,30 @@
                                         <label for="tenSP">Tên sản phẩm:</label>
                                         <input type="text" class="form-control" id="tenSP" placeholder="Tên sản phẩm" name="tenSP">
                                     </div>
+                                    
+                                    <!-- list Thương hiệu -->
+                     			<%
+                     				Object dsth = request.getAttribute("Funct_Admin_DSThHieu");
+                        			ThuongHieu[] ds_th = null;
+                        			if(dsth != null)
+                        			{
+                        				ds_th = (ThuongHieu[])dsth;
+                        			}
+                     			%>
                                     <div class="form-group">
                                         <label for="ThuongHieu">Thương hiệu:</label>
-                                        <input type="text" class="form-control" id="ThuongHieu" placeholder="Thương hiệu" name="ThuongHieu">
+                                        <select name="ThuongHieu" id="ThuongHieu">
+               					<%
+            						for(int i=0;i<ds_th.length;i++)
+            						{
+            							int MaThH = ds_th[i].getMaTH();
+            							String TenThH = ds_th[i].getTenThuongHieu();
+               					%>
+                                        	<option value="<%=MaThH%>"><%=TenThH%></option>
+                                <%	} %>
+                                        </select>
                                     </div>
+                                    
                                     <div class="form-group">
                                         <label for="KieuMay">Kiểu máy:</label>
                                         <input type="text" class="form-control" id="KieuMay" placeholder="Kiểu máy" name="KieuMay">
@@ -278,6 +299,15 @@
                 <!--tab nhập thêm sản phẩm-->
                 <div class="tab-pane" id="NhapHang">
                     <!--des here-->
+                    <!-- list out stock -->
+                <%
+            		Object outofstock = request.getAttribute("Funct_Admin_DSSP_OutofStock");
+            		SanPham[] sp_outstock = null;
+            		if(outofstock != null)
+            		{
+            			sp_outstock = (SanPham[])outofstock;
+            		}
+                %>
                     <div class="col-lg-6 col-md-6 col-sm-11 col-xs-12 outstock-table">
                         <span style="font-size: 20px; color: black;">Sản phẩm cần nhập thêm số lượng</span>
                         <table class="table table-striped" id="san-pham-het-hang">
@@ -288,13 +318,22 @@
                                     <th>Số lượng còn lại</th>
                                 </tr>
                             </thead>
+               	<%
+            		for(int i=0;i<sp_outstock.length;i++)
+            		{
+            			int MaSP = sp_outstock[i].getMaSP();
+            			String TenSP = sp_outstock[i].getTenSp();
+            			int Soluongconlai = sp_outstock[i].getSoLuongHienTai();
+               		
+               	%>
                             <tbody>
                                 <tr>
-                                    <td><!--MaSP--></td>
-                                    <td><!--TenSP--></td>
-                                    <td><!--SoLuong--></td>
+                                    <td><%=MaSP%></td>
+                                    <td><%=TenSP%></td>
+                                    <td><%=Soluongconlai%></td>
                                 </tr>
                             </tbody>
+               <%	} %>
                         </table>
                     </div>
                     <!--nhập thông tin-->

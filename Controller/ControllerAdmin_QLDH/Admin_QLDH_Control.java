@@ -1,6 +1,7 @@
-package ControllerIndex;
+package ControllerAdmin_QLDH;
 
 import java.io.IOException;
+import java.sql.ResultSet;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,21 +10,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ModelBean.SanPham;
-import ModelService.XuLiGioHang;
-import ModelService.XuLiSanPham;
+import ModelService.Admin_QLDH_XulyTT;
 
 /**
- * Servlet implementation class ShowSanPhamMoi
+ * Servlet implementation class Admin_QLDH_Control
  */
-@WebServlet("/TrangChu")
-public class TrangChu extends HttpServlet {
+@WebServlet("/Admin_QLDH_Control")
+public class Admin_QLDH_Control extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public TrangChu() {
+    public Admin_QLDH_Control() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,20 +31,20 @@ public class TrangChu extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		RequestDispatcher dispatcher= request.getRequestDispatcher("admin/Admin_QLDH.jsp");
+		Admin_QLDH_XulyTT control_SP = new Admin_QLDH_XulyTT();
 		
-		XuLiSanPham control_SP=new XuLiSanPham();
+		ResultSet order_wait = control_SP.Funct_Admin_DSHDB_Wait();
+		request.setAttribute("Funct_Admin_DSHDB_Wait", order_wait);
 		
-		SanPham[] danhsachmoi= control_SP.Func_Lay_BonSanPhamNgauNhien();
-		SanPham[] danhsachnoibat= control_SP.Func_Lay_BonSanPhamNgauNhien();
+		ResultSet order_move = control_SP.Funct_Admin_DSHDB_Move();
+		request.setAttribute("Funct_Admin_DSHDB_Move", order_move);
 		
-		XuLiGioHang xl=new XuLiGioHang();
-		int dm=xl.TongSoLuong(request);
-		request.getSession().setAttribute("SLIConGH", dm);
-		request.setAttribute("LayThongTinSanPhamMoi", danhsachmoi);
-		request.setAttribute("LayThongTinSanPhamNoiBat", danhsachnoibat);
-		RequestDispatcher dispatcher= request.getRequestDispatcher("view/Index.jsp");
+		ResultSet order_succ = control_SP.Funct_Admin_DSHDB_Success();
+		request.setAttribute("Funct_Admin_DSHDB_Success", order_succ);
+		
 		dispatcher.forward(request, response);
-		
 	}
 
 	/**
