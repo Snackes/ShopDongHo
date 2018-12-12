@@ -82,14 +82,14 @@
 						</tr>
 					</tbody>
 				</table>
-				<a href="view/DatHang.jsp" type="button"
+				<a href="ThanhToan" type="button"
 					class="btn btn-warning btn-lg" id="thanhtoan_bt">Tiến hành
 					thanh toán</a>
 			</div>
 		</div>
 		<div class="row" style="text-align: left; font-size: 20px; margin-bottom: 100px;">
 			<form action="DeleteSPCart" method="POST">
-				<a href="ShowSanPhamMoi" class="btn btn-link">
+				<a href="TrangChu" class="btn btn-link">
 				← Tiếp tục mua hàng
 				</a>
 				<button type="submit" class="btn btn-link">Làm trống giỏ hàng</button>

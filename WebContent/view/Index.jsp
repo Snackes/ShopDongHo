@@ -29,32 +29,32 @@
             </ol>
             <div class="carousel-inner">
     			<div class=" item ">
-    				<img src="lib/images/photo1.jpeg ">
+    				<img src="lib/images/photo1.jpeg">
     				<div class=" container ">
     					<div class=" carousel-caption d-none d-md-block ">
-    						<h1>Example headline.</h1>
-    						<p>Note: If you're viewing this page via a <code>file://</code> URL, the " next " and " previous " Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
-    						<p><a class=" btn btn-lg btn-primary " href=" # " role=" button ">Sign up today</a></p>
+    						  <h1 style="font-family: 'Philosopher', sans-serif;">Sang Trọng</h1>
+    						<!--<p>Note: If you're viewing this page via a <code>file://</code> URL, the " next " and " previous " Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
+    						-->
     					</div>
     				</div>
     			</div>
     			<div class=" item ">
-    				<img src="lib/images/photo2.jpeg ">
+    				<img src="lib/images/photo2.jpeg">
     				<div class=" container ">
     					<div class=" carousel-caption d-none d-md-block ">
-    						<h1>Another example headline.</h1>
-    						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-    						<p><a class=" btn btn-lg btn-primary " href=" # " role=" button ">Learn more</a></p>
+    						  <h1 style="font-family: 'Philosopher', sans-serif;">Lịch Lãm</h1>
+    						<!--<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+    						-->
     					</div>
     				</div>
     			</div>
     			<div class=" item active ">
-    				<img src="lib/images/photo3.jpeg " ">
+    				<img src="lib/images/photo3.jpeg">
                 <div class="container">
                     <div class="carousel-caption d-none d-md-block">
-                        <h1>One more for good measure.</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+                          <h1 style="font-family: 'Philosopher', sans-serif;">Thời Trang</h1>
+                       <!-- <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                        -->
                     </div>
                 </div>
             </div>
@@ -123,9 +123,9 @@
 
 
         </div>
-        <div class="btn-more">
+        <div class="btn-more" style="margin-top:30px;margin-bottom:30px;">
             <ul class="pager">
-                <li class="next"> <a href="#">Xem Thêm</a></li>
+                <li class="next"> <a href="BoLocSanPham">Xem Thêm</a></li>
             </ul>
         </div>
         <!--end Sản Phẩm nổi bật--->
@@ -184,9 +184,9 @@
 					
             
         </div>
-        <div class="btn-more">
+        <div class="btn-more" style="margin-top:30px;margin-bottom:30px;">
             <ul class="pager">
-                <li class="next"> <a href="#">Xem Thêm</a></li>
+                <li class="next"> <a href="BoLocSanPham">Xem Thêm</a></li>
             </ul>
         </div>
         <div class="clear">
@@ -300,7 +300,7 @@
 	    		      type: "success",
 	    		      showCancelButton: false
 	    		    }, function() {
-	    		    	location.reload();
+	    		    	$("#loadcha").load(location.href + " #loadcon");
 	    		    });
 	    		
 	    		}
