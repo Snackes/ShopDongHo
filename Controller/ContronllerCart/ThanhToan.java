@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -47,8 +48,8 @@ public class ThanhToan extends HttpServlet {
         XuLiGioHang xl=new XuLiGioHang();
 		double TTDonHang = xl.TongTienDonHang(request);
         //lấy ra giỏ hàng
-        String HoTen=request.getParameter("uname").trim();
-        String DiaChi=request.getParameter("address").trim();
+        String HoTen=request.getParameter("uname").toString();
+        String DiaChi=request.getParameter("address").toString();
         int SDT=Integer.parseInt(request.getParameter("mobile"));
         Integer MaKH=null;
         String thu="";
@@ -77,7 +78,9 @@ public class ThanhToan extends HttpServlet {
             xl.ThemSPVaoChiTietHDBan(MaSP, GiaVon,GiaBan,SoLuong,sale);
         }
 
-       // return RedirectToAction("Index","Home");//trả ra cái thông báo mua hàng thành công
+        request.setAttribute("ThanhToanThanhCong", "ThanhCong");
+        RequestDispatcher dispatcher=request.getRequestDispatcher("view/Index.jsp");
+        dispatcher.forward(request, response);
 	}
 
 }

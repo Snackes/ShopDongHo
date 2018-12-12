@@ -5,13 +5,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import ModelBean.ChiTietHDBan;
+import ModelBean.KhachHang;
 import ModelService.XuLiDonHangBanCuaKH;
 
 /**
@@ -33,16 +36,28 @@ public class ChiTietDonHang extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int MaHD=Integer.parseInt(request.getParameter("MaHDBan"));
-		XuLiDonHangBanCuaKH xldh=new XuLiDonHangBanCuaKH();
+		HttpSession session = request.getSession();
+
+		if(session.getAttribute("MaKH")!=null)
+		{
+			int MaHD=Integer.parseInt(request.getParameter("MaHDBan"));
+			XuLiDonHangBanCuaKH xldh=new XuLiDonHangBanCuaKH();
+			
+			ResultSet cthdBan=xldh.LayThongTinChiTietHDBan(MaHD);
+			ResultSet DSSPDonHangBan=xldh.LayThongTinSanPham(MaHD);
+			request.setAttribute("DanhSachSanPham", DSSPDonHangBan);
+			request.setAttribute("ChiTietHoaDonBan", cthdBan);
+			RequestDispatcher dispatcher= request.getRequestDispatcher("view/ChiTietDonHang.jsp");
+			dispatcher.forward(request, response);
+		}
+		else			
+		{
+			ServletContext context= getServletContext();
+			RequestDispatcher rd= context.getRequestDispatcher("/TrangChu");
+			rd.forward(request, response);
+		}
 		
-		ResultSet cthdBan=xldh.LayThongTinChiTietHDBan(MaHD);
-		ResultSet DSSPDonHangBan=xldh.LayThongTinSanPham(MaHD);
-		request.setAttribute("ChiTietHoaDonBan", cthdBan);
-		
-		request.setAttribute("DanhSachSanPham", DSSPDonHangBan);
-		RequestDispatcher dispatcher= request.getRequestDispatcher("view/ChiTietDonHang.jsp");
-		dispatcher.forward(request, response);
+
 				
 	}
 

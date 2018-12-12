@@ -106,4 +106,20 @@ public class XuLiGioHang {
 		}
 		connection.close();	
     }
+	//Kiểm tra số lượng trong kho trước khi thêm vào giỏ
+	public ResultSet KiemTraSoLuong(int MaSP, int SoLuong)
+	{
+		
+		connection.connect();
+		ResultSet rs=null;
+		try {
+			Vector<Object[]> paramsIn = connection.createParams(new int[] {1,2},
+					new Object[] {MaSP,SoLuong});
+			rs=connection.executeTableProc("Proc_KiemTraSoLuongSanPham", paramsIn);
+		}
+		catch(SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return rs;
+	}
 }

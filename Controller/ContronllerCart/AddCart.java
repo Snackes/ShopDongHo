@@ -1,10 +1,11 @@
 package ContronllerCart;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import ModelBean.Cart;
-import ModelBean.SanPham;
+
 import ModelService.XuLiGioHang;
 
 /**
@@ -45,9 +46,33 @@ public class AddCart extends HttpServlet {
 		else
 			sl =Integer.parseInt(request.getParameter("SoLuong"));
 		HttpSession session = request.getSession();
-        XuLiGioHang xl=new XuLiGioHang();
+        XuLiGioHang xlgh=new XuLiGioHang();
+        
+        
+        
+        String kt="";
+        ResultSet rs= xlgh.KiemTraSoLuong(MaSP, sl);
+        try {
+			while(rs.next())
+			{
+				kt=rs.getString("kiemtra");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        if(kt.equals("1"))
+        {
+    		response.setContentType("text/plain");
+    		response.setCharacterEncoding("UTF-8");
+    		response.getWriter().write(kt);
+        	return;
+        }
+
+        
+        
         //lấy ra  giỏ hàng
-        List<Cart> listGH = xl.LayGioHang(request);
+        List<Cart> listGH = xlgh.LayGioHang(request);
         //kiểm tra sản phẩm này tồn tại trong giỏ hàng hay chưa
         Cart Sp=new Cart();
         Sp=null;
@@ -64,17 +89,17 @@ public class AddCart extends HttpServlet {
         	Sp.setSoLuong(sl);
             listGH.add(Sp);//thêm sản phẩm đó vào giỏ
             session.setAttribute("GioHang", listGH);
-			session.setAttribute("SLIConGH", xl.TongSoLuong(request));
-            //return Redirect(strURL);  load lại trang
+			session.setAttribute("SLIConGH", xlgh.TongSoLuong(request));
         }
         else//nếu có rồi thì cập nhật số lượng
         {
         	Sp.setSoLuong(Sp.getSoLuong()+sl);//SoLuong sẽ bằng 1 khi nó ở trang sản phẩm.
-        	
             request.getSession().setAttribute("GioHang", listGH);		
-            session.setAttribute("SLIConGH", xl.TongSoLuong(request));
-            //return Redirect(strURL); 
+            session.setAttribute("SLIConGH", xlgh.TongSoLuong(request));
         }		
+		response.setContentType("text/plain");
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().write(kt);
 	}
 
 	/**

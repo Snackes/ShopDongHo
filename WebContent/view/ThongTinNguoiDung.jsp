@@ -116,7 +116,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="ShowDSDHNE">
                                     <i id="iconQLDH" class="fa fa-bars" aria-hidden="true"></i> Quản lý đơn hàng
                                 </a>
                             </li>

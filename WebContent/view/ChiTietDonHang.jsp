@@ -178,6 +178,7 @@
             </div>
         </div>
     </div>
+    
     <%@ include file="/Layout/Footer.jsp"%>
 </body>
 </html>

@@ -17,7 +17,7 @@
     <!---CONTENT HERE-->
     <div class=" container">
         <div class="row">
-            <div class="col-lg-3 col-md-3 col-sm-3 listCheckBox">
+            <div id="Filter" class="col-lg-3 col-md-3 col-sm-3 listCheckBox">
                 <!--Lisst checkBox lọc--->
                 <div class="list-group">
 	                <form id="radio">
@@ -25,32 +25,32 @@
 		                   	<p style="font-size: 26px;">Khoảng giá</p>
 		                    <div class="list-group-item">
 		                        <label>                   
-		                            <input id="checkboxKhoangGia1" name="radio" class="common-selector" type="radio" value="Duoi1trieu">
-		                            <a class="MucGia"  href="BoLocSanPham?KhoangGia=1">Dưới 1 triệu</a>
+		                            <input id="radio1"  name="radio" class="common-selector" type="radio" value="Duoi1trieu" >
+		                            Dưới 1 triệu
 		                        </label>
 		                    </div>
 		                    <div class="list-group-item">
 		                        <label>
-		                            <input id="checkboxKhoangGia2"  name="radio" class="common-selector" type="radio" value="1den2trieu">
-		                            <a class="MucGia" href="BoLocSanPham?KhoangGia=2">Từ 1-2 triệu</a>
+		                            <input id="radio2"  name="radio" class="common-selector" type="radio" value="1den2trieu">
+		                           Từ 1-2 triệu
 		                        </label>
 		                    </div>
 		                    <div class="list-group-item">
 		                        <label>
-		                            <input id="checkboxKhoangGia3" name="radio" class="common-selector" type="radio" value="2den7trieu">
-		                            <a class="MucGia" href="BoLocSanPham?KhoangGia=3">Từ 2-7 triệu</a>
+		                            <input id="radio3" name="radio" class="common-selector" type="radio" value="2den7trieu">
+		                            Từ 2-7 triệu
 		                        </label>
 		                    </div>
 		                    <div class="list-group-item">
 		                        <label>
-		                            <input id="checkboxKhoangGia4"  name="radio" class="common-selector" type="radio" value="7den15trieu">
-		                            <a class="MucGia" href="BoLocSanPham?KhoangGia=4">Từ 7-15 triệu</a>
+		                            <input id="radio4"  name="radio" class="common-selector" type="radio" value="7den15trieu">
+		                            Từ 7-15 triệu
 		                        </label>
 		                    </div>
 		                    <div class="list-group-item">
 		                        <label>
-		                            <input id="checkboxKhoangGia5"  name="radio" class="common-selector" type="radio" value="15den30trieu">
-		                            <a class="MucGia" href="BoLocSanPham?KhoangGia=5">Trên 15 triệu</a>
+		                            <input id="radio5"  name="radio" class="common-selector" type="radio" value="15den30trieu">
+		                            Trên 15 triệu
 		                        </label>
 		                    </div>
 		                 </fieldset>
@@ -72,73 +72,73 @@
                         <div class="list-group-item">
                             <label>
                                 <input id="checkbox1" class="common-selector" type="checkbox" value="SEIKO">
-                                <a class="MucGia" href="BoLocSanPham?ThuongHieu1=1">SEIKO</a>
+                                SEIKO
                             </label>
                         </div>
                         <div class="list-group-item">
                             <label>
                                 <input id="checkbox2" class="common-selector" type="checkbox" value="ROLEX">
-                            	<a class="MucGia" href="BoLocSanPham?ThuongHieu2=2">ROLEX</a>
+                            	ROLEX
                             </label>
                         </div>
                         <div class="list-group-item">
                             <label>
                                 <input id="checkbox3" class="common-selector" type="checkbox" value="OMEGA">
-                            	<a class="MucGia" href="BoLocSanPham?ThuongHieu3=3">OMEGA</a>
+                            	OMEGA
                             </label>
                         </div>
                         <div class="list-group-item">
                             <label>
                                 <input id="checkbox4" class="common-selector" type="checkbox" value="VICTORINOX">
-                            	<a class="MucGia" href="BoLocSanPham?ThuongHieu4=4">VICTORINOX</a>
+                            	VICTORINOX
                             </label>
                         </div>
                         <div class="list-group-item">
                             <label>
                                 <input id="checkbox5" class="common-selector" type="checkbox" value="BREITLING">
-                            	<a class="MucGia" href="BoLocSanPham?ThuongHieu5=5">BREITLING</a>
+                            	BREITLING
                             </label>
                         </div>
                         <div class="list-group-item">
                             <label>
                                 <input id="checkbox6" class="common-selector" type="checkbox" value="GUCCI">
-                            	<a class="MucGia" href="BoLocSanPham?ThuongHieu6=6">GUCCI</a>
+                            	GUCCI
                             </label>
                         </div>
                         <div class="list-group-item">
                             <label>
                                 <input id="checkbox7" class="common-selector" type="checkbox" value="D&G">
-                            	<a class="MucGia" href="BoLocSanPham?ThuongHieu7=7">D&G</a>
+                            	D&G
                             </label>
                         </div>
                         <div class="list-group-item">
                             <label>
                                 <input id="checkbox8" class="common-selector" type="checkbox" value="BOVET">
-                            	<a class="MucGia" href="BoLocSanPham?ThuongHieu8=8">BOVET</a>
+                            	BOVET
                             </label>
                         </div>
                         <div class="list-group-item">
                             <label>
                                 <input id="checkbox9 class="common-selector" type="checkbox" value="TISSOT">
-                            	<a class="MucGia" href="BoLocSanPham?ThuongHieu9=9">TISSOT</a>
+                            	TISSOT
                             </label>
                         </div>
                         <div class="list-group-item">
                             <label>
                                 <input id="checkbox10" class="common-selector" type="checkbox" value="HERMES">
-                           		<a class="MucGia" href="BoLocSanPham?ThuongHieu10=10">HERMES</a>
+                           		HERMES
                             </label>
                         </div>
                         <div class="list-group-item">
                             <label>
                                 <input id="checkbox11" class="common-selector" type="checkbox" value="HUBLOT">
-                            	<a class="MucGia" href="BoLocSanPham?ThuongHieu11=11">HUBLOT</a>
+                            	HUBLOT
                             </label>
                         </div>
                         <div class="list-group-item">
                             <label>
                                 <input id="checkbox12" class="common-selector" type="checkbox" value="PUMA">
-                            	<a class="MucGia" href="BoLocSanPham?ThuongHieu12=12">PUMA</a>
+                            	PUMA
                             </label>
                         </div>
                     </div>
@@ -149,20 +149,20 @@
 		                    <p style="font-size: 26px;">Giới Tính</p>
 		                    <div class=" list-group-item">
 		                        <label>
-		                            <input id="CheckBoxNam" name="radio" class="common-selector " type="radio" value="Nam">
-		                            <a class="MucGia" href="BoLocSanPham?GioiTinhSuDung=Nam">Nam</a>
+		                            <input id="radio6" name="radio" class="common-selector " type="radio" value="Nam">
+		                            Nam
 		                        </label>
 		                    </div>
 		                    <div class=" list-group-item">
 		                        <label>
-		                            <input id="CheckBoxNu" name="radio" class="common-selector" type="radio" value="Nu">
-		                            <a class="MucGia" href="BoLocSanPham?GioiTinhSuDung=Nữ">Nữ</a>
+		                            <input id="radio7" name="radio" class="common-selector" type="radio" value="Nu">
+		                            Nữ
 		                        </label>
 		                    </div>
 		                    <div class=" list-group-item">
 		                        <label>
-		                            <input id="CheckBoxUnisex" name="radio" class="common-selector" type="radio" value="Unisex">
-		                            <a class="MucGia" href="BoLocSanPham?GioiTinhSuDung=Unisex">Unisex</a>
+		                            <input id="radio8" name="radio" class="common-selector" type="radio" value="Unisex">
+		                            Unisex
 		                        </label>
 		                    </div>
 	                    </fieldset>
@@ -172,18 +172,14 @@
                     <p style="font-size: 26px;">Chất Liệu Dây</p>
                     <div class=" list-group-item">
                         <label>
-                        	<a class="MucGia" href="BoLocSanPham?LoaiDay1=da">
-	                            <input id="CheckBoxDa" class="common-selector" type="checkbox">
-	                        	Dây da
-	                        </a>
+	                   		<input id="checkbox13" class="common-selector" type="checkbox">
+	                       	Dây da
                         </label>
                     </div>
                     <div class=" list-group-item">
                         <label>
-                        	<a class="MucGia" href="BoLocSanPham?LoaiDay2=Kim Loại">
-                            	<input id="CheckBoxKimLoai" class="common-selector" type="checkbox">
-                        		Dây Kim loại
-                        	</a>
+                            <input id="checkbox14" class="common-selector" type="checkbox">
+                        	Dây Kim loại
                         </label>
                     </div>
 
@@ -193,23 +189,20 @@
 
                     <div class=" list-group-item">
                         <label>
-                        <a class="MucGia" href="BoLocSanPham?KieuMay1=Pin">
-                            <input id="CheckBoxPin" class="common-selector" type="checkbox">
+                            <input id="checkbox15" class="common-selector" type="checkbox">
                         	Pin
-                        </a>
                         </label>
                     </div>
                     <div class=" list-group-item">
                         <label>
-                        <a class="MucGia" href="BoLocSanPham?KieuMay2=Automatic">
-                            <input id="CheckBoxAutomatic" class="common-selector" type="checkbox">
-                        	Automatic</a>
+                            <input id="checkbox16" class="common-selector" type="checkbox">
+                        	Automatic
                         </label>
                     </div>
                 </div>
                 <!---end list checkbox-->
             </div>
-            <div class=" col-lg-9 col-md-9 col-sm-9">
+            <div id="dcmn" class=" col-lg-9 col-md-9 col-sm-9">
                 
                     <ul class="pagination">
                         <li><a href="#">1</a></li>
@@ -219,7 +212,7 @@
                         <li><a href="#">5</a></li>
                     </ul>                
                 <!--list san pham-->
-                <div class="row" style="clear: right;">
+                <div id="rowSP" class="row" style="clear: right;">
                 <%
                 	
                 	if(request.getAttribute("KetQuaTK")!=null)
@@ -262,7 +255,7 @@
                 	}
                 	else
                 	{
-		                	Object result=request.getAttribute("LocSanPham");
+		                	Object result=request.getSession().getAttribute("LocSanPham");
 		                	if(result !=null)
 		                	{
 		                		SanPham[] listsp = (SanPham[])result;
@@ -276,12 +269,12 @@
 		                %>
 		
 		
-		                    <div class="col-lg-3">
+		                    <div class="col-lg-3 temp">
 		                        <div class="thumbnail-list-product">
 		                            <div class="thumbnail-product">
 		                                <div class="profilebox profilebox1" style="background: url(lib/images/<%=HinhAnh1%>)">
 		                                    <div class="SocialIcons">
-		                                        <a href="#"><i class="fas fa-cart-plus"></i></a>
+		                                    	<a data-MaSP=<%=MaSP%> class="btnAddCart"><i class="fas fa-cart-plus"></i></a>
 		                                        <a href="#"><i class="far fa-heart"></i></a>
 		                                    </div>
 		                                </div>
@@ -313,187 +306,224 @@
         </div>
     </div>
     <!---END CONTENT--->
-            <script>
             
-          	<%
-          		//Các checkbox thương hiệu
-          		HttpSession session1 = request.getSession();
-            	if(session1.getAttribute("ThuongHieu1")!=null)
-          	 	{%>
-                	document.getElementById("checkbox1").checked = true;
-            	<%}
-            	
-            	if(session1.getAttribute("ThuongHieu2")!=null)
-          	 	{%>
-                	document.getElementById("checkbox2").checked = true;
-            	<%}
-            	
-            	if(session1.getAttribute("ThuongHieu3")!=null)
-          	 	{%>
-                	document.getElementById("checkbox3").checked = true;
-            	<%}
-            	
-            	if(session1.getAttribute("ThuongHieu4")!=null)
-          	 	{%>
-                	document.getElementById("checkbox4").checked = true;
-            	<%}
-            	
-            	if(session1.getAttribute("ThuongHieu5")!=null)
-          	 	{%>
-                	document.getElementById("checkbox5").checked = true;
-            	<%}
-            	if(session1.getAttribute("ThuongHieu6")!=null)
-          	 	{%>
-                	document.getElementById("checkbox6").checked = true;
-            	<%}
-            	
-            	if(session1.getAttribute("ThuongHieu7")!=null)
-          	 	{%>
-                	document.getElementById("checkbox7").checked = true;
-            	<%}
-            	
-            	if(session1.getAttribute("ThuongHieu8")!=null)
-          	 	{%>
-                	document.getElementById("checkbox8").checked = true;
-            	<%}
-            	
-            	if(session1.getAttribute("ThuongHieu9")!=null)
-          	 	{%>
-                	document.getElementById("checkbox9").checked = true;
-            	<%}
-            	
-            	if(session1.getAttribute("ThuongHieu10")!=null)
-          	 	{%>
-                	document.getElementById("checkbox10").checked = true;
-            	<%}
-            	
-            	if(session1.getAttribute("ThuongHieu11")!=null)
-          	 	{%>
-                	document.getElementById("checkbox11").checked = true;
-            	<%}
-            	
-            	if(session1.getAttribute("ThuongHieu12")!=null)
-          	 	{%>
-                	document.getElementById("checkbox12").checked = true;
-            	<%}
-            	
-            	//Giới tính
-            	if(session1.getAttribute("GioiTinhSuDung")!=null)
-          	 	{
-            		String gioiTinh=(String)(session1.getAttribute("GioiTinhSuDung"));
-          	 		if(gioiTinh.equals("Nam"))
-          	 		{%>
-                		document.getElementById("CheckBoxNam").checked = true;
-            		<%}
-          	 		if(gioiTinh.equals("Nữ"))
-          	 		{%>
-                		document.getElementById("CheckBoxNu").checked = true;
-          	 		<%}
-          	 		if(gioiTinh.equals("Unisex"))
-          	 		{%>
-                		document.getElementById("CheckBoxUnisex").checked = true;
-          	 		<%}
-            	}
-            	//Kiểu máy
-            	if(session1.getAttribute("KieuMay1")!=null)
-          	 	{%>
-	            	document.getElementById("CheckBoxPin").checked = true;
-            	<%}
-            	else{
-            		
-            	}
-            	
-            	if(session1.getAttribute("KieuMay2")==null)
-          	 	{%>
-	            	document.getElementById("CheckBoxAutomatic").checked = false;
-            	<%}
-            	else{%>
-            		document.getElementById("CheckBoxAutomatic").checked = true;
-            	<%}
-            	
-            	
-            	
-				//Loại dây
-				if(session1.getAttribute("LoaiDay1")!=null)
-          	 	{%>
-	            	document.getElementById("CheckBoxDa").checked = true;
-            	<%}
-            	if(session1.getAttribute("LoaiDay2")!=null)
-          	 	{%>
-	            	document.getElementById("CheckBoxKimLoai").checked = true;
-            	<%}
-
-            	//Khoảng giá
-            	
-            	if(session1.getAttribute("KhoangGia")!=null)
-            	{
-            		int KhoangGia=Integer.parseInt(session1.getAttribute("KhoangGia").toString());
-          	 		if(KhoangGia==1)
-          	 		{%>
-                    	document.getElementById("checkboxKhoangGia1").checked = true;
-          	 		<%}
-          	 		if(KhoangGia==2)
-          	 		{%>
-                    	document.getElementById("checkboxKhoangGia2").checked = true;
-          	 		<%}
-          	 		if(KhoangGia==3)
-          	 		{%>
-                    	document.getElementById("checkboxKhoangGia3").checked = true;
-          	 		<%}
-          	 		if(KhoangGia==4)
-          	 		{%>
-                    	document.getElementById("checkboxKhoangGia4").checked = true;
-          	 		<%}
-          	 		if(KhoangGia==5)
-          	 		{%>
-                    	document.getElementById("checkboxKhoangGia5").checked = true;
-          	 		<%}
-            	}
-            	%>
-        </script>
-        
         <script>
-    	$('#CheckBoxAutomatic').change(function(){
-	            if (this.checked==true){
-	            	alert("vô nè");
-	            	<%
-	            	session.setAttribute("KieuMay2","Automatic");
-	            	%>
-	    		    $.ajax({
-	    		        url: 'BoLocSanPham',
-	    		        type: 'post',
-	    		        data:{
-	    		        	KieuMay2 :null,//không có cũng đc
-	    		        },
-	    		       
-	    		    })
-	    		    .done(function() {		
+		
+	
+		$('.btnAddCart').click(function(e) {
+		    e.preventDefault();
+		    $.ajax({
+		        url: 'AddCart',
+		        type: 'get',
+		        dataType: 'text',
+		        data:{
+		        	MaSP : $(this).attr("data-MaSP")
+		        },
+		        
+		       
+		    })
+		    .done(function(data) {	
+
+		    	CallBoxThongBao(data);
+
+		    });
+		});   
+		
+		
+	    function CallBoxThongBao(data) {
+	    	
+	    	if(data=="0")
+	    		
+	    		{
+	    		 swal({
+	    		      title: "", 
+	    		      text: "Thêm thành công", 
+	    		      type: "success",
+	    		      showCancelButton: false
+	    		    }, function() {
 	    		    	location.reload();
-	            	
-	   		    });
-	            }
-	            else{
-	            	
-	            	alert("bỏ nè");
-	            	<%
-	            	session.setAttribute("KieuMay2",null);
-	            	%>
-	    		    $.ajax({
-	    		        url: 'BoLocSanPham',
-	    		        type: 'post',
-	    		        data:{
-	    		        	KieuMay2 :null,
-	    		        },
-	    		       
-	    		    })
-	    		    .done(function() {	
-	    		    	//location.replace('http://localhost:8080/WebBanDongHo/BoLocSanPham');
-	            		location.reload();
-	   		    });
-	            }
-	        });
+	    		    });
+	    		
+	    		}
+	    	else
+	    		{
+	    			alert("Không đủ số lượng...!");
+	    			//$('#ThongBaoDangNhap').text("Sản phẩm hết hàng");
+	    		}
+	    	
+	   
+	  }
+	    
+	</script>
+       <script>
+       		//lọc ở đây
+       		$("#Filter").change(function(){
+       			var duoi1trieu = 0;
+       			var tu1_2trieu = 0;
+       			var tu2_7trieu = 0;
+       			var tu7_15trieu = 0;
+       			var tren15trieu = 0;
+       			
+       			var SEIKO = 0;
+       			var ROLEX = 0;
+       			var OMEGA = 0;
+       			var VICTORINOX = 0;
+       			var BREITLING = 0;
+       			var GUCCI = 0;
+       			var D_G = 0;
+       			var BOVET = 0;
+       			var TISSOT = 0;
+       			var HERMES = 0;
+       			var HUBLOT = 0;
+       			var PUMA = 0;
+       			
+       			var NAM = 0;
+       			var Nu = 0;
+       			var UNISEX = 0;
+       			
+       			var DayDa = 0;
+       			var DayKimLoai = 0;
+       			
+       			var Pin = 0;
+       			var Automatic = 0;
+       			
+       			if ($('#radio1').is(":checked"))
+       			{
+       				duoi1trieu = 1;
+       			}
+       			if ($('#radio2').is(":checked"))
+       			{
+       				tu1_2trieu = 1;
+       			}
+       			if ($('#radio3').is(":checked"))
+       			{
+       				tu2_7trieu = 1;
+       			}
+       			if ($('#radio4').is(":checked"))
+       			{
+       				tu7_15trieu = 1;
+       			}
+       			if ($('#radio5').is(":checked"))
+       			{
+       				tren15trieu = 1;
+       			}
+       			if ($('#radio6').is(":checked"))
+       			{
+       				NAM = 1;
+       			}
+       			if ($('#radio7').is(":checked"))
+       			{
+       				Nu = 1;
+       			}
+       			if ($('#radio8').is(":checked"))
+       			{
+       				UNISEX = 1;
+       			}
+       			if ($('#checkbox1').is(":checked"))
+       			{
+       				SEIKO = 1;
+       			}
+       			if ($('#checkbox2').is(":checked"))
+       			{
+       				ROLEX = 1;
+       			}
+       			if ($('#checkbox3').is(":checked"))
+       			{
+       				OMEGA = 1;
+       			}
+       			if ($('#checkbox4').is(":checked"))
+       			{
+       				VICTORINOX = 1;
+       			}
+       			if ($('#checkbox5').is(":checked"))
+       			{
+       				BREITLING = 1;
+       			}
+       			if ($('#checkbox6').is(":checked"))
+       			{
+       				GUCCI = 1;
+       			}
+       			if ($('#checkbox7').is(":checked"))
+       			{
+       				D_G = 1;
+       			}
+       			if ($('#checkbox8').is(":checked"))
+       			{
+       				BOVET = 1;
+       			}
+       			if ($('#checkbox9').is(":checked"))
+       			{
+       				TISSOT = 1;
+       			}
+       			if ($('#checkbox10').is(":checked"))
+       			{
+       				HERMES = 1;
+       			}
+       			if ($('#checkbox11').is(":checked"))
+       			{
+       				HUBLOT = 1;
+       			}
+       			if ($('#checkbox12').is(":checked"))
+       			{
+       				PUMA = 1;
+       			}
+       			if ($('#checkbox13').is(":checked"))
+       			{
+       				DayDa = 1;
+       			}
+       			if ($('#checkbox14').is(":checked"))
+       			{
+       				DayKimLoai = 1;
+       			}
+       			if ($('#checkbox15').is(":checked"))
+       			{
+       				Pin = 1;
+       			}
+       			if ($('#checkbox16').is(":checked"))
+       			{
+       				Automatic = 1;
+       			}
+       			
+       			//var temp=$('#dcmn').html();
+	       		 $.ajax( {
+	                 url: 'BoLocSanPham',
+	                 type: 'POST',
+	                 dataType: 'text',
+	                 data:{
+	                	 flagActionLocSanPham : 1,
+	                	 duoi1trieu : duoi1trieu,
+	            		 tu1_2trieu : tu1_2trieu,
+	            		 tu2_7trieu : tu2_7trieu,
+	            		 tu7_15trieu : tu7_15trieu,
+	            		 tren15trieu : tren15trieu,
+	            		 SEIKO : SEIKO,
+	            		 ROLEX : ROLEX,
+	            		 OMEGA : OMEGA,
+	            		 VICTORINOX : VICTORINOX,
+	            		 BREITLING : BREITLING,
+	            		 GUCCI : GUCCI,
+	            		 D_G : D_G,
+	            		 BOVET : BOVET,
+	            		 TISSOT : TISSOT,
+	            		 HERMES : HERMES,
+	            		 HUBLOT : HUBLOT,
+	            		 PUMA : PUMA,
+	            		 NAM : NAM,
+	            		 Nu : Nu,
+	            		 UNISEX : UNISEX,
+	            		 DayDa : DayDa,
+	            		 DayKimLoai : DayKimLoai,
+	            		 Pin : Pin,
+	            		 Automatic : Automatic
+	                 	
+	                 },
+	             }).done(function() {	            	
+	            	 //location.href=location.href+"?action=filter";
+	            	 $('#dcmn').load(location.href+"?action=filter"+" #rowSP, .pagination");
+	             });
+    		});
+       		
         </script>
-        
         
         
         

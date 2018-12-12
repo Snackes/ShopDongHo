@@ -178,8 +178,10 @@
 										
 								
 									}
+
 							
 					%>
+					
             
         </div>
         <div class="btn-more">
@@ -258,22 +260,59 @@
     </div>
     <!--lisst-slider cho thang hoang-->
 	<%@ include file="/Layout/Footer.jsp"%>  
-	      <script>
+	<%
+		if(request.getAttribute("ThanhToanThanhCong")!=null)
+		{%>
+			
+		<%}
+	%>
+	<script>
+		
+	
 		$('.btnAddCart').click(function(e) {
 		    e.preventDefault();
 		    $.ajax({
 		        url: 'AddCart',
 		        type: 'get',
+		        dataType: 'text',
 		        data:{
 		        	MaSP : $(this).attr("data-MaSP")
 		        },
 		        
 		       
 		    })
-		    .done(function() {		    	
-		    	location.reload();
+		    .done(function(data) {	
+
+		    	CallBoxThongBao(data);
+
 		    });
-		});    
+		});   
+		
+		
+	    function CallBoxThongBao(data) {
+	    	
+	    	if(data=="0")
+	    		
+	    		{
+	    		 swal({
+	    		      title: "", 
+	    		      text: "Thêm thành công", 
+	    		      type: "success",
+	    		      showCancelButton: false
+	    		    }, function() {
+	    		    	location.reload();
+	    		    });
+	    		
+	    		}
+	    	else
+	    		{
+	    			alert("Không đủ số lượng...!");
+	    			//$('#ThongBaoDangNhap').text("Sản phẩm hết hàng");
+	    		}
+	    	
+	   
+	  }
+	    
 	</script>
 </body>
 

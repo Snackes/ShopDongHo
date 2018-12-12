@@ -100,8 +100,7 @@
                                 <span class="product-like-count" style="font-size: 20px;">200</span>
                             </div>
                             <div class="product-btn" style="font-size: 20px;">
-                                <a class="btn-themGioHang" href="AddCart">Thêm Vào Giỏ Hàng</a>
-                                <a class="btn-muaNgay" href="">Mua Ngay</a>
+                                <a class="btn-themGioHang" >Thêm Vào Giỏ Hàng</a>
                                 
                             </div>
                             <div class="product-social" style="font-size: 20px;">
@@ -113,24 +112,7 @@
                         </div>
             </div>
         </div>
-        <script>
-		$('.btn-themGioHang').click(function(e) {
-			alert("Thay đổi số lượng nè");	
-		    e.preventDefault();
-		    $.ajax({
-		        url: 'AddCart',
-		        type: 'Get',
-		        data:{
-	            	MaSP :<%=sp.getMaSP()%>,
-	            	SoLuong : $('#SoluongThem').val()
-		        },
-		       
-		    })
-		    .done(function() {		    	
-		    	 location.reload();
-		    });
-		});    
-	</script>
+
                 <!---Thông số kĩ thuật-->
                 <div class="row" >
                     <div class="thongSoKiThuat">
@@ -290,6 +272,50 @@
             <!--footer-->
             <%@ include file="/Layout/Footer.jsp"%>
             <!--end footer-->
+
+	
+	  <script>
+		$('.btn-themGioHang').click(function(e) {
+		    e.preventDefault();
+		    $.ajax({
+		        url: 'AddCart',
+		        type: 'Get',
+		        dataType: 'text',
+		        data:{
+	            	MaSP :<%=sp.getMaSP()%>,
+	            	SoLuong : $('#SoluongThem').val()
+		        },
+		       
+		    })
+		    .done(function(data) {		    	
+		    	CallBoxThongBao(data);
+		    });
+		});    
+		
+		 function CallBoxThongBao(data) {
+		    	
+		    	if(data=="0")
+		    		
+		    		{
+		    		 swal({
+		    		      title: "", 
+		    		      text: "Thêm thành công", 
+		    		      type: "success",
+		    		      showCancelButton: false
+		    		    }, function() {
+		    		    	location.reload();
+		    		    });
+		    		
+		    		}
+		    	else
+		    		{
+		    			alert("Hết hàng...!");
+		    			//$('#ThongBaoDangNhap').text("Sản phẩm hết hàng");
+		    		}
+		    	
+		   
+		  }
+	</script>
 </body>
  <script src="lib/js/sanpham.js"></script>
      <script src="lib/js/jquery.elevatezoom.js" type="text/javascript"></script>

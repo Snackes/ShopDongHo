@@ -228,7 +228,7 @@
                                 <a href="TrangChu" class="tieuDe">Trang Chủ</a>
                             </li>
                             <li class="dropdown dropdown-large dropdown-hover">
-                                <a href="#" class="tieuDe" >Sản Phẩm</a>
+                                <a href="BoLocSanPham" class="tieuDe" >Sản Phẩm</a>
                                 <ul class="dropdown-menu dropdown-menu-large row">
                                     <li class=" col-lg-3">
                                         <ul>

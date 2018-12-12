@@ -27,7 +27,7 @@
             </div>
     </div>
     <div class="container-bot dieuhuong"  style="text-align: left; font-size: 20px;">
-        <a href="ShowSanPhamMoi" type="button" class="btn btn-link">←Tiếp tục mua hàng</a>
+        <a href="TrangChu" type="button" class="btn btn-link">←Tiếp tục mua hàng</a>
     </div>
 
     <!---END CONTENT--->

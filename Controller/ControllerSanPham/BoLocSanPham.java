@@ -24,406 +24,329 @@ public class BoLocSanPham extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
+	public void kiemtra(Integer MaTH1,Integer MaTHi, Integer MaTH)
+	{
+		if(MaTH1==null)
+		{
+			MaTH1=MaTH;
+		}
+		else {
+			MaTHi=MaTH;
+		}
+	}
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		//kiểu máy
-		//dùng pin
-		String KieuMay1=null;
-		String KieuMay2=null;
-		if(session.getAttribute("KieuMay1")==null) {
-			KieuMay1=request.getParameter("KieuMay1");
-			session.setAttribute("KieuMay1", KieuMay1);
-		}
-		else
-		{
-			KieuMay1=session.getAttribute("KieuMay1").toString();
-		}
-		
-		if(session.getAttribute("KieuMay2")==null) {
-			if(KieuMay1==null)
-			{
-				KieuMay1=request.getParameter("KieuMay2");
-				session.setAttribute("KieuMay2", KieuMay1);
-			}
-			else
-			{
-				KieuMay2=request.getParameter("KieuMay2");
-				session.setAttribute("KieuMay2", KieuMay2);
-			}
-		}
-		else
-		{
-			if(KieuMay1==null)
-			{
-				KieuMay1=session.getAttribute("KieuMay2").toString();
-			}
-			else
-				KieuMay2=session.getAttribute("KieuMay2").toString();
-		}
-		
-		
-		
-		//loại dây
-		String LoaiDay1=null;
-		String LoaiDay2=null;
-		if(session.getAttribute("LoaiDay1")==null) {
-			LoaiDay1=request.getParameter("LoaiDay1");
-			session.setAttribute("LoaiDay1", LoaiDay1);
-		}
-		else
-		{
-			LoaiDay1=session.getAttribute("LoaiDay1").toString();
-		}
-		
-		
-
-		if(session.getAttribute("LoaiDay2")==null) {
-			if(LoaiDay1==null)
-			{
-				LoaiDay1=request.getParameter("LoaiDay2");
-				session.setAttribute("LoaiDay2", LoaiDay1);
-			}
-			else
-			{
-				LoaiDay2=request.getParameter("LoaiDay2");
-				session.setAttribute("LoaiDay2", LoaiDay2);
-			}
-		}
-		else
-		{
-			if(LoaiDay1==null)
-				LoaiDay1=session.getAttribute("LoaiDay2").toString();
-			else
-				LoaiDay2=session.getAttribute("LoaiDay2").toString();
-		}
-		
-		
-		//Giới tính sử dụng
-		String GioiTinh=null;
-		if(request.getParameter("GioiTinhSuDung")!=null) {
-			GioiTinh=request.getParameter("GioiTinhSuDung");
-			session.setAttribute("GioiTinhSuDung", GioiTinh);
-		}
-		else
-		{
-			GioiTinh=(String) session.getAttribute("GioiTinhSuDung");
-		}
-
-
-		//Mã thương hiệu Thương hiệu
-		
-		Integer ThuongHieu1=null;
-		if((session.getAttribute("ThuongHieu1"))==null) {
-			if(request.getParameter("ThuongHieu1")!=null)
-				ThuongHieu1=Integer.parseInt(request.getParameter("ThuongHieu1"));
-			session.setAttribute("ThuongHieu1", ThuongHieu1);
-		}
-		else
-		{
-			ThuongHieu1=Integer.parseInt(session.getAttribute("ThuongHieu1").toString());
-		}
-
-		//thương hiệu 2
-		Integer ThuongHieu2=null;
-		if((session.getAttribute("ThuongHieu2"))==null) {
-			if(request.getParameter("ThuongHieu2")!=null)
-				ThuongHieu2=Integer.parseInt(request.getParameter("ThuongHieu2"));
-			session.setAttribute("ThuongHieu2", ThuongHieu2);
-		}
-		else
-		{
-			ThuongHieu2=Integer.parseInt(session.getAttribute("ThuongHieu2").toString());
-		}
-		//thương hiệu 3
-		Integer ThuongHieu3=null;
-		if((session.getAttribute("ThuongHieu3"))==null) {
-			if(request.getParameter("ThuongHieu3")!=null)
-			ThuongHieu3=Integer.parseInt(request.getParameter("ThuongHieu3"));
-			session.setAttribute("ThuongHieu3", ThuongHieu3);
-		}
-		else
-		{
-			ThuongHieu3=Integer.parseInt(session.getAttribute("ThuongHieu3").toString());
-		}
-		
-		Integer ThuongHieu4=null;
-		if((session.getAttribute("ThuongHieu4"))==null) {
-			if(request.getParameter("ThuongHieu4")!=null)
-				ThuongHieu4=Integer.parseInt(request.getParameter("ThuongHieu4"));
-			session.setAttribute("ThuongHieu4", ThuongHieu4);
-		}
-		else
-		{
-			ThuongHieu4=Integer.parseInt(session.getAttribute("ThuongHieu4").toString());
-		}
-		
-		//Khoản giá
-		Integer KhoangGia;
-		Double GiaMin=null;
-		Double GiaMax=null;
-
-			if((request.getParameter("KhoangGia"))!=null) {
-				KhoangGia =Integer.parseInt(request.getParameter("KhoangGia"));
-				if(KhoangGia==1)
-				{
-					GiaMin=(double) 0; GiaMax=(double) 1000000;
-				}
-				if(KhoangGia==2)
-				{
-					GiaMin=(double) 1000000; GiaMax=(double) 2000000;
-				}
-				if(KhoangGia==3)
-				{
-					GiaMin=(double) 2000000; GiaMax=(double) 7000000;
-				}
-				if(KhoangGia==4)
-				{
-					GiaMin=(double) 7000000; GiaMax=(double) 15000000;
-				}
-				if(KhoangGia==5)
-				{
-					GiaMin=(double) 15000000;
-				}
-				session.setAttribute("KhoangGia", KhoangGia);
-			}
-		
-		else
-		{
-			if(session.getAttribute("KhoangGia")!=null)
-			{
-				KhoangGia =Integer.parseInt(session.getAttribute("KhoangGia").toString());
-				if(KhoangGia==1)
-				{
-					GiaMin=(double) 0; GiaMax=(double) 1000000;
-				}
-				if(KhoangGia==2)
-				{
-					GiaMin=(double) 1000000; GiaMax=(double) 2000000;
-				}
-				if(KhoangGia==3)
-				{
-					GiaMin=(double) 2000000; GiaMax=(double) 7000000;
-				}
-				if(KhoangGia==4)
-				{
-					GiaMin=(double) 7000000; GiaMax=(double) 15000000;
-				}
-				if(KhoangGia==5)
-				{
-					GiaMin=(double) 15000000;
-				}
-			}
-		}
-
-		XuLiSanPham xl= new XuLiSanPham();
-		SanPham[] listsp= xl.BoLocSanPham(ThuongHieu1, ThuongHieu2, ThuongHieu3, ThuongHieu4, null, null, null, null, null, null, null, null, LoaiDay1, LoaiDay2, GioiTinh, GiaMin, GiaMax, KieuMay1, KieuMay2);
-		request.setAttribute("LocSanPham", listsp);
 		RequestDispatcher dispatcher= request.getRequestDispatcher("view/LocSanPham.jsp");
+		
+		String action=request.getParameter("action");
+		if(action==null)
+		{
+			XuLiSanPham xl= new XuLiSanPham();
+			SanPham[] listsp= xl.BoLocSanPham(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+			request.getSession().setAttribute("LocSanPham", listsp);	
+		}
 		dispatcher.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	protected void dcm(HttpServletRequest request, HttpServletResponse response,Integer SEIKO,Integer ROLEX,Integer OMEGA,Integer VICTORINOX,Integer BREITLING,Integer GUCCI,Integer D_G,Integer BOVET,Integer TISSOT,Integer HERMES,Integer HUBLOT,Integer PUMA,String DayDa,String DayKimLoai,String GioiTinh,Double GiaMin,Double GiaMax,String Pin,String Automatic) throws ServletException, IOException {
+		RequestDispatcher dispatcher= request.getRequestDispatcher("view/LocSanPham.jsp");
+		XuLiSanPham xl= new XuLiSanPham();
+		SanPham[] listsp= xl.BoLocSanPham(SEIKO, ROLEX, OMEGA, VICTORINOX, BREITLING, GUCCI, D_G, BOVET, TISSOT, HERMES, HUBLOT, PUMA, DayDa, DayKimLoai, GioiTinh, GiaMin, GiaMax, Pin, Automatic);
+		request.setAttribute("LocSanPham", listsp);
+		dispatcher.forward(request, response);
+	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		//dùng pin
-				String KieuMay1=null;
-				String KieuMay2=null;
-				if(session.getAttribute("KieuMay1")==null) {
-					KieuMay1=request.getParameter("KieuMay1");
-					session.setAttribute("KieuMay1", KieuMay1);
+		//HttpSession session = request.getSession();
+		//String dcm ="cccc";
+		 //String dm = request.getParameter("flagActionLocSanPham");
+		request.getSession().setAttribute("LocSanPham", null);
+		String duoi1trieu = request.getParameter("duoi1trieu");
+		String tu1_2trieu = request.getParameter("tu1_2trieu");
+		String tu2_7trieu = request.getParameter("tu2_7trieu");
+		String tu7_15trieu = request.getParameter("tu7_15trieu");
+		String tren15trieu = request.getParameter("tren15trieu");
+		
+		
+		Integer SEIKO= Integer.parseInt(request.getParameter("SEIKO"));
+			if(SEIKO==1)
+				SEIKO=1;
+			else
+				SEIKO=null;
+		
+		
+		Integer ROLEX =Integer.parseInt( request.getParameter("ROLEX"));
+			if(ROLEX==1)
+			{
+				if(SEIKO==null)
+				{
+					SEIKO=2;
+					ROLEX=null;
+				}
+				else {
+					ROLEX=2;
+				}
+			}
+			else
+				ROLEX=null;
+		
+		
+		Integer OMEGA=Integer.parseInt( request.getParameter("OMEGA"));
+			if(OMEGA==1)
+			{
+				if(SEIKO==null)
+				{
+					SEIKO=3;
+					OMEGA=null;
+				}
+				else {
+					OMEGA=3;
+				}
+			}
+			else
+				OMEGA=null;
+		
+		
+		Integer VICTORINOX=Integer.parseInt( request.getParameter("VICTORINOX"));
+			if(VICTORINOX==1)
+			{	
+				if(SEIKO==null)
+				{
+					SEIKO=4;
+					VICTORINOX=null;
+				}
+				else {
+					VICTORINOX=4;
+				}
+			}
+			else
+				VICTORINOX=null;
+		
+		
+		Integer BREITLING=Integer.parseInt( request.getParameter("BREITLING"));
+			if(BREITLING==1)
+			{
+				if(SEIKO==null)
+				{
+					SEIKO=5;
+					BREITLING=null;
+				}
+				else {
+					BREITLING=5;
+				}
+			}
+			else
+				BREITLING=null;
+		
+		
+		Integer GUCCI=Integer.parseInt( request.getParameter("GUCCI"));
+			if(GUCCI==1)
+			{
+				if(SEIKO==null)
+				{
+					SEIKO=6;
+					GUCCI=null;
+				}
+				else {
+					GUCCI=6;
+				}
+			}
+			else
+				GUCCI=null;
+		
+		
+		Integer D_G=Integer.parseInt(request.getParameter("D_G"));
+			if(D_G==1)
+			{
+				if(SEIKO==null)
+				{
+					SEIKO=7;
+					D_G=null;
+				}
+				else {
+					D_G=7;
+				}
+			}
+			else
+				D_G=null;
+		
+		
+		Integer BOVET= Integer.parseInt(request.getParameter("BOVET"));
+			if(BOVET==1)
+			{
+				if(SEIKO==null)
+				{
+					SEIKO=8;
+					BOVET=null;
+				}
+				else {
+					BOVET=8;
+				}
+			}
+			else
+				BOVET=null;
+		
+		
+		Integer TISSOT=Integer.parseInt(request.getParameter("TISSOT"));
+			if(TISSOT==1)
+			{
+				if(SEIKO==null)
+				{
+					SEIKO=9;
+					TISSOT=null;
+				}
+				else {
+					TISSOT=9;
+				}
+			}
+			else
+				TISSOT=null;
+		
+		
+		Integer HERMES=Integer.parseInt(request.getParameter("HERMES"));
+			if(HERMES==1)
+			{
+				if(SEIKO==null)
+				{
+					SEIKO=10;
+					HERMES=null;
+				}
+				else {
+					HERMES=10;
+				}
+			}
+			else
+				HERMES=null;
+		
+		
+		Integer HUBLOT=Integer.parseInt(request.getParameter("HUBLOT"));
+			if(HUBLOT==1)
+			{
+				if(SEIKO==null)
+				{
+					SEIKO=11;
+					HUBLOT=null;
+				}
+				else {
+					HUBLOT=11;
+				}
+			}
+			else
+				HUBLOT=null;
+		
+		
+		Integer PUMA=Integer.parseInt( request.getParameter("PUMA"));
+			if(PUMA==1)
+			{
+				if(SEIKO==null)
+				{
+					SEIKO=12;
+					PUMA=null;
+				}
+				else {
+					PUMA=12;
+				}
+			}
+			else
+				PUMA=null;
+		
+		
+		
+		String NAM = request.getParameter("NAM");
+		String Nu = request.getParameter("Nu");
+		String UNISEX = request.getParameter("UNISEX");
+				
+		String DayDa = request.getParameter("DayDa");
+		if(DayDa.equals("1"))
+			DayDa="da";
+		else
+			DayDa=null;
+		String DayKimLoai = request.getParameter("DayKimLoai");
+		if(DayKimLoai.equals("1"))
+		{
+			if(DayDa==null)
+				DayDa="Kim Loại";
+			else
+				DayKimLoai="Kim Loại";
+		}
+		else
+			DayKimLoai=null;
+		
+		String Pin = request.getParameter("Pin");
+		if(Pin.equals("1"))
+			Pin="Pin";
+		else
+			Pin=null;
+		String Automatic = request.getParameter("Automatic");
+		if(Automatic.equals("1"))
+		{
+			if(Pin==null)
+				Pin="Automatic";
+			else
+				Automatic="Automatic";
+		}
+		else
+			Automatic=null;
+		Double GiaMax=null;
+		Double GiaMin=null;
+		if(duoi1trieu.equals("1"))
+		{
+			GiaMin=(double) 0; GiaMax=(double) 1000000;
+		}
+		else
+			if(tu1_2trieu.equals("1"))
+			{
+				GiaMin=(double) 1000000; GiaMax=(double) 2000000;
+			}
+			else
+				if(tu2_7trieu.equals("1"))
+				{
+					GiaMin=(double) 2000000; GiaMax=(double) 7000000;
 				}
 				else
-				{
-					KieuMay1=session.getAttribute("KieuMay1").toString();
-				}
-				
-				if(session.getAttribute("KieuMay2")==null) {
-					if(KieuMay1==null)
+					if(tu7_15trieu.equals("1"))
 					{
-						KieuMay1=request.getParameter("KieuMay2");
-						session.setAttribute("KieuMay2", KieuMay1);
+						GiaMin=(double) 7000000; GiaMax=(double) 15000000;
 					}
 					else
 					{
-						KieuMay2=request.getParameter("KieuMay2");
-						session.setAttribute("KieuMay2", KieuMay2);
-					}
-				}
-				else
-				{
-					if(KieuMay1==null)
-					{
-						KieuMay1=session.getAttribute("KieuMay2").toString();
-					}
-					else
-						KieuMay2=session.getAttribute("KieuMay2").toString();
-				}
-				
-				
-				
-				//loại dây
-				String LoaiDay1=null;
-				String LoaiDay2=null;
-				if(session.getAttribute("LoaiDay1")==null) {
-					LoaiDay1=request.getParameter("LoaiDay1");
-					session.setAttribute("LoaiDay1", LoaiDay1);
-				}
-				else
-				{
-					LoaiDay1=session.getAttribute("LoaiDay1").toString();
-				}
-				
-				
-
-				if(session.getAttribute("LoaiDay2")==null) {
-					if(LoaiDay1==null)
-					{
-						LoaiDay1=request.getParameter("LoaiDay2");
-						session.setAttribute("LoaiDay2", LoaiDay1);
-					}
-					else
-					{
-						LoaiDay2=request.getParameter("LoaiDay2");
-						session.setAttribute("LoaiDay2", LoaiDay2);
-					}
-				}
-				else
-				{
-					if(LoaiDay1==null)
-						LoaiDay1=session.getAttribute("LoaiDay2").toString();
-					else
-						LoaiDay2=session.getAttribute("LoaiDay2").toString();
-				}
-				
-				
-				//Giới tính sử dụng
-				String GioiTinh=null;
-				if(request.getParameter("GioiTinhSuDung")!=null) {
-					GioiTinh=request.getParameter("GioiTinhSuDung");
-					session.setAttribute("GioiTinhSuDung", GioiTinh);
-				}
-				else
-				{
-					GioiTinh=(String) session.getAttribute("GioiTinhSuDung");
-				}
-
-
-				//Mã thương hiệu Thương hiệu
-				
-				Integer ThuongHieu1=null;
-				if((session.getAttribute("ThuongHieu1"))==null) {
-					if(request.getParameter("ThuongHieu1")!=null)
-						ThuongHieu1=Integer.parseInt(request.getParameter("ThuongHieu1"));
-					session.setAttribute("ThuongHieu1", ThuongHieu1);
-				}
-				else
-				{
-					ThuongHieu1=Integer.parseInt(session.getAttribute("ThuongHieu1").toString());
-				}
-
-				//thương hiệu 2
-				Integer ThuongHieu2=null;
-				if((session.getAttribute("ThuongHieu2"))==null) {
-					if(request.getParameter("ThuongHieu2")!=null)
-						ThuongHieu2=Integer.parseInt(request.getParameter("ThuongHieu2"));
-					session.setAttribute("ThuongHieu2", ThuongHieu2);
-				}
-				else
-				{
-					ThuongHieu2=Integer.parseInt(session.getAttribute("ThuongHieu2").toString());
-				}
-				//thương hiệu 3
-				Integer ThuongHieu3=null;
-				if((session.getAttribute("ThuongHieu3"))==null) {
-					if(request.getParameter("ThuongHieu3")!=null)
-					ThuongHieu3=Integer.parseInt(request.getParameter("ThuongHieu3"));
-					session.setAttribute("ThuongHieu3", ThuongHieu3);
-				}
-				else
-				{
-					ThuongHieu3=Integer.parseInt(session.getAttribute("ThuongHieu3").toString());
-				}
-				
-				Integer ThuongHieu4=null;
-				if((session.getAttribute("ThuongHieu4"))==null) {
-					if(request.getParameter("ThuongHieu4")!=null)
-						ThuongHieu4=Integer.parseInt(request.getParameter("ThuongHieu4"));
-					session.setAttribute("ThuongHieu4", ThuongHieu4);
-				}
-				else
-				{
-					ThuongHieu4=Integer.parseInt(session.getAttribute("ThuongHieu4").toString());
-				}
-				
-
-			
-				//Khoản giá
-				Integer KhoangGia;
-				Double GiaMin=null;
-				Double GiaMax=null;
-
-					if((request.getParameter("KhoangGia"))!=null) {
-						KhoangGia =Integer.parseInt(request.getParameter("KhoangGia"));
-						if(KhoangGia==1)
-						{
-							GiaMin=(double) 0; GiaMax=(double) 1000000;
-						}
-						if(KhoangGia==2)
-						{
-							GiaMin=(double) 1000000; GiaMax=(double) 2000000;
-						}
-						if(KhoangGia==3)
-						{
-							GiaMin=(double) 2000000; GiaMax=(double) 7000000;
-						}
-						if(KhoangGia==4)
-						{
-							GiaMin=(double) 7000000; GiaMax=(double) 15000000;
-						}
-						if(KhoangGia==5)
+						if(tren15trieu.equals("1"))
 						{
 							GiaMin=(double) 15000000;
 						}
-						session.setAttribute("KhoangGia", KhoangGia);
+						
 					}
-				
-				else
+		String GioiTinh=null;
+		if(NAM.equals("1"))
+		{
+			GioiTinh="Nam";
+		}
+		else
+			if(Nu.equals("1"))
+			{
+				GioiTinh="Nữ";
+			}
+			else
+				if(UNISEX.equals("1"))
 				{
-					if(session.getAttribute("KhoangGia")!=null)
-					{
-						KhoangGia =Integer.parseInt(session.getAttribute("KhoangGia").toString());
-						if(KhoangGia==1)
-						{
-							GiaMin=(double) 0; GiaMax=(double) 1000000;
-						}
-						if(KhoangGia==2)
-						{
-							GiaMin=(double) 1000000; GiaMax=(double) 2000000;
-						}
-						if(KhoangGia==3)
-						{
-							GiaMin=(double) 2000000; GiaMax=(double) 7000000;
-						}
-						if(KhoangGia==4)
-						{
-							GiaMin=(double) 7000000; GiaMax=(double) 15000000;
-						}
-						if(KhoangGia==5)
-						{
-							GiaMin=(double) 15000000;
-						}
-					}
+					GioiTinh="Unisex";
 				}
-
-				XuLiSanPham xl= new XuLiSanPham();
-				SanPham[] listsp= xl.BoLocSanPham(ThuongHieu1, ThuongHieu2, ThuongHieu3, ThuongHieu4, null, null, null, null, null, null, null, null, LoaiDay1, LoaiDay2, GioiTinh, GiaMin, GiaMax, KieuMay1, KieuMay2);
-				request.setAttribute("LocSanPham", listsp);
+		XuLiSanPham xl= new XuLiSanPham();
+		SanPham[] listsp= xl.BoLocSanPham(SEIKO, ROLEX, OMEGA, VICTORINOX, BREITLING, GUCCI, D_G, BOVET, TISSOT, HERMES, HUBLOT, PUMA, DayDa, DayKimLoai, GioiTinh, GiaMin, GiaMax, Pin, Automatic);
+		//dcm(request,response,SEIKO, ROLEX, OMEGA, VICTORINOX, BREITLING, GUCCI, D_G, BOVET, TISSOT, HERMES, HUBLOT, PUMA, DayDa, DayKimLoai, GioiTinh, GiaMin, GiaMax, Pin, Automatic);
+		request.getSession().setAttribute("LocSanPham", listsp);
+		
+		
+		//response.setContentType("text/plain");
+		//response.setCharacterEncoding("UTF-8");
+		//response.getWriter().write(dcm);
 	}
 
+
+
 }
+
