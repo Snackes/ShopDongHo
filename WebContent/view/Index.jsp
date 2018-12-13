@@ -197,15 +197,15 @@
         <div id="trademark-carousel">
             <div class="hideLeft">
                 <img src="lib/logo/seiko.png" >
-                <a href="#"><i class="fas fa-angle-double-down"></i></a>
+                <a href="BoLocSanPham?MaTH=1"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="hideLeft">
                 <img src="lib/logo/tissot.png" >
-                <a href="#"><i class="fas fa-angle-double-down"></i></a>
+                <a href="BoLocSanPham?MaTH=9"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="hideLeft">
                 <img src="lib/logo/bovet.jpg" >
-                <a href="#"><i class="fas fa-angle-double-down"></i></a>
+                <a href="BoLocSanPham?MaTH=8"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="hideLeft">
                 <img src="lib/logo/dg.jpg" >
@@ -217,7 +217,7 @@
             </div>
             <div class="prevLeftSecond">
                 <img src="lib/logo/breitling.jpg">
-                <a href="#"><i class="fas fa-angle-double-down"></i></a>
+                <a href="BoLocSanPham?MaTH=5"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="prev">
                 <img src="lib/logo/charriol.jpg" >
@@ -225,15 +225,15 @@
             </div>
             <div class="selected">
                 <img src="lib/logo/omega.jpg">
-                <a href="#"><i class="fas fa-angle-double-down"></i></a>
+                <a href="BoLocSanPham?MaTH=3"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="next">
                 <img src="lib/logo/victorinox.jpg" >
-                <a href="#"><i class="fas fa-angle-double-down"></i></a>
+                <a href="BoLocSanPham?MaTH=4"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="nextRightSecond">
                 <img src="lib/logo/gucci.jpg">
-                <a href="#"><i class="fas fa-angle-double-down"></i></a>
+                <a href="BoLocSanPham?MaTH=6"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="hideRight">
                 <img src="lib/logo/zenith2.jpg" >
@@ -241,19 +241,19 @@
             </div>
             <div class="hideRight">
                 <img src="lib/logo/hermes.png" >
-                <a href="#"><i class="fas fa-angle-double-down"></i></a>
+                <a href="BoLocSanPham?MaTH=10"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="hideRight">
                 <img src="lib/logo/hublot.jpg" >
-                <a href="#"><i class="fas fa-angle-double-down"></i></a>
+                <a href="BoLocSanPham?MaTH=11"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="hideRight">
                 <img src="lib/logo/puma.jpg" >
-                <a href="#"><i class="fas fa-angle-double-down"></i></a>
+                <a href="BoLocSanPham?MaTH=12"><i class="fas fa-angle-double-down"></i></a>
             </div>
             <div class="hideRight">
                 <img src="lib/logo/rolex.jpg" >
-                <a href="#"><i class="fas fa-angle-double-down"></i></a>
+                <a href="BoLocSanPham?MaTH=2"><i class="fas fa-angle-double-down"></i></a>
             </div>
         </div>
         <!-- end Carousel Thương hiệu-->

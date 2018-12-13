@@ -149,6 +149,8 @@ public class Header extends HttpServlet {
 			session.setAttribute("MaKH", null);
 			session.removeAttribute("MaKH");
 			session.setAttribute("TenTK", null);
+			session.removeAttribute("Admin");
+			session.setAttribute("Admin", null);
 			ThongBao="";
 			
 		}break;
