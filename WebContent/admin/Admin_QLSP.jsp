@@ -1,3 +1,6 @@
+<%@page import="java.util.Date"%>
+<%@page import="com.sun.org.apache.xerces.internal.impl.dv.xs.DateTimeDV"%>
+<%@page import="ModelBean.HoaDonNhap"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.util.ArrayList"%>
@@ -59,9 +62,8 @@
                         <p style="margin-top: 20px"></p>
                         <a id="dash" href="Admin_Dash_Controll"><span class="glyphicon glyphicon-home" style="margin-right: 5px;"></span>Trang chính</a>
                         <a id="qlsp" href="Admin_QLSP_Controll"><span class="glyphicon glyphicon-gift" style="margin-right: 5px;"></span>Quản lí sản phẩm</a>
-                        <a id="qldh" href="Admin_QLDH_Controll"><span class="glyphicon glyphicon-list-alt" style="margin-right: 5px;"></span>Quản lí đơn hàng</a>
+                        <a id="qldh" href="Admin_QLDH_Control"><span class="glyphicon glyphicon-list-alt" style="margin-right: 5px;"></span>Quản lí đơn hàng</a>
                         <a id="qltk" href="Admin_QLKH_Controll"><span class="glyphicon glyphicon-user" style="margin-right: 5px;"></span>Quản lí tài khoản người dùng</a>
-                        <a id="qlbl" href="Admin_QLBL.html"><span class="glyphicon glyphicon-comment" style="margin-right: 5px;"></span>Quản lí bình luận</a>
                         <a id="report" href="Admin_Report_Controll"><span class="glyphicon glyphicon-stats" style="margin-right: 5px;"></span>Thống kê</a>
                     </li>
                 </ul>
@@ -86,14 +88,14 @@
                 <div class="tab-pane active" id="ChiTietSP">
                     <!--des here-->
                     <!--Thanh tìm kiếm-->
-                    <div class="tim-kiem">
+                    <!--div class="tim-kiem">
                         <label for="text-search" style="float:left">Tìm kiếm</label>
                         <input type="text" class="form-control" id="text-search" placeholder="Search" style="width:200px; float: left;">
                         <button class="btn btn-default" type="submit" style="float: left"><span class="glyphicon glyphicon-search"></span></button>
-                    </div>
+                    </div-->
                     <!--Danh sách sản phẩm-->
                     <div class="table-responsive danh-sach-sp" style="clear:both">
-                        <table class="table table-hover">
+                        <table class="table table-hover scroll">
                             <thead>
                                 <tr>
                                     <th></th>
@@ -106,14 +108,12 @@
                                 </tr>
                             </thead>
                 <% 
-                	Object res = request.getAttribute("Funct_Admin_BangTTSanPham");
+                	Object res = request.getSession().getAttribute("Funct_Admin_BangTTSanPham");
                	 	ResultSet sp = null;
                 	if(res != null)
                 	{
                 		sp = (ResultSet)res;
-                	}
-                %>
-                <%
+
                    	while(sp.next())
                  	  {
                  		int MaSP = sp.getInt("masp");
@@ -126,9 +126,9 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <div class="row nut-chuc-nang sua-bt">
-                                            <button type="button" class="btn btn-default btn-sm" id="sua-bt">Sửa</button>
-                                            <button type="button" class="btn btn-default btn-sm">Xoá</button>
+                                        <div class="row nut-chuc-nang">
+                                            <button type="button" class="btn btn-default btn-sm sua-bt"><a class="submit" href="Edit_SP">Sửa</a></button>
+                                            <button type="button" class="btn btn-default btn-sm xoa-bt">Xoá</button>
                                         </div>
                                     </td>
                                     <td><%=MaSP%></td>
@@ -139,160 +139,47 @@
                                     <td><%=DoChiuNuoc%></td>
                                 </tr>
                             </tbody>
-                  <%   }
+                  <%   }	}
                     //} catch()	
                   %>
                         </table>
-                    <script>
+                    <script type="text/javascript">
                         $(document).ready(function(){
                             $(".sua-bt").click(function(){
-                                $("#tab-sua-chitiet").toggle();
-                            })
+                            	var ma_sp = 0;
+                            	ma_sp = $(this).closest('tr').find('td:nth-child(2)').text();
+                               	$.ajax({
+                                    type: 'POST',
+                                    url: 'Edit_SP',
+                                    data: {
+                                     MaSP : ma_sp,
+                                     FLAG : 1
+                                    },
+                                    success : function(){
+                                    }
+                                })
+                            });
+                            
+                            $(".xoa-bt").click(function(){
+                            	var ma_sp = 0;
+                            	ma_sp = $(this).closest('tr').find('td:nth-child(2)').text();
+                               	$.ajax({
+                                    type: 'POST',
+                                    url: 'Admin_QLSP_Controll',
+                                    data: {
+                                     MaSP : ma_sp,
+                                     FLAG : 0
+                                    },
+                                    success : function(response){
+                                    	alert(response);
+                                    	location.reload();
+                                    }
+                                })
+                            });
                         })
                     </script>
                     </div>
-                    <!--nút chức năng-->
-                    <!--Sửa chi tiết-->
-                    <div class="sua-chi-tiet" id="tab-sua-chitiet" style="display:none">
-                        <div class="row-1-editTT">
-                        <!--text thông tin-->
-                            <div class="text-tt col-lg-8 col-md-8 col-sm-8">
-                                <form class="form-inline form-tt">
-                                    <div class="colum-1-tt col-lg-6 col-md-6 col-sm-6">
-                                    <div class="form-group">
-                                        <label for="maSP">Mã sản phẩm:</label>
-                                        <input type="text" class="form-control" id="maSP" placeholder="Mã sản phẩm" name="maSP">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="tenSP">Tên sản phẩm:</label>
-                                        <input type="text" class="form-control" id="tenSP" placeholder="Tên sản phẩm" name="tenSP">
-                                    </div>
-                                    
-                                    <!-- list Thương hiệu -->
-                     			<%
-                     				Object dsth = request.getAttribute("Funct_Admin_DSThHieu");
-                        			ThuongHieu[] ds_th = null;
-                        			if(dsth != null)
-                        			{
-                        				ds_th = (ThuongHieu[])dsth;
-                        			}
-                     			%>
-                                    <div class="form-group">
-                                        <label for="ThuongHieu">Thương hiệu:</label>
-                                        <select name="ThuongHieu" id="ThuongHieu">
-               					<%
-            						for(int i=0;i<ds_th.length;i++)
-            						{
-            							int MaThH = ds_th[i].getMaTH();
-            							String TenThH = ds_th[i].getTenThuongHieu();
-               					%>
-                                        	<option value="<%=MaThH%>"><%=TenThH%></option>
-                                <%	} %>
-                                        </select>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label for="KieuMay">Kiểu máy:</label>
-                                        <input type="text" class="form-control" id="KieuMay" placeholder="Kiểu máy" name="KieuMay">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="GioiTinh">Giới tính:</label>
-                                        <input type="text" class="form-control" id="GioiTinh" placeholder="Số lượng" name="GioiTinh">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="KichCo">Kích cỡ:</label>
-                                        <input type="text" class="form-control" id="KichCo" placeholder="Kích cỡ" name="KichCo">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="ChatLieuVo">Chất liệu vỏ:</label>
-                                        <input type="text" class="form-control" id="ChatLieuVo" placeholder="Chất liệu vỏ" name="ChatLieuVo">
-                                    </div>
-                                    </div>
-                                    <!--div class="col-lg-1 col-md-1 col-sm-1"></div-->
-                                    <div class="colum-2-tt col-lg-6 col-md-6 col-sm-6">
-                                    <div class="form-group">
-                                        <label for="ChatLieuKinh">Chất liệu kính:</label>
-                                        <input type="text" class="form-control" id="ChatLieuKinh" placeholder="Chất liệu kính" name="ChatLieuKinh">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="ChatLieuDay">Chất liệu dây:</label>
-                                        <input type="text" class="form-control" id="ChatLieuDay" placeholder="Chất liệu dây" name="ChatLieuDay">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="DoChiuNuoc">Độ chịu nước:</label>
-                                        <input type="text" class="form-control" id="DoChiuNuoc" placeholder="Độ chịu nước" name="DoChiuNuoc">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="BaoHanh">Bảo hành:</label>
-                                        <input type="text" class="form-control" id="BaoHanh" placeholder="Bảo hành" name="BaoHanh">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="SoLuong">Số Lượng:</label>
-                                        <input type="text" class="form-control" id="SoLuong" placeholder="Số lượng" name="SoLuong">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="GiaBan">Giá bán:</label>
-                                        <input type="text" class="form-control" id="GiaBan" placeholder="Số lượng" name="GiaBan">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="SaleOff">Sale off:</label>
-                                        <input type="text" class="form-control" id="SaleOff" placeholder="Sale off" name="SaleOff">
-                                    </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="col-lg-1 col-md-1 col-sm-1"></div>
-                        <!--hình ảnh-->
-                            <div class="col-lg-3 col-md-3 col-sm-3">
-                                <h4>Hình ảnh:</h4>
-                                <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                                    <ol class="carousel-indicators">
-                                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                                        <li data-target="#myCarousel" data-slide-to="1"></li>
-                                        <li data-target="#myCarousel" data-slide-to="2"></li>
-                                        <li data-target="#myCarousel" data-slide-to="3"></li>
-                                    </ol>
-                                <!--pic insert here-->
-                                    <div class="carousel-inner">
-                                        <div class="item active">
-                                          <img src="#" alt="Name Pic" style="width:100%;">
-                                        </div>
-                                    </div>
-                                <!--left, right control-->
-                                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                                        <span class="glyphicon glyphicon-chevron-left"></span>
-                                        <span class="sr-only">Previous</span>
-                                      </a>
-                                      <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                                        <span class="glyphicon glyphicon-chevron-right"></span>
-                                        <span class="sr-only">Next</span>
-                                      </a>
-                                </div>
-                                <!--chức năng upload-->
-                                <div class="row-chucnang">
-                                    <button type="button" class="btn btn-default btn-md" id="upload-bt">Upload ảnh</button>
-                                    <!--code jquery-->
-                                </div>
-                            </div>
-                        </div>
-                        <!--nút chức năng-->
-                        <div class="row-2-BT" style="clear:both">
-                            <button type="button" class="btn btn-info btn-md" id="luu-bt">Lưu</button>
-                            <button type="button" class="btn btn-default btn-md" id="huy-bt">Huỷ</button>
-                            <script>
-                                $(document).ready(function(){
-                                    $("#luu-bt").click(function(){
-                                        $("#tab-sua-chitiet").toggle(function(){alert("Đã lưu thông tin sản phẩm")});
-                                    })
-                                })
-                                $(document).ready(function(){
-                                    $("#huy-bt").click(function(){
-                                        $("#tab-sua-chitiet").toggle();
-                                    })
-                                })
-                            </script>
-                        </div>
-                    </div>
+                    
                 </div>
                 <!--tab thêm sản phẩm mới-->
 
@@ -301,7 +188,7 @@
                     <!--des here-->
                     <!-- list out stock -->
                 <%
-            		Object outofstock = request.getAttribute("Funct_Admin_DSSP_OutofStock");
+            		Object outofstock = request.getSession().getAttribute("Funct_Admin_DSSP_OutofStock");
             		SanPham[] sp_outstock = null;
             		if(outofstock != null)
             		{
@@ -310,7 +197,7 @@
                 %>
                     <div class="col-lg-6 col-md-6 col-sm-11 col-xs-12 outstock-table">
                         <span style="font-size: 20px; color: black;">Sản phẩm cần nhập thêm số lượng</span>
-                        <table class="table table-striped" id="san-pham-het-hang">
+                        <table class="table table-striped scroll" id="san-pham-het-hang">
                             <thead>
                                 <tr>
                                     <th>Mã sản phẩm</th>
@@ -338,91 +225,78 @@
                     </div>
                     <!--nhập thông tin-->
                     <div class="sua-chi-tiet">
-                    	<div class="row-2-BT" style="margin-bottom:20px; margin-left:50px ;clear:both; float:left">
-                            <button type="button" class="btn btn-info btn-md">Nhập hàng</button>
-                        </div>
                         <!--Thông tin nhập-->
-                        <div class="row-1-editTT">
-                        <!--text thông tin-->
-                            <div class="text-tt col-lg-8 col-md-8 col-sm-8"  style="margin-top:20px;clear: both;">
-                                <form class="form-inline form-tt">
-                                    <div class="colum-1-tt col-lg-6 col-md-6 col-sm-6">
-                                    <div class="form-group">
-                                        <label for="NgayNhap">Ngày nhập:</label>
-                                        <input type="date" class="form-control" id="NgayNhap" name="NgayNhap">
-                                    </div>
-                                    </div>
-                                    <!--div class="col-lg-1 col-md-1 col-sm-1"></div-->
-                                    <div class="colum-2-tt col-lg-6 col-md-6 col-sm-6">
-                                    <div class="form-group">
-                                        <label for="TenSP_nhap">Tên sản phẩm:</label>
-                                        <input type="text" class="form-control" id="TenSP_nhap" placeholder="Tên sản phẩm" name="TenSP_nhap">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="SoLuong_nhap">Số lượng:</label>
-                                        <input type="text" class="form-control" id="SoLuong_nhap" placeholder="Số lượng" name="SoLuong_nhap">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="GiaVon_nhap">Giá vốn:</label>
-                                        <input type="text" class="form-control" id="GiaVon_nhap" placeholder="Giá vốn" name="GiaVon_nhap">
-                                    </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="col-lg-1 col-md-1 col-sm-1"></div>
-                        </div>
                         <!--nút chức năng-->
                         <div class="row-2-BT" style="clear:both">
-                            <button type="button" class="btn btn-info btn-md">Thêm</button>
+                            <button type="button" class="btn btn-info btn-md nhaphang-btn" style="float:left"><a class="submit" href="Do_Import">Nhập hàng</a></button>
                         </div>
-                    </div>
-                    <!--  -->
-                    <div class="row-2-BT" style="margin-top:20px; margin-left:50px ;clear:both; float:left">
-                        <button type="button" class="btn btn-info btn-md">Hoàn thành đơn hàng nhập</button>
                     </div>
                     <!---->
                     <!--danh sách đơn hàng nhập-->
                     <div class="ds-dhNhap col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <strong><span style="margin-left:20px; float:left">Danh sách đơn hàng nhập</span></strong>
-                        <table class="table table-bordered DH-nhap">
+                        <table class="table table-bordered scroll DH-nhap">
                             <thead>
                                 <tr>
                                     <th>Mã đơn hàng</th>
                                     <th>Ngày nhập</th>
                                     <th>Tổng tiền</th>
-                                    <th>Mã sản phẩm</th>
-                                    <th>Tên sản phẩm</th>
-                                    <th>Số lượng</th>
-                                    <th>Giá vốn</th>
+                                    <th></th>
                                 </tr>
                             </thead>
+                  <%
+                  	Object tt = request.getSession().getAttribute("Funct_Admin_DS_HDN");
+                  	HoaDonNhap[] hdn = null;
+                  	if(tt != null)
+                  	{
+                  		hdn = (HoaDonNhap[])tt;
+                  	}
+                  %>
+                  <%
+                  	for(int i=0; i<hdn.length; i++)
+                  	{
+                  		int mahdn = hdn[i].getMaDH();
+                  		Date ngaynhap = hdn[i].getNgayNhap();
+                  		float tongtien = hdn[i].getTongTien();
+                  %>
                             <tbody>
-                                <!--vòng lặp maDH ở đây-->
                                 <tr>
-                                    <td rowspan="3 #SoLuongSP+1">MaDH_nhap</td>
-                                    <td rowspan="3 #SoLuongSP+1">NgayNhap</td>
-                                    <td rowspan="3 #SoLuongSP+1">TongTien</td>
-                                    <!--vòng lặp sl sp ở đây-->
-                                    <tr>
-                                        <td>maSP</td>
-                                        <td>TenSP</td>
-                                        <td>SoLuong</td>
-                                        <td>GiaVon</td>
-                                    </tr>
-                                    <tr>
-                                        <td>maSP1</td>
-                                        <td>TenSP1</td>
-                                        <td>SoLuong1</td>
-                                        <td>GiaVon1</td>
-                                    </tr>
-                                    <!--kết thúc vòng lặp sl sp-->
+                                    <td><%=mahdn%></td>
+                                    <td><%=ngaynhap%></td>
+                                    <td><%=String.format("%,.0f", tongtien)%></td>
+                                    <td>
+                                        <button type="button" class="btn btn-default btn-md chitiet-btn"><a class="submit" href="Import_SP">Chi tiết</a></button>
+                                    </td>
                                 </tr>
                             </tbody>
+                 <%	} %>
                         </table>
                     </div>
                 </div>
             </div>
             <!--End des-->
+            
+            <script type="text/javascript">
+        	
+            $(function () {
+            	$('.chitiet-btn').click(function (e) {
+                	var ma_hdn = 0;
+                	ma_hdn = $(this).closest('tr').find('td:nth-child(1)').text();
+                	$.ajax({
+                        type: 'POST',
+                        url: 'Import_SP',
+                        data: {
+                        	MaHDN : ma_hdn
+                        },
+                        success : function(data){
+                        	
+                        }
+                    })
+            	});
+        	});
+            
+            </script>
+            
         </div>
     </div>
     <!--End Dash-->

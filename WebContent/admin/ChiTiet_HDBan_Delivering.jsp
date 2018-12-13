@@ -46,37 +46,31 @@
 			String tenkh;
 			int sdt;
 			String diachi;
-			int mahdb;
-			Date ngayban;
-			int tt;
-			float tongtien;
 			
 			if(hdb != null)
 			{
 				hd = (ResultSet)hdb;
-			while(hd.next())
+				while(hd.next())
 			{
 				tenkh = hd.getString("tenkh");
 				sdt = hd.getInt("sdt");
 				diachi = hd.getString("diachi");
-				mahdb = hd.getInt("mahdb");
-				ngayban = hd.getDate("ngayban");
-				tt = hd.getInt("trangthai");
-				tongtien = hd.getFloat("tongtien");
-				
 		%>
-                        <tbody>
+						<tbody>
                             <tr>
+                            	<td style="float:left">Tên khách hàng:</td>
                                 <td style="float:left"><%=tenkh%></td>
                             </tr>
                             <tr>
+                            	<td style="float:left">Số điện thoại:</td>
                                 <td style="float:left"><%=sdt%></td>
                             </tr>
                             <tr>
+                            	<td style="float:left">Địa chỉ:</td>
                                 <td style="float:left"><%=diachi%></td>
                             </tr>
-                        </tbody>
-        <% }	} %>
+                       </tbody>
+            <%	} }	%>
                     </table>
                 </div>
 
@@ -88,29 +82,50 @@
                             </tr>
                         </thead>
 		<%
-			if(hdb != null)
+			Object hdb2 = request.getSession().getAttribute("Funct_Admin_CT_HDB_2");
+			int mahdb;
+			Date ngayban;
+			int tt;
+			String trangthai;
+			ResultSet hd2 = null;
+			if(hdb2 != null)
 			{
-				hd = (ResultSet)hdb;
-			while(hd.next())
-			{
-				tenkh = hd.getString("tenkh");
-				sdt = hd.getInt("sdt");
-				diachi = hd.getString("diachi");
-				mahdb = hd.getInt("mahdb");
-				ngayban = hd.getDate("ngayban");
-				tt = hd.getInt("trangthai");
-				tongtien = hd.getFloat("tongtien");
+				hd2 = (ResultSet)hdb2;
 				
+				while(hd2.next())
+				{
+				mahdb = hd2.getInt("mahdb");
+				ngayban = hd2.getDate("ngayban");
+				tt = hd2.getInt("trangthai");
+				trangthai = hd2.getString("trangthai");
+				switch(tt)
+				{
+				case 0: 
+					trangthai = trangthai + " - Đang chờ xác nhận";
+					break;
+				case 1:
+					trangthai = trangthai + " - Đang giao hàng";
+					break;
+				case 2:
+					trangthai = trangthai + " - Giao hàng thành công";
+					break;
+				}
 		%>
                         <tbody>
                             <tr>
-                                <td style="float:left"><%=mahdb%></td>
+                            	<td style="float:left">Mã hoá đơn bán:</td>
+                                <td style="float:left" class="ma_hdb" id="<%=mahdb%>"><%=mahdb%></td>
                             </tr>
                             <tr>
+                            	<td style="float:left">Ngày bán:</td>
                                 <td style="float:left"><%=ngayban%></td>
                             </tr>
+                            <tr>
+                            	<td style="float:left">Trạng thái:</td>
+                                <td style="float:left"><%=trangthai%></td>
+                            </tr>
                         </tbody>
-       <%	}	} %>
+          	<%	}	} %>
                     </table>
                 </div>
 
@@ -122,7 +137,7 @@
             <div class="col-lg-1 col-md-1"></div>
 
             <div class="col-lg-10 col-md-10">
-                <table class="table table-bordered">
+                <table class="table table-bordered scroll">
                     <thead>
                         <tr>
                             <th></th>
@@ -145,7 +160,6 @@
 				String tensp = ct.getString("tensp");
 				int soluong = ct.getInt("soluong");
 				double giaban = ct.getDouble("giaban");
-				String gia = String.valueOf(giaban);
 		%>
                     <tbody>
                         <tr>
@@ -155,7 +169,7 @@
                             <td><%=masp%></td>
                             <td><%=tensp%></td>
                             <td><%=soluong%></td>
-                            <td><%=gia%></td>
+                            <td><%=String.format("%,.0f", giaban)%></td>
                         </tr>
                     </tbody>
         <%	}	} %>
@@ -170,12 +184,58 @@
             <div class="col-lg-4 col-md-4 col-sm-11">
                 <div>
                     <span style="float:left">Tổng giá trị hoá đơn:</span>
-                    <strong>(Giá tiền)VND</strong>
+		<%
+			Object tong_tien = request.getSession().getAttribute("Proc_Admin_Tongtien_CTHDB");
+		%>	
+                    <strong><%=String.format("%,.0f", tong_tien)%><span> (VND)</span></strong>
                 </div>
             </div>
-            <button type="submit" class="btn btn-info btn-md" style="margin-top:20px">Xác nhận giao thành công</button>
-            <button type="submit" class="btn btn-default btn-md" style="margin-top:20px">Huỷ đơn hàng</button>
+            <button type="submit" class="btn btn-info btn-md xacnhan-btn" style="margin-top:20px" id="succ-btn">Xác nhận giao thành công</button>
+            <button type="submit" class="btn btn-default btn-md huy-btn" style="margin-top:20px" id="huy-btn">Huỷ đơn hàng</button>
         </div>
+        
+       <script type="text/javascript">
+        
+    	$(function () {
+        	$('#succ-btn').click(function (e) {
+            	var ma_hdb = 0;
+            	ma_hdb = $('.ma_hdb').attr('id');
+            	$.ajax({
+                    type: 'GET',
+                    url: 'Action_with_Order',
+                    data: {
+                    	MaHDB : ma_hdb,
+                    	FLAG : 2
+                    },
+                    success : function(response){
+                    	alert(response);
+                    	window.history.back();
+                    }
+                })
+        	});
+    	});
+    	
+    	$(function () {
+        	$('#huy-btn').click(function (e) {
+            	var ma_hdb = 0;
+            	ma_hdb = $('.ma_hdb').attr('id');
+            	$.ajax({
+                    type: 'GET',
+                    url: 'Action_with_Order',
+                    data: {
+                    	MaHDB : ma_hdb,
+                    	FLAG : 0
+                    },
+                    success : function(response){
+                    	alert(response);
+                    	window.history.back();
+                    }
+                })
+        	});
+    	});
+    	
+       </script>
+        
     </div>
 
 </body>

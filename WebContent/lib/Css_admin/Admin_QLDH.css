@@ -152,5 +152,28 @@ body {
   .navbar-top-links .dropdown-tasks,
   .navbar-top-links .dropdown-alerts {
     margin-left: auto; } }
+    
+    
+.scroll tbody{
+display:block  !important;
+width: 100% !important;
+overflow: auto !important;
+height: 300px !important;
+}
+
+.scroll thead tr {
+ display: block !important;
+}
+
+.scroll thead {
+background: rgb(90, 87, 87) !important;
+color:#fff !important;
+}
+
+.scroll th, .scroll td {
+padding: 5px !important;
+/*text-align: left;*/
+width: 200px !important;
+}
 
 /*# sourceMappingURL=Admin_QLDH.css.map */

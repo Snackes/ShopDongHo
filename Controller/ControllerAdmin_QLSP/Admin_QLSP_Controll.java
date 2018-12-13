@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import ModelBean.SanPham;
 import ModelBean.ThuongHieu;
+import ModelBean.HoaDonNhap;
 import ModelService.Admin_QLSP_XulyTT;
 
 /**
@@ -39,13 +40,16 @@ public class Admin_QLSP_Controll extends HttpServlet {
 		Admin_QLSP_XulyTT control_SP = new Admin_QLSP_XulyTT();
 		
 		ResultSet DSSP = control_SP.Funct_Admin_BangTTSanPham();		
-		request.setAttribute("Funct_Admin_BangTTSanPham", DSSP);
+		request.getSession().setAttribute("Funct_Admin_BangTTSanPham", DSSP);
 		
 		SanPham[] outstock= control_SP.Funct_Admin_DSSP_OutofStock();
-		request.setAttribute("Funct_Admin_DSSP_OutofStock", outstock);
+		request.getSession().setAttribute("Funct_Admin_DSSP_OutofStock", outstock);
 		
 		ThuongHieu[] dsth = control_SP.Funct_Admin_DSThHieu();
-		request.setAttribute("Funct_Admin_DSThHieu", dsth);
+		request.getSession().setAttribute("Funct_Admin_DSThHieu", dsth);
+		
+		HoaDonNhap[] dshdn = control_SP.Funct_Admin_DS_HDN();
+		request.getSession().setAttribute("Funct_Admin_DS_HDN", dshdn);
 		
 		dispatcher.forward(request, response);
 	}
@@ -55,7 +59,19 @@ public class Admin_QLSP_Controll extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		Admin_QLSP_XulyTT control_SP = new Admin_QLSP_XulyTT();
+		int masp = Integer.parseInt(request.getParameter("MaSP"));
+		
+		
+		
+		int flag = Integer.parseInt(request.getParameter("FLAG"));
+		switch(flag)
+		{
+		case 0:
+			control_SP.Proc_Admin_XoaSP(masp);
+			response.getWriter().print("Delete successfull !");
+			break;
+		}
 	}
 
 }

@@ -56,9 +56,8 @@
                         <p style="margin-top: 20px"></p>
                         <a id="dash" href="Admin_Dash_Controll"><span class="glyphicon glyphicon-home" style="margin-right: 5px;"></span>Trang chính</a>
                         <a id="qlsp" href="Admin_QLSP_Controll"><span class="glyphicon glyphicon-gift" style="margin-right: 5px;"></span>Quản lí sản phẩm</a>
-                        <a id="qldh" href="Admin_QLDH_Controll"><span class="glyphicon glyphicon-list-alt" style="margin-right: 5px;"></span>Quản lí đơn hàng</a>
+                        <a id="qldh" href="Admin_QLDH_Control"><span class="glyphicon glyphicon-list-alt" style="margin-right: 5px;"></span>Quản lí đơn hàng</a>
                         <a id="qltk" href="Admin_QLKH_Controll"><span class="glyphicon glyphicon-user" style="margin-right: 5px;"></span>Quản lí tài khoản người dùng</a>
-                        <a id="qlbl" href="Admin_QLBL.html"><span class="glyphicon glyphicon-comment" style="margin-right: 5px;"></span>Quản lí bình luận</a>
                         <a id="report" href="Admin_Report_Controll"><span class="glyphicon glyphicon-stats" style="margin-right: 5px;"></span>Thống kê</a>
                     </li>
                 </ul>
@@ -77,8 +76,8 @@
                 <!--table - Đơn hàng chưa xác nhận-->
                 <div class="col-lg-11 col-md-11 col-sm-12 col-xs-12 don-hang-chua-xacnhan">
                     <div class="table-responsive">
-                    <strong><span style="float:left">Đơn hàng đợi xác nhận</span></strong>
-                    <table class="table table-bordered order-wait">
+                    <strong><span style="float:left; font-size:23px">Đơn hàng đợi xác nhận</span></strong>
+                    <table class="table table-hover table-bordered scroll order-wait" id="order-wait">
                         <thead>
                             <tr>
                                 <th>Mã đơn hàng</th>
@@ -113,7 +112,7 @@
                             <tr>
                                 <td><%=madhb_wait%></td>
                                 <td><%=ngayban_wait%></td>
-                                <td><%=tongtien_wait%></td>
+                                <td><%=String.format("%,.0f", tongtien_wait)%></td>
                                 <td><%=kh_wait%></td>
                                 <td><%=sdt_wait%></td>
                                 <td><%=diachi_wait%></td>
@@ -126,15 +125,13 @@
                     </table>
                     </div>
                     <div class="row-2-BT" style="clear:both; float: right;">
-                        <button type="button" class="btn btn-info btn-md">Xác nhận đơn hàng</button>
-                        <button type="button" class="btn btn-default btn-md">Huỷ đơn hàng</button>
                     </div>
                 </div>
                 <!--table - đơn hàng đã xác nhận/đang giao-->
                 <div class="col-lg-11 col-md-11 col-sm-12 col-xs-12 don-hang-da-xacnhan">
                     <div class="table-responsive">
-                    <strong><span style="float:left">Đơn hàng đã xác nhận/Đang giao</span></strong>
-                    <table class="table table-bordered order-delivering">
+                    <strong><span style="float:left; font-size:23px">Đơn hàng đã xác nhận/Đang giao</span></strong>
+                    <table class="table table-hover table-bordered scroll order-delivering" id="order-delivering">
                         <thead>
                             <tr>
                                 <th>Mã đơn hàng</th>
@@ -170,7 +167,7 @@
                             <tr>
                                 <td><%=madhb_move%></td>
                                 <td><%=ngayban_move%></td>
-                                <td><%=tongtien_move%></td>
+                                <td><%=String.format("%,.0f", tongtien_move)%></td>
                                 <td><%=kh_move%></td>
                                 <td><%=sdt_move%></td>
                                 <td><%=diachi_move%></td>
@@ -183,15 +180,13 @@
                     </table>
                     </div>
                     <div class="row-2-BT" style="clear:both; float: right;">
-                        <button type="button" class="btn btn-info btn-md">Giao hàng thành công</button>
-                        <button type="button" class="btn btn-default btn-md">Huỷ đơn hàng</button>
                     </div>
                 </div>
                 <!--Đơn hàng giao thành công-->
                 <div class="col-lg-11 col-md-11 col-sm-12 col-xs-12 don-hang-giao-thanhcong">
                     <div class="table-responsive">
-                    <strong><span style="float:left">Đơn hàng giao dịch thành công</span></strong>
-                    <table class="table table-bordered order-succ">
+                    <strong><span style="float:left; font-size:23px">Đơn hàng giao dịch thành công</span></strong>
+                    <table class="table table-bordered scroll order-succ">
                         <thead>
                             <tr>
                                 <th>Mã đơn hàng</th>
@@ -227,7 +222,7 @@
                             <tr>
                                 <td><%=madhb_suc%></td>
                                 <td><%=ngayban_succ%></td>
-                                <td><%=tongtien_succ%></td>
+                                <td><%=String.format("%,.0f", tongtien_succ)%></td>
                                 <td><%=kh_succ%></td>
                                 <td><%=sdt_succ%></td>
                                 <td><%=diachi_succ%></td>
@@ -242,7 +237,8 @@
                 </div>
                 
             <script type="text/javascript">
-        	$(function () {
+        	//sự kiện nút chi tiết bảng đơn hàng chờ xác nhận
+            $(function () {
             	$('.chitiet-wait-btn').click(function (e) {
                 	var ma_hdb = 0;
                 	ma_hdb = $('.order-wait tr').closest('tr').find('td:nth-child(1)').text();
@@ -258,7 +254,7 @@
                     })
             	});
         	});
-        	
+          //sự kiện nút chi tiết bảng đơn hàng đang giao
         	$(function () {
             	$('.chitiet-delivering-btn').click(function (e) {
                 	var ma_hdb = 0;
@@ -275,7 +271,7 @@
                     })
             	});
         	});
-        	
+        	//sự kiện nút chi tiết bảng đơn hàng giao thành công
         	$(function () {
             	$('.chitiet-succ-btn').click(function (e) {
                 	var ma_hdb = 0;
@@ -292,6 +288,7 @@
                     })
             	});
         	});
+        	
         	</script>
         	
                 <!--End des-->

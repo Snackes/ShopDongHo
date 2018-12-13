@@ -59,9 +59,8 @@
                         <p style="margin-top: 20px"></p>
                         <a id="dash" href="Admin_Dash_Controll"><span class="glyphicon glyphicon-home" style="margin-right: 5px;"></span>Trang chính</a>
                         <a id="qlsp" href="Admin_QLSP_Controll"><span class="glyphicon glyphicon-gift" style="margin-right: 5px;"></span>Quản lí sản phẩm</a>
-                        <a id="qldh" href="Admin_QLDH_Controll"><span class="glyphicon glyphicon-list-alt" style="margin-right: 5px;"></span>Quản lí đơn hàng</a>
+                        <a id="qldh" href="Admin_QLDH_Control"><span class="glyphicon glyphicon-list-alt" style="margin-right: 5px;"></span>Quản lí đơn hàng</a>
                         <a id="qltk" href="Admin_QLKH_Controll"><span class="glyphicon glyphicon-user" style="margin-right: 5px;"></span>Quản lí tài khoản người dùng</a>
-                        <a id="qlbl" href="Admin_QLBL.html"><span class="glyphicon glyphicon-comment" style="margin-right: 5px;"></span>Quản lí bình luận</a>
                         <a id="report" href="Admin_Report_Controll"><span class="glyphicon glyphicon-stats" style="margin-right: 5px;"></span>Thống kê</a>
                     </li>
                 </ul>
@@ -88,13 +87,13 @@
             	}
             %>
                 <div class="col-lg-6 col-md-6 col-sm-11 col-xs-12 bang-dskh">
-                    <div class="tim-kiem">
+                    <!--div class="tim-kiem">
                         <label for="text-search" style="float:left">Tìm kiếm</label>
                         <input type="text" class="form-control" id="text-search" placeholder="Search" style="width:200px; float: left;">
                         <button class="btn btn-default" type="submit" style="float: left"><span class="glyphicon glyphicon-search"></span></button>
-                    </div>
+                    </div-->
                     <strong><span style="float:left; clear:both; margin-top:20px;">Danh sách tài khoản khách hàng</span></strong>
-                    <table class="table table-hover danhsach-kh">
+                    <table class="table table-hover scroll danhsach-kh">
                         <thead>
                             <tr>
                                 <th>Mã KH</th>
@@ -178,7 +177,7 @@
                     </div>
                     
                     <!-- đơn hàng của khách -->
-                    <table class="table table-bordered dsDH-kh">
+                    <table class="table table-bordered scroll dsDH-kh">
                         <thead>
                         <tr>
                             <th></th>
@@ -206,7 +205,7 @@
                             	</td>
                             	<td><%=mahdb%></td>
                             	<td><%=ngayban%></td>
-                            	<td><%=tongtien%></td>
+                            	<td><%=String.format("%,.0f", tongtien)%></td>
                         	</tr>
                     	</tbody>
                  <% }	} %>

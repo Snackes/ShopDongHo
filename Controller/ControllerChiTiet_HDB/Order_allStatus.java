@@ -53,6 +53,12 @@ public class Order_allStatus extends HttpServlet {
 		
 		ResultSet ttcthdb = control.Funct_Admin_TTCTofHDB(mahdb);
 		request.getSession().setAttribute("Funct_Admin_TTCTofHDB", ttcthdb);
+		
+		ResultSet cthdb2 = control.Funct_Admin_CT_HDB_2(mahdb);
+		request.getSession().setAttribute("Funct_Admin_CT_HDB_2", cthdb2);
+		
+		double tongtien = control.Proc_Admin_Tongtien_CTHDB(mahdb);
+		request.getSession().setAttribute("Proc_Admin_Tongtien_CTHDB", tongtien);
 		}
 	}
 

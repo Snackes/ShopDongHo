@@ -1,6 +1,8 @@
-package ControllerChiTiet_HDB;
+package ControllerAdmin_QLSP;
 
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,22 +11,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.jasper.tagplugins.jstl.core.Out;
-
-import java.sql.ResultSet;
-import ModelService.ChiTiet_HDB_Xuly;
+import ModelBean.SanPham;
+import ModelBean.ThuongHieu;
+import ModelService.Admin_QLSP_XulyTT;
 
 /**
- * Servlet implementation class Order_Wait
+ * Servlet implementation class Import_SP
  */
-@WebServlet("/Order_Wait")
-public class Order_Wait extends HttpServlet {
+@WebServlet("/Import_SP")
+public class Import_SP extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Order_Wait() {
+    public Import_SP() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,7 +35,7 @@ public class Order_Wait extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		RequestDispatcher dispatcher= request.getRequestDispatcher("admin/ChiTiet_HDBan_Wait.jsp");
+		RequestDispatcher dispatcher= request.getRequestDispatcher("admin/ChiTiet_HDNhap.jsp");
 		
 		
 		dispatcher.forward(request, response);
@@ -45,22 +46,14 @@ public class Order_Wait extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		ChiTiet_HDB_Xuly control = new ChiTiet_HDB_Xuly();
-		int mahdb = Integer.parseInt(request.getParameter("MaHDB"));
-		//int mahdb = 9;
+		Admin_QLSP_XulyTT control_ds = new Admin_QLSP_XulyTT();
+		int mahdn = Integer.parseInt(request.getParameter("MaHDN"));
 		
-		ResultSet cthdb = control.Funct_Admin_CT_HDB(mahdb);
-		request.getSession().setAttribute("Funct_Admin_CT_HDB", cthdb);
+		ResultSet ct = control_ds.Funct_Admin_CTHDN(mahdn);
+		request.getSession().setAttribute("Funct_Admin_CTHDN", ct);
 		
-		ResultSet ttcthdb = control.Funct_Admin_TTCTofHDB(mahdb);
-		request.getSession().setAttribute("Funct_Admin_TTCTofHDB", ttcthdb);
-		
-		ResultSet cthdb2 = control.Funct_Admin_CT_HDB_2(mahdb);
-		request.getSession().setAttribute("Funct_Admin_CT_HDB_2", cthdb2);
-		
-		double tongtien = control.Proc_Admin_Tongtien_CTHDB(mahdb);
-		request.getSession().setAttribute("Proc_Admin_Tongtien_CTHDB", tongtien);
-		
+		ResultSet tt = control_ds.Funct_Admin_DS_HDN_2(mahdn);
+		request.getSession().setAttribute("Funct_Admin_DS_HDN_2", tt);
 	}
 
 }

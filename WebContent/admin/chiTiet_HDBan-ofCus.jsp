@@ -30,16 +30,15 @@
         <div class="panel-body">
             <!--Thông tin khách hàng, hoá đơn-->
             <div class="row-1 thongtin-kh-hd">
-                <div class="col-lg-2 col-md-2 col-sm-1"></div>
+                <div class="col-lg-1 col-md-1 col-sm-1"></div>
                 
-                <div class="col-lg-4 col-md-4 col-sm-5 col-xs-6 table-responsive">
-                    <table class="table" style="float:left; width: 300px">
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-6 table-responsive">
+                    <table class="table" style="float:left; width: 400px">
                         <thead>
                             <tr>
                                 <th>Thông tin khách hàng</th>
                             </tr>
-                        </thead>
-                        <tbody>
+                        </thead>              
 		<%
 			Object hdb = request.getSession().getAttribute("Funct_Admin_CT_HDB");
 			ResultSet hd = null;
@@ -47,87 +46,84 @@
 			String tenkh;
 			int sdt;
 			String diachi;
-			int mahdb;
-			Date ngayban;
-			int tt;
-			float tongtien;
 			
 			if(hdb != null)
 			{
 				hd = (ResultSet)hdb;
-			while(hd.next())
+				while(hd.next())
 			{
 				tenkh = hd.getString("tenkh");
 				sdt = hd.getInt("sdt");
 				diachi = hd.getString("diachi");
-				mahdb = hd.getInt("mahdb");
-				ngayban = hd.getDate("ngayban");
-				tt = hd.getInt("trangthai");
-				tongtien = hd.getFloat("tongtien");
-				
 		%>
-						
+						<tbody>
                             <tr>
+                            	<td style="float:left">Tên khách hàng:</td>
                                 <td style="float:left"><%=tenkh%></td>
                             </tr>
                             <tr>
+                            	<td style="float:left">Số điện thoại:</td>
                                 <td style="float:left"><%=sdt%></td>
                             </tr>
                             <tr>
+                            	<td style="float:left">Địa chỉ:</td>
                                 <td style="float:left"><%=diachi%></td>
                             </tr>
-                       
+                       </tbody>
             <%	} }	%>
-                        </tbody>
+                        
                     </table>
                 </div>
 
-                <div class="col-lg-4 col-md-4 col-sm-5 col-xs-6 table-responsive">
-                    <table class="table" style="float:left; width: 300px">
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-6 table-responsive">
+                    <table class="table" style="float:left; width: 400px">
                         <thead>
                             <tr>
                                 <th>Thông tin đơn hàng</th>
                             </tr>
-                        </thead>
-                        
+                        </thead>       
 		<%
-			Object hdb2 = request.getSession().getAttribute("Funct_Admin_CT_HDB");
+			Object hdb2 = request.getSession().getAttribute("Funct_Admin_CT_HDB_2");
+			int mahdb;
+			Date ngayban;
+			int tt;
+			String trangthai;
 			ResultSet hd2 = null;
 			if(hdb2 != null)
 			{
 				hd2 = (ResultSet)hdb2;
-			while(hd2.next())
-			{
-				/*tenkh = hd.getString("tenkh");
-				sdt = hd.getInt("sdt");
-				diachi = hd.getString("diachi");*/
+				
+				while(hd2.next())
+				{
 				mahdb = hd2.getInt("mahdb");
 				ngayban = hd2.getDate("ngayban");
 				tt = hd2.getInt("trangthai");
-				tongtien = hd2.getFloat("tongtien");
-				String trangthai;
+				trangthai = hd2.getString("trangthai");
 				switch(tt)
 				{
 				case 0: 
-					trangthai = "Đang chờ xác nhận";
+					trangthai = trangthai + " - Đang chờ xác nhận";
 					break;
 				case 1:
-					trangthai = "Đang giao hàng";
+					trangthai = trangthai + " - Đang giao hàng";
 					break;
 				case 2:
-					trangthai = "Giao hàng thành công";
+					trangthai = trangthai + " - Giao hàng thành công";
 					break;
 				}
 		%>
                         <tbody>
                             <tr>
+                            	<td style="float:left">Mã hoá đơn bán:</td>
                                 <td style="float:left"><%=mahdb%></td>
                             </tr>
                             <tr>
+                            	<td style="float:left">Ngày bán:</td>
                                 <td style="float:left"><%=ngayban%></td>
                             </tr>
                             <tr>
-                                <td style="float:left">trangthai</td>
+                            	<td style="float:left">Trạng thái:</td>
+                                <td style="float:left"><%=trangthai%></td>
                             </tr>
                         </tbody>
           	<%	}	} %>
@@ -135,7 +131,7 @@
                     </table>
                 </div>
 
-                <div class="col-lg-2 col-md-2 col-sm-1"></div>
+                <div class="col-lg-1 col-md-1 col-sm-1"></div>
             </div>
         </div>
         <!--Thông tin chi tiết đơn hàng-->
@@ -143,7 +139,7 @@
             <div class="col-lg-1 col-md-1"></div>
 
             <div class="col-lg-10 col-md-10">
-                <table class="table table-bordered">
+                <table class="table table-bordered scroll">
                     <thead>
                         <tr>
                             <th></th>
@@ -167,7 +163,6 @@
 				String tensp = ct.getString("tensp");
 				int soluong = ct.getInt("soluong");
 				double giaban = ct.getDouble("giaban");
-				String gia = String.valueOf(giaban);
 		%>
                     <tbody>
                         <tr>
@@ -177,7 +172,7 @@
                             <td><%=masp%></td>
                             <td><%=tensp%></td>
                             <td><%=soluong%></td>
-                            <td><%=gia%></td>
+                            <td><%=String.format("%,.0f", giaban)%></td>
                         </tr>
                     </tbody>
         <%	}	} %>
@@ -194,22 +189,9 @@
                 <div>
                     <span style="float:left">Tổng giá trị hoá đơn:</span>
 		<%
-			if(hdb != null)
-			{
-				hd = (ResultSet)hdb;
-			while(hd.next())
-			{
-				/*tenkh = hd.getString("tenkh");
-				sdt = hd.getInt("sdt");
-				diachi = hd.getString("diachi");*/
-				mahdb = hd.getInt("mahdb");
-				ngayban = hd.getDate("ngayban");
-				tt = hd.getInt("trangthai");
-				tongtien = hd.getFloat("tongtien");
-				
+			Object tong_tien = request.getSession().getAttribute("Proc_Admin_Tongtien_CTHDB");
 		%>	
-                    <strong><%=tongtien%> (VND)</strong>
-        <%	}	} %>
+                    <strong><%=String.format("%,.0f", tong_tien)%><span> (VND)</span></strong>
                 </div>
             </div>
         </div>

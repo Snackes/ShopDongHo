@@ -9,14 +9,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Quản lí Shop</title>
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-    <link rel="stylesheet" href="../lib/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/vendor/bootstrap/css/bootstrap.min.css">
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
-    <script src="../lib/vendor/jquery/jquery.min.js"></script>
+    <script src="lib/vendor/jquery/jquery.min.js"></script>
     <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
-    <script src="../lib/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../lib/Css_admin/Admin_Report.css">
+    <script src="lib/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="lib/Css_admin/Admin_Report.css">
     <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">-->
-    <link rel="stylesheet" href="../lib/vendor/fontawesome/css/all.css">
+    <link rel="stylesheet" href="lib/vendor/fontawesome/css/all.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
     <!--Google Chart-->
@@ -40,7 +40,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <img src="../lib/images/pic1.png" class="img-circle" alt="Cinque Terre" width="35" height="35">
+                <img src="lib/images/pic1.png" class="img-circle" alt="Cinque Terre" width="35" height="35">
                 <li class="dropdown">
                     <a id="admin_name" href="#" class="dropdown-toggle" data-toggle="dropdown"><span style="font-size: 15px; color:#fff;">Admin_Name</span><b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -56,9 +56,8 @@
                         <p style="margin-top:20px"></p>
                         <a id="dash" href="Admin_Dash_Controll"><span class="glyphicon glyphicon-home" style="margin-right: 5px;"></span>Trang chính</a>
                         <a id="qlsp" href="Admin_QLSP_Controll"><span class="glyphicon glyphicon-gift" style="margin-right: 5px;"></span>Quản lí sản phẩm</a>
-                        <a id="qldh" href="Admin_QLDH_Controll"><span class="glyphicon glyphicon-list-alt" style="margin-right: 5px;"></span>Quản lí đơn hàng</a>
+                        <a id="qldh" href="Admin_QLDH_Control"><span class="glyphicon glyphicon-list-alt" style="margin-right: 5px;"></span>Quản lí đơn hàng</a>
                         <a id="qltk" href="Admin_QLKH_Controll"><span class="glyphicon glyphicon-user" style="margin-right: 5px;"></span>Quản lí tài khoản người dùng</a>
-                        <a id="qlbl" href="Admin_QLBL.html"><span class="glyphicon glyphicon-comment" style="margin-right: 5px;"></span>Quản lí bình luận</a>
                         <a id="report" href="Admin_Report_Controll"><span class="glyphicon glyphicon-stats" style="margin-right: 5px;"></span>Thống kê</a>
                     </li>
                 </ul>
@@ -159,7 +158,7 @@
                 <!--khách hàng tiềm năng-->
                 <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                     <strong><span>Khách hàng tiềm năng</span></strong>
-                    <table class="table table-bordered">
+                    <table class="table table-bordered scroll">
                         <thead>
                             <tr>
                                 <th>Tên khách hàng</th>
@@ -180,7 +179,7 @@
                 <!--sản phẩm bán chạy-->
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <strong><span>Sản phẩm bán chạy nhất</span></strong>
-                    <table class="table table-bordered">
+                    <table class="table table-bordered scroll">
                         <thead>
                             <tr>
                                 <th>Mã sản phẩm</th>

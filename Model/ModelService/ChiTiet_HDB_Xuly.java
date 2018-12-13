@@ -17,7 +17,7 @@ public class ChiTiet_HDB_Xuly {
 	public ChiTiet_HDB_Xuly() {
 		connection = new DBConnection();
 	}
-	
+	//name,tel,address
 	public ResultSet Funct_Admin_CT_HDB(int mahdb)
 	{
 		Vector<Object[]> paramsIn = connection.createParams(new int[] {1},new Object[] {mahdb});
@@ -32,7 +32,7 @@ public class ChiTiet_HDB_Xuly {
 		}
 		return cthdb;
 	}
-	
+	//thong tin chi tiet cua hoa don ban
 	public ResultSet Funct_Admin_TTCTofHDB(int mahdb)
 	{
 		Vector<Object[]> paramsIn = connection.createParams(new int[] {1},new Object[] {mahdb});
@@ -85,5 +85,39 @@ public class ChiTiet_HDB_Xuly {
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
+	}
+	
+	public ResultSet Funct_Admin_CT_HDB_2(int mahdb)
+	{
+		Vector<Object[]> paramsIn = connection.createParams(new int[] {1},new Object[] {mahdb});
+		
+		ResultSet cthdb = null;
+		connection.connect();
+		
+		try {
+			cthdb = connection.executeTableFunction("Funct_Admin_CT_HDB_2", paramsIn);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return cthdb;
+	}
+	
+	public double Proc_Admin_Tongtien_CTHDB(int mahdb)
+	{
+		Vector<Object[]> paramsIn = connection.createParams(new int[] {1},new Object[] {mahdb});
+		
+		connection.connect();
+		double tongtien = 0;
+		try {
+			ResultSet resultSet = connection.executeTableProc("Proc_Admin_Tongtien_CTHDB", paramsIn);
+			while(resultSet.next()) {
+				tongtien = resultSet.getDouble("tongtien");
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			connection.close();
+		}
+		return tongtien;
 	}
 }

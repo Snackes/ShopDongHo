@@ -52,19 +52,11 @@ public class Order_Delivering extends HttpServlet {
 		ResultSet ttcthdb = control.Funct_Admin_TTCTofHDB(mahdb);
 		request.getSession().setAttribute("Funct_Admin_TTCTofHDB", ttcthdb);
 		
-		int flag = Integer.parseInt(request.getParameter("FLAG"));
-		switch(flag)
-		{
-		case 2:
-			//control.Proc_Admin_Xacnhan_HDB(mahdb);
-			response.getWriter().write("Xác nhận giao thành công");
-			break;
-		case 0:
-			//control.Proc_Admin_Huy_HDB(mahdb);
-			response.getWriter().write("Huỷ đơn hàng thành công");
-			break;
-		}
+		ResultSet cthdb2 = control.Funct_Admin_CT_HDB_2(mahdb);
+		request.getSession().setAttribute("Funct_Admin_CT_HDB_2", cthdb2);
 		
+		double tongtien = control.Proc_Admin_Tongtien_CTHDB(mahdb);
+		request.getSession().setAttribute("Proc_Admin_Tongtien_CTHDB", tongtien);
 	}
 
 }
