@@ -100,7 +100,7 @@
                                 <span class="product-like-count" style="font-size: 20px;">200</span>
                             </div>
                             <div class="product-btn" style="font-size: 20px;">
-                                <a class="btn-themGioHang" >Thêm Vào Giỏ Hàng</a>
+                                <a style="cursor:pointer;" class="btn-themGioHang" >Thêm Vào Giỏ Hàng</a>
                                 
                             </div>
                             <div class="product-social" style="font-size: 20px;">
@@ -260,7 +260,7 @@
                     
             
         </div>
-        <div class="btn-more">
+        <div class="btn-more" style="margin-top:30px;margin-bottom:30px;">
             <ul class="pager">
                 <li class="next"> <a href="#" style="font-size: 18px;">Xem Thêm</a></li>
             </ul>
@@ -303,13 +303,13 @@
 		    		      type: "success",
 		    		      showCancelButton: false
 		    		    }, function() {
-		    		    	location.reload();
+		    		    	$("#loadcha").load(location.href + " #loadcon");
 		    		    });
 		    		
 		    		}
 		    	else
 		    		{
-		    			alert("Hết hàng...!");
+		    			alert("Vượt quá số lượng hàng đang có! \n Vui lòng chọn số lượng nhỏ hơn");
 		    			//$('#ThongBaoDangNhap').text("Sản phẩm hết hàng");
 		    		}
 		    	

@@ -22,13 +22,11 @@
     <link rel="stylesheet" href="lib/vendor/sweet/sweetalert.css">
      <script src="lib/vendor/jquery-validate/jquery.validate.min.js"></script>
   <script src="lib/vendor/jquery-validate/additional-methods.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
+    
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Krub" rel="stylesheet">
+    
     <link href="https://fonts.googleapis.com/css?family=Philosopher" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Archivo" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+   
 </head>
 <body>
     <!--taọ nav fixedtop-->
@@ -66,8 +64,8 @@
 	                            </form>
                             </div>
                             
-                            <div class="col-sm-1 col-md-1 col-lg-1">
-                                <ul class=" nav navbar-nav ">
+                            <div class="col-sm-1 col-md-1 col-lg-1" id="loadcha">
+                                <ul class=" nav navbar-nav " id="loadcon">
                                     <a style="text-decoration:none;" id="shopping-cart" href="ShowCart">
                                     <%
 	                                   String SoLuong="";
@@ -265,7 +263,7 @@
                                 </ul>
                             </li>
                             <li class="dropdown dropdown-large dropdown-hover">
-                                <a href="#" class="tieuDe">Thương Hiệu</a>
+                                <a href="BoLocSanPham" class="tieuDe">Thương Hiệu</a>
                                 <ul class="dropdown-menu dropdown-menu-large row">
                                     <li class=" col-lg-3">
                                         <ul>

@@ -37,7 +37,8 @@ public class ThanhToan extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		RequestDispatcher dispatcher= request.getRequestDispatcher("view/DatHang.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**
@@ -53,6 +54,7 @@ public class ThanhToan extends HttpServlet {
         int SDT=Integer.parseInt(request.getParameter("mobile"));
         Integer MaKH=null;
         String thu="";
+        
 		if(request.getSession().getAttribute("MaKH")==null)
 		{
 			MaKH=null;
@@ -77,9 +79,11 @@ public class ThanhToan extends HttpServlet {
         	Integer sale=listGH.get(i).getSale();
             xl.ThemSPVaoChiTietHDBan(MaSP, GiaVon,GiaBan,SoLuong,sale);
         }
+        request.getSession().setAttribute("GioHang", null);		
+        request.getSession().setAttribute("SLIConGH", xl.TongSoLuong(request));
 
         request.setAttribute("ThanhToanThanhCong", "ThanhCong");
-        RequestDispatcher dispatcher=request.getRequestDispatcher("view/Index.jsp");
+        RequestDispatcher dispatcher= request.getRequestDispatcher("TrangChu");
         dispatcher.forward(request, response);
 	}
 

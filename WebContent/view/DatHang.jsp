@@ -9,12 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Shop online</title>
-    <link rel="stylesheet" href="../lib/vendor/bootstrap/css/bootstrap.min.css">
-    <script src="../lib/vendor/jquery/jquery.min.js"></script>
-    <script src="../lib/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../lib/css/index.css">
-    <link rel="stylesheet" href="../lib/vendor/fontawesome/css/all.css">
-    <link rel="stylesheet" href="../lib/css/DatHang.css">
+    
+    <link rel="stylesheet" href="lib/css/DatHang.css">
 </head>
 <body>
   	<%@ include file="/Layout/Header.jsp"%>
@@ -38,7 +34,7 @@
                 <div class="col-lg-5 col-md-5 col-sm-5">
                 </div>
             </div>
-            <form class="form_ThongTinThanhToan" action="../ThanhToan" method="post">
+            <form class="form_ThongTinThanhToan" action="ThanhToan" method="post">
                     <div class="row">
                         <div class="col-lg-7 col-md-7 col-sm-7">
                             <div class="div_ThongTinThanhToan">
@@ -88,7 +84,7 @@
                                     </table>
                                     <div class="divChinhSach">
                                         <p style="font-style:oblique">Hình thức thanh toán: Thanh toán khi nhận hàng</p>
-                                        <button id="aaa" type="submit" class="btn btn-3 m-b-20">
+                                        <button id="aaa" type="submit" class="btn btn-3 m-b-20" style="margin-bottom: 10px;">
                                         	Xác nhận      
                                         </button>
                                         <p>
@@ -103,6 +99,7 @@
                     </div>
             </form>
         </div>
+        
 
     <!---END CONTENT--->
 	<%@ include file="/Layout/Footer.jsp"%>
