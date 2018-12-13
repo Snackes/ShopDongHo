@@ -35,6 +35,7 @@
     						  <h1 style="font-family: 'Philosopher', sans-serif;">Sang Trọng</h1>
     						<!--<p>Note: If you're viewing this page via a <code>file://</code> URL, the " next " and " previous " Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
     						-->
+    						<a class="btn btn-primary" href="BoLocSanPham" role="button">Khám Phá Bộ Sưu Tập</a>
     					</div>
     				</div>
     			</div>
@@ -45,6 +46,7 @@
     						  <h1 style="font-family: 'Philosopher', sans-serif;">Lịch Lãm</h1>
     						<!--<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
     						-->
+    						<a class="btn btn-primary" href="BoLocSanPham" role="button">Khám Phá Bộ Sưu Tập</a>
     					</div>
     				</div>
     			</div>
@@ -55,6 +57,7 @@
                           <h1 style="font-family: 'Philosopher', sans-serif;">Thời Trang</h1>
                        <!-- <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
                         -->
+                        <a class="btn btn-primary" href="BoLocSanPham" role="button">Khám Phá Bộ Sưu Tập</a>
                     </div>
                 </div>
             </div>

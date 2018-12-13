@@ -488,7 +488,9 @@
 	    		      type: "success",
 	    		      showCancelButton: false
 	    		    }, function() {
+	    		    	$("#loadcha").load(location.href + " #loadcon");
 	    		    	$('#listsp').load("http://localhost:8080/WebBanDongHo/BoLocSanPham"+"?action=filter"+" #rowSP, .pagination");
+	    		    	
 	    		    });
 	    		
 	    		}
