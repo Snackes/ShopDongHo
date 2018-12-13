@@ -18,5 +18,39 @@ public class Admin_Report_XulyTT {
 		connection = new DBConnection();
 	}
 	
-	//xử lý ở đây
+	//hot sale
+	public ResultSet Funct_Admin_DSSP_Hotsale() {
+
+		connection.connect();
+		ResultSet resultSet = null;
+		
+		try {
+			resultSet = connection.executeTableFunction("Funct_Admin_DSSP_Hotsale", null);
+			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} /*finally {
+			connection.close();
+		}*/
+		return resultSet;
+
+	}
+	
+	//Khach hang tiem nag
+	public ResultSet Funct_Admin_KHTN() {
+
+		connection.connect();
+		ResultSet resultSet = null;
+		
+		try {
+			resultSet = connection.executeTableFunction("Funct_Admin_KHTN", null);
+			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} /*finally {
+			connection.close();
+		}*/
+		return resultSet;
+
+	}
 }
