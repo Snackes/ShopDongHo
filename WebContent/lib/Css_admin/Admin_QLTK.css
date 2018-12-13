@@ -174,19 +174,26 @@ overflow: auto !important;
 height: 300px !important;
 }
 
+.scroll tbody{
+display:block;
+width: 100%;
+overflow: auto;
+height: 300px;
+}
+
 .scroll thead tr {
- display: block !important;
+ display: block;
 }
 
 .scroll thead {
-background: rgb(90, 87, 87) !important;
-color:#fff !important;
+background: rgb(90, 87, 87);
+color:#fff;
 }
 
 .scroll th, .scroll td {
-padding: 5px !important;
+padding: 5px;
 /*text-align: left;*/
-width: 200px !important;
+width: 200px;
 }
 
 /*# sourceMappingURL=Admin_QLTK.css.map */
