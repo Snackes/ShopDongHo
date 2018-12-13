@@ -19,7 +19,7 @@ body {
 .navbar-fixed-top {
   background-color: #282629 !important;
   opacity: 1;
-  border: 2px #282629 solid; }
+  border: 1px #282629 solid; }
 
 .search-bar {
   margin-top: 7px; }

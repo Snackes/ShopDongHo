@@ -204,7 +204,7 @@
                 </div>
                 <!---end list checkbox-->
             </div>
-            <div id="listsp" class=" col-lg-9 col-md-9 col-sm-9">              
+            <div id="listsp" class=" col-lg-9 col-md-9 col-sm-9" style="margin-top:50px;">              
                 <!--list san pham-->
                 <div id="rowSP" class="row" style="clear: right;">
                 <%
@@ -311,7 +311,7 @@
 							b=listsp.length;
 						}
 				%>
-                        <li><a class="test" data-a=<%=a %> data-b=<%=b%>><%=i %></a></li>
+                        <li><a style="cursor:pointer;" class="test" data-a=<%=a %> data-b=<%=b%>><%=i %></a></li>
                     <%}
             	}%>
             	</ul>
