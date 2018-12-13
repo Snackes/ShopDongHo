@@ -262,7 +262,7 @@
         </div>
         <div class="btn-more" style="margin-top:30px;margin-bottom:30px;">
             <ul class="pager">
-                <li class="next"> <a href="#" style="font-size: 18px;">Xem Thêm</a></li>
+                <li class="next"> <a href="BoLocSanPham" style="font-size: 18px;">Xem Thêm</a></li>
             </ul>
         </div>
                 <!--End Có Thể BẠN quan Tâm-->

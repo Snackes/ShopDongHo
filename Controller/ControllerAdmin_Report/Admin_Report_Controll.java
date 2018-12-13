@@ -37,6 +37,12 @@ public class Admin_Report_Controll extends HttpServlet {
 		RequestDispatcher dispatcher= request.getRequestDispatcher("admin/Admin_Report.jsp");
 		Admin_Report_XulyTT control_SP = new Admin_Report_XulyTT();
 		
+		ResultSet hotsale = control_SP.Funct_Admin_DSSP_Hotsale();
+		request.setAttribute("Funct_Admin_DSSP_Hotsale", hotsale);
+		
+		ResultSet khtn = control_SP.Funct_Admin_KHTN();
+		request.setAttribute("Funct_Admin_KHTN", khtn);
+		
 		dispatcher.forward(request, response);
 	}
 
@@ -45,7 +51,7 @@ public class Admin_Report_Controll extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		
 	}
 
 }

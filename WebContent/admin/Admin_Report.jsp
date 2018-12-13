@@ -1,3 +1,4 @@
+<%@page import="java.sql.ResultSet"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -166,13 +167,26 @@
                                 <th>Tổng giá trị đơn hàng</th>
                             </tr>
                         </thead>
+           	<%
+           		Object kh = request.getAttribute("Funct_Admin_KHTN");
+           		ResultSet khtn = null;
+           		if(kh != null)
+           		{
+           			khtn = (ResultSet)kh;
+           			while(khtn.next())
+           			{
+           				String tenkh = khtn.getString("tenkh");
+           				int soluotmua = khtn.getInt("solanmua");
+           				float tongtien = khtn.getFloat("tonggiatien");
+           	%>
                         <tbody>
                             <tr>
-                                <td>TenKH</td>
-                                <td>SoLanMua</td>
-                                <td>TongGiaTien</td>
+                                <td><%=tenkh%></td>
+                                <td><%=soluotmua%></td>
+                                <td><%=String.format("%,.0f", tongtien)%></td>
                             </tr>
                         </tbody>
+             <%	}	} %>
                     </table>
                 </div>
                 <div class="col-lg-1 col-md-1"></div>
@@ -182,18 +196,30 @@
                     <table class="table table-bordered scroll">
                         <thead>
                             <tr>
-                                <th>Mã sản phẩm</th>
                                 <th>Tên sản phẩm</th>
                                 <th>Số lượt mua</th>
                             </tr>
                         </thead>
+                        
+             <%
+             	Object hs = request.getAttribute("Funct_Admin_DSSP_Hotsale");
+             	ResultSet hotsale = null;
+             	if(hs != null)
+             	{
+             		hotsale = (ResultSet)hs;
+             		while(hotsale.next())
+             		{
+             			String tensp = hotsale.getString("tensp");
+                 		int luotmua = hotsale.getInt("luotmua");
+             			
+             %>
                         <tbody>
                             <tr>
-                                <td>MaSP</td>
-                                <td>TenSP</td>
-                                <td>SoLuotMua</td>
+                                <td><%=tensp%></td>
+                                <td><%=luotmua%></td>
                             </tr>
                         </tbody>
+             <%		}	} %>
                     </table>
                 </div>
                 <div class="col-lg-1 col-md-1"></div>
