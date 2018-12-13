@@ -49,7 +49,7 @@
                 <li class="dropdown">
                     <a id="admin_name" href="#" class="dropdown-toggle" data-toggle="dropdown"><span style="font-size: 15px; color:#fff;">Admin_Name</span><b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li class="menu-drop"><a href="#">Đăng xuất</a></li>
+                        <li class="menu-drop"><a href="TrangChu">Đăng xuất</a></li>
                     </ul>
                 </li>
             </ul>
