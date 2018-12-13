@@ -233,23 +233,23 @@
                                     <li class=" col-lg-3">
                                         <ul>
                                         	<li class="dropdown-header">Giới tính</li>
-                                            <li><a href="BoLocSanPham?GioiTinhSuDung=Nam">Nam</a></li>
-                                            <li><a href="BoLocSanPham?GioiTinhSuDung=Nữ">Nữ</a></li>
-                                            <li><a href="BoLocSanPham?GioiTinhSuDung=Unisex">Cặp Đôi</a></li>
+                                            <li><a href="BoLocSanPham?GioiTinh=Nam">Nam</a></li>
+                                            <li><a href="BoLocSanPham?GioiTinh=Nữ">Nữ</a></li>
+                                            <li><a href="BoLocSanPham?GioiTinh=Unisex">Cặp Đôi</a></li>
                                         </ul>
                                     </li>
                                     <li class="col-lg-3">
                                         <ul>
                                             <li class="dropdown-header">Kiểu máy</li>
-                                            <li><a href="BoLocSanPham?KieuMay1=Pin">Pin</a></li>
-                                            <li><a href="BoLocSanPham?KieuMay2=automatic">Tự Động</a></li>
+                                            <li><a href="BoLocSanPham?KieuMay=Pin">Pin</a></li>
+                                            <li><a href="BoLocSanPham?KieuMay=automatic">Tự Động</a></li>
                                         </ul>
                                     </li>
                                     <li class="col-lg-3">
                                         <ul>
                                             <li class="dropdown-header">Chất Liệu</li>
-                                            <li><a href="BoLocSanPham?LoaiDay1=Da">Dây Da</a></li>
-                                            <li><a href="BoLocSanPham?LoaiDay2=Kim Loại">Dây Kim loại</a></li>
+                                            <li><a href="BoLocSanPham?LoaiDay=da">Dây Da</a></li>
+                                            <li><a href="BoLocSanPham?LoaiDay=kim loại">Dây Kim loại</a></li>
                                         </ul>
                                     </li>
                                     <li class="col-lg-3">
@@ -269,30 +269,30 @@
                                 <ul class="dropdown-menu dropdown-menu-large row">
                                     <li class=" col-lg-3">
                                         <ul>
-                                            <li><a href="BoLocSanPham?ThuongHieu1=1">SEIKO</a></li>
-                                            <li><a href="BoLocSanPham?ThuongHieu2=2">ROLEX</a></li>
-                                            <li><a href="BoLocSanPham?ThuongHieu3=3">OMEGA</a></li>                                            
+                                            <li><a href="BoLocSanPham?MaTH=1">SEIKO</a></li>
+                                            <li><a href="BoLocSanPham?MaTH=2">ROLEX</a></li>
+                                            <li><a href="BoLocSanPham?MaTH=3">OMEGA</a></li>                                            
                                         </ul>
                                     </li>
                                     <li class="col-lg-3">
                                         <ul>
-                                            <li><a href="BoLocSanPham?ThuongHieu4=4">VICTORINOX</a></li>
-                                            <li><a href="BoLocSanPham?ThuongHieu5=5">BREITLING</a></li>
-                                            <li><a href="BoLocSanPham?ThuongHieu6=6">GUCCI</a></li>                                            
+                                            <li><a href="BoLocSanPham?MaTH=4">VICTORINOX</a></li>
+                                            <li><a href="BoLocSanPham?MaTH=5">BREITLING</a></li>
+                                            <li><a href="BoLocSanPham?MaTH=6">GUCCI</a></li>                                            
                                         </ul>
                                     </li>
                                     <li class="col-lg-3">
                                         <ul>
-                                            <li><a href="BoLocSanPham?ThuongHieu7=7">D&G</a></li>
-                                            <li><a href="BoLocSanPham?ThuongHieu8=8">BOVET</a></li>
-                                            <li><a href="BoLocSanPham?ThuongHieu9=9">TISSOT</a></li>
+                                            <li><a href="BoLocSanPham?MaTH=7">D&G</a></li>
+                                            <li><a href="BoLocSanPham?MaTH=8">BOVET</a></li>
+                                            <li><a href="BoLocSanPham?MaTH=9">TISSOT</a></li>
                                         </ul>
                                     </li>
                                     <li class="col-lg-3">
                                         <ul>
-                                            <li><a href="BoLocSanPham?ThuongHieu10=10">HERMES</a></li>
-                                            <li><a href="BoLocSanPham?ThuongHieu11=11">HUBLOT</a></li>
-                                            <li><a href="BoLocSanPham?ThuongHieu12=12">PUMA</a></li>
+                                            <li><a href="BoLocSanPham?MaTH=10">HERMES</a></li>
+                                            <li><a href="BoLocSanPham?MaTH=11">HUBLOT</a></li>
+                                            <li><a href="BoLocSanPham?MaTH=12">PUMA</a></li>
                                         </ul>
                                     </li>
                                 </ul>

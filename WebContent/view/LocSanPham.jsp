@@ -1,3 +1,5 @@
+<%@page import="java.util.Vector"%>
+<%@page import="ModelService.XuLiSanPham"%>
 <%@page import="com.sun.xml.internal.bind.v2.runtime.Location"%>
 <%@page import="ModelBean.SanPham"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -202,31 +204,22 @@
                 </div>
                 <!---end list checkbox-->
             </div>
-            <div id="dcmn" class=" col-lg-9 col-md-9 col-sm-9">
-                
-                    <ul class="pagination">
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                    </ul>                
+            <div id="listsp" class=" col-lg-9 col-md-9 col-sm-9">              
                 <!--list san pham-->
                 <div id="rowSP" class="row" style="clear: right;">
                 <%
-                	
                 	if(request.getAttribute("KetQuaTK")!=null)
                 	{
                 		Object result=request.getAttribute("KetQuaTK");
                     	if(result !=null)
                     	{
-                    		SanPham[] listsp = (SanPham[])result;
-                    		for(int i=0;i<listsp.length;i++)
+                    		SanPham[] listsp1 = (SanPham[])result;
+                    		for(int i=0;i<listsp1.length;i++)
                     		{
-                    			int MaSP=listsp[i].getMaSP();
-                    			String TenSP=listsp[i].getTenSp();
-                    			Double GiaBan =listsp[i].getGiaBan();
-                    			String HinhAnh1=listsp[i].getHinhAnh1();
+                    			int MaSP=listsp1[i].getMaSP();
+                    			String TenSP=listsp1[i].getTenSp();
+                    			Double GiaBan =listsp1[i].getGiaBan();
+                    			String HinhAnh1=listsp1[i].getHinhAnh1();
 
                  %>
 
@@ -254,8 +247,9 @@
                 		}
                 	}
                 	else
-                	{
+                	{//đã có phân trang
 		                	Object result=request.getSession().getAttribute("LocSanPham");
+
 		                	if(result !=null)
 		                	{
 		                		SanPham[] listsp = (SanPham[])result;
@@ -293,24 +287,177 @@
                		}
              %>
                 </div>
-
                 <!---end list san pham-->
                  <ul class="pagination">
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
+				<%
+				Object result=request.getSession().getAttribute("LocSanPhamTong");
+				int a=0;
+				int b=0;
+            	if(result !=null)
+            	{
+            		SanPham[] listsp = (SanPham[])result;
+            	
+
+					int limit=listsp.length/12;
+					if(limit*12<listsp.length)
+					{
+						limit+=1;
+					}
+					for(int i=1;i<=limit;i++)
+					{
+						a=(i-1)*12;
+						b=i*12;
+						if(b>listsp.length){
+							b=listsp.length;
+						}
+				%>
+                        <li><a class="test" data-a=<%=a %> data-b=<%=b%>><%=i %></a></li>
+                    <%}
+            	}%>
             	</ul>
             </div>
         </div>
     </div>
     <!---END CONTENT--->
             
-        <script>
-		
-	
-		$('.btnAddCart').click(function(e) {
+      <script>
+          	<%
+          		//Các checkbox thương hiệu
+            	if(request.getParameter("MaTH")!=null)
+          	 	{
+            		int MaTH=Integer.parseInt(request.getParameter("MaTH"));
+          	 		if(MaTH==1)
+          	 		{%>
+                		document.getElementById("checkbox1").checked = true;
+            		<%}
+          	 		if(MaTH==2)
+          	 		{%>
+                		document.getElementById("checkbox2").checked = true;
+          	 		<%}
+          	 		if(MaTH==3)
+          	 		{%>
+                		document.getElementById("checkbox3").checked = true;
+          	 		<%}
+          	 		if(MaTH==4)
+          	 		{%>
+                		document.getElementById("checkbox4").checked = true;
+          	 		<%}
+          	 		if(MaTH==5)
+          	 		{%>
+                		document.getElementById("checkbox5").checked = true;
+          	 		<%}
+          	 		if(MaTH==6)
+          	 		{%>
+                		document.getElementById("checkbox6").checked = true;
+          	 		<%}
+          	 		if(MaTH==7)
+          	 		{%>
+                		document.getElementById("checkbox7").checked = true;
+          	 		<%}
+          	 		if(MaTH==8)
+          	 		{%>
+                		document.getElementById("checkbox8").checked = true;
+          	 		<%}
+          	 		if(MaTH==9)
+          	 		{%>
+                		document.getElementById("checkbox9").checked = true;
+          	 		<%}
+          	 		if(MaTH==10)
+          	 		{%>
+                		document.getElementById("checkbox10").checked = true;
+          	 		<%}
+          	 		if(MaTH==11)
+          	 		{%>
+                		document.getElementById("checkbox11").checked = true;
+          	 		<%}
+          	 		if(MaTH==12)
+          	 		{%>
+                		document.getElementById("checkbox12").checked = true;
+          	 		<%}
+          	 		
+            	}
+            	
+            	//Giới tính
+            	if(request.getParameter("GioiTinh")!=null)
+          	 	{
+            		String gioiTinh=request.getParameter("GioiTinh");
+          	 		if(gioiTinh.equals("Nam"))
+          	 		{%>
+                		document.getElementById("radio6").checked = true;
+            		<%}
+          	 		if(gioiTinh.equals("Nữ"))
+          	 		{%>
+                		document.getElementById("radio7").checked = true;
+          	 		<%}
+          	 		if(gioiTinh.equals("Unisex"))
+          	 		{%>
+                		document.getElementById("radio8").checked = true;
+          	 		<%}
+            	}
+            	//Kiểu máy
+            	
+            	if(request.getParameter("KieuMay")!=null)
+          	 	{
+            		String KieuMay=request.getParameter("KieuMay");
+          	 		if(KieuMay.equals("Pin"))
+          	 		{%>
+                		document.getElementById("checkbox15").checked = true;
+            		<%}
+          	 		if(KieuMay.equals("automatic"))
+          	 		{%>
+                		document.getElementById("checkbox16").checked = true;
+          	 		<%}
+            	}
+            	
+				//Loại dây
+				if(request.getParameter("LoaiDay")!=null)
+          	 	{
+            		String LoaiDay=request.getParameter("LoaiDay");
+          	 		if(LoaiDay.equals("da"))
+          	 		{%>
+                		document.getElementById("checkbox13").checked = true;
+            		<%}
+          	 		if(LoaiDay.equals("kim loại"))
+          	 		{%>
+                		document.getElementById("checkbox14").checked = true;
+          	 		<%}
+            	}
+
+            	//Khoảng giá
+            	if(request.getParameter("KhoangGia")!=null)
+          	 	{
+            		int KhoangGia=Integer.parseInt(request.getParameter("KhoangGia"));
+          	 		if(KhoangGia==1)
+          	 		{%>
+                		document.getElementById("radio1").checked = true;
+            		<%}
+          	 		if(KhoangGia==2)
+          	 		{%>
+                		document.getElementById("radio2").checked = true;
+          	 		<%}
+          	 		if(KhoangGia==3)
+          	 		{%>
+                		document.getElementById("radio3").checked = true;
+          	 		<%}
+          	 		if(KhoangGia==4)
+          	 		{%>
+                		document.getElementById("radio4").checked = true;
+          	 		<%}
+          	 		if(KhoangGia==5)
+          	 		{%>
+                		document.getElementById("radio5").checked = true;
+          	 		<%}
+            	}
+
+
+            	%>
+        </script>
+        
+        
+     <script>
+     	$(document).on("click", ".btnAddCart",function(e){
+		//$('.btnAddCart').onclick(function(e) {
+
 		    e.preventDefault();
 		    $.ajax({
 		        url: 'AddCart',
@@ -341,7 +488,7 @@
 	    		      type: "success",
 	    		      showCancelButton: false
 	    		    }, function() {
-	    		    	location.reload();
+	    		    	$('#listsp').load("http://localhost:8080/WebBanDongHo/BoLocSanPham"+"?action=filter"+" #rowSP, .pagination");
 	    		    });
 	    		
 	    		}
@@ -519,7 +666,177 @@
 	                 },
 	             }).done(function() {	            	
 	            	 //location.href=location.href+"?action=filter";
-	            	 $('#dcmn').load(location.href+"?action=filter"+" #rowSP, .pagination");
+	            	 $('#listsp').load("http://localhost:8080/WebBanDongHo/BoLocSanPham"+"?action=filter"+" #rowSP, .pagination");
+	             });
+    		});
+       		
+       		
+       		
+       		//$(".test").click(function(e){
+       		 $(document).on("click", ".test",function(e){
+       			var duoi1trieu = 0;
+       			var tu1_2trieu = 0;
+       			var tu2_7trieu = 0;
+       			var tu7_15trieu = 0;
+       			var tren15trieu = 0;
+       			
+       			var SEIKO = 0;
+       			var ROLEX = 0;
+       			var OMEGA = 0;
+       			var VICTORINOX = 0;
+       			var BREITLING = 0;
+       			var GUCCI = 0;
+       			var D_G = 0;
+       			var BOVET = 0;
+       			var TISSOT = 0;
+       			var HERMES = 0;
+       			var HUBLOT = 0;
+       			var PUMA = 0;
+       			
+       			var NAM = 0;
+       			var Nu = 0;
+       			var UNISEX = 0;
+       			
+       			var DayDa = 0;
+       			var DayKimLoai = 0;
+       			
+       			var Pin = 0;
+       			var Automatic = 0;
+       			
+       			if ($('#radio1').is(":checked"))
+       			{
+       				duoi1trieu = 1;
+       			}
+       			if ($('#radio2').is(":checked"))
+       			{
+       				tu1_2trieu = 1;
+       			}
+       			if ($('#radio3').is(":checked"))
+       			{
+       				tu2_7trieu = 1;
+       			}
+       			if ($('#radio4').is(":checked"))
+       			{
+       				tu7_15trieu = 1;
+       			}
+       			if ($('#radio5').is(":checked"))
+       			{
+       				tren15trieu = 1;
+       			}
+       			if ($('#radio6').is(":checked"))
+       			{
+       				NAM = 1;
+       			}
+       			if ($('#radio7').is(":checked"))
+       			{
+       				Nu = 1;
+       			}
+       			if ($('#radio8').is(":checked"))
+       			{
+       				UNISEX = 1;
+       			}
+       			if ($('#checkbox1').is(":checked"))
+       			{
+       				SEIKO = 1;
+       			}
+       			if ($('#checkbox2').is(":checked"))
+       			{
+       				ROLEX = 1;
+       			}
+       			if ($('#checkbox3').is(":checked"))
+       			{
+       				OMEGA = 1;
+       			}
+       			if ($('#checkbox4').is(":checked"))
+       			{
+       				VICTORINOX = 1;
+       			}
+       			if ($('#checkbox5').is(":checked"))
+       			{
+       				BREITLING = 1;
+       			}
+       			if ($('#checkbox6').is(":checked"))
+       			{
+       				GUCCI = 1;
+       			}
+       			if ($('#checkbox7').is(":checked"))
+       			{
+       				D_G = 1;
+       			}
+       			if ($('#checkbox8').is(":checked"))
+       			{
+       				BOVET = 1;
+       			}
+       			if ($('#checkbox9').is(":checked"))
+       			{
+       				TISSOT = 1;
+       			}
+       			if ($('#checkbox10').is(":checked"))
+       			{
+       				HERMES = 1;
+       			}
+       			if ($('#checkbox11').is(":checked"))
+       			{
+       				HUBLOT = 1;
+       			}
+       			if ($('#checkbox12').is(":checked"))
+       			{
+       				PUMA = 1;
+       			}
+       			if ($('#checkbox13').is(":checked"))
+       			{
+       				DayDa = 1;
+       			}
+       			if ($('#checkbox14').is(":checked"))
+       			{
+       				DayKimLoai = 1;
+       			}
+       			if ($('#checkbox15').is(":checked"))
+       			{
+       				Pin = 1;
+       			}
+       			if ($('#checkbox16').is(":checked"))
+       			{
+       				Automatic = 1;
+       			}
+       			//var temp=$('#dcmn').html();
+	       		 $.ajax( {
+	                 url: 'BoLocSanPham',
+	                 type: 'POST',
+	                 dataType: 'text',
+	                 data:{
+	                	 flagActionLocSanPham : 1,
+	                	 duoi1trieu : duoi1trieu,
+	            		 tu1_2trieu : tu1_2trieu,
+	            		 tu2_7trieu : tu2_7trieu,
+	            		 tu7_15trieu : tu7_15trieu,
+	            		 tren15trieu : tren15trieu,
+	            		 SEIKO : SEIKO,
+	            		 ROLEX : ROLEX,
+	            		 OMEGA : OMEGA,
+	            		 VICTORINOX : VICTORINOX,
+	            		 BREITLING : BREITLING,
+	            		 GUCCI : GUCCI,
+	            		 D_G : D_G,
+	            		 BOVET : BOVET,
+	            		 TISSOT : TISSOT,
+	            		 HERMES : HERMES,
+	            		 HUBLOT : HUBLOT,
+	            		 PUMA : PUMA,
+	            		 NAM : NAM,
+	            		 Nu : Nu,
+	            		 UNISEX : UNISEX,
+	            		 DayDa : DayDa,
+	            		 DayKimLoai : DayKimLoai,
+	            		 Pin : Pin,
+	            		 Automatic : Automatic,
+	            		 start: $(this).attr("data-a"),
+	       		 		 end: $(this).attr("data-b")
+	                 	
+	                 },
+	             }).done(function() {	            	
+	            	 //location.href=location.href+"?action=filter";
+	            	 $('#listsp').load(location.href+"?action=filter"+" #rowSP, .pagination");
 	             });
     		});
        		

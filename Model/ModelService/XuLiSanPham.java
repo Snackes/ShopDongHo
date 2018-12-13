@@ -129,5 +129,14 @@ public class XuLiSanPham {
 		connection.close();
 		return lstSanPham.toArray(new SanPham[0]);
 	}
+	
+	//phân trang
+	public SanPham[] phantrang(int start, int end, SanPham[] listSP)
+	{		
+		Vector<SanPham> lstSanPhamPT = new Vector<SanPham>();
+		for(int i=start;i<end;i++)
+			lstSanPhamPT.addElement(listSP[i]);
+		return lstSanPhamPT.toArray(new SanPham[0]);
+	}
 
 }

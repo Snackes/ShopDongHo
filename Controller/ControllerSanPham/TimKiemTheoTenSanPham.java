@@ -34,7 +34,31 @@ public class TimKiemTheoTenSanPham extends HttpServlet {
 		XuLiSanPham xlsp=new XuLiSanPham();
 		String ChuoiTK=request.getParameter("ChuoiTK");
 		SanPham[]listsp=xlsp.TimKiemTheoTenSanPham(ChuoiTK);
-		request.setAttribute("KetQuaTK", listsp);
+		int start=0;
+    	int end;
+
+    	if(listsp.length<12)
+    	{
+    		end=listsp.length;
+    	}
+    	else
+			if(listsp.length<24)
+			{
+				end=12;
+			}
+
+			else
+			{
+				end=listsp.length;
+			}
+    	if(request.getParameter("start")!=null)
+			start= Integer.parseInt( request.getParameter("start"));
+		if(request.getParameter("end")!=null)
+			end=Integer.parseInt( request.getParameter("end"));
+		//request.setAttribute("KetQuaTK", listsp);
+		SanPham[] listDaok=xlsp.phantrang(start, end, listsp);
+		request.getSession().setAttribute("LocSanPhamTong", listsp);
+		request.getSession().setAttribute("LocSanPham", listDaok);
 		RequestDispatcher dispatcher=request.getRequestDispatcher("view/LocSanPham.jsp");
 		dispatcher.forward(request, response);
 	}

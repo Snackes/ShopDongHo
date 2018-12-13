@@ -24,16 +24,6 @@ public class BoLocSanPham extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-	public void kiemtra(Integer MaTH1,Integer MaTHi, Integer MaTH)
-	{
-		if(MaTH1==null)
-		{
-			MaTH1=MaTH;
-		}
-		else {
-			MaTHi=MaTH;
-		}
-	}
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -44,8 +34,92 @@ public class BoLocSanPham extends HttpServlet {
 		if(action==null)
 		{
 			XuLiSanPham xl= new XuLiSanPham();
-			SanPham[] listsp= xl.BoLocSanPham(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-			request.getSession().setAttribute("LocSanPham", listsp);	
+			String GioiTinh=null;
+			GioiTinh=request.getParameter("GioiTinh");
+			request.setAttribute("GioiTinh", GioiTinh);
+			
+			String LoaiDay=null;
+			LoaiDay=request.getParameter("LoaiDay");
+			request.setAttribute("LoaiDay", LoaiDay);
+
+			
+			String KieuMay=null;
+			KieuMay=request.getParameter("KieuMay");
+			request.setAttribute("KieuMay", KieuMay);
+			
+			
+			Integer MaTH=null;
+			if(request.getParameter("MaTH")!=null)
+			{
+				MaTH=Integer.parseInt(request.getParameter("MaTH"));
+			}
+			request.setAttribute("MaTH", MaTH);
+			
+			
+			Integer KhoangGia=null;
+			Double GiaMax=null;
+			Double GiaMin=null;
+			if(request.getParameter("KhoangGia")!=null)
+			{
+				KhoangGia=Integer.parseInt(request.getParameter("KhoangGia"));
+
+
+			if(KhoangGia==1)
+			{
+				GiaMin=(double) 0; GiaMax=(double) 1000000;
+			}
+			else
+				if(KhoangGia==2)
+				{
+					GiaMin=(double) 1000000; GiaMax=(double) 2000000;
+				}
+				else
+					if(KhoangGia==3)
+					{
+						GiaMin=(double) 2000000; GiaMax=(double) 7000000;
+					}
+					else
+						if(KhoangGia==4)
+						{
+							GiaMin=(double) 7000000; GiaMax=(double) 15000000;
+						}
+						else
+						{
+							if(KhoangGia==5)
+							{
+								GiaMin=(double) 15000000;
+							}
+							
+						}
+			}
+			
+			request.setAttribute("KhoangGia", KhoangGia);
+			SanPham[] listsp= xl.BoLocSanPham(MaTH, null, null, null, null, null, null, null, null, null, null, null, LoaiDay, null, GioiTinh, GiaMin, GiaMax, KieuMay, null);
+			int start=0;
+	    	int end;
+
+	    	if(listsp.length<12)
+	    	{
+	    		end=listsp.length;
+	    	}
+	    	else
+				if(listsp.length<24)
+				{
+					end=12;
+				}
+	
+				else
+				{
+					end=listsp.length;
+				}
+
+
+			
+			XuLiSanPham xlsp=new XuLiSanPham();
+			SanPham[] listDaok=xlsp.phantrang(start, end, listsp);
+			request.getSession().setAttribute("LocSanPhamTong", listsp);
+			request.getSession().setAttribute("LocSanPham", listDaok);
+			//request.getSession().setAttribute("LocSanPham", listsp);	
 		}
 		dispatcher.forward(request, response);
 	}
@@ -53,13 +127,6 @@ public class BoLocSanPham extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void dcm(HttpServletRequest request, HttpServletResponse response,Integer SEIKO,Integer ROLEX,Integer OMEGA,Integer VICTORINOX,Integer BREITLING,Integer GUCCI,Integer D_G,Integer BOVET,Integer TISSOT,Integer HERMES,Integer HUBLOT,Integer PUMA,String DayDa,String DayKimLoai,String GioiTinh,Double GiaMin,Double GiaMax,String Pin,String Automatic) throws ServletException, IOException {
-		RequestDispatcher dispatcher= request.getRequestDispatcher("view/LocSanPham.jsp");
-		XuLiSanPham xl= new XuLiSanPham();
-		SanPham[] listsp= xl.BoLocSanPham(SEIKO, ROLEX, OMEGA, VICTORINOX, BREITLING, GUCCI, D_G, BOVET, TISSOT, HERMES, HUBLOT, PUMA, DayDa, DayKimLoai, GioiTinh, GiaMin, GiaMax, Pin, Automatic);
-		request.setAttribute("LocSanPham", listsp);
-		dispatcher.forward(request, response);
-	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//HttpSession session = request.getSession();
 		//String dcm ="cccc";
@@ -269,7 +336,10 @@ public class BoLocSanPham extends HttpServlet {
 		if(DayKimLoai.equals("1"))
 		{
 			if(DayDa==null)
+			{
 				DayDa="Kim Loại";
+				DayKimLoai=null;
+			}
 			else
 				DayKimLoai="Kim Loại";
 		}
@@ -285,7 +355,10 @@ public class BoLocSanPham extends HttpServlet {
 		if(Automatic.equals("1"))
 		{
 			if(Pin==null)
+			{
 				Pin="Automatic";
+				Automatic=null;
+			}
 			else
 				Automatic="Automatic";
 		}
@@ -336,14 +409,38 @@ public class BoLocSanPham extends HttpServlet {
 					GioiTinh="Unisex";
 				}
 		XuLiSanPham xl= new XuLiSanPham();
+
 		SanPham[] listsp= xl.BoLocSanPham(SEIKO, ROLEX, OMEGA, VICTORINOX, BREITLING, GUCCI, D_G, BOVET, TISSOT, HERMES, HUBLOT, PUMA, DayDa, DayKimLoai, GioiTinh, GiaMin, GiaMax, Pin, Automatic);
-		//dcm(request,response,SEIKO, ROLEX, OMEGA, VICTORINOX, BREITLING, GUCCI, D_G, BOVET, TISSOT, HERMES, HUBLOT, PUMA, DayDa, DayKimLoai, GioiTinh, GiaMin, GiaMax, Pin, Automatic);
-		request.getSession().setAttribute("LocSanPham", listsp);
+		
+		//request.getSession().setAttribute("LocSanPham", listsp);
+    	int start=0;
+    	int end=0;
+    	if(listsp.length<12)
+    	{
+    		end=listsp.length;
+    	}
+    	else
+    	{
+			if(listsp.length<24)
+			{
+				end=12;
+			}
+
+			else
+			{
+				end=listsp.length;
+			}
+    	}
+		if(request.getParameter("start")!=null)
+			start= Integer.parseInt( request.getParameter("start"));
+		if(request.getParameter("end")!=null)
+			end=Integer.parseInt( request.getParameter("end"));
+		XuLiSanPham xlsp=new XuLiSanPham();
+		SanPham[] listDaok=xlsp.phantrang(start, end, listsp);
+		request.getSession().setAttribute("LocSanPhamTong", listsp);
+		request.getSession().setAttribute("LocSanPham", listDaok);
 		
 		
-		//response.setContentType("text/plain");
-		//response.setCharacterEncoding("UTF-8");
-		//response.getWriter().write(dcm);
 	}
 
 
