@@ -43,7 +43,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <img src="lib/images/pic1.png" class="img-circle" alt="Cinque Terre" width="35" height="35">
+                <!--img src="lib/images/pic1.png" class="img-circle" alt="Cinque Terre" width="35" height="35"-->
+                <span class="glyphicon glyphicon-user"></span>
                 <li class="dropdown">
                     <a id="admin_name" href="#" class="dropdown-toggle" data-toggle="dropdown"><span style="font-size: 15px; color:#fff;">Admin_Name</span><b class="caret"></b></a>
                     <ul class="dropdown-menu">

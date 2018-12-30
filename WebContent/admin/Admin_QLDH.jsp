@@ -40,7 +40,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <img src="lib/images/pic1.png" class="img-circle" alt="Cinque Terre" width="35" height="35">
+                <!--img src="lib/images/pic1.png" class="img-circle" alt="Cinque Terre" width="35" height="35"-->
+                <span class="glyphicon glyphicon-user"></span>
                 <li class="dropdown">
                     <a id="admin_name" href="#" class="dropdown-toggle" data-toggle="dropdown"><span style="font-size: 15px; color:#fff;">Admin_Name</span><b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -77,7 +78,7 @@
                 <div class="col-lg-11 col-md-11 col-sm-12 col-xs-12 don-hang-chua-xacnhan">
                     <div class="table-responsive">
                     <strong><span style="float:left; font-size:23px">Đơn hàng đợi xác nhận</span></strong>
-                    <table class="table table-hover table-bordered scroll order-wait" id="order-wait">
+                    <table class="table table-hover table-bordered order-wait" id="order-wait">
                         <thead>
                             <tr>
                                 <th>Mã đơn hàng</th>
@@ -131,7 +132,7 @@
                 <div class="col-lg-11 col-md-11 col-sm-12 col-xs-12 don-hang-da-xacnhan">
                     <div class="table-responsive">
                     <strong><span style="float:left; font-size:23px">Đơn hàng đã xác nhận/Đang giao</span></strong>
-                    <table class="table table-hover table-bordered scroll order-delivering" id="order-delivering">
+                    <table class="table table-hover table-bordered order-delivering" id="order-delivering">
                         <thead>
                             <tr>
                                 <th>Mã đơn hàng</th>
@@ -186,7 +187,7 @@
                 <div class="col-lg-11 col-md-11 col-sm-12 col-xs-12 don-hang-giao-thanhcong">
                     <div class="table-responsive">
                     <strong><span style="float:left; font-size:23px">Đơn hàng giao dịch thành công</span></strong>
-                    <table class="table table-bordered scroll order-succ">
+                    <table class="table table-bordered order-succ">
                         <thead>
                             <tr>
                                 <th>Mã đơn hàng</th>
@@ -241,7 +242,7 @@
             $(function () {
             	$('.chitiet-wait-btn').click(function (e) {
                 	var ma_hdb = 0;
-                	ma_hdb = $('.order-wait tr').closest('tr').find('td:nth-child(1)').text();
+                	ma_hdb = $(this).closest('tr').find('td:nth-child(1)').text();
                 	$.ajax({
                         type: 'POST',
                         url: 'Order_Wait',

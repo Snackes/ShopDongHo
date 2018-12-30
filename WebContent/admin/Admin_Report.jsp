@@ -41,7 +41,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <img src="lib/images/pic1.png" class="img-circle" alt="Cinque Terre" width="35" height="35">
+                <!--img src="lib/images/pic1.png" class="img-circle" alt="Cinque Terre" width="35" height="35"-->
+                <span class="glyphicon glyphicon-user"></span>
                 <li class="dropdown">
                     <a id="admin_name" href="#" class="dropdown-toggle" data-toggle="dropdown"><span style="font-size: 15px; color:#fff;">Admin_Name</span><b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -84,10 +85,10 @@
                         function drawChart() {
                             var data = google.visualization.arrayToDataTable([
                                 ['Năm', 'Tổng thu nhập', 'Giá vốn'],
-                                ['2014', 1000, 400],
-                                ['2015', 1170, 460],
-                                ['2016', 660, 1120],
-                                ['2017', 1030, 540]
+                                ['2015', 1000, 400],
+                                ['2016', 1170, 460],
+                                ['2017', 660, 1120],
+                                ['2018', 1030, 540]
                             ]);
 
                             var options = {
