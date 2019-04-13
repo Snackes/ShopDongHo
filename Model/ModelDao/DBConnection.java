@@ -9,7 +9,9 @@ import java.util.Arrays;
 import java.util.Vector;
 
 public class DBConnection {
-	public static String strConn = "jdbc:sqlserver://localhost:1433;databaseName=webBanDongHo;user=hiep;password=123";
+	 //"jdbc:mysql://" + hostName + ":3306/" + dbName;
+	//public static String strConn = "jdbc:sqlserver://localhost:1433;databaseName=webBanDongHo;user=huyhoang;password=123";
+	public static String strConn = "jdbc:mysql://localhost:3306/webbandongho";
 	private Connection connection;
 
 	public DBConnection() {
@@ -18,8 +20,10 @@ public class DBConnection {
 
 	public void connect() {
 		try {
-			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			connection = DriverManager.getConnection(strConn);
+			//Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			connection = DriverManager.getConnection(strConn,"root","hoang1001");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
