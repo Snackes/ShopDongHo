@@ -41,7 +41,7 @@ public class ChiTietSanPham extends HttpServlet {
 		request.setAttribute("LayThongTinChiTiet", ThongTinChiTietSanPham);
 		
 		//lấy ngẫu nhiên 4 sản phẩm cho có thể bạn chưa biết
-		SanPham[] CoTheBanQuanTam = control_SP.Func_Lay_BonSanPhamNgauNhien();
+		SanPham[] CoTheBanQuanTam = control_SP.Proc_Lay_BonSanPhamNgauNhien();
 		request.setAttribute("CoTheBanQuanTam", CoTheBanQuanTam);
 		
 		

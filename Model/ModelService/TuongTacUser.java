@@ -74,7 +74,7 @@ public class TuongTacUser {
 		Vector<Object[]> paramsIn = connection.createParams(new int[] {1}, new Object[] {MaKH});
 		try {
 			
-			ResultSet resultset = connection.executeTableFunction("Func_Load_ThongTinTaiKhoan", paramsIn);
+			ResultSet resultset = connection.executeTableProc("Proc_Load_ThongTinTaiKhoan", paramsIn);
 			
 			while(resultset.next())
 			{

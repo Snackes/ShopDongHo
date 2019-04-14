@@ -19,11 +19,11 @@ public class XuLiSanPham {
 		connection = new DBConnection();
 	}
 
-	public SanPham[] Func_Lay_BonSanPhamNgauNhien() {
+	public SanPham[] Proc_Lay_BonSanPhamNgauNhien() {
 		Vector<SanPham> lstSanPham = new Vector<>();
 		connection.connect();
 		try {
-			ResultSet resultSet = connection.executeTableFunction("Func_Lay_BonSanPhamNgauNhien", null);
+			ResultSet resultSet = connection.executeTableProc("Proc_Lay_BonSanPhamNgauNhien", null);
 			while(resultSet.next()) {
 				SanPham sp = new SanPham();
 				sp.setMaSP(resultSet.getInt("MaSP"));
@@ -31,7 +31,6 @@ public class XuLiSanPham {
 				sp.setGiaBan(resultSet.getDouble("GiaBan"));
 				sp.setHinhAnh1(resultSet.getString("HinhAnh1"));
 				lstSanPham.addElement(sp);
-				
 			}
 			
 		} catch (SQLException e) {

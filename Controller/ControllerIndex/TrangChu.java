@@ -35,8 +35,8 @@ public class TrangChu extends HttpServlet {
 		
 		XuLiSanPham control_SP=new XuLiSanPham();
 		
-		SanPham[] danhsachmoi= control_SP.Func_Lay_BonSanPhamNgauNhien();
-		SanPham[] danhsachnoibat= control_SP.Func_Lay_BonSanPhamNgauNhien();
+		SanPham[] danhsachmoi= control_SP.Proc_Lay_BonSanPhamNgauNhien();
+		SanPham[] danhsachnoibat= control_SP.Proc_Lay_BonSanPhamNgauNhien();
 		
 		XuLiGioHang xl=new XuLiGioHang();
 		int dm=xl.TongSoLuong(request);

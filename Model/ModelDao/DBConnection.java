@@ -211,11 +211,17 @@ public class DBConnection {
 
 	private String createQueryTableProcedure(String name, int count) {
 		
-		StringBuffer sBuffer = new StringBuffer("execute " + name +" ");
+		StringBuffer sBuffer = new StringBuffer("Call " + name + "(");//("execute " + name +" ");
 		for (int i = 0; i < count; i++) {
 			sBuffer.append("?,");
 		}
-		sBuffer.delete(sBuffer.length() - 1, sBuffer.length());
+		
+		if (count > 0)
+			sBuffer.replace(sBuffer.length() - 1, sBuffer.length(), ")");
+		else
+			sBuffer.append(")");
+		
+		//sBuffer.delete(sBuffer.length() - 1, sBuffer.length());
 		return sBuffer.toString();
 	}
 
